@@ -13,6 +13,10 @@
 
 用浏览器直接打开 `edge-ai-industry-map.html`，点击顶部页签切换视图。全景图中的 L3 / L4 / 机器人卡片可直接跳转到对应详解页。
 
+## GitHub Pages 部署
+
+仓库根目录的 `index.html` 与 `edge-ai-industry-map.html` 内容完全一致（单文件、零外部依赖，可独立发布）。在仓库 Settings → Pages 中把分支（如 `main`）发布为 Pages 源，即可通过 `https://<owner>.github.io/<repo>/` 访问该单页应用。
+
 ## 说明
 
 - 融资轮次 / 估值 / 市值为编写时点的公开信息估算，非官方披露，仅供参考。
