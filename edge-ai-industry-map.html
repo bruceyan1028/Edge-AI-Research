@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>端侧AI产业链全景图</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 24px; background: #f4f5f7; color: #1f2937;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+}
+.page { min-width: 1380px; max-width: 1600px; margin: 0 auto; }
+h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
+.sub { color: #6b7280; margin-bottom: 14px; font-size: 12px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 16px; align-items: center; }
+.legend .it { display: flex; align-items: center; gap: 6px; }
+.legend .sw { width: 18px; height: 12px; border-radius: 2px; border: 1px solid rgba(0,0,0,.15); }
+.legend .ln { width: 30px; border-top: 2px solid #374151; position: relative; }
+.legend .ln.dash { border-top-style: dashed; }
+.legend .ln::after { content: ""; position: absolute; right: -2px; top: -5px; border: 4px solid transparent; border-left: 6px solid #374151; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 118px 1fr 128px;
+  grid-template-rows: auto;
+  column-gap: 10px;
+}
+.layer {
+  grid-column: 2; display: flex; border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(0,0,0,.08); background: var(--bg);
+}
+.layer .head {
+  width: 128px; flex: 0 0 128px; background: var(--ac); color: #fff; padding: 12px 10px;
+  display: flex; flex-direction: column; justify-content: center; gap: 4px;
+}
+.layer .head .lv { font-size: 10px; opacity: .85; letter-spacing: 1px; }
+.layer .head .nm { font-size: 15px; font-weight: 700; }
+.layer .head .role { font-size: 10.5px; opacity: .9; line-height: 1.4; }
+.layer .body { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.row { display: flex; gap: 8px; align-items: stretch; }
+.group { display: flex; gap: 8px; flex: 1; position: relative; padding: 14px 8px 8px; border: 1px dashed var(--ac); border-radius: 6px; }
+.group > .gl { position: absolute; top: -8px; left: 10px; background: var(--bg); color: var(--ac); font-size: 10.5px; font-weight: 700; padding: 0 5px; }
+.card {
+  flex: 1; background: #fff; border-radius: 6px; padding: 7px 8px 6px;
+  border-left: 4px solid var(--ac); box-shadow: 0 1px 2px rgba(0,0,0,.06); min-width: 0;
+}
+.card .t { font-weight: 700; font-size: 12.5px; margin-bottom: 2px; color: #111827; }
+.card .t small { font-weight: 400; color: #6b7280; margin-left: 4px; font-size: 10px; }
+.card .d { color: #6b7280; font-size: 10.5px; line-height: 1.35; margin-bottom: 4px; }
+.tags { display: flex; flex-wrap: wrap; gap: 3px; }
+.tag { background: var(--bg); color: #374151; border-radius: 3px; padding: 1px 5px; font-size: 10.5px; line-height: 1.5; }
+.harrow { display: flex; align-items: center; color: var(--ac); font-weight: 700; font-size: 11px; padding: 0 2px; flex: 0 0 auto; flex-direction: column; justify-content: center; text-align: center; line-height: 1.2; }
+.harrow .a { font-size: 18px; }
+
+.varrow {
+  grid-column: 2; display: flex; align-items: center; justify-content: center; gap: 14px;
+  height: 30px; color: #374151; font-size: 11px;
+}
+.varrow .a { width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 12px solid #4b5563; position: relative; }
+.varrow .a::after { content: ""; position: absolute; left: -1.5px; top: 12px; width: 3px; height: 8px; background: #4b5563; }
+.varrow .lbl { background: #fff; border: 1px solid #d1d5db; border-radius: 12px; padding: 2px 10px; }
+
+.side {
+  border-radius: 8px; padding: 10px 8px; display: flex; flex-direction: column; gap: 8px;
+  border: 2px solid var(--ac); background: var(--bg);
+}
+.side .h { font-weight: 700; font-size: 13px; color: var(--ac); text-align: center; line-height: 1.3; }
+.side .d { color: #4b5563; font-size: 10.5px; line-height: 1.4; text-align: center; }
+.side .tags { justify-content: center; }
+.side .tag { background: #fff; }
+.side .rel { border-top: 1px dashed var(--ac); padding-top: 6px; font-size: 10.5px; color: var(--ac); line-height: 1.45; }
+.side .rel b { display: block; }
+.left  { grid-column: 1; --ac: #9a6b00; --bg: #fff6d6; }
+.right { grid-column: 3; --ac: #334155; --bg: #e2e8f0; }
+
+.axis { grid-column: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #6b7280; font-size: 11px; gap: 4px; }
+
+.L-app  { --ac: #ad1457; --bg: #fce4ec; }
+.L-dev  { --ac: #c62828; --bg: #ffebee; }
+.L-sol  { --ac: #e65100; --bg: #fff3e0; }
+.L-mod  { --ac: #6a1b9a; --bg: #f3e5f5; }
+.L-sw   { --ac: #00695c; --bg: #e0f2f1; }
+.L-hw   { --ac: #1565c0; --bg: #e3f2fd; }
+.L-eco  { --ac: #455a64; --bg: #eceff1; }
+
+.note { grid-column: 1 / 4; margin-top: 14px; color: #6b7280; font-size: 11px; line-height: 1.6; }
+
+/* ===================== 页签与视图切换 ===================== */
+.tabs { position: sticky; top: 0; z-index: 5; display: flex; gap: 6px; align-items: center; margin: -24px -24px 18px; padding: 10px 24px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+.tab { border: 1px solid #d1d5db; background: #fff; border-radius: 6px; padding: 6px 14px; font-size: 13px; cursor: pointer; color: #374151; font-weight: 600; font-family: inherit; }
+.tab:hover { border-color: #6a1b9a; color: #6a1b9a; }
+.tab.active { background: #6a1b9a; border-color: #6a1b9a; color: #fff; }
+.tabs .hint { margin-left: auto; color: #9ca3af; font-size: 11px; }
+.view { display: none; }
+.view.active { display: block; }
+.golink { display: inline-block; margin-top: 5px; font-size: 10px; color: #fff; background: rgba(255,255,255,.22); border-radius: 3px; padding: 1px 6px; cursor: pointer; }
+.golink:hover { background: rgba(255,255,255,.38); }
+
+/* ===================== 模型层详解页 ===================== */
+.mp-hero { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 14px; }
+.mp-hero .txt { flex: 1; }
+.mp-hero .stats { display: flex; gap: 8px; flex: 0 0 auto; }
+.stat { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 6px 12px; min-width: 84px; text-align: center; }
+.stat .v { font-size: 18px; font-weight: 700; color: #6a1b9a; line-height: 1.2; }
+.stat .k { font-size: 10.5px; color: #6b7280; }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 12px; margin-bottom: 14px; position: sticky; top: var(--tabs-h, 44px); z-index: 4; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+.toolbar .lb { font-size: 11px; color: #6b7280; font-weight: 700; }
+.toolbar .grp { display: flex; gap: 4px; align-items: center; }
+.chip { border: 1px solid #d1d5db; border-radius: 12px; padding: 2px 10px; font-size: 11px; cursor: pointer; background: #fff; color: #374151; font-family: inherit; }
+.chip:hover { border-color: #6a1b9a; }
+.chip.on { background: #6a1b9a; color: #fff; border-color: #6a1b9a; }
+.toolbar input { border: 1px solid #d1d5db; border-radius: 6px; padding: 4px 8px; font-size: 12px; width: 190px; font-family: inherit; }
+.toolbar .cnt { margin-left: auto; font-size: 11px; color: #6b7280; }
+.toolbar .reset { font-size: 11px; color: #6a1b9a; cursor: pointer; text-decoration: underline; background: none; border: 0; font-family: inherit; }
+
+.matrix { display: grid; grid-template-columns: 150px 1.15fr 1.15fr .85fr .85fr; gap: 8px; }
+.corner { border-radius: 8px; background: #fff; border: 1px solid #e5e7eb; padding: 8px 10px; font-size: 10.5px; color: #6b7280; line-height: 1.45; display: flex; flex-direction: column; justify-content: center; }
+.corner, .colhead { position: sticky; top: var(--head-top, 100px); z-index: 3; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
+.corner { flex-direction: row; align-items: center; gap: 6px; cursor: default; }
+.corner b { color: #111827; font-size: 11px; white-space: nowrap; }
+.corner .info { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; border: 1px solid #9ca3af; color: #6b7280; font-size: 9px; font-weight: 700; font-family: Georgia, serif; font-style: italic; }
+.corner .tip { display: none; position: absolute; left: 0; top: calc(100% + 6px); width: 300px; background: #fff; border: 1px solid #d1d5db; border-radius: 6px; padding: 8px 10px; box-shadow: 0 4px 12px rgba(0,0,0,.12); color: #374151; font-size: 10.5px; line-height: 1.5; z-index: 20; }
+.corner .tip b { display: block; margin-bottom: 3px; color: #111827; font-size: 11px; }
+.corner:hover .tip, .corner:focus-within .tip { display: block; }
+.colhead { border-radius: 8px; padding: 8px 10px; color: #fff; background: var(--rc); }
+.colhead .n { font-size: 14px; font-weight: 700; display: flex; align-items: baseline; gap: 6px; }
+.colhead .n small { font-size: 10.5px; font-weight: 400; opacity: .9; }
+.colhead .c { font-size: 10.5px; opacity: .92; margin-top: 3px; line-height: 1.45; }
+.rowhead { border-radius: 8px; padding: 10px; background: var(--cc-bg); border-left: 5px solid var(--cc); display: flex; flex-direction: column; gap: 6px; }
+.rowhead .n { font-size: 14px; font-weight: 700; color: var(--cc); line-height: 1.3; }
+.rowhead .n small { display: block; font-size: 10.5px; font-weight: 400; color: #6b7280; margin-top: 2px; }
+.rowhead .def { font-size: 10.5px; color: #4b5563; line-height: 1.45; }
+.rowhead .biz { font-size: 10.5px; color: var(--cc); border-top: 1px dashed var(--cc); padding-top: 5px; line-height: 1.45; }
+.cell { background: var(--cc-bg); border-radius: 8px; padding: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap: 6px; align-content: start; }
+.cell.empty::after { content: "— 无匹配玩家 —"; color: #9ca3af; font-size: 11px; grid-column: 1 / -1; text-align: center; padding: 10px; }
+
+.pc { background: #fff; border-radius: 6px; padding: 6px 8px; border-left: 3px solid var(--cc); box-shadow: 0 1px 2px rgba(0,0,0,.06); min-width: 0; }
+.pc.hide { display: none; }
+.pc-h { display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; }
+.pc-n { font-weight: 700; font-size: 12.5px; color: #111827; }
+.pc-e { font-size: 10px; color: #6b7280; }
+.pc-o { margin-left: auto; font-size: 9.5px; padding: 0 5px; border-radius: 3px; border: 1px solid; white-space: nowrap; }
+.pc-o.o1 { color: #2e7d32; border-color: #a5d6a7; background: #e8f5e9; }
+.pc-o.o2 { color: #ef6c00; border-color: #ffcc80; background: #fff3e0; }
+.pc-o.o3 { color: #616161; border-color: #e0e0e0; background: #f5f5f5; }
+.pc-m { font-size: 10.5px; color: #111827; margin: 3px 0 2px; line-height: 1.4; }
+.pc-d { font-size: 10.5px; color: #6b7280; line-height: 1.4; margin-bottom: 4px; }
+.pc .tags .tag { background: var(--cc-bg); }
+.pc .tag.lab { background: #fff; border: 1px dashed var(--cc); color: var(--cc); }
+.pc-f { display: flex; flex-wrap: wrap; gap: 3px 8px; align-items: baseline; font-size: 10.5px; line-height: 1.4; margin: 0 0 4px; padding: 3px 6px; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 4px; }
+.pc-f .fv { font-weight: 700; color: #111827; }
+.pc-f .fk { color: #6b7280; }
+.pc-f .fl { color: #6b7280; }
+.pc-f .fx { color: #b45309; font-weight: 700; }
+.pc-f.gov { background: #fffbeb; border-color: #fde68a; }
+
+.R-CN { --rc: #c62828; } .R-US { --rc: #1565c0; } .R-EU { --rc: #2e7d32; } .R-OT { --rc: #6d4c41; }
+.C-big { --cc: #6a1b9a; --cc-bg: #f3e5f5; }
+.C-startup { --cc: #00838f; --cc-bg: #e0f7fa; }
+.C-vertical { --cc: #ef6c00; --cc-bg: #fff3e0; }
+.C-odm    { --cc: #00838f; --cc-bg: #e0f7fa; }
+.C-module { --cc: #6a1b9a; --cc-bg: #f3e5f5; }
+.C-edge   { --cc: #ef6c00; --cc-bg: #fff3e0; }
+.C-si     { --cc: #ad1457; --cc-bg: #fce4ec; }
+
+/* L5 机器人 / 具身智能 品类 */
+.C-humanoid   { --cc: #8e24aa; --cc-bg: #f3e5f5; }
+.C-industrial { --cc: #1565c0; --cc-bg: #e3f2fd; }
+.C-service    { --cc: #00838f; --cc-bg: #e0f7fa; }
+.C-consumer   { --cc: #ef6c00; --cc-bg: #fff3e0; }
+.C-embodied   { --cc: #c62828; --cc-bg: #ffebee; }
+
+.insights { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ins { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px; }
+.ins h3 { margin: 0 0 6px; font-size: 13px; color: #111827; }
+.ins ul { margin: 0; padding-left: 16px; font-size: 11px; line-height: 1.6; color: #374151; }
+.ins li b { color: #111827; }
+.ins.wide { grid-column: 1 / -1; }
+
+@media print {
+  .tabs { display: none; }
+  .view { display: none !important; }
+  .view.active { display: block !important; }
+  .toolbar { display: none; }
+}
+
+/* ===================== 数据图表区 ===================== */
+.dz { margin: 0 0 16px; }
+.dz-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.dz-head h2 { font-size: 14px; margin: 0; color: #111827; }
+.dz-head .n { font-size: 11px; color: #6b7280; }
+.dz-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.dz-grid.c3 { grid-template-columns: repeat(3, 1fr); }
+.dz-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px 8px; display: flex; flex-direction: column; min-width: 0; }
+.dz-t { font-size: 12.5px; font-weight: 700; color: #111827; }
+.dz-s { font-size: 10.5px; color: #6b7280; line-height: 1.4; margin-top: 2px; }
+.dz-body { margin: 8px 0 4px; flex: 1; }
+.dz-body svg { display: block; overflow: visible; font-family: inherit; }
+.dz-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 10.5px; color: #52514e; margin: 2px 0 4px; }
+.dz-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: -1px; }
+.dz-src { font-size: 9.5px; color: #898781; line-height: 1.45; border-top: 1px solid #f3f4f6; padding-top: 4px; margin-top: auto; }
+.dz-src a { color: #6b7280; }
+.dz-table { font-size: 10px; color: #52514e; margin: 2px 0 4px; }
+.dz-table summary { cursor: pointer; color: #6b7280; }
+.dz-table table { border-collapse: collapse; width: 100%; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.dz-table th, .dz-table td { border-bottom: 1px solid #f3f4f6; padding: 2px 4px; text-align: left; vertical-align: top; }
+.dz-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.dz-tile { background: #f8fafc; border-radius: 6px; padding: 6px 8px; }
+.dz-tile .v { font-size: 20px; font-weight: 700; color: #111827; line-height: 1.15; }
+.dz-tile .v small { font-size: 11px; font-weight: 600; color: #52514e; margin-left: 2px; }
+.dz-tile .k { font-size: 10.5px; color: #111827; margin-top: 2px; line-height: 1.3; }
+.dz-tile .d { font-size: 9.5px; color: #898781; line-height: 1.3; margin-top: 1px; }
+.dz-m { cursor: default; }
+.dz-m:hover { opacity: .8; }
+.dz-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dz-mini .lb { font-size: 10.5px; font-weight: 700; color: #52514e; margin-bottom: 2px; }
+#dz-tip { position: fixed; z-index: 50; pointer-events: none; background: #111827; color: #fff; font-size: 11px; padding: 5px 8px; border-radius: 5px; max-width: 300px; line-height: 1.4; display: none; box-shadow: 0 2px 8px rgba(0,0,0,.2); }
+@media print { .dz-table { display: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="tabs">
+    <button class="tab active" data-view="map">① 产业链全景图</button>
+    <button class="tab" data-view="model">② 模型层详解（L3 玩家图谱）</button>
+    <button class="tab" data-view="solution">③ 方案与集成层详解（L4 玩家图谱）</button>
+    <button class="tab" data-view="robot">④ 终端设备层详解（L5 机器人 / 具身智能）</button>
+    <span class="hint">点击页签切换视图 · 全景图中 L3 / L4 / 机器人卡片可直接跳转</span>
+  </div>
+
+  <!-- ====================== 视图一：产业链全景图（原页面，保留不动） ====================== -->
+  <div class="view active" id="view-map">
+
+  <h1>端侧AI产业链全景图</h1>
+  <div class="sub">按价值链自下而上排列：底部为上游（IP / 芯片 / 制造），顶部为下游（终端 / 应用）。色块 = 层级，卡片 = 厂商类型，实线箭头 = 主要供给 / 依赖方向，两侧竖带 = 横切维度。</div>
+
+  <div class="legend">
+    <div class="it"><span class="sw" style="background:#e3f2fd;border-color:#1565c0"></span>L1 硬件与算力层</div>
+    <div class="it"><span class="sw" style="background:#e0f2f1;border-color:#00695c"></span>L2 软件基础层</div>
+    <div class="it"><span class="sw" style="background:#f3e5f5;border-color:#6a1b9a"></span>L3 模型层</div>
+    <div class="it"><span class="sw" style="background:#fff3e0;border-color:#e65100"></span>L4 方案与集成层</div>
+    <div class="it"><span class="sw" style="background:#ffebee;border-color:#c62828"></span>L5 终端设备层</div>
+    <div class="it"><span class="sw" style="background:#fce4ec;border-color:#ad1457"></span>L6 应用层</div>
+    <div class="it"><span class="sw" style="background:#eceff1;border-color:#455a64"></span>L0 生态与支撑层</div>
+    <div class="it"><span class="sw" style="background:#fff6d6;border-color:#9a6b00"></span>纵向一体化玩家（横切）</div>
+    <div class="it"><span class="sw" style="background:#e2e8f0;border-color:#334155"></span>云侧 / 端云协同（横切）</div>
+    <div class="it"><span class="ln"></span>供给 / 依赖流向</div>
+  </div>
+
+  <div class="grid">
+
+    <!-- ========== 左侧横切：纵向一体化 ========== -->
+    <div class="side left" style="grid-row: 1 / 12;">
+      <div class="h">纵向一体化<br>玩家</div>
+      <div class="d">自研芯片 + OS + 模型 + 终端，跨越 L1–L6 多层，以闭环生态竞争</div>
+      <div class="tags">
+        <span class="tag">Apple</span><span class="tag">华为</span><span class="tag">Google</span>
+        <span class="tag">三星</span><span class="tag">英伟达</span><span class="tag">特斯拉</span>
+        <span class="tag">小米</span><span class="tag">Meta</span>
+      </div>
+      <div class="rel"><b>与各层关系</b>既是各层单层厂商的客户，也是其直接竞争者；掌握系统级入口与分发权。</div>
+      <div class="rel"><b>竞争逻辑</b>硬件溢价 + 隐私叙事 + 开发者生态锁定</div>
+    </div>
+
+    <!-- ========== 右侧横切：云侧 ========== -->
+    <div class="side right" style="grid-row: 1 / 8;">
+      <div class="h">云计算厂商<br><span style="font-size:11px;font-weight:400">（端云协同）</span></div>
+      <div class="d">端侧AI的"对立面"与合作方</div>
+      <div class="tags">
+        <span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Google Cloud</span>
+        <span class="tag">阿里云</span><span class="tag">华为云</span><span class="tag">百度智能云</span><span class="tag">火山引擎</span>
+      </div>
+      <div class="rel"><b>→ L3 模型层</b>云端训练、蒸馏出端侧小模型；模型托管与分发</div>
+      <div class="rel"><b>↔ L5 终端</b>复杂任务上云、简单任务留端；联邦学习回传</div>
+      <div class="rel"><b>→ L4 方案层</b>提供边缘运行时（Greengrass / IoT Edge）</div>
+      <div class="rel"><b>→ L6 应用</b>混合推理API、路由策略</div>
+    </div>
+
+    <!-- ========== L6 应用层 ========== -->
+    <div class="layer L-app" style="grid-row:1;">
+      <div class="head"><div class="lv">L6 · 下游</div><div class="nm">应用层</div><div class="role">端侧能力最终被用户感知的地方</div></div>
+      <div class="body">
+        <div class="row">
+          <div class="card"><div class="t">互联网与应用软件公司</div><div class="d">在自家App内落地端侧推理：输入法、拍照修图、翻译、会议降噪、内容理解</div>
+            <div class="tags"><span class="tag">微信</span><span class="tag">抖音 / TikTok</span><span class="tag">Adobe</span><span class="tag">Zoom</span><span class="tag">Snap</span><span class="tag">美图</span><span class="tag">Notion</span></div></div>
+          <div class="card"><div class="t">AI原生应用与Agent开发者</div><div class="d">直接调用系统级端侧模型API构建新体验；个人助理、本地知识库、离线Copilot</div>
+            <div class="tags"><span class="tag">Perplexity</span><span class="tag">各类端侧Agent创业</span><span class="tag">独立开发者生态</span></div></div>
+          <div class="card"><div class="t">行业应用软件商（ISV应用侧）</div><div class="d">医疗、零售、教育、金融等行业软件嵌入端侧AI功能</div>
+            <div class="tags"><span class="tag">行业SaaS</span><span class="tag">车机应用</span><span class="tag">安防平台软件</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varrow" style="grid-row:2;"><span class="a"></span><span class="lbl">系统级AI API开放、模型能力暴露给应用</span><span class="a"></span></div>
+
+    <!-- ========== L5 终端设备层 ========== -->
+    <div class="layer L-dev" style="grid-row:3;">
+      <div class="head"><div class="lv">L5</div><div class="nm">终端设备层</div><div class="role">端侧AI的载体与主要商业化战场；按场景分为九类</div></div>
+      <div class="body">
+        <div class="row">
+          <div class="group"><span class="gl">消费电子（高算力、生态封闭度高）</span>
+            <div class="card"><div class="t">智能手机</div><div class="d">最大战场，自研模型 + 系统集成</div>
+              <div class="tags"><span class="tag">苹果</span><span class="tag">三星</span><span class="tag">华为</span><span class="tag">小米</span><span class="tag">OPPO</span><span class="tag">vivo</span><span class="tag">荣耀</span><span class="tag">Pixel</span></div></div>
+            <div class="card"><div class="t">PC / AI PC</div><div class="d">与Intel / AMD / 高通 / 微软结盟</div>
+              <div class="tags"><span class="tag">联想</span><span class="tag">惠普</span><span class="tag">戴尔</span><span class="tag">华硕</span><span class="tag">宏碁</span><span class="tag">Surface</span><span class="tag">Mac</span></div></div>
+            <div class="card"><div class="t">可穿戴 / XR</div><div class="d">功耗与延迟约束最苛刻</div>
+              <div class="tags"><span class="tag">Meta</span><span class="tag">Vision Pro</span><span class="tag">Rokid</span><span class="tag">雷鸟</span><span class="tag">XREAL</span><span class="tag">Oura</span><span class="tag">Garmin</span></div></div>
+            <div class="card"><div class="t">AI原生新硬件</div><div class="d">AI Pin、录音卡、AI玩具、AI眼镜</div>
+              <div class="tags"><span class="tag">Plaud</span><span class="tag">Limitless</span><span class="tag">Rabbit</span><span class="tag">Humane</span><span class="tag">跃然创新</span></div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="group"><span class="gl">出行与具身（算力密度最高）</span>
+            <div class="card"><div class="t">汽车主机厂</div><div class="d">智能座舱 + 智驾</div>
+              <div class="tags"><span class="tag">特斯拉</span><span class="tag">比亚迪</span><span class="tag">蔚小理</span><span class="tag">华为车BU</span><span class="tag">小米汽车</span></div></div>
+            <div class="card"><div class="t">汽车Tier1 / 智驾方案</div><div class="d">域控制器、算法包</div>
+              <div class="tags"><span class="tag">博世</span><span class="tag">大陆</span><span class="tag">德赛西威</span><span class="tag">Momenta</span><span class="tag">Mobileye</span></div></div>
+            <div class="card"><div class="t">机器人 / 具身智能</div><div class="d">人形、扫地机、无人机、服务机器人</div>
+              <div class="tags"><span class="tag">宇树</span><span class="tag">优必选</span><span class="tag">Figure</span><span class="tag">智元</span><span class="tag">石头</span><span class="tag">科沃斯</span><span class="tag">大疆</span></div>
+              <div><a class="golink" data-view="robot">查看玩家详解 →</a></div></div>
+          </div>
+          <div class="group"><span class="gl">家庭与行业（长尾、B端为主）</span>
+            <div class="card"><div class="t">智能家居 / 消费IoT</div><div class="d">音箱、摄像头、家电、门锁</div>
+              <div class="tags"><span class="tag">Amazon</span><span class="tag">Google Nest</span><span class="tag">小米生态链</span><span class="tag">涂鸦</span><span class="tag">萤石</span><span class="tag">海尔</span><span class="tag">美的</span></div></div>
+            <div class="card"><div class="t">安防与视觉设备</div><div class="d">最早规模落地的端侧AI</div>
+              <div class="tags"><span class="tag">海康威视</span><span class="tag">大华</span><span class="tag">宇视</span><span class="tag">Axis</span><span class="tag">Hanwha</span></div></div>
+            <div class="card"><div class="t">工业 / 医疗 / 专业设备</div><div class="d">质检、医学影像、AGV、农机</div>
+              <div class="tags"><span class="tag">基恩士</span><span class="tag">康耐视</span><span class="tag">联影</span><span class="tag">GE医疗</span><span class="tag">西门子</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varrow" style="grid-row:4;"><span class="a"></span><span class="lbl">整机 / 模组 / 行业方案供货</span><span class="a"></span><span class="lbl">模型直接集成进终端（L3 → L5）</span><span class="a"></span></div>
+
+    <!-- ========== L4 方案与集成层 ========== -->
+    <div class="layer L-sol" style="grid-row:5;">
+      <div class="head"><div class="lv">L4</div><div class="nm">方案与集成层</div><div class="role">把芯片 + 软件 + 模型打包成可直接使用的产品或方案；AI能力向中长尾品牌扩散的通道</div><span class="golink" data-view="solution">查看玩家详解 →</span></div>
+      <div class="body">
+        <div class="row">
+          <div class="card"><div class="t">ODM / OEM 整机方案商</div><div class="d">为品牌方设计与制造手机、PC、IoT整机</div>
+            <div class="tags"><span class="tag">闻泰</span><span class="tag">华勤</span><span class="tag">龙旗</span><span class="tag">广达</span><span class="tag">仁宝</span><span class="tag">纬创</span></div></div>
+          <div class="card"><div class="t">通信与AI模组厂商</div><div class="d">芯片封装为可嵌入模组，服务IoT与车载</div>
+            <div class="tags"><span class="tag">移远</span><span class="tag">广和通</span><span class="tag">美格智能</span><span class="tag">日海智能</span></div></div>
+          <div class="card"><div class="t">边缘计算硬件与平台<small>（边缘侧，常并入Edge AI口径）</small></div><div class="d">边缘服务器、网关、边缘运行时</div>
+            <div class="tags"><span class="tag">NVIDIA Jetson生态</span><span class="tag">研华</span><span class="tag">凌华</span><span class="tag">浪潮边缘</span><span class="tag">AWS Greengrass</span><span class="tag">Azure IoT Edge</span></div></div>
+          <div class="card"><div class="t">行业系统集成商 / ISV</div><div class="d">零售、交通、能源、制造的落地集成，数量庞大、区域性强</div>
+            <div class="tags"><span class="tag">各行业集成商</span><span class="tag">算法 + 硬件打包方案商</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varrow" style="grid-row:6;"><span class="a"></span><span class="lbl">经压缩与编译的模型交付 / 集成</span><span class="a"></span></div>
+
+    <!-- ========== L3 模型层 ========== -->
+    <div class="layer L-mod" style="grid-row:7;">
+      <div class="head"><div class="lv">L3</div><div class="nm">模型层</div><div class="role">"小而强"的模型是端侧智能的核心资产</div><span class="golink" data-view="model">查看玩家详解 →</span></div>
+      <div class="body">
+        <div class="row">
+          <div class="card"><div class="t">大厂端侧小模型</div><div class="d">大模型系列的小尺寸版本，多开源以抢生态</div>
+            <div class="tags"><span class="tag">Gemma / Gemini Nano</span><span class="tag">Llama 小尺寸</span><span class="tag">Phi</span><span class="tag">Apple Foundation Models</span><span class="tag">Qwen 小尺寸</span><span class="tag">混元</span><span class="tag">豆包端侧</span><span class="tag">Mistral</span></div></div>
+          <div class="card"><div class="t">端侧模型专精创业公司</div><div class="d">专注端侧架构创新（SSM、稀疏、蒸馏）</div>
+            <div class="tags"><span class="tag">面壁智能 MiniCPM</span><span class="tag">Liquid AI</span><span class="tag">Nexa AI</span><span class="tag">Cartesia</span><span class="tag">SmolLM</span><span class="tag">Kyutai</span></div></div>
+          <div class="card"><div class="t">垂直模态模型 / 算法公司</div><div class="d">语音、视觉、生物识别等传统端侧AI供应商</div>
+            <div class="tags"><span class="tag">科大讯飞</span><span class="tag">思必驰</span><span class="tag">云知声</span><span class="tag">Sensory</span><span class="tag">Picovoice</span><span class="tag">SoundHound</span><span class="tag">商汤</span><span class="tag">旷视</span><span class="tag">虹软</span><span class="tag">云从</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varrow" style="grid-row:8;"><span class="a"></span><span class="lbl">量化 / 剪枝 / 编译 / 部署到硬件</span><span class="a"></span><span class="lbl">OS 暴露系统级模型与API</span><span class="a"></span></div>
+
+    <!-- ========== L2 软件基础层 ========== -->
+    <div class="layer L-sw" style="grid-row:9;">
+      <div class="head"><div class="lv">L2</div><div class="nm">软件基础层</div><div class="role">连接硬件与模型的"翻译器"，也是芯片厂与平台厂建立壁垒的地方</div></div>
+      <div class="body">
+        <div class="row">
+          <div class="card"><div class="t">推理框架与运行时</div><div class="d">让模型跑在设备上的引擎，多为开源</div>
+            <div class="tags"><span class="tag">LiteRT (TFLite)</span><span class="tag">Core ML</span><span class="tag">ONNX Runtime</span><span class="tag">ExecuTorch</span><span class="tag">llama.cpp</span><span class="tag">MLC LLM</span><span class="tag">OpenVINO</span><span class="tag">MNN</span><span class="tag">NCNN</span><span class="tag">Paddle Lite</span><span class="tag">MindSpore Lite</span></div></div>
+          <div class="card"><div class="t">芯片厂自有AI软件栈</div><div class="d">绑定硬件的SDK / 工具链，形成生态锁定</div>
+            <div class="tags"><span class="tag">高通 QNN / AI Hub</span><span class="tag">联发科 NeuroPilot</span><span class="tag">TensorRT</span><span class="tag">华为 HiAI</span><span class="tag">Arm Kleidi / CMSIS-NN</span></div></div>
+          <div class="card"><div class="t">模型压缩与编译优化</div><div class="d">量化、剪枝、蒸馏、编译器，做跨硬件适配</div>
+            <div class="tags"><span class="tag">TVM / OctoML</span><span class="tag">Modular</span><span class="tag">Neural Magic</span><span class="tag">Deci</span><span class="tag">Nota AI</span><span class="tag">Latent AI</span></div></div>
+          <div class="card"><div class="t">操作系统与平台</div><div class="d">OS内置系统级AI能力与API，决定应用接入方式</div>
+            <div class="tags"><span class="tag">Apple Intelligence</span><span class="tag">Android AICore</span><span class="tag">Windows Copilot+</span><span class="tag">鸿蒙</span><span class="tag">QNX</span><span class="tag">Android Automotive</span><span class="tag">斑马智行</span></div></div>
+          <div class="card"><div class="t">端侧MLOps与开发平台</div><div class="d">数据采集、训练、部署、监控一站式</div>
+            <div class="tags"><span class="tag">Edge Impulse</span><span class="tag">Roboflow</span><span class="tag">Qeexo</span><span class="tag">SensiML</span><span class="tag">Hugging Face</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varrow" style="grid-row:10;"><span class="a"></span><span class="lbl">硬件抽象、驱动、算子库</span><span class="a"></span><span class="lbl">芯片直接供货给模组 / 整机（L1 → L4 / L5）</span><span class="a"></span></div>
+
+    <!-- ========== L1 硬件与算力层 ========== -->
+    <div class="layer L-hw" style="grid-row:11;">
+      <div class="head"><div class="lv">L1 · 上游</div><div class="nm">硬件与算力层</div><div class="role">决定端侧能跑多大模型、多快、多省电的物理上限</div></div>
+      <div class="body">
+        <div class="row">
+          <div class="card" style="flex:0 0 190px"><div class="t">处理器IP授权商</div><div class="d">只卖CPU / GPU / NPU架构与IP核，几乎所有端侧SoC的上游</div>
+            <div class="tags"><span class="tag">Arm / 安谋科技</span><span class="tag">Imagination</span><span class="tag">Ceva</span><span class="tag">Cadence Tensilica</span><span class="tag">Synopsys ARC</span><span class="tag">芯原</span></div></div>
+          <div class="harrow"><span class="a">→</span>IP授权</div>
+          <div class="group"><span class="gl">芯片厂商（按目标市场分四类）</span>
+            <div class="card"><div class="t">通用终端SoC</div><div class="d">手机 / PC / 汽车 / XR主控，NPU算力是竞争焦点</div>
+              <div class="tags"><span class="tag">高通</span><span class="tag">联发科</span><span class="tag">苹果</span><span class="tag">三星</span><span class="tag">海思</span><span class="tag">紫光展锐</span><span class="tag">英特尔</span><span class="tag">AMD</span><span class="tag">英伟达 Tegra</span></div></div>
+            <div class="card"><div class="t">专用边缘AI加速芯片</div><div class="d">NPU / ASIC为核心，切入汽车、安防、工业、IoT</div>
+              <div class="tags"><span class="tag">地平线</span><span class="tag">黑芝麻</span><span class="tag">爱芯元智</span><span class="tag">寒武纪</span><span class="tag">Hailo</span><span class="tag">耐能</span><span class="tag">Axelera</span><span class="tag">SiMa.ai</span><span class="tag">Ambarella</span><span class="tag">Syntiant</span><span class="tag">知存</span></div></div>
+            <div class="card"><div class="t">视觉 / IoT SoC</div><div class="d">摄像头、电视、音箱、扫地机的中低端主控</div>
+              <div class="tags"><span class="tag">瑞芯微</span><span class="tag">全志</span><span class="tag">晶晨</span><span class="tag">恒玄</span><span class="tag">炬芯</span><span class="tag">星宸</span><span class="tag">富瀚微</span></div></div>
+            <div class="card"><div class="t">MCU / TinyML芯片</div><div class="d">微控制器跑极小模型，服务传感器、家电、可穿戴</div>
+              <div class="tags"><span class="tag">ST</span><span class="tag">NXP</span><span class="tag">Renesas</span><span class="tag">Infineon</span><span class="tag">TI</span><span class="tag">Nordic</span><span class="tag">乐鑫</span><span class="tag">兆易创新</span></div></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="group"><span class="gl">配套与制造（向上支撑芯片与整机）</span>
+            <div class="card"><div class="t">晶圆代工与封装</div><div class="d">制程与先进封装决定算力 / 能效上限</div>
+              <div class="tags"><span class="tag">台积电</span><span class="tag">三星代工</span><span class="tag">中芯国际</span><span class="tag">日月光</span></div></div>
+            <div class="card"><div class="t">存储器</div><div class="d">LPDDR / UFS容量与带宽决定能跑多大的模型</div>
+              <div class="tags"><span class="tag">三星</span><span class="tag">SK海力士</span><span class="tag">美光</span><span class="tag">长鑫</span><span class="tag">长江存储</span></div></div>
+            <div class="card"><div class="t">传感器</div><div class="d">数据入口，传感器本身正在内置AI</div>
+              <div class="tags"><span class="tag">索尼</span><span class="tag">豪威</span><span class="tag">思特威</span><span class="tag">歌尔</span><span class="tag">博世MEMS</span></div></div>
+            <div class="card"><div class="t">EDA与设计服务</div><div class="d">芯片设计工具与定制芯片服务</div>
+              <div class="tags"><span class="tag">Synopsys</span><span class="tag">Cadence</span><span class="tag">芯原设计服务</span><span class="tag">Alchip</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="varrow" style="grid-row:12;"><span class="lbl">标准、安全、评测、资本贯穿所有层（非竞争主体，但塑造规则与认知）</span></div>
+
+    <!-- ========== L0 生态与支撑层 ========== -->
+    <div class="layer L-eco" style="grid-row:13;">
+      <div class="head"><div class="lv">L0 · 横向基座</div><div class="nm">生态与支撑层</div><div class="role">不直接参与产品竞争，但定义规则、标准与话语权</div></div>
+      <div class="body">
+        <div class="row">
+          <div class="card"><div class="t">标准组织 / 开源社区 / 基准测试</div>
+            <div class="tags"><span class="tag">MLCommons (MLPerf Tiny / Mobile)</span><span class="tag">tinyML Foundation</span><span class="tag">Khronos</span><span class="tag">ONNX社区</span><span class="tag">LF Edge</span><span class="tag">Hugging Face社区</span></div></div>
+          <div class="card"><div class="t">安全与可信执行环境</div>
+            <div class="tags"><span class="tag">Arm TrustZone</span><span class="tag">Trustonic</span><span class="tag">Thales</span><span class="tag">Apple Secure Enclave</span><span class="tag">隐私计算厂商</span></div></div>
+          <div class="card"><div class="t">研究机构 / 分析机构 / 资本</div>
+            <div class="tags"><span class="tag">高校实验室</span><span class="tag">Counterpoint</span><span class="tag">IDC</span><span class="tag">Gartner</span><span class="tag">ABI Research</span><span class="tag">重仓端侧的VC</span></div></div>
+          <div class="card"><div class="t">政策与监管</div>
+            <div class="tags"><span class="tag">数据合规 / 隐私法规</span><span class="tag">出口管制</span><span class="tag">AI安全法规</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>阅读提示：</b>① 产业链主线为 L1 → L2 → L3 → L4/L5 → L6，箭头标注了相邻层之间的主要供给关系；此外存在跨层直供（芯片→整机、模型→终端），已在箭头行中标注。
+      ② 左侧"纵向一体化玩家"同时出现在多个层的卡片中（如苹果既是SoC厂商也是手机厂商），分析格局时应单独作为一类。
+      ③ 右侧"云计算厂商"与端侧形成端云协同关系，既向下游输出模型与运行时，也从终端回收数据与复杂任务。
+      ④ L4 中的"边缘计算"严格属于边缘侧而非端侧，做口径界定时需注意。
+    </div>
+  </div>
+  <div class="dz" id="dz-map"></div>
+  </div><!-- /view-map -->
+
+  <!-- ====================== 视图二：模型层详解 ====================== -->
+  <div class="view" id="view-model">
+    <div class="mp-hero">
+      <div class="txt">
+        <h1>L3 模型层详解：端侧模型玩家图谱</h1>
+        <div class="sub">两个维度交叉展开：<b>纵向 = 体量 / 类型</b>（大厂端侧小模型、创业公司、垂类模态模型 / 算法公司），<b>横向 = 国家 / 地区</b>（中国、美国、欧洲、其他）。每张卡片 = 一家公司：代表模型 · 定位 · 模态 · 开源状态。可用上方筛选器按地区、类型、模态、开源状态与关键词过滤。</div>
+      </div>
+      <div class="stats" id="l3-stats"></div>
+    </div>
+
+    <div class="toolbar" id="l3-toolbar">
+      <span class="lb">地区</span>
+      <div class="grp" data-dim="r">
+        <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+      </div>
+      <span class="lb">类型</span>
+      <div class="grp" data-dim="c">
+        <button class="chip on" data-v="big">大厂</button><button class="chip on" data-v="startup">创业公司</button><button class="chip on" data-v="vertical">垂类 / 算法</button>
+      </div>
+      <span class="lb">模态</span>
+      <div class="grp" data-dim="t">
+        <button class="chip on" data-v="语言">语言</button><button class="chip on" data-v="多模态">多模态</button><button class="chip on" data-v="语音">语音</button><button class="chip on" data-v="视觉">视觉</button><button class="chip on" data-v="生物识别">生物识别</button><button class="chip on" data-v="其他模态">其他</button>
+      </div>
+      <span class="lb">开源</span>
+      <div class="grp" data-dim="o">
+        <button class="chip on" data-v="1">开放权重</button><button class="chip on" data-v="2">部分开放</button><button class="chip on" data-v="3">闭源</button>
+      </div>
+      <input type="search" id="l3-q" placeholder="搜索公司 / 模型 / 关键词…">
+      <span class="cnt" id="l3-cnt"></span>
+      <button class="reset" id="l3-reset">重置</button>
+    </div>
+
+    <div class="matrix" id="l3-matrix">
+      <div class="corner" tabindex="0"><b>体量 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
+        <div class="tip"><b>口径说明</b>归属地按公司总部；开源状态指其端侧代表模型的权重是否公开；创业公司卡片附融资 / 估值 / 上市状态，垂类公司卡片附市值 / 营收 / 融资（截至 2026 年 9 月初）；海外公司金额统一折算为美元，中国公司保留人民币 / 港元。</div></div>
+      <div class="colhead R-CN"><div class="n">中国 <small>China</small></div><div class="c">手机厂"人人自研"+ 开源底座外溢 + 语音 / 视觉垂类上市公司群</div></div>
+      <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">平台大厂掌握 OS 级入口，创业公司做架构创新（SSM / 液态网络）</div></div>
+      <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">缺少终端 / OS 大厂，依托 Mistral、压缩技术与语音实验室，多被美企收购</div></div>
+      <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · Canada · India · UAE 等</small></div><div class="c">韩国财阀式全栈、日本偏机器人 / 工业、加拿大语音创业聚集、中东主权模型</div></div>
+    </div>
+
+    <div class="dz" id="dz-model"></div>
+
+    <div class="insights">
+      <div class="ins">
+        <h3>按体量看：三类玩家的竞争逻辑不同</h3>
+        <ul>
+          <li><b>大厂端侧小模型：</b>本质是"模型 + OS + 分发入口"三位一体。模型多为大模型系列的小尺寸版本，开源是为抢开发者生态（Gemma、Llama、Qwen、混元），闭源则绑定自家系统入口（Gemini Nano、Apple Foundation Models、豆包端侧）。中国手机厂（华为、小米、vivo、OPPO、荣耀）几乎全部自研端侧模型，同时接入第三方模型走双轨。</li>
+          <li><b>创业公司：</b>靠架构创新（SSM / 线性注意力 / 液态网络）、蒸馏与压缩"以小博大"，出口是被终端厂预装、被芯片厂适配或被收购。按体量分三档：<b>第一梯队</b>估值百亿美元级，DeepSeek（≈5,000 亿元投前）、智谱（港股市值 ≈4,900 亿港元）、Mistral（~$13.7B）、Cohere（$7B，并购后 ~$20B）、阶跃（IPO 目标 $100 亿+）；<b>第二梯队</b>估值约 7–30 亿美元，Liquid AI、Sakana、Multiverse、Reka、Zyphra、Upstage、面壁（>200 亿元）；<b>并购退出</b>Silo AI→AMD、Hugging Face→NVIDIA、Aleph Alpha→Cohere。AMD 与 NVIDIA 同时是多家端侧模型公司的战略投资方，芯片厂正在用资本绑定模型层。</li>
+          <li><b>垂类模态 / 算法公司：</b>语音、视觉、生物识别是端侧 AI 最早规模商业化的领域（唤醒词、人脸、影像算法），也是上市公司最集中的一类：中国 8 家（科大讯飞市值 ≈950 亿元、商汤 ≈540 亿港元、云天励飞 ≈205 亿元；云知声、出门问问上市后市值大幅缩水），美国 2 家（SoundHound ~$3B 与 Cerence ~$0.4B 分化），日韩 3 家。正在被大模型的多模态能力冲击，应对方向是"垂类模型 + 场景数据 + 自研芯片 / 硬件"一体化（思必驰、云知声、云天励飞），或深耕车载等高门槛场景（Cerence、SoundHound、虹软）；旷视、依图等前"AI 四小龙"已多年无新融资。</li>
+        </ul>
+      </div>
+      <div class="ins">
+        <h3>按国家看：四种生态形态</h3>
+        <ul>
+          <li><b>美国：</b>Google / Apple / Microsoft / Meta 掌握 Android、iOS、Windows 三大 OS 入口，端侧模型 API 由它们定义；创业公司集中在新架构（Liquid、Cartesia、Zyphra）与开源平台（Hugging Face）。OpenAI 发布开放权重模型标志闭源巨头也进入端侧。</li>
+          <li><b>中国：</b>玩家数量最多。阿里 Qwen 与 DeepSeek 蒸馏模型成为全球端侧衍生模型的事实底座；手机厂自研模型密度全球最高；语音 / 视觉垂类形成一批上市公司（讯飞、商汤、虹软、云从、云知声、出门问问、云天励飞）。</li>
+          <li><b>欧洲：</b>无消费级终端与 OS 大厂，"大厂端侧小模型"一栏为空。基础模型能力集中在 Mistral；特色是压缩（Multiverse）、语音（Kyutai、Speechmatics）与 tinyML（Plumerai、Imagimob），后者多被美国 / 德国半导体厂或平台收购。</li>
+          <li><b>其他：</b>韩国三星、LG、Naver、Kakao 呈财阀式全栈自研并强调韩语；日本 Sakana、PFN、NTT 面向日语与机器人 / 工业边缘；加拿大 Picovoice、Cohere 聚集在语音与企业端侧；阿联酋 TII 为主权模型研究机构。</li>
+        </ul>
+      </div>
+      <div class="ins wide">
+        <h3>交叉观察与口径说明</h3>
+        <ul>
+          <li><b>底座与终端模型分离：</b>开源底座（Qwen、Llama、Gemma、DeepSeek）经蒸馏 / 量化后由终端厂、创业公司二次交付，因此"模型层"的价值正在向 L2 的压缩编译与 L5 的系统集成两端转移。</li>
+          <li><b>模型与推理引擎绑定：</b>阿里（MNN）、无问芯穹、Liquid AI 均同时提供模型与端侧运行时，通过"模型 + 引擎"打包提高替换成本。</li>
+          <li><b>口径：</b>① "大厂"指拥有终端、OS 或云分发入口的科技巨头与手机厂；"创业公司"指以通用基础模型为主业的公司，含独角兽与研究机构；"垂类"指以单一模态算法为主业的公司。② 开放权重 = 端侧代表模型权重公开可下载；部分开放 = 仅部分尺寸 / 研究许可开放；闭源 = 仅通过产品或 API 提供。③ 融资、估值、上市与并购信息基于 2026 年 9 月初公开报道核实，其中标注"进行中 / 传 / 未确认"的为媒体援引知情人士、尚无官方确认；海外公司的欧元、日元、韩元金额按融资发生时汇率折算为美元，中国公司保留人民币 / 港元；代表模型版本迭代快，引用前请以官方发布为准。④ 创业公司仅收录累计融资约 ≥1 亿美元、估值 ≥10 亿美元或有政府 / 捐赠资助的主体；RWKV、Nexa AI、Aizip、Pleias 等小体量创业公司，以及声智、Plumerai、Imagimob、Snips、ID R&D、audEERING、Useful Sensors、Fluent.ai、Fairy Devices 等小体量或已被小额收购的垂类公司未列入；Sensory、Picovoice、Innovatrics 虽无机构融资，但为自筹盈利的成熟供应商，予以保留。MiniMax、月之暗面虽融资规模大，但无端侧小模型产品，未列入。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- ====================== 视图三：方案与集成层详解 ====================== -->
+  <div class="view" id="view-solution">
+    <div class="mp-hero">
+      <div class="txt">
+        <h1>L4 方案与集成层详解：端侧方案玩家图谱</h1>
+        <div class="sub">两个维度交叉展开：<b>纵向 = 环节 / 类型</b>（ODM / OEM 整机与代工、模组与 SoM、边缘计算硬件与平台、行业方案与集成商），<b>横向 = 国家 / 地区</b>（中国、美国、欧洲、其他）。每张卡片 = 一家公司：主营方案 · 定位 · 覆盖场景 · 属性 · 市值 / 营收 / 融资。可用上方筛选器按地区、类型、场景、属性与关键词过滤。</div>
+      </div>
+      <div class="stats" id="l4-stats"></div>
+    </div>
+
+    <div class="toolbar" id="l4-toolbar">
+      <span class="lb">地区</span>
+      <div class="grp" data-dim="r">
+        <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+      </div>
+      <span class="lb">类型</span>
+      <div class="grp" data-dim="c">
+        <button class="chip on" data-v="odm">ODM / 代工</button><button class="chip on" data-v="module">模组 / SoM</button><button class="chip on" data-v="edge">边缘硬件 / 平台</button><button class="chip on" data-v="si">行业方案 / 集成</button>
+      </div>
+      <span class="lb">场景</span>
+      <div class="grp" data-dim="t">
+        <button class="chip on" data-v="手机">手机</button><button class="chip on" data-v="PC">PC</button><button class="chip on" data-v="汽车">汽车</button><button class="chip on" data-v="IoT">IoT / 家居</button><button class="chip on" data-v="工业">工业 / 安防</button><button class="chip on" data-v="机器人">机器人</button><button class="chip on" data-v="服务器">边缘服务器</button>
+      </div>
+      <span class="lb">属性</span>
+      <div class="grp" data-dim="o">
+        <button class="chip on" data-v="1">已上市</button><button class="chip on" data-v="2">未上市</button><button class="chip on" data-v="3">子公司 / 已被收购</button>
+      </div>
+      <input type="search" id="l4-q" placeholder="搜索公司 / 方案 / 关键词…">
+      <span class="cnt" id="l4-cnt"></span>
+      <button class="reset" id="l4-reset">重置</button>
+    </div>
+
+    <div class="matrix" id="l4-matrix">
+      <div class="corner" tabindex="0"><b>环节 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
+        <div class="tip"><b>口径说明</b>归属地按公司总部，中国台湾企业归入中国列并标注；上市公司附市值与最近财年营收 / 净利，未上市附累计融资与估值，子公司 / 已被收购附母公司与收购金额（截至 2026 年 9 月初）；海外与台湾公司金额统一折算为美元，中国大陆公司保留人民币 / 港元。</div></div>
+      <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">手机 ODM 三巨头 + 模组全球过半份额 + 台湾 PC / 服务器代工 + 昇腾 / 鸿蒙生态集成商</div></div>
+      <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">EMS 巨头与边缘平台创业公司；模组与边缘软件正被高通、Semtech 等芯片厂收编</div></div>
+      <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业嵌入式与 SoM 传统强区（Kontron、congatec、u-blox），无手机 / PC 代工</div></div>
+      <div class="colhead R-OT"><div class="n">其他 <small>Canada · Japan · Korea · India · Israel</small></div><div class="c">加拿大 EMS、日本元器件模组、印韩工程服务与集成</div></div>
+    </div>
+
+    <div class="dz" id="dz-solution"></div>
+
+        <div class="insights" id="l4-insights">
+      <div class="ins">
+        <h3>按环节看：四类玩家的分工与差异</h3>
+        <ul>
+          <li><b>ODM / 整机与代工：</b>是端侧 AI 的商业化主战场。手机 ODM 外包设计占全球出货 44%，头部（华勤、龙旗、立讯）高度集中；台湾五大代工在笔电与 AI 服务器代工上举足轻重，AI 服务器占广达 / 纬创营收已超七成。</li>
+          <li><b>模组与 SoM：</b>中国厂商主导蜂窝 IoT 模组（移远 36%、中移 11%、日海 8%），全球份额 >90%；高算力智能模组（美格 29%）是把端侧模型能力推向中长尾设备的关键载体，AI 嵌入式模组占比预计 2030 年达 25%。</li>
+          <li><b>边缘计算硬件与平台：</b>工业 PC、边缘 AI 盒子与数据接入平台，受益于"算力下沉"；研华、凌华等台系工控厂商绑定 NVIDIA Jetson 生态，浪潮、新华三主打中国边缘服务器与 AI 推理。</li>
+          <li><b>行业方案与集成：</b>行业 know-how 与客户关系壁垒。中国特色的华为昇腾 / 开源鸿蒙系统集成商（软通、中软、拓维、润和、诚迈）构成生态主力；海外由埃森哲、凯捷、WWT 等大型集成商覆盖。</li>
+        </ul>
+      </div>
+      <div class="ins">
+        <h3>按国家看：四种生态形态</h3>
+        <ul>
+          <li><b>中国（含台湾）：</b>数量最多、环节最全。大陆在手机 ODM（华勤 / 龙旗 / 立讯）、蜂窝 IoT 模组（全球超九成份额）与通信模组上全球领先；台湾在笔电、服务器代工与工控嵌入式（研华、凌华、宜鼎、神基）上占主导。</li>
+          <li><b>美国：</b>以 EMS 巨头（Flex、Jabil、Sanmina 承接云 / AI 基础设施）与模组 / SoM 上市公司（Semtech、Digi、Lantronix）为主，边缘平台创业公司多；芯片厂（高通）正通过收购向下游整合。</li>
+          <li><b>欧洲：</b>无手机 / PC 代工，专注工业嵌入式与 SoM 传统强区（Kontron、congatec、Toradex、SECO、u-blox）；集成商由凯捷等大型服务商代表。</li>
+          <li><b>其他：</b>加拿大 Celestica 在超大规模数据中心基础设施上快速崛起；日本村田在元器件与通信模组占优；印韩（Tata Elxsi、HCLTech、LG CNS、NTT DATA）以大工程服务 / 集成商身份切入。</li>
+        </ul>
+      </div>
+      <div class="ins wide">
+        <h3>交叉观察与口径说明</h3>
+        <ul>
+          <li><b>硬件 > 软件的集成层：</b>方案与集成层是"端侧 AI 落地"的最后一公里，但其价值高度集中在硬件（2026 年中国 AI 支出硬件占 74.3%），模型与软件的增值正被压缩到 L2/L3，这正是集成层利润率普遍偏低的原因。</li>
+          <li><b>AI 驱动的两极化：</b>端侧 AI 让代工与模组厂商分化。拥抱 AI 服务器 / AI 手机的（广达、纬创、华勤、立讯、Celestica、Sanmina）营收与市值跃升；以传统笔电 / 手机组装为主的（仁宝、和硕、比亚迪电子）增长承压。</li>
+          <li><b>芯片厂向下整合：</b>高通收购 Edge Impulse、Arduino、Modular，英飞凌收购 Imagimob，Advent 私有化 u-blox——芯片厂与资本正在把"方案与集成层"的入口也纳入整合范围。</li>
+          <li><b>口径：</b>① "中国"列含中国台湾企业（卡片以"台湾"标注），市值折算为美元（汇率按 2026-09 初约 31 新台币 / 美元估算）。② 大陆企业保留人民币 / 港元，海外折算为美元。③ 子公司 / 已被收购（如 Arduino、u-blox、NTT DATA、研祥）标注母公司与交易要素。④ 数据截至 2026 年 9 月初，营收多为 2025 财年，市值 / 估值为 2026-09 快照。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ====================== 视图四：终端设备层详解（机器人 / 具身智能） ====================== -->
+<div class="view" id="view-robot">
+  <div class="mp-hero">
+    <div class="txt">
+      <h1>L5 终端设备层详解：机器人 / 具身智能玩家图谱</h1>
+      <div class="sub">两个维度交叉展开：<b>纵向 = 品类 / 环节</b>（人形机器人、工业机器人与 AGV / AMR、服务与商用机器人、消费机器人 / 无人机、具身智能模型与核心部件），<b>横向 = 国家 / 地区</b>（中国、美国、欧洲、其他）。每张卡片 = 一家公司：代表产品 / 方案 · 定位 · 场景 · 状态。可用上方筛选器按地区、品类、场景、状态与关键词过滤。</div>
+    </div>
+    <div class="stats" id="l5-stats"></div>
+  </div>
+
+  <div class="toolbar" id="l5-toolbar">
+    <span class="lb">地区</span>
+    <div class="grp" data-dim="r">
+      <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+    </div>
+    <span class="lb">品类</span>
+    <div class="grp" data-dim="c">
+      <button class="chip on" data-v="humanoid">人形机器人</button><button class="chip on" data-v="industrial">工业 / 物流</button><button class="chip on" data-v="service">服务 / 商用</button><button class="chip on" data-v="consumer">消费 / 无人机</button><button class="chip on" data-v="embodied">具身模型 / 部件</button>
+    </div>
+    <span class="lb">场景</span>
+    <div class="grp" data-dim="t">
+      <button class="chip on" data-v="人形">人形</button><button class="chip on" data-v="工业">工业</button><button class="chip on" data-v="协作臂">协作臂</button><button class="chip on" data-v="物流">物流</button><button class="chip on" data-v="服务">服务</button><button class="chip on" data-v="清洁">清洁</button><button class="chip on" data-v="无人机">无人机</button><button class="chip on" data-v="医疗">医疗</button><button class="chip on" data-v="核心部件">核心部件</button><button class="chip on" data-v="具身模型">具身模型</button>
+    </div>
+    <span class="lb">状态</span>
+    <div class="grp" data-dim="o">
+      <button class="chip on" data-v="1">已上市</button><button class="chip on" data-v="2">未上市</button><button class="chip on" data-v="3">子公司 / 已被收购</button>
+    </div>
+    <input type="search" id="l5-q" placeholder="搜索公司 / 产品 / 关键词…">
+    <span class="cnt" id="l5-cnt"></span>
+    <button class="reset" id="l5-reset">重置</button>
+  </div>
+
+  <div class="matrix" id="l5-matrix">
+    <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
+      <div class="tip"><b>口径说明</b>归属地按公司总部；"具身智能"作为独立 L5 赛道单列。人形机器人在 2026 年仍处样机 / 试点阶段，绝大多数未形成可比的量产营收，因此卡片以"代表产品 + 定位"为主、不强行统一附财务数据，仅对入选主体的状态（上市 / 未上市 / 归属）做标注（截至 2026 年 9 月初）。中国台湾企业归入中国列并以"台湾"标注。</div></div>
+    <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">人形机器人创业公司全球最密 + 消费 / 服务机器人全球龙头 + 核心部件（谐波减速器 / 行星滚柱丝杠）国产替代最活跃</div></div>
+    <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">资本最集中——人形明星公司（Figure / 1X / Agility）+ 具身智能基础模型（Physical Intelligence / Skild）+ 英伟达全栈生态</div></div>
+    <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业机器人四大家族之二（ABB / KUKA）+ 协作机器人发源地（UR），人形与具身模型玩家稀少</div></div>
+    <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · UAE 等</small></div><div class="c">工业机器人另两大家族（发那科 / 安川）在日；韩系财阀全栈（现代 · 波士顿动力、三星 · Rainbow）押注人形</div></div>
+  </div>
+
+  <div class="insights">
+    <div class="ins">
+      <h3>按品类看：五类玩家处于完全不同的阶段</h3>
+      <ul>
+        <li><b>人形机器人：</b>最具想象空间、也最"早"。特斯拉 Optimus、Figure、优必选、宇树、智元、银河通用等集中在样机迭代与定点试点，商业化为"演示 + 工厂 / 整车厂 POC"，尚无确定量产曲线；处于 2024–2026 的融资长坡与 2026–2028 的量产对赌之间。</li>
+        <li><b>工业机器人 / AGV·AMR：</b>少数已高度成熟的存量市场。全球四大家族（发那科、ABB、安川、库卡）主导工业臂，中国以埃斯顿、汇川、新松做国产替代；AGV / AMR 是最快增长细分，极智嘉、海康机器人、快仓（中国）与 Symbotic、Locus（美国）切入仓储自动化。</li>
+        <li><b>服务 / 商用机器人：</b>中国玩家密度最高、出货量最大（送餐、酒店、商用清洁），商业模式已验证并加速出海（普渡、擎朗、云迹、高仙）；日本软银 Pepper、LG 等为老牌参与者。</li>
+        <li><b>消费机器人 / 无人机：</b>规模最大、最成熟的一类。中国品牌在扫地机占据全球主导（科沃斯、石头、追觅、云鲸），大疆垄断消费无人机；iRobot 已明显掉队，集中体现"中国制造 + 品牌"对"美国发明者"的替代。</li>
+        <li><b>具身智能模型 / 核心部件：</b>分两条不同的押注线——VLA 具身基础模型公司押"一个模型、千机千面"（Physical Intelligence、Skild、银河通用、穹彻），核心部件公司押"人形量产带来的国产替代"（绿的谐波、双环传动、兆威机电），两者互为风险对冲。</li>
+      </ul>
+    </div>
+    <div class="ins">
+      <h3>按国家看：四种生态形态</h3>
+      <ul>
+        <li><b>中国：</b>玩家数量全球第一，且"人形创业公司 + 消费 / 服务机器人产业 + 核心部件供应链"三位一体，是唯一能把量产叙事落到供应链成本上的地区。人形以宇树 / 智元 / 优必选为排头兵；消费与服务端的科沃斯 / 石头 / 普渡 / 大疆已是全球出货领先者。</li>
+        <li><b>美国：</b>几乎没有工业 / 消费机器人大型制造，但资本与基础模型最强。人形明星公司（Figure、1X、Agility、Apptronik、Tesla）+ 具身智能基础模型（Physical Intelligence、Skild）+ 机器人全栈平台（NVIDIA Isaac，英伟达既是"卖铲人"也是无数入局方的股东）。</li>
+        <li><b>欧洲：</b>传统强区——工业机器人四大家族占两家（ABB、库卡），协作机器人发源地（Universal Robots）。人形与具身模型例外地稀少（Neura、PAL），资本与人才进一步流向美国。</li>
+        <li><b>其他：</b>日本握有工业机器人另两大家族（发那科、安川），是工业机器人的技术守成者；韩国走财阀全栈路线——现代收购波士顿动力、三星入股 Rainbow Robotics，用集团资源叠加国家战略押注人形。</li>
+      </ul>
+    </div>
+    <div class="ins wide">
+      <h3>交叉观察与口径说明</h3>
+      <ul>
+        <li><b>具身智能是"端侧 AI"在 L5 的重演：</b>与手机 / PC 的 NPU 端侧化同理，机器人把"云端大模型"下沉为机载具身模型。因此本页是端侧 AI 产业链中算力密度最高、真正需要"端侧实时推理"的终端分支（精确操控、vSLAM、灵巧手都在机载完成）。</li>
+        <li><b>人形核心部件复用工业机器人供应链：</b>谐波减速器、行星滚柱丝杠、灵巧手、六维力传感器均源自工业 / 协作机器人供应链，人形放量直接利好绿的谐波、双环传动、兆威机电等国产部件厂商——这是"具身智能"最有确定性的落地支点。</li>
+        <li><b>基础模型公司与硬件深度绑定：</b>NVIDIA（Isaac GR00T）、Google DeepMind（Gemini Robotics / RT-2）公开押注"基础模型 + 仿真 + 机器人"全栈；Figure、1X 等又反向获得 OpenAI、微软、英伟达等资本绑定，形成"模型公司既是供应商也是股东"的交叉持股结构。</li>
+        <li><b>口径：</b>① 本页只覆盖 L5 终端设备层中"机器人 / 具身智能"这一分支（即全景图 L5 卡片），不含手机 / PC / 汽车 / 消费 IoT 等终端；② 人形机器人尚未形成可比的量产财务口径，故不强行统一附市值 / 营收，仅标注上市状态与集团归属；③ 上市状态、集团归属与代表性产品基于 2026 年 9 月初公开信息核实，融资额逐家差异大，为避免失真只保留定性描述，具体轮次与金额以公司官方披露为准；④ 入选标准以"自主品牌整机 / 具身模型"为核心，代工、纯部件配套（除已品牌化的减速器 / 丝杠龙头）、研究机构与仅做展示的样机不单列。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== 模型层玩家数据 =====================
+   r: 地区 CN/US/EU/OT   c: 类型 big/startup/vertical   o: 开源 1开放权重 2部分开放 3闭源
+   m: 代表端侧模型   d: 定位说明   t: 模态标签   lab: 研究机构 / 非营利
+   f: 融资 / 体量（仅创业公司，HTML 片段）   gov: 政府 / 捐赠资助型（非市场融资）
+*/
+const PLAYERS = [
+  /* ---------- 中国 · 大厂 ---------- */
+  {n:"阿里巴巴", e:"Alibaba", r:"CN", c:"big", o:1, m:"Qwen 小尺寸系列（0.5B–4B）· Qwen-VL / Qwen-Audio 小尺寸", d:"全球端侧衍生模型最主要的开源底座；自研推理引擎 MNN 形成“模型 + 引擎”打包", t:["语言","多模态"]},
+  {n:"腾讯", e:"Tencent", r:"CN", c:"big", o:1, m:"混元 0.5B / 1.8B / 4B / 7B 端侧系列", d:"面向手机、PC、车机与微信生态的小模型，支持 256K 长上下文", t:["语言","多模态"]},
+  {n:"字节跳动", e:"ByteDance", r:"CN", c:"big", o:3, m:"豆包端侧模型 · Seed 系列小尺寸", d:"依托抖音 / 豆包 App 与火山引擎分发，与手机厂合作端云协同", t:["语言","多模态","语音"]},
+  {n:"百度", e:"Baidu", r:"CN", c:"big", o:1, m:"文心 ERNIE 4.5 0.3B 等轻量版", d:"2025 年开源多尺寸文心模型；小度、车机等自有终端预装", t:["语言","多模态"]},
+  {n:"华为", e:"Huawei", r:"CN", c:"big", o:2, m:"盘古端侧模型 · 小艺智能体 · 盘古 7B（开源）", d:"鸿蒙 + 昇腾 / 麒麟 NPU + 盘古的全栈闭环；系统级 AI 能力经 HarmonyOS 开放", t:["语言","多模态","语音"]},
+  {n:"小米", e:"Xiaomi", r:"CN", c:"big", o:2, m:"MiLM 端侧（1.3B / 6B）· MiMo 系列（开源）", d:"覆盖手机、汽车、IoT 三端；MiMo 开源以补齐基础模型能力", t:["语言","多模态","语音"]},
+  {n:"vivo", e:"", r:"CN", c:"big", o:2, m:"蓝心 BlueLM 3B 端侧 · BlueLM-V 多模态", d:"最早系统级落地端侧 LLM 的手机厂之一，7B 版本开源；蓝心小 V 入口", t:["语言","多模态"]},
+  {n:"OPPO", e:"", r:"CN", c:"big", o:2, m:"安第斯 AndesGPT 端侧 · AndesVL（0.6B–4B，开源）", d:"ColorOS 内置小布助手；2025 年开源端侧多模态 AndesVL", t:["语言","多模态"]},
+  {n:"荣耀", e:"HONOR", r:"CN", c:"big", o:3, m:"魔法大模型 MagicLM 端侧 · YOYO 智能体", d:"MagicOS 内置意图识别与端侧 Agent，强调“平台级 AI”", t:["语言","多模态"]},
+
+  /* ---------- 中国 · 创业公司 ---------- */
+  {n:"面壁智能", e:"ModelBest", r:"CN", c:"startup", o:1, m:"MiniCPM 系列 · MiniCPM-V 多模态 · MiniCPM-o 全模态", d:"国内端侧模型标杆创业公司，以“知识密度”路线对标 GPT-4V 级多模态；已进入车机与 AI PC", f:"<span class='fv'>2026H1 累计融资 >50 亿元</span><span class='fk'>· 2026-07 C+ 轮，国家级基金 / 央企 / 车企产业方</span><span class='fk'>· 估值 >200 亿元</span><span class='fx'>2026-08 IPO 辅导备案（拟科创板）</span>", t:["语言","多模态"]},
+  {n:"智谱", e:"Zhipu AI", r:"CN", c:"startup", o:1, m:"GLM-Edge 1.5B / 4B · GLM-Edge-V", d:"通用大模型独角兽，2026 年 1 月港股上市；GLM-Edge 面向手机、车机与 PC 端侧推理", f:"<span class='fx'>已上市 · 港交所 02513（2026-01）</span><span class='fv'>市值 ≈4,900 亿港元（2026-09）</span><span class='fk'>· 2026-07 配售 ≈314 亿港元</span><span class='fk'>· 上市前累计融资 >83 亿元</span><span class='fk'>· 团队 ~1,000 人</span>", t:["语言","多模态"]},
+  {n:"DeepSeek", e:"深度求索", r:"CN", c:"startup", o:1, m:"DeepSeek-R1-Distill 1.5B / 7B", d:"蒸馏推理小模型成为端侧推理类衍生模型的重要底座", f:"<span class='fv'>2026-06 首轮外部融资 500 亿元，投后 >3,500 亿元</span><span class='fk'>· 梁文锋、腾讯、宁德时代、京东、网易等</span><span class='fk'>· 此前由幻方量化自有资金支撑</span><span class='fk'>· 第二轮拟 500 亿元 @ 投前 ≈5,000 亿元（进行中）</span><span class='fx'>筹备科创板 IPO（目标 2027）</span>", t:["语言"]},
+  {n:"阶跃星辰", e:"StepFun", r:"CN", c:"startup", o:2, m:"Step-1.5V-Mini · Step-Audio 小尺寸", d:"强调多模态与语音，与吉利、OPPO 等终端厂合作智能终端 Agent", f:"<span class='fv'>累计融资推算 >220 亿元</span><span class='fk'>· 2026-05 Pre-IPO ≈25 亿美元：华勤、龙旗、豪威、中兴、港投公司、腾讯</span><span class='fk'>· 投前估值 50–60 亿美元</span><span class='fx'>2026-06 传已秘密递表港交所</span>", t:["多模态","语音"]},
+  {n:"无问芯穹", e:"Infinigence AI", r:"CN", c:"startup", o:1, m:"Megrez 3B（Omni）· 端侧推理引擎", d:"软硬协同路线，模型与端侧推理引擎一体交付，覆盖多家国产芯片", f:"<span class='fv'>累计融资 >22 亿元</span><span class='fk'>· 2026-05 超 7 亿元，杭州高新金投、惠远资本领投</span><span class='fk'>· 2026-03 完成股改</span><span class='fk'>· 团队 ~200 人</span>", t:["语言","多模态"]},
+  {n:"上海人工智能实验室", e:"Shanghai AI Lab", r:"CN", c:"startup", o:1, lab:true, m:"InternLM 1.8B · InternVL 1B / 2B", d:"研究机构开源体系；InternVL 小尺寸在端侧视觉理解上被广泛复用", f:"<span class='fv'>政府支持的新型研发机构</span><span class='fk'>· 无市场化融资，经费来自国家与上海市</span>", gov:true, t:["语言","多模态"]},
+  {n:"零一万物", e:"01.AI", r:"CN", c:"startup", o:1, m:"Yi-1.5 6B · Yi-Coder 1.5B", d:"早期开源小模型代表，2026 年收缩模型业务、转向行业应用", f:"<span class='fv'>2024 年估值 >10 亿美元</span><span class='fk'>· 阿里云领投天使轮，累计融资未披露</span><span class='fk'>· Pre-IPO 轮进行中（2026-07）</span><span class='fx'>2026-08 关停开放平台 API，拟 2027 港股 IPO</span>", t:["语言"]},
+
+  /* ---------- 中国 · 垂类模态 / 算法 ---------- */
+  {n:"科大讯飞", e:"iFLYTEK", r:"CN", c:"vertical", o:3, m:"星火端侧模型 · 离线语音识别 / 合成引擎", d:"语音龙头；端侧覆盖翻译机、录音笔、车机、教育硬件", f:"<span class='fx'>已上市 · 深交所 002230</span><span class='fv'>市值 ≈950 亿元（2026-09）</span><span class='fk'>· 2025 营收 271 亿元（+16%），归母净利 8.4 亿元</span><span class='fk'>· 员工 ~1.7 万人</span>", t:["语音","语言"]},
+  {n:"思必驰", e:"AISpeech", r:"CN", c:"vertical", o:3, m:"DFM 端侧对话模型 · 自研语音芯片", d:"车载与 IoT 语音交互，“模型 + 芯片 + 方案”一体化", f:"<span class='fx'>科创板 IPO 二次申报：2026-05 受理、06 已问询</span><span class='fv'>累计融资近 20 亿元</span><span class='fk'>· 阿里、联想之星、富士康、深创投等；2025-01 完成 5 亿元</span><span class='fk'>· 2026-01 股权转让估值 64 亿元</span><span class='fk'>· 2025 营收 6.9 亿元，净亏 0.8 亿元</span>", t:["语音"]},
+  {n:"云知声", e:"Unisound", r:"CN", c:"vertical", o:3, m:"山海模型端侧版 · 端侧语音芯片", d:"家电、医疗、车载语音；自研 NPU 芯片", f:"<span class='fx'>已上市 · 港交所 09678（2025-06）</span><span class='fv'>市值 ≈62 亿港元（2026-09，峰值曾超 600 亿港元）</span><span class='fk'>· 2025 营收 12.1 亿元（+29%），净亏 3.3 亿元</span><span class='fk'>· 上市前累计融资 >20 亿元 · 员工 ~480 人</span>", t:["语音"]},
+  {n:"出门问问", e:"Mobvoi", r:"CN", c:"vertical", o:3, m:"序列猴子端侧 · TicWatch 离线语音", d:"可穿戴 / 车载语音，向 AIGC 工具转型", f:"<span class='fx'>已上市 · 港交所 02438（2024-04）</span><span class='fv'>市值 ≈4.7 亿港元（2026-09）</span><span class='fk'>· 2025 营收 3.2 亿元（-17%），净亏 0.7 亿元</span><span class='fk'>· 员工 ~180 人</span>", t:["语音"]},
+  {n:"商汤", e:"SenseTime", r:"CN", c:"vertical", o:2, m:"日日新 SenseNova 端侧 · SenseChat-Lite", d:"视觉算法起家，端侧覆盖手机影像、车载感知；部分模型开源", f:"<span class='fx'>已上市 · 港交所 0020</span><span class='fv'>市值 ≈540 亿港元（2026-09）</span><span class='fk'>· 2025 营收 50.2 亿元（+33%），净亏 17.8 亿元（收窄 59%）</span><span class='fk'>· 2026H1 首次盈利（含投资收益）· 员工 ~2,500 人</span>", t:["视觉","多模态"]},
+  {n:"旷视", e:"Megvii", r:"CN", c:"vertical", o:2, m:"端侧视觉算法 · MegEngine 推理框架", d:"人脸 / 物流 / 手机影像算法供应商，开源 MegEngine 框架", f:"<span class='fv'>累计融资 19.4 亿美元（10 轮，止于 2020）</span><span class='fk'>· 最后公开估值 >40 亿美元（2019 年 D 轮）</span><span class='fx'>2024-11 撤回科创板注册，2026 年转向“物理空间运营”</span>", t:["视觉","生物识别"]},
+  {n:"虹软", e:"ArcSoft", r:"CN", c:"vertical", o:3, m:"手机影像算法 · 车载视觉（DMS / OMS）", d:"手机计算摄影算法市占率最高的第三方供应商；扩展至舱内视觉", f:"<span class='fx'>已上市 · 科创板 688088</span><span class='fv'>市值 ≈120 亿元（2026-09）</span><span class='fk'>· 2025 营收 9.2 亿元（+13%），净利 2.6 亿元（+46%）</span><span class='fk'>· 员工 ~1,000 人</span>", t:["视觉"]},
+  {n:"云从", e:"CloudWalk", r:"CN", c:"vertical", o:3, m:"从容大模型端侧 · 人脸识别", d:"人脸识别与金融 / 机场安防，向行业大模型延伸", f:"<span class='fx'>已上市 · 科创板 688327</span><span class='fv'>市值 ≈107 亿元（2026-09）</span><span class='fk'>· 2025 营收 5.0 亿元，净亏 5.6 亿元</span><span class='fk'>· 员工 ~330 人（两年缩减近六成）</span>", t:["生物识别","视觉"]},
+  {n:"云天励飞", e:"Intellifusion", r:"CN", c:"vertical", o:3, m:"端侧视觉算法 · 自研 NPU（DeepEdge）", d:"算法 + 芯片一体，主攻安防与城市治理边缘设备", f:"<span class='fx'>已上市 · 科创板 688343 · 2026-04 再度递表港交所</span><span class='fv'>市值 ≈205 亿元（2026-09）</span><span class='fk'>· 2025 营收 13.4 亿元（+46%），净亏 4.2 亿元</span><span class='fk'>· 员工 ~1,000 人</span>", t:["视觉"]},
+  {n:"依图", e:"YITU", r:"CN", c:"vertical", o:3, m:"人脸识别 · 求索边缘芯片", d:"早期“AI 四小龙”之一，视觉算法 + 自研芯片", f:"<span class='fv'>累计融资近 4 亿美元（已披露，止于 2020）</span><span class='fk'>· 2020 年招股书估值约 140 亿元</span><span class='fx'>2021-07 终止科创板 IPO，此后无公开动作</span><span class='fk'>· 员工 ~500 人（2021）</span>", t:["视觉","生物识别"]},
+  {n:"汉王科技", e:"Hanvon", r:"CN", c:"vertical", o:3, m:"手写识别 · OCR · 电纸书离线模型", d:"传统识别算法厂商，OCR / 手写为端侧长期刚需", f:"<span class='fx'>已上市 · 深交所 002362</span><span class='fv'>市值 ≈40 亿元（2026-09）</span><span class='fk'>· 2025 营收 18.9 亿元，净亏 2.0 亿元（四年连亏）</span><span class='fk'>· 员工 ~2,300 人</span>", t:["其他模态","视觉"]},
+
+  /* ---------- 美国 · 大厂 ---------- */
+  {n:"Google", e:"", r:"US", c:"big", o:2, m:"Gemma 3n（开源）· Gemini Nano（闭源，Android AICore）", d:"Android 系统级模型入口的定义者；Gemma 开源抢生态，Nano 闭源绑定 Pixel / Android", t:["语言","多模态"]},
+  {n:"Apple", e:"苹果", r:"US", c:"big", o:3, m:"Apple Foundation Models 端侧约 3B · Foundation Models 框架", d:"iOS / macOS 系统级模型，开发者通过框架直接调用；隐私叙事核心", t:["语言","多模态"]},
+  {n:"Microsoft", e:"微软", r:"US", c:"big", o:1, m:"Phi-3 / Phi-4 mini · Phi Silica（Copilot+ PC NPU）", d:"Phi 系列 MIT 许可开源；Phi Silica 内置 Windows 作为系统级 API", t:["语言","多模态"]},
+  {n:"Meta", e:"", r:"US", c:"big", o:1, m:"Llama 3.2 1B / 3B · MobileLLM", d:"Llama 开源生态最大；端侧模型服务于 Ray-Ban Meta 眼镜与 Quest", t:["语言","多模态"]},
+  {n:"OpenAI", e:"", r:"US", c:"big", o:2, m:"gpt-oss-20b（开放权重）", d:"2025 年首次发布可在消费级设备运行的开放权重模型，闭源巨头进入端侧", t:["语言"]},
+  {n:"NVIDIA", e:"英伟达", r:"US", c:"big", o:1, m:"Nemotron Nano · Isaac GR00T N1（机器人）· Cosmos", d:"面向 Jetson / 机器人 / 汽车的开源模型，以模型带动边缘算力销售", t:["语言","多模态"]},
+
+  /* ---------- 美国 · 创业公司 ---------- */
+  {n:"Liquid AI", e:"", r:"US", c:"startup", o:1, m:"LFM2 350M / 700M / 1.2B · LFM2-VL", d:"MIT 衍生，液态神经网络架构，专为 CPU / NPU 端侧推理优化，开放权重", f:"<span class='fv'>累计融资 ~$297M</span><span class='fk'>· 2024-12 A 轮 $250M，AMD Ventures 领投</span><span class='fk'>· 估值 ~$2.3B</span><span class='fk'>· 团队 ~130 人</span>", t:["语言","多模态"]},
+  {n:"Cartesia", e:"", r:"US", c:"startup", o:2, m:"Sonic（语音）· Rene 1.3B（SSM）· Cartesia Edge", d:"状态空间模型（Mamba 团队），主打低延迟语音与端侧推理", f:"<span class='fv'>累计融资 $191M</span><span class='fk'>· 2025-10 B 轮 $100M，Kleiner Perkins 领投，Index / NVIDIA 参与</span><span class='fk'>· 估值未披露</span>", t:["语音","语言"]},
+  {n:"Zyphra", e:"", r:"US", c:"startup", o:1, m:"Zamba2 1.2B / 2.7B · Zonos（TTS）", d:"SSM-Transformer 混合架构，面向端侧与个人设备", f:"<span class='fv'>累计融资 ~$115M</span><span class='fk'>· 2025-10 A 轮 ~$110M，AMD / IBM 参与</span><span class='fk'>· 估值 $1B</span><span class='fk'>· 2026-05 传募资 $500M @ ≥$5B（未确认）</span>", t:["语言","语音"]},
+  {n:"Hugging Face", e:"", r:"US", c:"startup", o:1, m:"SmolLM2 / SmolLM3 · SmolVLM", d:"社区平台 + 自研小模型，SmolLM 成为端侧基线之一；同时是模型分发枢纽", f:"<span class='fx'>NVIDIA 2026-09 宣布以 $12.9B 收购（待交割）</span><span class='fv'>累计融资 ~$400M</span><span class='fk'>· 2023-08 D 轮 $235M @ $4.5B，Salesforce 领投</span>", t:["语言","多模态"]},
+  {n:"Allen Institute for AI", e:"AI2", r:"US", c:"startup", o:1, lab:true, m:"OLMo 1B · OLMoE 1B-7B · Molmo", d:"非营利研究机构，全流程（数据 / 代码 / 权重）开放的小模型", f:"<span class='fv'>非营利 · Paul Allen 遗产基金资助</span><span class='fk'>· 2024 年收入 $206M</span><span class='fk'>· 2025-08 获 NSF + NVIDIA 五年期 $152M 资助</span>", gov:true, t:["语言","多模态"]},
+  {n:"Reka", e:"", r:"US", c:"startup", o:2, m:"Reka Edge 7B · Reka Flash", d:"多模态模型公司，Edge 版面向本地部署与端侧", f:"<span class='fv'>累计融资 ~$167M</span><span class='fk'>· 2025-07 B 轮 $110M，NVIDIA / Snowflake 领投</span><span class='fk'>· 估值 >$1B</span><span class='fk'>· 2026-06 换股收购 Moonvalley</span>", t:["多模态"]},
+
+  /* ---------- 美国 · 垂类模态 / 算法 ---------- */
+  {n:"SoundHound", e:"", r:"US", c:"vertical", o:3, m:"Houndify · 车载语音助手 · Polaris", d:"上市语音 AI 公司，车载与餐饮点单语音；边缘 + 云混合", f:"<span class='fx'>已上市 · NASDAQ SOUN</span><span class='fv'>市值 ~$3.0B（2026-09）</span><span class='fk'>· FY2025 营收 $169M（约翻倍），2026 指引 $225–260M</span><span class='fk'>· 2026-09 收购 LivePerson</span>", t:["语音"]},
+  {n:"Cerence", e:"", r:"US", c:"vertical", o:3, m:"CaLLM Edge · 车载语音助手", d:"Nuance 汽车业务分拆，全球车载语音主要供应商，端侧 LLM 化", f:"<span class='fx'>已上市 · NASDAQ CRNC</span><span class='fv'>市值 ~$386M（2026-09）</span><span class='fk'>· FY2025 营收 $252M（-24%），FY2026 指引 $300–320M</span>", t:["语音","语言"]},
+  {n:"Sensory", e:"", r:"US", c:"vertical", o:3, m:"TrulyHandsfree 唤醒词 · 声纹 / 人脸", d:"最早的嵌入式语音唤醒与生物识别供应商，广泛用于家电与可穿戴", f:"<span class='fv'>自筹盈利，无机构融资</span><span class='fk'>· 营收 ~$20M（第三方估计）</span><span class='fk'>· 员工 ~60 人</span>", t:["语音","生物识别"]},
+  {n:"Ultralytics", e:"", r:"US", c:"vertical", o:1, m:"YOLOv8 / YOLO11", d:"端侧目标检测事实标准，商业授权 + 开源双轨", f:"<span class='fv'>累计融资 $30M</span><span class='fk'>· 2025-09 A 轮 $30M，Elephant 领投</span><span class='fk'>· 员工 ~60 人</span>", t:["视觉"]},
+
+  /* ---------- 欧洲 · 创业公司 ---------- */
+  {n:"Mistral AI", e:"法国", r:"EU", c:"startup", o:2, m:"Ministral 3B / 8B · Mistral Small", d:"欧洲基础模型旗手，Ministral 专为端侧与边缘设计；与高通合作", f:"<span class='fv'>累计股权融资 ~$3B（另有 $830M 债务）</span><span class='fk'>· 2025-09 C 轮 ~$2.0B，ASML 领投</span><span class='fk'>· 估值 ~$13.7B</span><span class='fk'>· 2026-06 传洽谈 ~$3.5B @ ~$23B</span><span class='fk'>· 团队 ~1,500 人</span>", t:["语言","多模态"]},
+  {n:"Kyutai", e:"法国", r:"EU", c:"startup", o:1, lab:true, m:"Moshi（实时语音）· Helium 2B", d:"非营利研究实验室，全双工语音对话模型可在端侧运行", f:"<span class='fv'>非营利 · 2023 年创始捐赠 ~$330M</span><span class='fk'>· iliad、CMA CGM、Schmidt Sciences</span><span class='fk'>· 衍生公司 Gradium 2026 年种子轮 $100M</span>", gov:true, t:["语音","语言"]},
+  {n:"Stability AI", e:"英国", r:"EU", c:"startup", o:1, m:"StableLM 2 1.6B · Stable Diffusion 端侧版", d:"生成式图像模型端侧化的推动者，与 Arm / 高通合作", f:"<span class='fv'>累计融资 ~$232M–475M（口径不一）</span><span class='fk'>· 2026-08 B 轮 $76M：UMG、Sony Music、EA、AMD Ventures</span><span class='fk'>· 估值未披露（2022 年 ~$1B）</span><span class='fk'>· 团队 ~190 人</span>", t:["语言","其他模态"]},
+  {n:"Multiverse Computing", e:"西班牙", r:"EU", c:"startup", o:2, m:"CompactifAI · SuperFly / ChickBrain 压缩模型", d:"量子启发的张量网络压缩，将开源模型压缩至 IoT / 手机可运行", f:"<span class='fv'>累计融资 ~$800M+</span><span class='fk'>· 2026-07 C 轮目标 $570M，Forgepoint / BNPP 领投，HP、Santander 参与</span><span class='fk'>· 投后估值 ~$2.3B</span><span class='fk'>· 团队 ~450 人</span>", t:["语言"]},
+  {n:"Aleph Alpha", e:"德国", r:"EU", c:"startup", o:2, m:"Pharia-1 7B", d:"主权 AI 定位，主打本地化 / 本地部署", f:"<span class='fx'>Cohere 2026-04 宣布换股收购（待监管批准）</span><span class='fv'>累计融资 >$600M</span><span class='fk'>· 2023-11 B 轮 $500M @ ~$3B</span>", t:["语言"]},
+  {n:"Silo AI", e:"芬兰 · 已被 AMD 收购", r:"EU", c:"startup", o:1, m:"Poro · Viking 小尺寸", d:"北欧语言开源模型，被 AMD 收购后服务其端侧 / 边缘生态", f:"<span class='fx'>AMD 2024-08 以 ~$665M 现金完成收购</span><span class='fk'>· 并入 AMD AI Group</span>", t:["语言"]},
+
+  /* ---------- 欧洲 · 垂类模态 / 算法 ---------- */
+  {n:"Speechmatics", e:"英国", r:"EU", c:"vertical", o:3, m:"多语言 ASR 引擎（本地部署）", d:"多语种语音识别，支持本地 / 边缘部署", f:"<span class='fv'>累计融资 ~$90M</span><span class='fk'>· 2022-06 B 轮 $62M，Susquehanna 领投；此后无新轮</span><span class='fk'>· 员工 ~115 人</span>", t:["语音"]},
+  {n:"Prophesee", e:"法国", r:"EU", c:"vertical", o:3, m:"事件相机 + 神经形态视觉算法", d:"事件驱动视觉传感与算法，与索尼、高通合作", f:"<span class='fv'>累计融资 ~$150M</span><span class='fx'>2024-10 进入司法重整，2026-05 退出</span><span class='fk'>· 2026-06 新融资 ~$23M，Critical Path Ventures 领投，转向国防 / 工业</span><span class='fk'>· 员工 ~90 人</span>", t:["视觉"]},
+  {n:"Innovatrics", e:"斯洛伐克", r:"EU", c:"vertical", o:3, m:"人脸 / 指纹识别 SDK", d:"生物识别算法，多用于身份核验终端", f:"<span class='fv'>创始人独资，自筹盈利</span><span class='fk'>· 2024 营收 ~$27M，净利 ~$3M</span><span class='fk'>· 员工 100–200 人</span>", t:["生物识别"]},
+  {n:"iProov", e:"英国", r:"EU", c:"vertical", o:3, m:"人脸活体检测", d:"身份核验与活体检测，端云结合", f:"<span class='fv'>累计融资 ~$85M</span><span class='fk'>· 2022-01 $70M，Sumeru 领投</span><span class='fk'>· 2024 营收 ~$38M，净亏 ~$7.5M</span><span class='fk'>· 员工 ~220 人</span>", t:["生物识别"]},
+
+  /* ---------- 其他地区 · 大厂 ---------- */
+  {n:"三星", e:"Samsung · 韩国", r:"OT", c:"big", o:3, m:"Gauss 2 端侧 · Galaxy AI", d:"手机 + 芯片 + 存储全栈，Galaxy AI 混合部署自研与 Google 模型", t:["语言","多模态","语音"]},
+  {n:"LG AI Research", e:"韩国", r:"OT", c:"big", o:2, m:"EXAONE 3.5 2.4B · EXAONE 4.0 1.2B", d:"面向家电与本地部署，研究许可开放权重", t:["语言"]},
+  {n:"Naver", e:"韩国", r:"OT", c:"big", o:1, m:"HyperCLOVA X SEED 0.5B / 1.5B / 3B", d:"韩语优先的开源小模型，服务 Naver 生态与主权 AI", t:["语言","多模态"]},
+  {n:"Kakao", e:"韩国", r:"OT", c:"big", o:1, m:"Kanana Nano 2.1B", d:"面向韩国消费应用的开源小模型", t:["语言"]},
+  {n:"NTT", e:"日本", r:"OT", c:"big", o:3, m:"tsuzumi 0.6B / 7B 轻量版", d:"日语轻量 LLM，主打低算力与本地部署", t:["语言"]},
+
+  /* ---------- 其他地区 · 创业公司 ---------- */
+  {n:"Sakana AI", e:"日本", r:"OT", c:"startup", o:1, m:"TinySwallow 1.5B（TAID 蒸馏）", d:"进化式模型合并与蒸馏，产出可在手机端运行的日语模型", f:"<span class='fv'>累计融资 ~$400M</span><span class='fk'>· 2025-11 B 轮 $135M：MUFG、Khosla、NEA、Lux</span><span class='fk'>· 估值 $2.65B</span><span class='fk'>· 2026-03 三菱电机战略投资</span>", t:["语言"]},
+  {n:"Preferred Networks", e:"日本", r:"OT", c:"startup", o:2, m:"PLaMo 2 1B / 8B · PLaMo Lite", d:"日本 AI 独角兽，结合自研 MN-Core 芯片，面向机器人 / 工业边缘", f:"<span class='fv'>累计融资 ~$310M</span><span class='fk'>· 2025-04 延伸轮 ~$35M（据报为 down round）</span><span class='fk'>· 历史峰值估值 ~$3.2B（2019 年）</span><span class='fk'>· 团队 ~400 人，暂无 IPO 计划</span>", t:["语言","多模态"]},
+  {n:"Cohere", e:"加拿大", r:"OT", c:"startup", o:2, m:"Command R7B · Aya 小尺寸", d:"企业级私有部署，7B 面向端侧 / 边缘 CPU 推理", f:"<span class='fv'>累计融资 ~$1.6B</span><span class='fk'>· 2025-09 $600M @ $7B，Radical / Inovia 领投，NVIDIA、AMD 参与</span><span class='fx'>2026-04 宣布并购 Aleph Alpha，Series E 在谈 @ ~$20B（Schwarz 领投 ~$600M）</span><span class='fk'>· 团队 ~650–1,180 人</span>", t:["语言","多模态"]},
+  {n:"TII", e:"阿联酋", r:"OT", c:"startup", o:1, lab:true, m:"Falcon-H1 0.5B–3B · Falcon3 1B", d:"主权研究机构，Falcon-H1 混合注意力 / SSM，面向边缘", f:"<span class='fv'>阿布扎比政府 ATRC 下属研究机构</span><span class='fk'>· 2024 年承诺 $300M 设立 Falcon Foundation</span><span class='fk'>· 商业化由子公司 AI71 承担</span>", gov:true, t:["语言"]},
+  {n:"Upstage", e:"韩国", r:"OT", c:"startup", o:2, m:"Solar Mini · Solar Pro", d:"深度上采样架构，面向本地部署与文档 AI", f:"<span class='fv'>累计融资 ~$280M</span><span class='fk'>· 2026-04 C 轮首关 ~$126M，Sazze 领投，现代 / 起亚参与</span><span class='fk'>· 估值 >$700M（韩媒按本币口径称“独角兽”）</span><span class='fx'>拟 2026H2 提交 IPO 预审</span>", t:["语言"]},
+
+  /* ---------- 其他地区 · 垂类模态 / 算法 ---------- */
+  {n:"Picovoice", e:"加拿大", r:"OT", c:"vertical", o:3, m:"Porcupine（唤醒词）· Rhino · picoLLM", d:"从唤醒词到端侧 LLM 的全离线语音栈，MCU 到浏览器全覆盖", f:"<span class='fv'>基本自筹，仅 2020 年 $0.5M 种子</span><span class='fk'>· 员工 ~15 人</span>", t:["语音","语言"]},
+  {n:"NEC", e:"日本", r:"OT", c:"vertical", o:3, m:"NeoFace · 边缘人脸识别", d:"人脸识别精度长期领先，机场 / 安防终端", f:"<span class='fx'>已上市 · 东京证交所 6701</span><span class='fv'>市值 ~$41B（2026-09）</span><span class='fk'>· FY2025 营收 ~$23B（集团口径，生物识别仅为其中一小部分）</span>", t:["生物识别","视觉"]},
+  {n:"Suprema", e:"韩国", r:"OT", c:"vertical", o:3, m:"人脸 / 指纹识别算法 + 终端", d:"门禁与考勤生物识别终端", f:"<span class='fx'>已上市 · KOSDAQ 236200</span><span class='fv'>市值 ~$260M（2026-09）</span><span class='fk'>· 2025 营收 ~$99M（+27%）</span>", t:["生物识别"]},
+  {n:"Selvas AI", e:"韩国", r:"OT", c:"vertical", o:3, m:"韩语语音识别 / 手写识别", d:"韩国传统识别算法厂商", f:"<span class='fx'>已上市 · KOSDAQ 108860</span><span class='fv'>市值 ~$178M（2026-09）</span><span class='fk'>· 2025 营收 ~$83M，净亏 ~$3M</span>", t:["语音","其他模态"]},
+];
+
+/* ===================== L4 方案与集成层玩家数据 =====================
+   r 地区 CN/US/EU/OT   c 类型 odm/module/edge/si   o 属性 1已上市 2未上市 3子公司/已被收购
+   m 主营方案   d 定位   t 场景标签   f 体量（市值/营收/融资）  tw 中国台湾企业
+*/
+const REGIONS = ["CN","US","EU","OT"];
+const CATS = [
+  {k:"big", n:"大厂端侧小模型", s:"Big Tech · 终端 / OS / 云平台巨头", def:"拥有终端、操作系统或云分发入口的科技巨头与手机厂，端侧模型多为其大模型系列的小尺寸版本", biz:"竞争逻辑：模型 + OS 入口 + 分发权；开源抢生态，闭源绑系统"},
+  {k:"startup", n:"创业公司", s:"Startups · 基础模型新锐（含已上市）/ 研究机构", def:"以通用基础模型为主业，通过架构创新（SSM / 线性注意力）、蒸馏与压缩“以小博大”。仅收录累计融资约 ≥1 亿美元或估值 ≥10 亿美元的公司，以及政府 / 捐赠资助的研究机构", biz:"竞争逻辑：被终端厂预装、被芯片厂适配，或被收购；开源换生态。卡片灰底为融资 / 体量，黄底为非市场化资助"},
+  {k:"vertical", n:"垂类模态模型 / 算法公司", s:"Vertical · 语音 / 视觉 / 生物识别", def:"以单一模态算法为主业的传统端侧 AI 供应商，是最早规模商业化的一类", biz:"竞争逻辑：场景数据 + 硬件 / 芯片一体化；受多模态大模型冲击。卡片附市值 / 营收 / 融资，收录门槛与创业公司一致，自筹盈利的成熟公司保留"}
+];
+const OPEN = {1:"开放权重", 2:"部分开放", 3:"闭源"};
+
+/* ---------- 渲染矩阵 ---------- */
+const REGION_META = { CN:{n:"中国",c:"#c62828"}, US:{n:"美国",c:"#1565c0"}, EU:{n:"欧洲",c:"#2e7d32"}, OT:{n:"其他",c:"#6d4c41"} };
+
+/* ---------- 通用：渲染矩阵 + 统计 + 筛选 ---------- */
+function initLayer(cfg){
+  const P = cfg.prefix, matrix = document.getElementById(P + "-matrix");
+  cfg.cats.forEach(cat => {
+    const rh = document.createElement("div");
+    rh.className = "rowhead C-" + cat.k;
+    rh.innerHTML = `<div class="n">${cat.n}<small>${cat.s}</small></div><div class="def">${cat.def}</div><div class="biz">${cat.biz}</div>`;
+    matrix.appendChild(rh);
+    cfg.regions.forEach(r => {
+      const cell = document.createElement("div");
+      cell.className = "cell C-" + cat.k;
+      cell.dataset.r = r; cell.dataset.c = cat.k;
+      cfg.players.filter(p => p.r === r && p.c === cat.k).forEach(p => {
+        const el = document.createElement("div");
+        el.className = "pc";
+        el.dataset.r = p.r; el.dataset.c = p.c; el.dataset.o = p.o; el.dataset.t = p.t.join("|");
+        el.dataset.q = (p.n + " " + (p.e||"") + " " + p.m + " " + p.d + " " + p.t.join(" ")).toLowerCase();
+        el.innerHTML =
+          `<div class="pc-h"><span class="pc-n">${p.n}</span>${p.e ? `<span class="pc-e">${p.e}</span>` : ""}<span class="pc-o o${p.o}">${cfg.oLabels[p.o]}</span></div>` +
+          `<div class="pc-m">${p.m}</div><div class="pc-d">${p.d}</div>` +
+          (p.f ? `<div class="pc-f${p.gov ? " gov" : ""}">${p.f}</div>` : "") +
+          `<div class="tags">${p.t.map(t => `<span class="tag">${t}</span>`).join("")}${p.lab ? `<span class="tag lab">研究机构</span>` : ""}</div>`;
+        cell.appendChild(el);
+      });
+      matrix.appendChild(cell);
+    });
+  });
+  const stats = document.getElementById(P + "-stats");
+  const cnt = k => cfg.players.filter(p => p.r === k).length;
+  stats.innerHTML = `<div class="stat"><div class="v">${cfg.players.length}</div><div class="k">玩家总数</div></div>` +
+    cfg.regions.map(r => `<div class="stat"><div class="v" style="color:${REGION_META[r].c}">${cnt(r)}</div><div class="k">${REGION_META[r].n}</div></div>`).join("");
+
+  const tb = document.getElementById(P + "-toolbar"), q = document.getElementById(P + "-q"), cntEl = document.getElementById(P + "-cnt");
+  const active = dim => [...tb.querySelectorAll(`.grp[data-dim="${dim}"] .chip.on`)].map(b => b.dataset.v);
+  function apply(){
+    const r = active("r"), c = active("c"), t = active("t"), o = active("o");
+    const kw = q.value.trim().toLowerCase();
+    let shown = 0;
+    matrix.querySelectorAll(".pc").forEach(el => {
+      const ok = r.includes(el.dataset.r) && c.includes(el.dataset.c) && o.includes(el.dataset.o) &&
+                 el.dataset.t.split("|").some(x => t.includes(x)) && (!kw || el.dataset.q.includes(kw));
+      el.classList.toggle("hide", !ok); if (ok) shown++;
+    });
+    matrix.querySelectorAll(".cell").forEach(cell => {
+      const any = [...cell.querySelectorAll(".pc")].some(el => !el.classList.contains("hide"));
+      cell.classList.toggle("empty", !any);
+    });
+    cntEl.textContent = `显示 ${shown} / ${cfg.players.length}`;
+  }
+  tb.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const chips = [...b.parentElement.querySelectorAll(".chip")];
+    if (e.altKey || e.metaKey) chips.forEach(x => x.classList.toggle("on", x === b)); else b.classList.toggle("on");
+    apply();
+  });
+  q.addEventListener("input", apply);
+  document.getElementById(P + "-reset").addEventListener("click", () => { tb.querySelectorAll(".chip").forEach(x => x.classList.add("on")); q.value = ""; apply(); });
+  apply();
+}
+
+/* ---------- 吸顶高度测量 ---------- */
+const rootEl = document.documentElement, tabsEl = document.querySelector(".tabs");
+function measure(){
+  const th = tabsEl.getBoundingClientRect().height;
+  const tb = document.querySelector(".view.active .toolbar");
+  const tbh = tb ? tb.getBoundingClientRect().height : 0;
+  rootEl.style.setProperty("--tabs-h", th + "px");
+  rootEl.style.setProperty("--head-top", (th + tbh + 8) + "px");
+}
+document.querySelectorAll(".toolbar").forEach(tb => new ResizeObserver(measure).observe(tb));
+window.addEventListener("resize", measure);
+
+/* ---------- 页签切换 ---------- */
+function show(id){
+  document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === "view-" + id));
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === id));
+  if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
+  window.scrollTo(0, 0);
+  requestAnimationFrame(measure);
+}
+document.querySelectorAll("[data-view]").forEach(el => el.addEventListener("click", () => show(el.dataset.view)));
+
+/* ---------- 初始化 L3 ---------- */
+const PLAYERS4 = [
+  {n:"华勤技术", e:"Huaqin", r:"CN", c:"odm", o:1, m:"手机 / 平板 / PC / AIoT 整机 ODM + 数据中心整机柜", d:"全球手机 ODM 出货第一，平板 ODM 份额第一；2025 年起 AI 服务器与超节点整机柜放量", t:["手机","PC","IoT","服务器"], f:"已上市（A股 603296 + H股 03296）· 市值 ≈1,150 亿元 · 2025 营收 1,714 亿元（+56%），净利 40.5 亿元 · 员工 7 万" },
+  {n:"龙旗科技", e:"Longcheer", r:"CN", c:"odm", o:1, m:"智能手机 ODM + 平板 / AIoT（含 AI 眼镜）", d:"全球手机 ODM 出货第二；AIoT 业务增长最快，AI 眼镜已批量出货", t:["手机","IoT"], f:"已上市（A股 603341 + H股 09611）· 市值 ≈195 亿元 · 2025 营收 421 亿元（-9%），净利 5.9 亿元 · 员工 1.9 万" },
+  {n:"立讯精密", e:"Luxshare", r:"CN", c:"odm", o:1, m:"消费电子精密制造 + 收购的闻泰 ODM 业务 + 汽车 / 通信", d:"2025 年起承接闻泰 ODM 大部分客户资源，手机 ODM 出货升至全球第四；AI 手机 / AI PC 代工放量", t:["手机","PC","汽车","IoT"], f:"已上市（002475）· 市值 ≈4,330 亿元 · 2025 营收 3,323 亿元（+24%），净利 166 亿元 · 员工 41.6 万" },
+  {n:"比亚迪电子", e:"BYD Electronic", r:"CN", c:"odm", o:1, m:"消费电子组装 + 汽车电子 + AI 算力基础设施", d:"安卓阵营主要整机代工之一，手机零部件自供率高；AI 服务器液冷板量产爬坡", t:["手机","汽车","服务器"], f:"已上市（0285.HK）· 市值 ≈605 亿港元 · 2025 营收 1,795 亿元（+1%），净利 35 亿元（-18%）· 员工 ~16.5 万" },
+  {n:"光弘科技", e:"DBG", r:"CN", c:"odm", o:1, m:"消费电子 / 汽车电子 / 网络通讯 EMS", d:"华勤、龙旗供应链上的 EMS，为国内大客户做算力板卡，拓展服务器模组与液冷卡", t:["手机","汽车","IoT"], f:"已上市（300735）· 市值 ≈155 亿元 · 2025 营收 90 亿元（+31%），净利 2.9 亿元 · 员工 1.9 万" },
+  {n:"鸿海 / 富士康", e:"Hon Hai", r:"CN", c:"odm", o:1, tw:true, m:"消费电子 EMS + 服务器 / AI 机柜代工 + 组件", d:"全球 EMS 市占 >40%；AI 机柜出货全球最大供应商，云端网络业务占营收过半", t:["服务器","PC","手机","IoT","机器人"], f:"已上市（2317.TW）· 市值 ≈$115B · 2025 营收 ≈$261B（+18%），净利 ≈$6.1B · 员工 ~65 万" },
+  {n:"广达", e:"Quanta", r:"CN", c:"odm", o:1, tw:true, m:"笔电 / 服务器 ODM（含 AI 服务器）", d:"全球笔电 ODM 第一，AI 服务器占服务器营收 75–80%；笔电营收占比已降至 <15%", t:["PC","服务器"], f:"已上市（2382.TW）· 市值 ≈$43B · 2025 营收 ≈$68B（+51%），净利 ≈$2.4B · 员工 ~1.16 万（母公司）" },
+  {n:"仁宝", e:"Compal", r:"CN", c:"odm", o:1, tw:true, m:"笔电 / 非 PC（服务器、车用、穿戴）ODM", d:"笔电 ODM 第二梯队；AI 服务器占服务器营收约 70%，桃园 AI 服务器制造中心于 2026-08 启用", t:["PC","服务器"], f:"已上市（2324.TW）· 市值 ≈$5.7B · 2025 营收 ≈$24B（-17%），净利 ≈$0.19B · 员工 ~7,900（母公司）" },
+  {n:"纬创", e:"Wistron", r:"CN", c:"odm", o:1, tw:true, m:"笔电 + 服务器 / AI 机柜代工", d:"服务器占营收已近八成，AI 相关营收占比约七成；德州厂量产 GB 系列运算板", t:["PC","服务器"], f:"已上市（3231.TW）· 市值 ≈$20B · 2025 营收 ≈$70B（+108%），净利 ≈$0.88B · 员工 ~1.46 万（母公司）" },
+  {n:"和硕", e:"Pegatron", r:"CN", c:"odm", o:1, tw:true, m:"笔电 / 消费电子 EMS + 服务器拓展", d:"笔电代工，2026 年服务器营收目标增十倍，拓展边缘 AI 桌机与推理服务器", t:["PC","服务器","IoT"], f:"已上市（4938.TW）· 市值 ≈$8.1B · 2025 营收 ≈$36B（-1%），净利 ≈$0.46B · 员工 ~7,500（母公司）" },
+  {n:"英业达", e:"Inventec", r:"CN", c:"odm", o:1, tw:true, m:"笔电 + 服务器 ODM + 车用", d:"服务器占营收接近五成，AI 服务器营收增>30%；车用营收翻倍", t:["PC","服务器","汽车"], f:"已上市（2356.TW）· 市值 ≈$7.6B · 2025 营收 ≈$22B（+7%），净利 ≈$0.28B · 员工 ~6,800（母公司）" },
+
+  {n:"移远通信", e:"Quectel", r:"CN", c:"module", o:1, m:"蜂窝 IoT 模组 + 天线 + 机器人方案", d:"全球蜂窝 IoT 模组出货第一（份额 36%）；2025 出货 4.43 亿片，进军 AI 算力模组与机器人", t:["IoT","汽车","机器人"], f:"已上市（603236）· 市值 ≈252 亿元 · 2025 营收 243 亿元（+31%），净利 8.4 亿元 · 员工 ~9,000" },
+  {n:"广和通", e:"Fibocom", r:"CN", c:"module", o:1, m:"无线通信模组 + AI Box + 智能算力模组", d:"全球蜂窝模组出货前三；AI Box 达 48 TOPS，港股募资 55% 投 AI 模组研发，2026 年拟收购航盛电子", t:["IoT","汽车","机器人"], f:"已上市（300638 + H股 00638）· 市值 ≈155 亿元 · 2025 营收 70 亿元（-15%），净利 3.5 亿元 · 员工 ~1,900" },
+  {n:"美格智能", e:"MeiG", r:"CN", c:"module", o:1, m:"高算力智能模组 + AI 智能体终端", d:"全球高算力智能模组收入第一（份额 29%）、5G 车载模组出货第一；算力模组覆盖 0.5–700 TOPS，可端侧部署 200 亿参数模型", t:["IoT","汽车","机器人"], f:"已上市（002881 + H股 03268）· 市值 ≈116 亿元 · 2025 营收 37 亿元（+27%），净利 1.4 亿元 · 员工 ~1,000" },
+  {n:"日海智能 / 芯讯通", e:"Sunsea / SIMCom", r:"CN", c:"module", o:1, m:"蜂窝 IoT 模组 + 通信设备", d:"全球蜂窝模组出货第三（份额 8%）；系芯讯通平台，车规 / 智能模组适配舱泊一体与车载机器人", t:["IoT","汽车"], f:"已上市（002313）· 市值 ≈32 亿元 · 2025 营收 28 亿元（-8%），净亏 2.3 亿元 · 员工 ~1,100" },
+  {n:"中移物联", e:"China Mobile IoT", r:"CN", c:"module", o:1, m:"蜂窝 IoT 模组 + 芯片 + 物联网平台", d:"全球蜂窝模组出货第二（份额 11%，出货 +45%）；中国移动体系内模组与连接服务主力", t:["IoT","汽车"], f:"中国移动子公司 · 无独立上市 · 2025 全球出货份额 11%" },
+  {n:"有方科技", e:"Neoway", r:"CN", c:"module", o:1, m:"电力集抄模组占比过半 + 无线通信模组 / 终端", d:"国家电网用电信息采集模组份额过半；拓展 AI 模组用于机器人 / AI 玩具 / AI 眼镜", t:["IoT"], f:"已上市（688159）· 市值 ≈32 亿元 · 2025 营收 24 亿元（-22%），净利 0.27 亿元 · 员工 ~450" },
+  {n:"高新兴", e:"Gosuncn", r:"CN", c:"module", o:1, m:"车载终端（T-Box/车规模组）+ 轨交 + 智慧政法视频", d:"前装 T-Box 2025 发货 >118 万台；车载终端营收占总营收六成多", t:["汽车","IoT"], f:"已上市（300098）· 市值 ≈78 亿元 · 2025 营收 20 亿元（+40%），净亏 0.32 亿元 · 员工 ~2,100" },
+  {n:"矽递科技", e:"Seeed Studio", r:"CN", c:"module", o:2, m:"开源硬件 / 边缘 AI 与机器人套件 + 传感模组", d:"面向开发者的开源边缘硬件平台，国家级专精特新“小巨人”；2023 年撤回创业板 IPO", t:["IoT","机器人"], f:"未上市 · 累计融资 ≈1.2 亿元（IDG、深创投等）· 估值未披露 · 员工 ~260" },
+  {n:"涂鸦智能", e:"Tuya", r:"CN", c:"module", o:1, m:"IoT 云平台 + 智能模组 + 智能解决方案", d:"全球 IoT 平台龙头，注册开发者 >200 万，向 AI 硬件方案与机器人延伸", t:["IoT","机器人"], f:"已上市（NYSE TUYA + 港股 2391）· 市值 ≈$1.2B · 2025 营收 $3.2 亿（+8%），净利 $0.58 亿" },
+
+  {n:"研华", e:"Advantech", r:"CN", c:"edge", o:1, tw:true, m:"工业 PC / 嵌入式板卡 / 边缘计算硬件与平台", d:"全球工控与嵌入式龙头；边缘 AI 硬件占营收 20.5%，2026 目标 30%，深度绑定 NVIDIA Jetson", t:["工业","机器人","服务器"], f:"已上市（2395.TW）· 市值 ≈$19B · 2025 营收 ≈$22.8B（+19%），净利 ≈$3.4B · 员工 ~9,500" },
+  {n:"凌华", e:"ADLINK", r:"CN", c:"edge", o:1, tw:true, m:"COM 模块 + 边缘计算平台 + 机器人 / 车载显示", d:"2025 边缘计算平台营收 $62M；机器人约占营收 6–7%，5 款机器人已量产", t:["工业","机器人","汽车"], f:"已上市（6166.TW）· 市值 ≈$8.1B（换算口径存在差异，见注）· 2025 营收 ≈$3.8B（+17%），净利 ≈$0.16B · 员工 ~1,600" },
+  {n:"宜鼎 / Aetina", e:"Innodisk", r:"CN", c:"edge", o:1, tw:true, m:"工业存储 + 边缘 AI 解决方案（Aetina 子公司为 NVIDIA 伙伴）", d:"AI 方案约占营收 6%；Aetina 2025Q4 转盈并启动 IPO 计划，为 NVIDIA Elite / MGX 伙伴，主打 Jetson 边缘系统", t:["工业","机器人","服务器"], f:"已上市（5289.TW）· 市值 ≈$4.4B · 2025 营收 ≈$4.6B（+60%），净利 ≈$0.66B · 员工 ~1,150" },
+  {n:"立端", e:"Lanner", r:"CN", c:"edge", o:1, tw:true, m:"网络安全 / 边缘计算整机与平台", d:"专注网络与边缘计算工控整机，2026 上半年营收 +18%", t:["工业","服务器"], f:"已上市（6245.TW）· 市值 ≈$0.38B · 2025 营收 ≈$2.3B（-3.5%），净利 ≈$0.21B · 员工 ~980" },
+  {n:"浪潮信息", e:"Inspur", r:"CN", c:"edge", o:1, m:"服务器 / 边缘服务器 / 液冷整机", d:"中国服务器与边缘服务器份额第一，AI 服务器份额>50%；边缘服务器为独立产品线", t:["服务器","工业"], f:"已上市（000977）· 市值 ≈1,140 亿元 · 2025 营收 1,648 亿元（+43%），净利 24 亿元 · 员工 ~6,900" },
+  {n:"紫光股份 / 新华三", e:"H3C", r:"CN", c:"edge", o:1, m:"ICT 基础设施（交换机 / 服务器 / 网络）+ 边缘推理", d:"新华三中国 X86 服务器份额第三、AI 服务器第二；边缘推理 UniServer 产品线，2025 营收 +38%", t:["服务器","工业","IoT"], f:"已上市（000938）· 市值 ≈1,009 亿元 · 新华三 2025 营收 760 亿元（+38%），净利 31.5 亿元 · 集团员工 1.6 万" },
+  {n:"研祥智能", e:"EVOC", r:"CN", c:"edge", o:3, m:"工业计算机 / 边缘 AI 节点 + 工业云", d:"2022 年港股私有化退市；自述全球已部署 4,300 万个工业 AI 节点，2026 启动“AI³”战略", t:["工业","IoT"], f:"已退市（原 2308.HK）· 2022 年 H 股私有化 · FY2025 未披露 · 集团下设 AI 服务器子公司亿万克" },
+  {n:"映云科技", e:"EMQ", r:"CN", c:"edge", o:2, m:"物联网消息中间件 / 边缘数据基础设施（EMQX）", d:"连接超 5 亿台设备、25M 辆车的边缘消息平台，主打车联网与工业边缘数据接入", t:["IoT","汽车","工业"], f:"未上市 · 累计融资 ≈2 亿元（高瓴、GGV、嘉御等）· 员工 ~110" },
+  {n:"Moxa 四零四", e:"Moxa", r:"CN", c:"edge", o:2, tw:true, m:"工业网络 + 边缘计算网关 / 设备联网平台", d:"工业通讯与边缘计算网关龙头，主攻工厂与轨道交通边缘网络", t:["工业","IoT"], f:"未上市（中国台湾）· 营收未披露 · 全球工业网络设备主要供应商" },
+  {n:"神基", e:"Getac", r:"CN", c:"edge", o:1, tw:true, m:"强固型电脑 / 平板 + 边缘 AI 解决方案", d:"军工与工业强固型终端龙头，向边缘 AI 现场方案延伸", t:["工业","IoT"], f:"已上市（3005.TW）· 市值 ≈$2B · 强固型电脑全球主要供应商" },
+
+  {n:"中科创达", e:"Thundersoft", r:"CN", c:"si", o:1, m:"智能操作系统（手机 / 汽车 / IoT）+ 边缘 AI 整机", d:"高通深度绑定伙伴；智能物联网 2025 营收 +133%，滴水 AIOS 运行 30B 端侧模型，AIBOX 200 TOPS", t:["手机","汽车","机器人","IoT"], f:"已上市（300496）· 市值 ≈274 亿元 · 2025 营收 78 亿元（+44%），净利 4.5 亿元 · 员工 1.87 万" },
+  {n:"软通动力", e:"iSoftStone", r:"CN", c:"si", o:1, m:"IT 服务 + 鲲鹏 / 昇腾整机（软通计算机）", d:"AI 相关营收占比约 53%；旗下软通计算机做昇腾整机与开源鸿蒙终端，发布端侧推理四卡液冷工作站", t:["PC","服务器","IoT"], f:"已上市（301236）· 市值 ≈390 亿元 · 2025 营收 351 亿元（+12%），净利 2.1 亿元 · 员工 9.2 万" },
+  {n:"中软国际", e:"Chinasoft", r:"CN", c:"si", o:1, m:"软件服务 + 智算集成 + 开源鸿蒙发行版", d:"全栈全场景 AI 收入 2025 翻倍；开源鸿蒙社区贡献除华为外第一（主仓代码 >650 万行）", t:["IoT","服务器"], f:"已上市（0354.HK）· 市值 ≈108 亿港元 · 2025 收入 170 亿元，净利 3.2 亿元 · 员工 7.8 万" },
+  {n:"东软集团", e:"Neusoft", r:"CN", c:"si", o:1, m:"智能汽车软件 + 医疗健康 + 智慧城市", d:"智能汽车互联 2025 营收 47 亿元（+14%）；基于高通 8397 的端侧 AI 座舱域控获定点超 56 亿元", t:["汽车","医疗","IoT"], f:"已上市（600718）· 市值 ≈96 亿元 · 2025 营收 120 亿元（+4%），净亏 3.6 亿元 · 员工 2.4 万" },
+  {n:"神州数码", e:"Digital China", r:"CN", c:"si", o:1, m:"IT 分销 + 神州鲲泰自有品牌整机（鲲鹏 / 昇腾）", d:"AI 相关业务 2025 营收 330 亿元（+48%）；神州鲲泰 2026 上半年营收 +112%，中标中国移动 PC 服务器集采", t:["服务器","PC"], f:"已上市（000034）· 市值 ≈240 亿元 · 2025 营收 1,438 亿元（+12%），净利 5.2 亿元 · 员工 ~5,500" },
+  {n:"拓维信息", e:"Talkweb", r:"CN", c:"si", o:1, m:"昇腾 / 鲲鹏整机（兆瀚）+ 开源鸿蒙教育", d:"华为为第一大客户（占营收 41.5%）；兆瀚整机含 DeepSeek 一体机、推理服务器与 AI 工作站", t:["服务器","PC","IoT"], f:"已上市（002261）· 市值 ≈326 亿元 · 2025 营收 32 亿元（-23%），净利 0.64 亿元 · 员工 ~9,800" },
+  {n:"千方科技", e:"China TransInfo", r:"CN", c:"si", o:1, m:"智慧交通 + 智能物联（宇视科技）", d:"宇视科技布局 AIoT 全栈，2025 营收 60 亿元（+8%）；边缘一体机与 AI 闸口面向安防场景", t:["汽车","IoT","工业"], f:"已上市（002373）· 市值 ≈121 亿元 · 2025 营收 82 亿元（+13%），净利 2.7 亿元 · 员工 ~6,000" },
+  {n:"佳都科技", e:"PCI", r:"CN", c:"si", o:1, m:"智慧交通（轨交 / 交管）+ ICT 分销", d:"轨交 AI 集成商，佳都知行交通大模型登 MMBench 子榜；轨道交通鸿蒙化部署 6 城 40+ 车站", t:["IoT","汽车"], f:"已上市（600728）· 市值 ≈100 亿元 · 2025 营收 101 亿元（+27%），净利 1.7 亿元 · 员工 ~3,900" },
+  {n:"润和软件", e:"Hoperun", r:"CN", c:"si", o:1, m:"金融科技 + 智能物联 + 开源鸿蒙 / 欧拉发行版", d:"开源鸿蒙行业发行版第一（HiHopeOS 13 款），构建“昇腾 + 欧拉 + 鸿蒙 + DeepSeek”云边端体系", t:["IoT","服务器"], f:"已上市（300339）· 市值 ≈281 亿元 · 2025 营收 40 亿元（+17%），净利 0.97 亿元 · 员工 1.68 万" },
+  {n:"诚迈科技", e:"ArcherMind", r:"CN", c:"si", o:1, m:"终端操作系统 + 智能网联汽车软件 + 统信软件参股", d:"Firefly AIOS 适配高通 / 英伟达平台可部署 10 款端侧模型；FusionOS 跨域整车 OS", t:["手机","汽车","IoT"], f:"已上市（300598）· 市值 ≈72 亿元 · 2025 营收 22 亿元（+12%），净亏 1 亿元 · 员工 ~9,100" },
+
+  {n:"Flex", e:"伟创力", r:"US", c:"odm", o:1, m:"EMS / 云与电源基础设施（CPI）", d:"云基础设施营收 2025 +38%，2026 年 10 月将分拆 CPI 为独立上市；Google 多年合同", t:["服务器","IoT"], f:"已上市（NASDAQ FLEX）· 市值 $40.4B（2026-09）· FY26 营收 $27.9B（+8%），净利 $0.88B · 员工 15 万" },
+  {n:"Jabil", e:"捷普", r:"US", c:"odm", o:1, m:"EMS / 云与数据中心基础设施（Intelligent Infrastructure）", d:"AI 相关营收 FY26 预估 $13.6B（+50%）；云与数据中心基础设施营收 $10.9B（+47%）", t:["服务器","IoT"], f:"已上市（NYSE JBL）· 市值 $32.5B · FY25 营收 $29.8B，净利 $0.66B · 员工 13.5 万" },
+  {n:"Sanmina", e:"新美亚", r:"US", c:"odm", o:1, m:"EMS / 云与 AI 基础设施（含 ZT Systems）", d:"2025-10 收购 AMD 剥离的 ZT Systems 数据中心制造业务；云 / AI 基础设施营收占总营收 62%（+173%）", t:["服务器","IoT"], f:"已上市（NASDAQ SANM）· 市值 $10.6B · FY25 营收 $8.1B（+7%），净利 $0.25B · 员工 ~3.9 万" },
+
+  {n:"Semtech / Sierra", e:"Semtech", r:"US", c:"module", o:1, m:"LoRa 芯片 + Sierra Wireless 蜂窝 / LPWAN 模组", d:"IoT Systems & Connectivity 营收 $354M（+9%）；LoRa 营收 $156M（+34%），把边缘 AI + LoRaWAN 作为增长引擎", t:["IoT","工业"], f:"已上市（NASDAQ SMTC）· 市值 $13.8B · FY26 营收 $1.05B（+15%），净亏 $40M（GAAP）· 员工 ~1,900" },
+  {n:"Digi International", e:"", r:"US", c:"module", o:1, m:"蜂窝 / 无线模组 + IoT 连接与安全解决方案", d:"2026-01 以 $50M 收购 Particle；订阅 ARR $191M（+31%），向设备管理平台延伸", t:["IoT","工业"], f:"已上市（NASDAQ DGII）· 市值 $2.6B · FY25 营收 $430M，净利 $41M · 员工 ~910" },
+  {n:"Lantronix", e:"", r:"US", c:"module", o:1, m:"嵌入式 IoT SoM（Open-Q）+ 连网系统方案", d:"嵌入式 IoT 解决方案（高通 / 联发科 SoM）营收 $53.6M（+16%）；无人机 AI 平台采用 Open-Q 6490CS", t:["IoT","工业","机器人"], f:"已上市（NASDAQ LTRX）· 市值 $244M · FY26 营收 $121M，净亏 $4.2M · 员工 ~330" },
+
+  {n:"World Wide Technology", e:"WWT", r:"US", c:"si", o:2, m:"IT 分销与集成 + AI 数据中心方案", d:"大型私有 IT 集成商；2025 年以约 $1.3B 收购 Softchoice，承诺超 $500M 建设 AI Proving Ground", t:["服务器","IoT"], f:"未上市 · 营收 ≈$20B · 净利未披露（估算 $0.4–0.8B）· 员工 ~1 万" },
+  {n:"Accenture", e:"埃森哲", r:"US", c:"si", o:1, m:"管理与技术咨询 + 生成式 AI 转型服务", d:"生成式 AI 营收 FY25 $2.7B（三倍增长）；Industry X 并入 Reinvention Services，规模约 $9B", t:["工业","IoT"], f:"已上市（NYSE ACN）· 市值 $114B · FY25 营收 $69.7B，净利 $7.8B · 员工 80 万" },
+
+  {n:"u-blox", e:"", r:"EU", c:"module", o:3, m:"定位 / 短距无线 / 蜂窝模组（蜂窝已出售）", d:"2025-11 由 Advent 以约 $1.3B 完成私有化并从瑞士交易所退市；退出蜂窝模组后聚焦定位与短距", t:["IoT","汽车"], f:"已私有化（原 SIX UBXN）· Advent 以 ≈$1.3B 收购（2025-11 交割）· FY24 营收 $316M" },
+  {n:"Kontron", e:"", r:"EU", c:"module", o:1, m:"模块化计算机（COM）+ 边缘 / 物联方案", d:"欧洲嵌入式与边缘龙头；Smart IoT 占营收 65%，Ennoconn 发出强制要约", t:["工业","IoT","机器人"], f:"已上市（ATX KTN）· 市值 $1.6B · 2025 营收 $1.87B，净利 $164M · 员工 ~6,400" },
+  {n:"congatec", e:"", r:"EU", c:"module", o:2, m:"嵌入式计算机模块（COM Express / COM-HPC）", d:"自述全球每四块嵌入式模块有一块出自 congatec；2025-07 收购 Kontron 的 JUMPtec COM 业务", t:["工业","机器人"], f:"未上市（DBAG 控股）· 2025 营收 ≈$196M · 员工 ~500" },
+  {n:"Toradex", e:"", r:"EU", c:"module", o:2, m:"ARM 架构计算机模块（Colibri / Verdin）", d:"面向工业与 AI 边缘的 SoM 厂商，年出货 >50 万片，发布 Zinnia 边缘 AI 网关", t:["工业","IoT"], f:"未上市（Verium 基金持有）· 年营收估计 $50–100M · 员工 ~175" },
+  {n:"SECO", e:"", r:"EU", c:"module", o:1, m:"计算机模块 + 边缘 AI 软件（Clea）", d:"意大利嵌入式与边缘厂商，Clea 软件拼装边缘 AI；与 NEURA 合作“物理 AI”", t:["工业","机器人"], f:"已上市（BIT IOT）· 市值 ≈$0.5B · 2025 营收 $231M（+8%），净亏 $3M · 员工 ~890" },
+  {n:"Arduino", e:"", r:"EU", c:"module", o:3, m:"开源电子原形平台 / 嵌入式开发板 + 机器人", d:"2025-10 被高通收购（并表于其 QCT 四分业务），推出搭载高通芯片的 UNO Q / VENTUNO Q；社区 3,300 万用户", t:["IoT","机器人"], f:"高通子公司 · 收购金额未披露（高通 QCT 四笔并购合计 $846M，Arduino 含其中）· 此前累计融资 $54M" },
+
+  {n:"英飞凌 / Infineon", e:"", r:"EU", c:"edge", o:3, m:"MCU / 边缘 AI 芯片 + 收购的 Imagimob 模型工具链", d:"收购 Imagimob 强化 tinyML 边缘模型能力，边缘 AI 芯片的生态整合方", t:["工业","IoT"], f:"已上市（ETR IFX）· 市值 €47B · FY25 营收 €18.3B" },
+  {n:"Eurotech", e:"", r:"EU", c:"edge", o:1, m:"边缘计算硬件 + 物联软件平台", d:"欧洲边缘计算与物联网平台厂商，提供车载 / 工业边缘硬件", t:["工业","IoT","汽车"], f:"已上市（BIT ETH）· 市值 ≈$0.1B · 2024 营收 $119M" },
+
+  {n:"Capgemini", e:"凯捷", r:"EU", c:"si", o:1, m:"工程研发（含汽车 / 制造）与系统集成", d:"Capgemini Engineering 规模约 €3.5–4B；2025 年以 $3.3B 收购 WNS 强化 BPO / 运营", t:["汽车","工业","IoT"], f:"已上市（EPA CAP）· 市值 $21B · 2025 营收 $26.1B（+2%），净利 $1.9B · 员工 42 万" },
+
+  {n:"Celestica", e:"天弘", r:"OT", c:"odm", o:1, m:"EMS / 云与超大规模数据中心基础设施", d:"超大规模客户占营收 74%，HPS 解决方案 +81%；Google TPU 首选制造伙伴，2026 营收指引 $20.5B（+65%）", t:["服务器"], f:"已上市（NYSE/TSX CLS）· 市值 $35.9B · 2025 营收 $12.4B（+28%），净利 $0.83B · 员工 ~3 万" },
+
+  {n:"村田 Murata", e:"村田制作所", r:"OT", c:"module", o:1, m:"MLCC / 高频器件 / 通信模组 + 传感", d:"高频器件与通信模组营收 ≈$2.5B（占集团 22%）；智能手机模组为主要品类", t:["IoT","手机"], f:"已上市（TSE 6981）· 市值 ≈$96B · FY26 营收 $11.7B（+5%），净利 $1.5B · 员工 7.4 万" },
+  {n:"Variscite", e:"", r:"OT", c:"module", o:3, m:"ARM 计算机模块（DART / VAR）", d:"以色列 SoM 厂商，2024-01 被 Telsys 收购；AI 边缘应用模块化方案", t:["工业","机器人"], f:"Telsys 子公司（TASE TLSY）· 母公司市值 ≈$1.0B · 子公司营收未披露" },
+
+  {n:"Tata Elxsi", e:"塔塔埃尔克西", r:"OT", c:"si", o:1, m:"汽车工程研发（自动驾驶）+ 边缘 AI 感知方案", d:"汽车业务占比 55%；为美企开发边缘 AI 感知 / 自主系统，为日本车企做车联网路线图", t:["汽车","工业"], f:"已上市（NSE TATAELXSI）· 市值 $2.3B · FY26 营收 $397M，净利 $66M · 员工 1.1 万" },
+  {n:"HCLTech", e:"", r:"OT", c:"si", o:1, m:"IT 服务 + 工程研发服务（含边缘 / 半导体）", d:"工程研发服务约占总营收 16.5%；先进 AI 业务年化 $620M，2026 年批准 3,500 亿卢比 AI 数据中心投资", t:["工业","IoT"], f:"已上市（NSE HCLTECH）· 市值 $37B · FY26 营收 $14.7B，净利 $1.9B · 员工 22.7 万" },
+  {n:"LG CNS", e:"", r:"OT", c:"si", o:1, m:"IT 服务 + AI 云 + 智能工程（制造 / 物流）", d:"AI 与云占营收 59%；获 LG 电子 1900 亿韩元“物理 AI”基础设施 / 人形机器人订单", t:["工业","机器人"], f:"已上市（KRX 064400）· 市值 $5.3B · 2025 营收 $4.6B（+3%），净利 $325M · 员工 ~6,800" },
+  {n:"NTT DATA", e:"", r:"OT", c:"si", o:3, m:"IT 服务 / 集成 + 边缘即服务（Edge-as-a-Service）", d:"2025-09 NTT 以 ¥2.4 兆完成对其私有化；Edge AI 平台与爱立信合作私有 5G / 物理 AI，Cargill 50 站点落地", t:["工业","IoT"], f:"NTT 全资子公司（2025-09 私有化）· FY25 营收 ≈$32B（+8%），净利 ≈$1.7B · 员工 ~19.8 万" },
+];
+
+const CATS4 = [
+  {k:"odm", n:"ODM / 整机与代工", s:"ODM & EMS · 设计、制造整机", def:"把芯片 + 软件打包成整机的设计制造方：手机 / PC / 服务器 ODM，以及为品牌做组装与供应链的 EMS", biz:"竞争逻辑：规模 + 良率 + 客户绑定。AI 服务器与 AI 手机代工成为新的增长极，2025 年起闻泰 ODM 并入立讯"},
+  {k:"module", n:"模组与 SoM", s:"Modules & SoM · 蜂窝 / 算力模组、计算机模块", def:"把连接与算力封装成即插即用模组 / 计算机模块，是端侧 AI 能力向中长尾设备扩散的关键载体", biz:"竞争逻辑：中国厂商主导蜂窝 IoT 模组（全球份额 >90%），海外在工业嵌入式 SoM 与定位 / 短距模块占优"},
+  {k:"edge", n:"边缘计算硬件与平台", s:"Edge Compute · 工控机、边缘整机、边缘运行时", def:"在设备侧或近端提供算力的整机与平台：工业 PC、边缘 AI 盒子、边缘数据 / 消息平台、tinyML 工具链", biz:"竞争逻辑：工业场景绑定 + 生态（NVIDIA Jetson、英飞凌、高通）；算力与整机一体化"},
+  {k:"si", n:"行业方案与集成", s:"System Integration · 行业集成商 / ISV / 服务商", def:"把硬件 + 模型 + 软件集成进具体行业场景，负责落地、交付与运维的集成商与软件服务商", biz:"竞争逻辑：客户与场景资源、行业 know-how；华为昇腾 / 鸿蒙生态系统集成商是中国特色玩家"}
+];
+/* ===================== L5 机器人 / 具身智能玩家数据 =====================
+   r: 地区 CN/US/EU/OT   c: 品类 humanoid/industrial/service/consumer/embodied
+   o: 状态 1已上市 2未上市 3子公司/已被收购
+   m: 代表产品 / 方案   d: 定位说明   t: 场景标签   tw: 中国台湾企业
+   人形机器人尚未形成可比量产财务口径，故不强制附 f 财务字段
+*/
+const ROBOT_PLAYERS = [
+  /* ---------- 中国 · 人形机器人 ---------- */
+  {n:"宇树", e:"Unitree", r:"CN", c:"humanoid", o:2, m:"G1 / H1 / R1 人形 · Go2 / B2 四足", d:"从四足到人形、从整机到核心零部件的“技术流”代表，公开定价大幅拉低人形入场门槛，出货与场景落地领先", f:"<span class='fv'>累计融资 >18 亿元</span><span class='fk'>· 2024 年 B 轮 10 亿元，美团、红杉、源码等；估值 ~150 亿元</span><span class='fk'>· G1 公开价 9.9 万元起，是门槛级定价</span>", t:["人形","工业"]},
+  {n:"智元机器人", e:"AgiBot", r:"CN", c:"humanoid", o:2, m:"远征 A2 / A2 Pro · 灵犀 X1", d:"“本体 + 模型”双轮，与上海人工智能实验室“书生”体系深度绑定，聚焦制造与商用场景；股东含多家产业资本", f:"<span class='fv'>累计融资 ~60 亿元</span><span class='fk'>· 2025-03 A 轮超 30 亿元，比亚迪、上汽、北汽、蓝驰等产业方</span><span class='fk'>· 估值 ~170 亿元；灵犀 X1 低价开源硬件</span>", t:["人形","工业"]},
+  {n:"优必选", e:"UBTech", r:"CN", c:"humanoid", o:1, m:"Walker S / S1 · Walker 系列", d:"港股的“人形机器人第一股”，主打教育与商用展示导入，延伸至汽车工厂与养老场景", f:"<span class='fx'>已上市 · 港交所 09880</span><span class='fv'>市值 ≈700 亿港元（2026-09）</span><span class='fk'>· 2025 营收 20+ 亿元（+40%），主要来自教育与商用服务机器人</span>", t:["人形","服务"]},
+  {n:"傅利叶智能", e:"Fourier Intelligence", r:"CN", c:"humanoid", o:2, m:"GR-1 / GR-2 人形 · 康复外骨骼", d:"从康复 / 医疗外骨骼切入通用人形，强调力控与柔性执行器自研", f:"<span class='fv'>累计融资 ~10 亿元</span><span class='fk'>· 2025-10 战略轮，国家制造业转型基金 + 产业方</span><span class='fk'>· GR-1 多家医院 / 养老 POC</span>", t:["人形","医疗"]},
+  {n:"银河通用", e:"Galbot", r:"CN", c:"humanoid", o:2, m:"Galbot G1 · 轮式 + 仿人双操作系统", d:"零售 / 物流场景落地最快的通用人形之一，主打“轮式底盘 + 仿人上半身”的性价比商用形态", f:"<span class='fv'>累计融资 ~30 亿元</span><span class='fk'>· 2025-06 战略轮 11 亿元，美团、阿里、多家车企产业方</span><span class='fk'>· 投前估值 100 亿元</span>", t:["人形","物流","服务"]},
+  {n:"逐际动力", e:"LimX Dynamics", r:"CN", c:"humanoid", o:2, m:"TRON1 双足 / 人形 · 四轮足", d:"运动控制见长，产品覆盖科研、巡检与通用人形探索，为高校与工业提供开发平台", f:"<span class='fv'>累计融资 ~10 亿元</span><span class='fk'>· 2025-07 A+ 轮，招商局创投、高瓴等</span>", t:["人形","工业"]},
+  {n:"开普勒", e:"Kepler Robot", r:"CN", c:"humanoid", o:2, m:"先行者 K2 / K1", d:"重工 / 巡检场景导向，与丰田、卡特彼勒等重资产场景合作探索落地", f:"<span class='fv'>累计融资 ~12 亿元</span><span class='fk'>· 2025-05 战略轮，多家国资与重工产业方</span><span class='fk'>· 已交付数十台至港口 / 电力巡检</span>", t:["人形","工业"]},
+  {n:"小鹏鹏行", e:"XPeng Robotics", r:"CN", c:"humanoid", o:2, m:"PX5 · 六足 / 双足机器人", d:"PX5 为“钢铁侠一代”量产试验；依托小鹏智驾体系把具身模型与硬件复用至机器人", f:"<span class='fv'>小鹏汽车全资 / 孵化</span><span class='fk'>· 依托小鹏智驾研发投入，未单独披露融资</span>", t:["人形","工业"]},
+  {n:"小米", e:"Xiaomi", r:"CN", c:"humanoid", o:2, m:"CyberOne 人形 · CyberDog 四足", d:"消费电子巨头布局具身，自研人形与四足并在小米汽车工厂内做 POC", f:"<span class='fx'>已上市 · 港交所 01810</span><span class='fv'>市值 ≈1.5 万亿港元（2026-09）</span><span class='fk'>· 机器人业务并入集团研发，未单列披露</span>", t:["人形","工业"]},
+  {n:"上海智源无限", e:"Zhiyuan Robotics", r:"CN", c:"humanoid", o:2, m:"通用人形科研平台", d:"高校系人形研究平台，为具身智能研究提供硬件底座", f:"<span class='fv'>科研项目 + 天使轮</span><span class='fk'>· 依托高校与地方实验室经费，少量股权融资</span>", t:["人形"]},
+  {n:"达阀机器人", e:"DaxRobot", r:"CN", c:"humanoid", o:2, m:"通用人形 + 桌面机器人", d:"以灵巧手与柔性抓取见长，面向精密装配与科研场景", f:"<span class='fv'>天使 / Pre-A 轮，累计 ~2 亿元</span><span class='fk'>· 灵巧手为核心卖点，聚焦精密装配</span>", t:["人形","工业"]},
+  {n:"优理奇", e:"UniX AI", r:"CN", c:"humanoid", o:2, m:"Wanda 轮式人形 · 通用家事操作", d:"主打家庭深度清洁与整理操作，轮式 + 双臂构型最早量产探索之一", f:"<span class='fv'>累计融资 >5 亿元</span><span class='fk'>· 2025-11 A 轮，阿里战投、高瓴等</span>", t:["人形","服务"]},
+  {n:"星尘智能", e:"Astribot", r:"CN", c:"humanoid", o:2, m:"S1 桌面双臂机器人", d:"以高速灵巧桌面双臂切入科研与精密操作，速度与力控见长", f:"<span class='fv'>累计融资 >5 亿元</span><span class='fk'>· 2025-08 A 轮，多家头部 VC</span>", t:["人形","工业"]},
+  {n:"众擎机器人", e:"EngineAI", r:"CN", c:"humanoid", o:2, m:"SE01 全尺寸人形 · PM01 小尺寸", d:"从纯电驱动的小型人形到全尺寸通用人形，主打运动控制与整机成本", f:"<span class='fv'>累计融资 >3 亿元</span><span class='fk'>· 2025-06 天使 / Pre-A 轮，北京国资 + 产业方</span>", t:["人形","工业"]},
+  {n:"松延动力", e:"SongYan", r:"CN", c:"humanoid", o:2, m:"N2 双足 · 通用人形", d:"高校系创业，运动控制与四足 / 双足平台并行，面向科研与教育", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 2025-05 天使轮</span>", t:["人形"]},
+  {n:"灵初智能", e:"Lingchu AI", r:"CN", c:"embodied", o:2, m:"具身操作基础模型 · 灵巧手", d:"从灵巧手 + 操作模型切入的家务操作公司，强调“双灵巧手 + 模型”闭环", f:"<span class='fv'>累计融资 >3 亿元</span><span class='fk'>· 2025-07 天使轮，多家基金</span>", t:["具身模型"]},
+
+  /* ---------- 中国 · 工业 / 物流 ---------- */
+  {n:"埃斯顿", e:"Estun", r:"CN", c:"industrial", o:1, m:"六轴工业机器人 · 焊接 / 搬运", d:"国产工业机器人龙头，出货量居国内前列，向新能源（锂电 / 光伏）与汽车焊接场景扩张", f:"<span class='fx'>已上市 · 深交所 002747</span><span class='fv'>市值 ≈420 亿元（2026-09）</span><span class='fk'>· 2025 营收 55+ 亿元，机器人 / 自动化 + 核心部件双主业</span>", t:["工业","协作臂"]},
+  {n:"汇川技术", e:"Inovance", r:"CN", c:"industrial", o:1, m:"SCARA / 六轴工业机器人 · 伺服系统", d:"工控平台型公司，以核心部件（伺服 / 变频）+ 本体切入，工业机器人业务随新能源设备放量", f:"<span class='fx'>已上市 · 深交所 300124</span><span class='fv'>市值 ≈2,500 亿元（2026-09）</span><span class='fk'>· 2025 营收 430+ 亿元（+20%），机器人 / 工业自动化主引擎</span>", t:["工业"]},
+  {n:"新松机器人", e:"SIASUN", r:"CN", c:"industrial", o:2, m:"工业 / 移动机器人 · 洁净室机器人", d:"中国科学院背景的老牌机器人国家队，覆盖汽车、半导体、医疗等场景，沈阳国资控股", f:"<span class='fx'>已上市 · 深交所 300024</span><span class='fv'>市值 ≈420 亿元（2026-09）</span><span class='fk'>· 2025 营收 40+ 亿元，沈阳国资 + 中科院背景</span>", t:["工业","物流"]},
+  {n:"遨博智能", e:"AUBO", r:"CN", c:"industrial", o:2, m:"协作机器人（AUBO 系列）", d:"国内最早的量产协作机器人厂商之一，主攻协作臂与复合机器人，正推进科创板 IPO", f:"<span class='fv'>累计融资 >15 亿元</span><span class='fk'>· 2024-05 战投轮，北京国资 + 产业方</span><span class='fx'>2026 年科创板 IPO 辅导备案</span>", t:["协作臂","工业"]},
+  {n:"节卡机器人", e:"JAKA", r:"CN", c:"industrial", o:2, m:"协作机器人（JAKA Zu / Zi 系列）", d:"协作机器人头部，聚焦 3C、汽车与一般工业，出海占比高", f:"<span class='fv'>累计融资 >12 亿元</span><span class='fk'>· 2024-02 D 轮，多家产业方 / 国资</span><span class='fx'>拟科创板 IPO</span>", t:["协作臂"]},
+  {n:"大族机器人", e:"Han's Robot", r:"CN", c:"industrial", o:2, m:"协作机器人 / 视觉集成", d:"大族激光系协作机器人，借力激光加工渠道进入汽车与 3C", f:"<span class='fv'>累计融资 ~6 亿元</span><span class='fk'>· 大族激光分拆，2023 年战略轮</span>", t:["协作臂","工业"]},
+  {n:"极智嘉", e:"Geek+", r:"CN", c:"industrial", o:1, m:"仓储 AMR / 拣选机器人 · 软件平台", d:"全球仓储 AMR 出货与市占领先，海外收入占比高，港股上市", f:"<span class='fx'>已上市 · 港交所 03061</span><span class='fv'>市值 ≈160 亿港元（2026-09）</span><span class='fk'>· 2025 营收 60+ 亿元，全球仓储 AMR 市占领先</span>", t:["物流"]},
+  {n:"海康机器人", e:"Hikrobot", r:"CN", c:"industrial", o:2, m:"移动机器人（AMR / 叉车）· 机器视觉", d:"海康威视旗下，机器视觉 + 移动机器人一体化，深耕 3C / 锂电 / 汽车制造物流", f:"<span class='fv'>海康威视分拆上市（2026 年递表）</span><span class='fk'>· 2025 营收 80+ 亿元（+28%）</span>", t:["物流","工业"]},
+  {n:"快仓智能", e:"Quicktron", r:"CN", c:"industrial", o:2, m:"仓储 AMR · 智能搬运系统", d:"电商仓储 AMR 头部玩家之一，服务电商与海外物流自动化（含东南亚）", f:"<span class='fv'>累计融资 ~10 亿元</span><span class='fk'>· 2023-11 战投轮，菜鸟 / 吉利等产业方</span>", t:["物流"]},
+  {n:"旷视机器人", e:"Megvii Robot", r:"CN", c:"industrial", o:2, m:"河图系统 · AMR 调度软件", d:"旷视旗下，以“河图”OS + AMR 切入物流与工厂自动化，是旷视自 2024 年起转型的物理空间运营主线", f:"<span class='fv'>旷视全资项目</span><span class='fk'>· 依托旷视累计融资 19.4 亿美元（止于 2020）</span>", t:["物流","工业"]},
+  {n:"海柔创新", e:"Hai Robotics", r:"CN", c:"industrial", o:2, m:"箱式仓储机器人（ACR · 料箱）", d:"料箱式（货到人）仓储机器人头部，主攻电商与 3C 仓库，海外占比高", f:"<span class='fv'>累计融资 >40 亿元</span><span class='fk'>· 2025-09 E 轮，多家国资 / 物流产业方</span><span class='fk'>· 估值 ~100 亿元（2025）</span>", t:["物流"]},
+  {n:"珞石机器人", e:"ROKAE", r:"CN", c:"industrial", o:2, m:"六轴工业 / 协作机器人", d:"以精密力控与运动控制见长，覆盖汽车零部件、3C 与一般工业，国产替代中坚", f:"<span class='fv'>累计融资 >8 亿元</span><span class='fk'>· 2025-11 C 轮，国资 + 产业方</span>", t:["工业","协作臂"]},
+
+  /* ---------- 中国 · 服务 / 商用 ---------- */
+  {n:"普渡机器人", e:"Pudu", r:"CN", c:"service", o:2, m:"配送 / 清洁机器人（葫芦 / 贝拉 / 泽塔等）", d:"全球商用配送机器人市占领先，覆盖餐饮、酒店、商超，海外出海占比高", f:"<span class='fv'>累计融资 >15 亿元</span><span class='fk'>· 2025-09 战略轮，多家国资与海外产业方</span><span class='fk'>· 全球商用配送市占领先，出海占比高</span>", t:["服务","清洁"]},
+  {n:"擎朗智能", e:"Keenon", r:"CN", c:"service", o:2, m:"配送机器人（Peanut / T 系列）", d:"餐饮配送机器人头部，规模化部署餐饮与酒店场景并出海", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 2024-06 D 轮，软银愿景 + 产业方</span><span class='fx'>拟 2026 年港股 IPO</span>", t:["服务"]},
+  {n:"云迹科技", e:"YunJi", r:"CN", c:"service", o:2, m:"酒店配送机器人 · 酒店 AI 平台", d:"以酒店送物 + 客房服务机器人为主，向酒店数智化平台延展", f:"<span class='fv'>累计融资 ~8 亿元</span><span class='fk'>· 2023-03 战略轮，多家酒店集团产业方</span><span class='fx'>2025 年递表港股</span>", t:["服务"]},
+  {n:"达闼科技", e:"CloudMinds", r:"CN", c:"service", o:2, m:"云机器人（S / RG 系列）· 云端智能架构", d:"“云端机器人”概念提出者，以云大脑 + 终端架构主打商用服务与护理场景", f:"<span class='fv'>累计融资 ~20 亿元</span><span class='fk'>· 2021 年曾递表科创板，后撤回</span><span class='fk'>· 股东含中移动、富士康等产业方</span>", t:["服务","医疗"]},
+  {n:"高仙机器人", e:"Gaussian Robotics", r:"CN", c:"service", o:2, m:"商用清洁机器人（清扫 / 洗地）", d:"全球商用清洁机器人市占领先，覆盖商场、机场、市政，出海度高", f:"<span class='fv'>累计融资 >15 亿元</span><span class='fk'>· 2024-06 战略轮，多家国资 / 产业方</span><span class='fk'>· 全球商用清洁市占领先</span>", t:["清洁","服务"]},
+  {n:"猎户星空", e:"OrionStar", r:"CN", c:"service", o:2, m:"服务机器人（豹小秘 / 送餐）", d:"以语音交互驱动的商用服务机器人，主打银行 / 展厅 / 酒店导览服务", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 小米系投资，猎豹移动旗下</span>", t:["服务"]},
+  {n:"小马智行", e:"Pony.ai", r:"CN", c:"service", o:2, m:"自动驾驶 + 无人配送（城市物流）", d:"以 Robotaxi 为主，延伸无人配送与城市物流机器人场景", f:"<span class='fx'>已上市 · NASDAQ PONY</span><span class='fv'>市值 ≈80 亿美元（2026-09）</span><span class='fk'>· 2025 营收 6.5 亿美元（+150%）</span>", t:["物流"]},
+
+  /* ---------- 中国 · 消费 / 无人机 ---------- */
+  {n:"科沃斯", e:"Ecovacs", r:"CN", c:"consumer", o:1, m:"扫地机器人（地宝）· 添可（洗地）", d:"全球扫地机市占第一梯队，双品牌（科沃斯 + 添可）覆盖家庭清洁，向商用与割草机延展", f:"<span class='fx'>已上市 · 上交所 603486</span><span class='fv'>市值 ≈680 亿元（2026-09）</span><span class='fk'>· 2025 营收 170+ 亿元，双品牌（科沃斯 + 添可）</span>", t:["清洁"]},
+  {n:"石头科技", e:"Roborock", r:"CN", c:"consumer", o:1, m:"扫地机器人（P / S 系列）", d:"扫地机头部，以激光导航 + 算法见长，海外收入占比高，盈利能力强", f:"<span class='fx'>已上市 · 上交所 688169</span><span class='fv'>市值 ≈700 亿元（2026-09）</span><span class='fk'>· 2025 营收 110+ 亿元，海外占比高、净利率领先</span>", t:["清洁"]},
+  {n:"追觅科技", e:"Dreame", r:"CN", c:"consumer", o:2, m:"扫地机器人 · 洗地机 · 高速马达", d:"以自研高速数字马达为核心，从清洁电器延伸到机器人与人形探索", f:"<span class='fv'>累计融资（未披露确切金额）</span><span class='fk'>· 2023 年估值 100 亿元（红杉 / 顺为等）</span><span class='fk'>· 自研高速马达为差异化核心</span>", t:["清洁"]},
+  {n:"云鲸智能", e:"Narwal", r:"CN", c:"consumer", o:2, m:"扫拖一体机器人（配备自清洁基站）", d:"首创自清洁基站的扫地机新势力，主打拖地场景差异化", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 2024-05 战投轮，多家基金</span>", t:["清洁"]},
+  {n:"九号公司", e:"Ninebot", r:"CN", c:"consumer", o:2, m:"割草机器人 · 电动滑板车 / 平衡车", d:"以短交通 + 割草机器人切入，割草机器人在欧美智能家居场景快速放量，科创板 & 瑞士上市", f:"<span class='fx'>已上市 · 上交所 689009 & SIX NINE</span><span class='fv'>市值 ≈500 亿元（2026-09）</span><span class='fk'>· 2025 营收 130+ 亿元，割草 & 出行双主业</span>", t:["清洁"]},
+  {n:"大疆", e:"DJI", r:"CN", c:"consumer", o:2, m:"消费 / 行业无人机（Mavic / Matrice 系列）", d:"全球消费与行业无人机绝对龙头，自研飞控 + 云台 + 视觉，并延伸至机器人平台与车载", f:"<span class='fv'>未上市，自筹现金流</span><span class='fk'>· 2024 营收估算 >600 亿元，全球无人机市占 ~70%</span><span class='fk'>· 员工 ~1.4 万人</span>", t:["无人机"]},
+  {n:"亿航智能", e:"EHang", r:"CN", c:"consumer", o:2, m:"载人 eVTOL 自动驾驶飞行器（EH216-S）", d:"获全球首张载人级 eVTOL 型号合格证，主打低空出行与观光", f:"<span class='fx'>已上市 · NASDAQ EH</span><span class='fv'>市值 ≈40 亿美元（2026-09）</span><span class='fk'>· 2025 营收 ~10 亿元（+数倍），低空经济第一股</span>", t:["无人机"]},
+
+  /* ---------- 中国 · 具身智能模型 / 核心部件 ---------- */
+  {n:"穹彻智能", e:"Noematrix", r:"CN", c:"embodied", o:2, m:"具身智能大模型 · 力控操作", d:"上海系具身智能基础模型公司，主打柔性、力控、非结构化场景的通用操作", f:"<span class='fv'>累计融资 ~10 亿元</span><span class='fk'>· 2025-06 战投轮，多家产业方</span>", t:["具身模型"]},
+  {n:"星海图", e:"Star Infinity", r:"CN", c:"embodied", o:2, m:"具身智能基础模型 · 数据采集", d:"从真实数据采集与低成本数据引擎切入，自研 VLA 模型并落地制造 / 仓储", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 2025-05 战略轮，蚂蚁、高瓴等</span>", t:["具身模型"]},
+  {n:"智平方", e:"Zhiping", r:"CN", c:"embodied", o:2, m:"具身智能大模型 · 通用具身代理", d:"面向人的具身智能大模型与具身代理，聚焦商业与家庭服务", f:"<span class='fv'>累计融资 ~8 亿元</span><span class='fk'>· 2025-03 A 轮，多家产业方</span>", t:["具身模型"]},
+  {n:"逻辑机器人", e:"Logical Robots", r:"CN", c:"embodied", o:2, m:"具身智能基础模型 · 软硬件一体", d:"以具身智能基础模型匹配自有 / 第三方硬件，覆盖一般工业与物流", f:"<span class='fv'>累计融资 ~5 亿元</span><span class='fk'>· 2025 年战略轮</span>", t:["具身模型"]},
+  {n:"松灵机器人", e:"AgileX", r:"CN", c:"embodied", o:2, m:"四轮 / 四足底盘 · 科研 / 物流移动平台", d:"移动机器人底盘与科研平台供应商，为具身与自动驾驶提供开发底座", f:"<span class='fv'>累计融资 ~5 亿元</span><span class='fk'>· 2023-09 战投轮</span>", t:["物流","工业"]},
+  {n:"绿的谐波", e:"Leaderdrive", r:"CN", c:"embodied", o:1, m:"谐波减速器（LCS / LHS 系列）", d:"国产谐波减速器龙头，人形 / 协作机器人关节核心部件，科创板上市", f:"<span class='fx'>已上市 · 上交所 688017</span><span class='fv'>市值 ≈350 亿元（2026-09）</span><span class='fk'>· 2025 营收 ~12 亿元（+60%），人形部件放量</span>", t:["核心部件"]},
+  {n:"双环传动", e:"Shuanghuan", r:"CN", c:"embodied", o:1, m:"RV / 谐波减速器 · 精密齿轮", d:"精密传动部件龙头，为机器人关节提供 RV 谐波减速器与齿轮，A 股上市", f:"<span class='fx'>已上市 · 深交所 002472</span><span class='fv'>市值 ≈500 亿元（2026-09）</span><span class='fk'>· 2025 营收 ~90 亿元，齿轮 + 减速器双主业</span>", t:["核心部件"]},
+  {n:"兆威机电", e:"Zhaowei", r:"CN", c:"embodied", o:1, m:"微型驱动系统 · 灵巧手 / 舵机", d:"微型传动与驱动系统龙头，布局灵巧手与机器人微型执行器，A 股上市", f:"<span class='fx'>已上市 · 深交所 003021</span><span class='fv'>市值 ≈220 亿元（2026-09）</span><span class='fk'>· 2025 营收 ~15 亿元（+50%），灵巧手驱动放量</span>", t:["核心部件"]},
+  {n:"坤维科技", e:"Kunwei", r:"CN", c:"embodied", o:2, m:"六维力传感器 · 关节力矩传感器", d:"六维力 / 力矩传感核心供应商，为人形与协作臂提供力觉感知", f:"<span class='fv'>累计融资 ~4 亿元</span><span class='fk'>· 2025-08 战投轮</span>", t:["核心部件"]},
+  {n:"因时机器人", e:"Inspire Robots", r:"CN", c:"embodied", o:2, m:"灵巧手 · 微型伺服 / 连杆", d:"以灵巧手与微型直线伺服见长，服务人形与精密装配", f:"<span class='fv'>累计融资 ~3 亿元</span><span class='fk'>· 2025 年战投轮，多家产业方</span>", t:["核心部件"]},
+
+  /* ---------- 美国 · 人形机器人 ---------- */
+  {n:"Figure AI", e:"", r:"US", c:"humanoid", o:2, m:"Figure 02 / Helix 模型组合", d:"估值最高的人形机器人公司之一，获 OpenAI / 微软 / 英伟达等投资，已与宝马等汽车厂做装配 POC", f:"<span class='fv'>累计融资 >$1.9B</span><span class='fk'>· 2025-09 C 轮 $1B @ $39B（英伟达、OpenAI、微软、Jeff Bezos 参与）</span><span class='fk'>· 2026-06 传 Pre-IPO 洽谈 @ 更高估值</span>", t:["人形","工业"]},
+  {n:"特斯拉", e:"Tesla", r:"US", c:"humanoid", o:1, m:"Optimus（擎天柱）", d:"以电池 + 电机 + FSD 芯片 / 软件复用押注“人形最大规模量产”，是量产叙事最强的玩家", f:"<span class='fx'>已上市 · NASDAQ TSLA</span><span class='fv'>市值 ≈1.1 万亿美元（2026-09）</span><span class='fk'>· Optimus 目标年产百万台，尚在样机 / 小批量阶段</span>", t:["人形","工业"]},
+  {n:"Agility Robotics", e:"", r:"US", c:"humanoid", o:2, m:"Digit 双足人形", d:"最早做仓储双足人形的公司之一，与亚马逊等集成商试点，主攻物流搬运", f:"<span class='fv'>累计融资 ~$340M</span><span class='fk'>· 2025-06 由 WP Global 主导的融资（估值未披露）</span><span class='fk'>· 亚马逊 / GXO 试点落地</span>", t:["人形","物流"]},
+  {n:"1X Technologies", e:"", r:"US", c:"humanoid", o:2, m:"NEO（家用）· EVE（服务）", d:"OpenAI 领投的挪威 / 美国团队，主打家庭服务人形", f:"<span class='fv'>累计融资 >$150M</span><span class='fk'>· 2024-03 B 轮（OpenAI 领投）</span><span class='fk'>· NEO 2026 年量产爬坡</span>", t:["人形","服务"]},
+  {n:"Apptronik", e:"", r:"US", c:"humanoid", o:2, m:"Apollo 人形", d:"获 Google DeepMind 投资的德州团队，与 GXO（物流）、奔驰（装配）等合作落地", f:"<span class='fv'>累计融资 >$400M</span><span class='fk'>· 2025-03 战略轮，Google DeepMind / 奔驰 / GXO 参与</span>", t:["人形","物流","工业"]},
+  {n:"Boston Dynamics", e:"（现代旗下）", r:"US", c:"humanoid", o:3, m:"Atlas（电动版）· Spot 四足 · Stretch", d:"世界顶级运动机器人/动态平衡，现代汽车全资收购后向电动 Atlas 商业化演进", f:"<span class='fv'>现代汽车 2021 年收购 ~$1.1B</span><span class='fk'>· 并入现代机器人部门，未单独披露营收</span>", t:["人形","工业"]},
+
+  /* ---------- 美国 · 工业 / 物流 ---------- */
+  {n:"Symbotic", e:"", r:"US", c:"industrial", o:1, m:"仓储自动化系统 / 机器人分拣", d:"与沃尔玛深度绑定的仓储自动化后起之秀，软硬件一体，市值曾居仓储机器人第一", f:"<span class='fx'>已上市 · NASDAQ SYM</span><span class='fv'>市值 ≈400 亿美元（2026-09）</span><span class='fk'>· FY2025 营收 ~$31B（+50%，含沃尔玛合作）</span>", t:["物流","工业"]},
+  {n:"Locus Robotics", e:"", r:"US", c:"industrial", o:2, m:"AMR（Locus Vector 系列）", d:"仓库点到点 AMR 头部，聚焦电商 / 履约中心，商业化落地密度高", f:"<span class='fv'>累计融资 ~$200M</span><span class='fk'>· 2022-12 E 轮（估值未披露），已服务超 100 仓库</span>", t:["物流"]},
+  {n:"Wandelbots", e:"", r:"US", c:"industrial", o:2, m:"机器人编程与示教软件（NOVA）", d:"以拖拽示教 + 预训练降低工业机器人编程门槛，做连接传统工业臂与“具身”的软件层（德国团队、美国运营）", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2025-02 C 轮，多家工业 / VC</span>", t:["协作臂","工业"]},
+  {n:"Exotec", e:"法国", r:"US", c:"industrial", o:2, m:"Skypod 箱式仓储机器人", d:"料箱式（货到人）仓储机器人全球头部，法国团队、美国为主市场，亚马逊 / 沃尔玛等客户", f:"<span class='fv'>累计融资 >$350M</span><span class='fk'>· 2022-01 C 轮 $335M @ $2B</span><span class='fk'>· 全球 900+ 仓库部署</span>", t:["物流"]},
+  {n:"Vecna Robotics", e:"", r:"US", c:"industrial", o:2, m:"托盘搬运 AMR · 仓库软件", d:"托盘级 AMR 与仓库编排软件，聚焦整车搬运与分拣场景", f:"<span class='fv'>累计融资 ~$55M</span><span class='fk'>· 2020-10 由 Tiger 主导的融资</span>", t:["物流"]},
+
+  /* ---------- 美国 · 服务 / 商用 ---------- */
+  {n:"Bear Robotics", e:"", r:"US", c:"service", o:2, m:"送餐机器人（Servi）", d:"获软银投资的服务机器人，主打餐饮送餐并进军酒店 / 零售", f:"<span class='fv'>累计融资 ~$90M</span><span class='fk'>· 2021-09 软银愿景领投</span><span class='fk'>· 与赛百味 / 酒店集团部署合作</span>", t:["服务"]},
+  {n:"Diligent Robotics", e:"", r:"US", c:"service", o:2, m:"医院物流机器人（Moxi）", d:"医院非接触配送机器人的代表，主打院内护理与物资运输", f:"<span class='fv'>累计融资 ~$35M</span><span class='fk'>· 2021-03 由 Tiger 主导</span><span class='fk'>· 多家美国医院部署</span>", t:["服务","医疗"]},
+  {n:"Brain Corp", e:"", r:"US", c:"service", o:2, m:"自动化清洁 / 运输机器人大脑（BrainOS）", d:"以“大脑”软件对接各大清洁设备 OEM 的商用清洁平台", f:"<span class='fv'>累计融资 ~$150M</span><span class='fk'>· 2022-08 战略轮（软银愿景参与）</span><span class='fk'>· 对接各大清洁 OEM</span>", t:["清洁"]},
+  {n:"Chef Robotics", e:"", r:"US", c:"service", o:2, m:"双臂食品装配机器人（Chef）", d:"以“AI 机械臂”切入餐饮 / 食品后厨装配场景，做家庭食品加工的具身先行者", f:"<span class='fv'>累计融资 ~$20M</span><span class='fk'>· 2025-04 A 轮</span>", t:["服务","工业"]},
+
+  /* ---------- 美国 · 消费 / 无人机 ---------- */
+  {n:"iRobot", e:"", r:"US", c:"consumer", o:1, m:"Roomba / Braava", d:"扫地机品类的发明者，被亚马逊收购失败后持续承压，份额被中国品牌快速替代", f:"<span class='fx'>已上市 · NASDAQ IRBT</span><span class='fv'>市值 ≈2 亿美元（2026-09，峰值曾 100+ 亿美元）</span><span class='fk'>· 2025 营收 ~$250M（大幅下滑）</span>", t:["清洁"]},
+  {n:"Skydio", e:"", r:"US", c:"consumer", o:2, m:"自主飞行无人机（Skydio X 系列）", d:"美国最大的消费 / 行业无人机创业公司，以外资自主飞行对抗大疆", f:"<span class='fv'>累计融资 >$300M</span><span class='fk'>· 2023-03 E 轮 $230M @ $2.2B</span><span class='fk'>· 主攻美政府 / 国防与行业客户</span>", t:["无人机"]},
+
+  /* ---------- 美国 · 具身智能模型 ---------- */
+  {n:"Physical Intelligence", e:"", r:"US", c:"embodied", o:2, m:"π0 / π0.5 具身基础模型", d:"“一个模型控制多种机器人”路线的头部玩家，估值领先，定义 VLA 基础模型方向", f:"<span class='fv'>累计融资 >$800M</span><span class='fk'>· 2025-11 A 轮 $600M @ $5.6B（OpenAI、软银、Thrive 等）</span><span class='fk'>· 2026 年洽谈新一轮，估值或再上台阶</span>", t:["具身模型"]},
+  {n:"Skild AI", e:"", r:"US", c:"embodied", o:2, m:"Skild Brain 基础模型", d:"以“可扩展 + 通用技能”为目标的具身基础模型新锐，获软银 / 光速等大额融资", f:"<span class='fv'>累计融资 >$400M</span><span class='fk'>· 2025-04 A 轮 $300M @ $2.4B-3B（软银、光速、红杉）</span><span class='fk'>· 2026-06 传新一轮 ~$500M 融资</span>", t:["具身模型"]},
+  {n:"Covariant", e:"", r:"US", c:"embodied", o:3, m:"抓取 AI 模型（Brain）· 分拣机器人", d:"仓库抓取 AI 先驱，团队与部分资产 2024 年被亚马逊收购，并入其机器人部门", f:"<span class='fv'>2024-08 核心团队与部分资产被亚马逊收购</span><span class='fk'>· 其余资产独立运营（Marketplace 平台）</span>", t:["具身模型","物流"]},
+  {n:"NVIDIA", e:"英伟达", r:"US", c:"embodied", o:1, m:"Isaac GR00T / Jetson Thor · Omniverse 仿真", d:"机器人“卖铲人”：芯片 + 仿真 + 基础模型全栈，几乎人人形的投资方与平台", f:"<span class='fx'>已上市 · NASDAQ NVDA</span><span class='fv'>市值 ≈4.6 万亿美元（2026-09）</span><span class='fk'>· 机器人 / 具身为三大增长曲线之一</span>", t:["具身模型","工业"]},
+  {n:"Google DeepMind", e:"", r:"US", c:"embodied", o:3, m:"Gemini Robotics / RT-2 具身模型", d:"谷歌将 Gemini 扩展至具身，开放 RT 系列模型并与硬件伙伴（Apptronik 等）合作", f:"<span class='fv'>Alphabet 全资研究部门</span><span class='fk'>· 依托 Alphabet 研发投入，未单列财务</span>", t:["具身模型","人形"]},
+
+  /* ---------- 欧洲 · 人形机器人 ---------- */
+  {n:"Neura Robotics", e:"德国", r:"EU", c:"humanoid", o:2, m:"4NE-1 人形 · 协作臂", d:"欧洲少有的人形玩家，主打“家庭 + 工业”双场景，自称首发欧洲“认知机器人”", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2025-06 从零开始 4NE-1 量产（估值未披露）</span><span class='fk'>· 德国 / 工业场景落地</span>", t:["人形","工业","服务"]},
+  {n:"PAL Robotics", e:"西班牙", r:"EU", c:"humanoid", o:2, m:"TALOS / ARI 人形 · 科研平台", d:"欧洲老牌人形 / 双足研究平台，面向科研与服务", f:"<span class='fv'>累计融资 ~$40M</span><span class='fk'>· 科研 / 服务双市场，估值未披露</span>", t:["人形","服务"]},
+
+  /* ---------- 欧洲 · 工业 / 物流 ---------- */
+  {n:"ABB", e:"", r:"EU", c:"industrial", o:1, m:"工业机器人（六轴 / 协作 YuMi）", d:"“工业机器人四大家族”之一，瑞士总部，机器人业务持续向 AI / 软件（Adaptive Robotics）延展", f:"<span class='fx'>已上市 · SIX ABBN & NYSE ABB</span><span class='fv'>市值 ≈1,100 亿美元（2026-09）</span><span class='fk'>· 机器人业务营收占比 ~2-3 成</span>", t:["工业","协作臂"]},
+  {n:"KUKA", e:"库卡", r:"EU", c:"industrial", o:3, m:"工业机器人 / 协作机器人", d:"“四大家族”之一，德国公司、美的集团控股，中国区业务放量", f:"<span class='fv'>美的集团 2022 年全资收购（私有化）</span><span class='fk'>· 2022 收购价 ~€1.5B，美的持股 >95%</span>", t:["工业","协作臂"]},
+  {n:"Universal Robots", e:"优傲", r:"EU", c:"industrial", o:3, m:"协作机器人（UR 系列）", d:"协作机器人品类开创者，丹麦公司，被 Teradyne（泰瑞达）收购", f:"<span class='fv'>2015 年被 Teradyne 以 ~$285M 收购</span><span class='fk'>· 泰瑞达全资子公司，累计出货 >90,000 台</span>", t:["协作臂"]},
+  {n:"BlueBotics", e:"瑞士", r:"EU", c:"industrial", o:2, m:"AGV / AMR 导航与调度软硬件", d:"工业 AGV 导航与调度平台（ANT），ToB 自动化导航方案商", f:"<span class='fv'>2015 年被 Kollmorgen 收购</span><span class='fk'>· ANT 导航渗透多家 AGV OEM</span>", t:["物流","工业"]},
+
+  /* ---------- 欧洲 · 服务 / 消费 / 无人机 ---------- */
+  {n:"Parrot", e:"法国", r:"EU", c:"consumer", o:1, m:"消费 / 行业无人机（Anafi 系列）", d:"老牌欧洲无人机厂商，巴黎交易所上市，海外业务承压", f:"<span class='fx'>已上市 · EPA PARRO</span><span class='fv'>市值 ≈€180M（2026-09）</span><span class='fk'>· 无人机 / 车载 / 物联网多业务，海外承压</span>", t:["无人机"]},
+
+  /* ---------- 其他 · 人形机器人 ---------- */
+  {n:"现代汽车", e:"Hyundai · 韩国", r:"OT", c:"humanoid", o:3, m:"波士顿动力（Atlas / Spot / Stretch）", d:"以集团战略收购波士顿动力，押注人形与工业机器人全栈，是全球财阀式布局的代表", f:"<span class='fx'>已上市 · KRX 005380</span><span class='fv'>市值 ≈60 万亿韩元（2026-09）</span><span class='fk'>· 2021 年收购 ~$1.1B 持有波士顿动力多数股权</span>", t:["人形","工业"]},
+  {n:"Rainbow Robotics", e:"韩国", r:"OT", c:"humanoid", o:2, m:"HUBO 人形 · 协作臂", d:"韩国人形 / 协作机器人公司，三星大额增持并拟将其纳入合并，是“三星子公司 + 人形”的财阀路线", f:"<span class='fv'>三星 2024 / 2025 多次增持至 ~49.8%</span><span class='fk'>· 拟被三星纳入合并（韩国上市）</span>", t:["人形","协作臂"]},
+
+  /* ---------- 其他 · 工业 / 物流 ---------- */
+  {n:"发那科", e:"FANUC", r:"OT", c:"industrial", o:1, m:"工业机器人（六轴）· 数控系统", d:"“四大家族”之一，日本，工业机器人出货量全球领先", f:"<span class='fx'>已上市 · TSE 6954</span><span class='fv'>市值 ≈5.5 万亿日元（2026-09）</span><span class='fk'>· 全球工业机器人出货量领先</span>", t:["工业"]},
+  {n:"安川电机", e:"Yaskawa", r:"OT", c:"industrial", o:1, m:"工业机器人与伺服 / 变频", d:"“四大家族”之一，日本，运动控制 + 机器人一体化", f:"<span class='fx'>已上市 · TSE 6506</span><span class='fv'>市值 ≈1.6 万亿日元（2026-09）</span><span class='fk'>· 运动控制 + 机器人双主业</span>", t:["工业"]},
+  {n:"川崎重工", e:"Kawasaki", r:"OT", c:"industrial", o:1, m:"工业机器人（六轴 / 焊接）", d:"日本老牌工业机器人厂商，聚焦焊接、汽车与一般工业", f:"<span class='fx'>已上市 · TSE 7012</span><span class='fv'>市值 ≈1.2 万亿日元（2026-09）</span><span class='fk'>· 机器人 + 重工 / 造船多业务</span>", t:["工业"]},
+  {n:"Doosan Robotics", e:"斗山 · 韩国", r:"OT", c:"industrial", o:1, m:"协作机器人（A / O 系列）", d:"韩国协作机器人龙头，韩国上市，向一般工业与餐饮延展", f:"<span class='fx'>已上市 · KOSDAQ 454910</span><span class='fv'>市值 ≈3.5 万亿韩元（2026-09）</span><span class='fk'>· 2023 年 IPO，韩国协作机器人龙头</span>", t:["协作臂"]},
+
+  /* ---------- 其他 · 服务 / 消费 / 无人机 ---------- */
+  {n:"软银机器人", e:"SoftBank Robotics · 日本", r:"OT", c:"service", o:3, m:"Pepper / Whiz 系列", d:"以情感机器人 / 商用清洁为主，2016 年推动 Pepper 消费化后转型 B 端", f:"<span class='fv'>软银集团旗下，曾为独立子公司</span><span class='fk'>· Pepper 停产 / 转型，转向 B 端清洁</span>", t:["服务","清洁"]},
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"consumer", o:1, m:"JetBot / Ballie 家庭机器人", d:"家电巨头的家庭 AI 机器人布局，拟把 Rainbow Robotics 纳入合并强化人形", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span><span class='fk'>· 2025 收购 / 增持 Rainbow 股权</span>", t:["服务","清洁"]},
+  {n:"LG Electronics", e:"韩国", r:"OT", c:"consumer", o:1, m:"CLOi 服务 / 家庭机器人", d:"家电 + 服务机器人，获 LG 集团“物理 AI”基础设施相关订单", f:"<span class='fx'>已上市 · KRX 066570</span><span class='fv'>市值 ≈30 万亿韩元（2026-09）</span><span class='fk'>· 布局家庭 / 商用服务机器人</span>", t:["服务"]},
+  {n:"Sanctuary AI", e:"加拿大", r:"OT", c:"humanoid", o:2, m:"Phoenix 人形 · 碳纤维机械手", d:"加拿大通用人形，以 20+ 自由度碳纤维灵巧手为差异化，主打工业与危险作业", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2024-12 战略轮</span><span class='fk'>· 加拿大 / 北美工业客户</span>", t:["人形","工业"]},
+];
+
+const CATS_ROBOT = [
+  {k:"humanoid", n:"人形机器人", s:"Humanoids · 通用 / 双足人形", def:"以拟人构型实现通用作业的整机公司：双足人形是具身智能最高阶、也最晚商业化的形态，聚焦样机迭代与工厂 / 整车厂 POC", biz:"竞争逻辑：量产能力 + 资本消耗 + 场景绑定；尚无确定量产曲线，多数在 2024–2026 融资长坡"},
+  {k:"industrial", n:"工业机器人 / AGV·AMR", s:"Industrial & Logistics · 工业臂、协作臂、仓储机器人", def:"已高度成熟的存量市场：工业机器人四大家族主导，中国以埃斯顿、汇川等做国产替代；AGV / AMR 是最快增长细分", biz:"竞争逻辑：规模 + 客户绑定 + 核心部件自制；国产替代是主线"},
+  {k:"service", n:"服务 / 商用机器人", s:"Service & Commercial · 送餐、酒店、清洁", def:"以场景 + 商业模式驱动：送餐、酒店、商用清洁、院内物流，中国玩家密度与出货量全球第一", biz:"竞争逻辑：场景密度 + 出海渠道 + 售后网络"},
+  {k:"consumer", n:"消费机器人 / 无人机", s:"Consumer & Drones · 扫地机、无人机、家庭机器人", def:"规模最大、最成熟的一类：扫地机、无人机、洗地机、家庭机器人，中国品牌全球主导", biz:"竞争逻辑：品牌 + 供应链成本 + 算法体验；iRobot 掉队是“中国替代发明者”的缩影"},
+  {k:"embodied", n:"具身智能模型 / 核心部件", s:"Embodied AI & Components · 具身模型、灵巧部件", def:"具身智能的“软件 + 供应链”：VLA 具身基础模型，以及人形核心部件（谐波减速器 / 丝杠 / 灵巧手 / 力传感器）", biz:"竞争逻辑：模型公司赌“一个模型、千机千面”，部件公司赌“人形量产国产替代”"}
+];
+const ROBOT_TAGS = ["人形","工业","协作臂","物流","服务","清洁","无人机","医疗","核心部件","具身模型"];
+
+initLayer({ prefix:"l3", players:PLAYERS, cats:CATS, regions:REGIONS, oLabels:OPEN });
+const OPEN4 = {1:"已上市", 2:"未上市", 3:"子公司 / 已被收购"};
+initLayer({ prefix:"l4", players:PLAYERS4, cats:CATS4, regions:REGIONS, oLabels:OPEN4 });
+initLayer({ prefix:"l5", players:ROBOT_PLAYERS, cats:CATS_ROBOT, regions:REGIONS, oLabels:OPEN4 });
+(function(){ const h = location.hash.replace("#",""); if (h && document.getElementById("view-" + h)) show(h); else measure(); })();
+</script>
+
+<script>
+/* ===================== 图表引擎（内联 SVG） ===================== */
+const DZ = (() => {
+  const C = { s1:"#2a78d6", s2:"#eb6834", s3:"#1baf7a", light:"#9ec5f4", mute:"#c3c2b7", ink:"#111827", ink2:"#52514e", ink3:"#898781", grid:"#e1e0d9" };
+  const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+  const fmt = v => v >= 1000 ? Math.round(v).toLocaleString("en-US") : (Number.isInteger(v) ? String(v) : (v < 10 ? v.toFixed(2).replace(/0$/,"") : v.toFixed(1)));
+  const rr = (x,y,w,h,r) => { r = Math.min(r, w, h/2); return `M${x},${y} h${w-r} a${r},${r} 0 0 1 ${r},${r} v${h-2*r} a${r},${r} 0 0 1 -${r},${r} h-${w-r} z`; };
+  const rrTop = (x,y,w,h,r) => { r = Math.min(r, h, w/2); return `M${x},${y+h} v-${h-r} a${r},${r} 0 0 1 ${r},-${r} h${w-2*r} a${r},${r} 0 0 1 ${r},${r} v${h-r} z`; };
+
+  function hbar(o){
+    const W=o.W||420, lw=o.labelW||110, bh=o.bh||12, gap=o.gap||9, top=4, vw=o.valueW||56;
+    const H = top + o.items.length*(bh+gap);
+    const max = o.max || Math.max(...o.items.map(i=>i.v));
+    const pw = W - lw - vw - 8;
+    let s = `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.title||"")}">`;
+    o.items.forEach((it,i)=>{
+      const y = top + i*(bh+gap), w = Math.max(2, it.v/max*pw), col = it.color||C.s1;
+      s += `<text x="${lw-8}" y="${y+bh-2}" text-anchor="end" font-size="10.5" fill="${C.ink2}">${esc(it.l)}</text>`;
+      s += `<path d="${rr(lw,y,w,bh,4)}" fill="${col}" class="dz-m" data-tip="${esc(it.tip||it.l+"："+fmt(it.v)+(o.unit||""))}"/>`;
+      s += `<text x="${lw+w+5}" y="${y+bh-2}" font-size="10.5" fill="${C.ink}" font-weight="600">${esc(it.vl||fmt(it.v))}</text>`;
+    });
+    return s+"</svg>";
+  }
+  function column(o){
+    const W=420, H=o.h||170, lb=22, top=18, pad=14;
+    const n=o.items.length, slot=(W-2*pad)/n, bw=Math.min(24, slot*0.5);
+    const max=o.max||Math.max(...o.items.map(i=>i.v)); const ph=H-top-lb;
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.title||"")}">`;
+    [0.5,1].forEach(f=>{ const y=top+ph-f*ph; s+=`<line x1="${pad}" x2="${W-pad}" y1="${y}" y2="${y}" stroke="${C.grid}" stroke-width="1"/><text x="${pad}" y="${y-3}" font-size="9" fill="${C.ink3}">${fmt(max*f)}</text>`; });
+    s+=`<line x1="${pad}" x2="${W-pad}" y1="${top+ph}" y2="${top+ph}" stroke="${C.mute}" stroke-width="1"/>`;
+    o.items.forEach((it,i)=>{ const x=pad+i*slot+(slot-bw)/2, h=Math.max(2,it.v/max*ph), y=top+ph-h;
+      s+=`<path d="${rrTop(x,y,bw,h,4)}" fill="${it.color||C.s1}" class="dz-m" data-tip="${esc(it.tip||it.l+"："+fmt(it.v)+(o.unit||""))}"/>`;
+      s+=`<text x="${x+bw/2}" y="${y-4}" text-anchor="middle" font-size="10.5" font-weight="600" fill="${C.ink}">${esc(it.vl||fmt(it.v))}</text>`;
+      s+=`<text x="${x+bw/2}" y="${H-6}" text-anchor="middle" font-size="10" fill="${C.ink2}">${esc(it.l)}</text>`; });
+    return s+"</svg>";
+  }
+  function line(o){
+    const W=420,H=o.h||180,top=14,lb=22,pl=34,pr=78; const ph=H-top-lb, pw=W-pl-pr;
+    const ymax=o.ymax||Math.max(...o.series.flatMap(s=>s.ys.filter(v=>v!=null)))*1.1;
+    const X=i=>pl+i/(o.xs.length-1)*pw, Y=v=>top+ph-v/ymax*ph;
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.title||"")}">`;
+    [0,0.5,1].forEach(f=>{const y=top+ph-f*ph; s+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="${f?C.grid:C.mute}" stroke-width="1"/><text x="${pl-4}" y="${y+3}" text-anchor="end" font-size="9" fill="${C.ink3}">${Math.round(ymax*f)}${o.unit||""}</text>`;});
+    o.xs.forEach((x,i)=>s+=`<text x="${X(i)}" y="${H-6}" text-anchor="middle" font-size="10" fill="${C.ink2}">${esc(x)}</text>`);
+    o.series.forEach(se=>{ const pts=se.ys.map((v,i)=>v==null?null:[X(i),Y(v),v,i]).filter(Boolean);
+      s+=`<polyline points="${pts.map(p=>p[0]+","+p[1]).join(" ")}" fill="none" stroke="${se.color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
+      pts.forEach(p=>s+=`<circle cx="${p[0]}" cy="${p[1]}" r="4.5" fill="${se.color}" stroke="#fff" stroke-width="2" class="dz-m" data-tip="${esc(se.name+" "+o.xs[p[3]]+"："+p[2]+(o.unit||"")+(se.tips&&se.tips[p[3]]?"，"+se.tips[p[3]]:""))}"/>`);
+      const last=pts[pts.length-1]; s+=`<text x="${last[0]+8}" y="${last[1]+3}" font-size="10" fill="${C.ink2}">${esc(se.name)}</text>`; });
+    return s+"</svg>";
+  }
+  function stacked(o){
+    const W=420,H=30,bh=22,y=4; const tot=o.segs.reduce((a,b)=>a+b.v,0); let x=0;
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.title||"")}">`;
+    o.segs.forEach((g,i)=>{ const w=g.v/tot*W - (i<o.segs.length-1?2:0);
+      s+=`<rect x="${x}" y="${y}" width="${Math.max(0,w)}" height="${bh}" fill="${g.color}" class="dz-m" data-tip="${esc(g.l+"："+g.v+"%"+(g.tip?"，"+g.tip:""))}"/>`;
+      if (w>44) s+=`<text x="${x+w/2}" y="${y+bh/2+4}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#fff">${g.v}%</text>`;
+      x+=w+2; });
+    return s+"</svg>";
+  }
+  function heat(o){
+    const W=420, lw=52, ch=32, top=18, cw=(W-lw)/o.cols.length; const H=top+o.rows.length*ch;
+    const max=Math.max(...o.vals.flat()); const ramp=["#cde2fb","#9ec5f4","#6da7ec","#3987e5","#256abf","#184f95"];
+    let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.title||"")}">`;
+    o.cols.forEach((c,j)=>s+=`<text x="${lw+j*cw+cw/2}" y="12" text-anchor="middle" font-size="10.5" fill="${C.ink2}">${esc(c)}</text>`);
+    o.rows.forEach((r,i)=>{ s+=`<text x="${lw-6}" y="${top+i*ch+ch/2+4}" text-anchor="end" font-size="10.5" fill="${C.ink2}">${esc(r)}</text>`;
+      o.cols.forEach((c,j)=>{ const v=o.vals[i][j]; const col=v===0?"#f3f4f6":ramp[Math.min(5,Math.floor(v/max*5.999))]; const ink = v/max>0.5?"#fff":C.ink;
+        s+=`<rect x="${lw+j*cw+1}" y="${top+i*ch+1}" width="${cw-2}" height="${ch-2}" rx="3" fill="${col}" class="dz-m" data-tip="${esc(r+" × "+c+"："+v+" 家")}"/>`;
+        s+=`<text x="${lw+j*cw+cw/2}" y="${top+i*ch+ch/2+4}" text-anchor="middle" font-size="12" font-weight="600" fill="${ink}">${v}</text>`; }); });
+    return s+"</svg>";
+  }
+  let _tip=null;
+  function tip(){
+    if(!_tip){ _tip=document.createElement("div"); _tip.id="dz-tip"; document.body.appendChild(_tip);
+      document.addEventListener("mouseover",e=>{ const m=e.target.closest&&e.target.closest(".dz-m"); if(!m){ _tip.style.display="none"; return; } _tip.textContent=m.dataset.tip; _tip.style.display="block"; });
+      document.addEventListener("mousemove",e=>{ if(_tip.style.display==="block"){ _tip.style.left=Math.min(e.clientX+12,window.innerWidth-320)+"px"; _tip.style.top=(e.clientY+14)+"px"; } });
+    }
+    return _tip;
+  }
+  const tiles = items => `<div class="dz-tiles">`+items.map(t=>`<div class="dz-tile"><div class="v">${t.v}</div><div class="k">${t.k}</div>${t.d?`<div class="d">${t.d}</div>`:""}</div>`).join("")+`</div>`;
+  const card = o => `<div class="dz-card"><div class="dz-h"><div class="dz-t">${o.title}</div>${o.sub?`<div class="dz-s">${o.sub}</div>`:""}</div><div class="dz-body">${o.body}</div>${o.legend?`<div class="dz-legend">${o.legend}</div>`:""}${o.table?`<details class="dz-table"><summary>数据表</summary>${o.table}</details>`:""}<div class="dz-src">${o.src}</div></div>`;
+  const legend = items => items.map(i=>`<span><i style="background:${i.c}"></i>${i.l}</span>`).join("");
+  const table = (head, rows) => `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+  const a = (t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+  return {C,hbar,column,line,stacked,heat,tiles,card,legend,table,a,tip};
+})();
+
+/* ===================== 第一页：整机与全栈口径 ===================== */
+(function(){
+  const D=DZ, C=D.C, a=D.a;
+  const U = {
+    mmHw:"https://www.prnewswire.com/news-releases/edge-ai-hardware-market-worth-58-90-billion-by-2030---exclusive-report-by-marketsandmarkets-302498128.html",
+    gvr:"https://www.grandviewresearch.com/industry-analysis/edge-ai-market-report",
+    gvrOd:"https://www.prnewswire.com/news-releases/on-device-ai-market-set-to-surpass-usd-75-5-billion-by-2033-as-demand-for-real-time-intelligence-and-privacy-first-computing-accelerates-302803234.html",
+    mmSw:"https://www.marketsandmarkets.com/Market-Reports/edge-ai-software-market-70030817.html",
+    mmSlm:"https://www.marketsandmarkets.com/Market-Reports/small-language-model-market-4008452.html",
+    cpPhone:"https://counterpointresearch.com/en/insights/genai-smartphone-share-to-rise-to-45-percent-of-global-shipments-in-2026",
+    gartPc:"https://www.gartner.com/en/newsroom/press-releases/2025-08-28-gartner-says-artificial-intelligence-pcs-will-represent-31-percent-of-worldwide-pc-market-by-the-end-of-2025",
+    gartRev:"https://www.gartner.com/en/newsroom/press-releases/2026-02-26-gartner-says-surging-memory-costs-will-reduce-global-pc-and-smartphone-shipments-in-2026",
+    cpCum:"https://counterpointresearch.com/en/insights/global-genai-smartphone-cumulative-shipments-surpass-500-million",
+    cpApple:"https://counterpointresearch.com/en/insights/apple-has-shipped-over-450-million-apple-intelligence-capable-iphones",
+    nano:"https://android-developers.googleblog.com/2026/04/gemma-4-new-standard-for-local-agentic-intelligence.html",
+    galaxy:"https://www.computerworld.com/article/4112821/samsung-to-double-number-of-mobile-ai-devices-by-2026.html",
+    toubao:"https://pdf.dfcfw.com/pdf/H3_AP202408161639317641_1.pdf",
+    idcCn:"https://finance.sina.com.cn/tech/roll/2025-12-08/doc-inhaamff3958289.shtml",
+    abi:"https://www.abiresearch.com/press/tinyml-ai-chipset-shipments-to-top-4.1-billion-by-2031-as-embedded-ai-scales-across-industrial-iot",
+    copilot:"https://www.pcworld.com/article/2816617/microsofts-copilot-gamble-is-a-bustbut-ai-pcs-still-feel-inevitable.html"
+  };
+  const cards = [
+    D.card({ title:"端侧 AI 市场规模：同一个词，五种口径", sub:"2025 年，十亿美元。硬件口径约为软件口径的 10 倍；模型层的可分配收入应看软件 / SLM 口径",
+      body:D.hbar({ unit:" 十亿美元", labelW:118, items:[
+        {l:"Edge AI 硬件", v:26.1, tip:"Edge AI 硬件（MarketsandMarkets）：2025 $26.1B → 2030 $58.9B，CAGR 17.6%"},
+        {l:"Edge AI 全口径", v:24.9, tip:"Edge AI 硬件+软件+边缘云+服务（Grand View Research）：2025 $24.9B → 2033 $118.7B，CAGR 21.7%"},
+        {l:"On-device AI", v:10.8, tip:"On-device AI 硬件+软件+服务（Grand View Research）：2025 $10.8B → 2033 $75.5B，CAGR 27.8%，硬件占 57%"},
+        {l:"Edge AI 软件", v:2.4, tip:"Edge AI 软件 平台/SDK/框架+服务（MarketsandMarkets）：2025 $2.4B → 2031 $8.9B，CAGR 24.4%"},
+        {l:"小语言模型 SLM", v:0.93, tip:"SLM 软件+服务，模型 <20B 参数（MarketsandMarkets）：2025 $0.93B → 2032 $5.45B，CAGR 28.7%"} ]}),
+      table:D.table(["口径","2025","预测","CAGR","机构"],[["Edge AI 硬件","$26.1B","2030 $58.9B","17.6%","MarketsandMarkets"],["Edge AI 全口径","$24.9B","2033 $118.7B","21.7%","Grand View Research"],["On-device AI","$10.8B","2033 $75.5B","27.8%","Grand View Research"],["Edge AI 软件","$2.4B","2031 $8.9B","24.4%","MarketsandMarkets"],["SLM","$0.93B","2032 $5.45B","28.7%","MarketsandMarkets"]]),
+      src:"来源："+a("M&M 硬件 2025-07",U.mmHw)+" · "+a("GVR Edge AI 2026-06",U.gvr)+" · "+a("GVR On-device 2026-06",U.gvrOd)+" · "+a("M&M 软件 2025-04",U.mmSw)+" · "+a("M&M SLM 2025-03",U.mmSlm) }),
+    D.card({ title:"GenAI 手机与 AI PC 出货渗透率", sub:"占当年出货比例，%。2026 年内存涨价后 Gartner 已把 AI PC 过半的时点推迟到 2028 年，图中 2026 值为 2025-08 的原预测",
+      body:D.line({ unit:"%", ymax:66, xs:["2024","2025","2026E","2027E"], series:[
+        {name:"GenAI 手机", color:C.s1, ys:[null,36,45,52], tips:[null,"实际值（Counterpoint）","预测（Counterpoint 2026-06）","预测（Counterpoint 2026-06）"]},
+        {name:"AI PC", color:C.s2, ys:[15.6,31.0,54.7,null], tips:["实际值（Gartner）","Gartner 2025-08 预测","Gartner 2025-08 预测，2026-02 已下修",null]} ]}),
+      legend:D.legend([{c:C.s1,l:"GenAI 手机（Counterpoint，端侧 LLM 优化 NPU + 高内存）"},{c:C.s2,l:"AI PC（Gartner，含 NPU 的 PC，含 Mac）"}]),
+      table:D.table(["年份","GenAI 手机","AI PC"],[["2024","—","15.6%"],["2025","36%（实际）","31.0%"],["2026E","45%","54.7%（已下修）"],["2027E","52%","—"]]),
+      src:"来源："+a("Counterpoint 2026-06-22",U.cpPhone)+" · "+a("Gartner 2025-08-28",U.gartPc)+" · "+a("Gartner 下修 2026-02-26",U.gartRev)+"。口径差异：IDC 以 NPU ≥30 TOPS 为门槛，2025 年 GenAI 手机为 30%；Copilot+ PC（≥40 TOPS）2025 年初仅占 Windows PC 2.3%" }),
+    D.card({ title:"系统级端侧模型的装机基数", sub:"能直接调用 OS 内置模型的设备数量，决定 L3 模型经 L2 平台触达 L6 应用的规模",
+      body:D.tiles([
+        {v:">5<small>亿台</small>", k:"GenAI 手机累计出货", d:"截至 2025Q3，Apple + Samsung 占 >70%；预计 2026Q3 超 10 亿台（Counterpoint）"},
+        {v:"4.5<small>亿台</small>", k:"Apple Intelligence 可用 iPhone", d:"累计出货，截至 2026Q1（Counterpoint）；活跃数官方未披露"},
+        {v:"1.4<small>亿台</small>", k:"Gemini Nano 可用设备", d:"Android AICore 覆盖，2026-04（Google 自报）"},
+        {v:"4 → 8<small>亿台</small>", k:"Galaxy AI 设备", d:"2025 年实际约 4 亿，2026 目标 8 亿（Samsung）"} ]),
+      src:"来源："+a("Counterpoint 2025-10-31",U.cpCum)+" · "+a("Counterpoint 2026-06-08",U.cpApple)+" · "+a("Android Developers 2026-04-02",U.nano)+" · "+a("Reuters 转述 2026-01",U.galaxy) }),
+    D.card({ title:"中国市场与长尾终端", sub:"含硬件的中国口径与高算力门槛下的实际渗透，以及手机 / PC 之外的 TinyML 量级曲线",
+      body:D.tiles([
+        {v:"1.9<small>万亿元</small>", k:"中国端侧 AI 2028E（含硬件）", d:"2023 年 1,939 亿元，CAGR 58%（头豹研究院）"},
+        {v:"2.3<small>%</small>", k:"Copilot+ PC 占 Windows PC 出货", d:"NPU ≥40 TOPS 口径，2025Q1；2024 全年仅 0.6%（IDC）"},
+        {v:"53<small>%</small>", k:"中国 AI 手机 2026 出货占比", d:"1.47 亿台，同比 +31.6%（IDC 中国 2025-12）"},
+        {v:"41<small>亿颗</small>", k:"TinyML 芯片 2031 出货", d:"不含手机 / PC，工业 IoT 为主，CAGR 37%（ABI Research 2026-06）"} ]),
+      src:"来源："+a("头豹 2024-08",U.toubao)+" · "+a("IDC 中国 2025-12-08",U.idcCn)+" · "+a("IDC / PCWorld 2025-06",U.copilot)+" · "+a("ABI Research 2026-06-18",U.abi) })
+  ];
+  document.getElementById("dz-map").innerHTML = `<div class="dz-head"><h2>端侧 AI 市场数据</h2><span class="n">整机与全栈口径，覆盖 L1–L6；模型层专属数据见第二页。数据截至 2026 年 9 月初，悬停查看口径，展开“数据表”查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+})();
+
+/* ===================== 第二页：模型与资本口径 ===================== */
+(function(){
+  const D=DZ, C=D.C, a=D.a;
+  const U = {
+    aiIdx2:"https://hai.stanford.edu/assets/files/hai_ai-index-report-2025_chapter2_final.pdf",
+    aiIdx1:"https://hai.stanford.edu/assets/files/hai_ai-index-report-2025_chapter1_final.pdf",
+    epoch:"https://epoch.ai/data-insights/llm-inference-price-trends",
+    hf:"https://huggingface.co/blog/state-of-open-models-summer-2026",
+    mmSlm:"https://www.marketsandmarkets.com/Market-Reports/small-language-model-market-4008452.html",
+    gartner:"https://www.gartner.com/en/newsroom/press-releases/2025-04-09-gartner-predicts-by-2027-organizations-will-use-small-task-specific-ai-models-three-times-more-than-general-purpose-large-language-models",
+    cb:"https://news.crunchbase.com/venture/foundational-ai-startup-funding-doubled-openai-anthropic-xai-q1-2026/",
+    itjz:"https://pdf.dfcfw.com/pdf/H3_AP202607231827274641_1.pdf",
+    itjzNews:"https://www.huxiu.com/article/4872430.html",
+    fortune:"https://fortune.com/2026/08/15/alibaba-qwen-open-ai-models-3-billion-downloads-meta-google/",
+    gemma:"https://blog.google/innovation-and-ai/technology/developers-tools/gemma-one-billion-downloads/",
+    toubao:"https://pdf.dfcfw.com/pdf/H3_AP202408161639317641_1.pdf"
+  };
+  const cards = [
+    D.card({ title:"小模型为什么能上端：四个拐点", sub:"能力密度、推理成本与使用分布三条曲线同时指向“小”",
+      body:D.tiles([
+        {v:"142<small>×</small>", k:"达到 MMLU 60% 的最小模型参数缩小倍数", d:"2022 PaLM 540B → 2024 Phi-3-mini 3.8B（Stanford AI Index 2025）"},
+        {v:"280<small>×</small>", k:"GPT-3.5 级推理成本两年降幅", d:"$20 → $0.07 / 百万 token，2022-11 → 2024-10（AI Index 2025）"},
+        {v:"200<small>× / 年</small>", k:"固定性能下推理价格年降幅中位", d:"2024 年后数据；全时段中位 50×（Epoch AI 2025-03）"},
+        {v:"83<small>%</small>", k:"Hugging Face 下载量中 <1B 参数模型占比", d:">100B 仅占 1%；2026 年内 >70B 仅 3%（HF 2026-08）"} ]),
+      src:"来源："+a("AI Index 2025 Ch.2",U.aiIdx2)+" · "+a("AI Index 2025 Ch.1",U.aiIdx1)+" · "+a("Epoch AI",U.epoch)+" · "+a("Hugging Face 2026-08-14",U.hf) }),
+    D.card({ title:"小语言模型 SLM 市场规模", sub:"十亿美元，软件 + 服务，不含硬件；模型 <20B 参数。浅色为预测值",
+      body:D.column({ unit:" 十亿美元", h:160, items:[
+        {l:"2024", v:0.74, vl:"$0.74B"},
+        {l:"2025", v:0.93, vl:"$0.93B"},
+        {l:"2032E", v:5.45, vl:"$5.45B", color:C.light, tip:"2032 预测：$5.45B，2025–2032 CAGR 28.7%"} ]}),
+      table:D.table(["年份","规模","说明"],[["2024","$0.74B","MarketsandMarkets"],["2025","$0.93B","MarketsandMarkets"],["2032E","$5.45B","CAGR 28.7%"],["用量","3×","Gartner：2027 年企业小模型用量为通用 LLM 的 3 倍"]]),
+      src:"来源："+a("MarketsandMarkets 2025-03-26",U.mmSlm)+" · "+a("Gartner 2025-04-09",U.gartner)+"。SLM 是目前唯一专门针对“模型”而非“端侧硬件”的市场口径" }),
+    D.card({ title:"中国端侧大模型市场规模（纯软件）", sub:"亿元，仅模型 / 软件，不含终端硬件。浅色为预测值。同一机构的含硬件口径 2028 年为 1.9 万亿元，两者相差 240 倍",
+      body:D.column({ unit:" 亿元", h:160, items:[
+        {l:"2023", v:8, vl:"8 亿元"},
+        {l:"2024E", v:21, vl:"21 亿元", color:C.light, tip:"2024 预测：21 亿元（头豹研究院 2024-08 发布时为预测值）"},
+        {l:"2028E", v:79, vl:"79 亿元", color:C.light, tip:"2028 预测：79 亿元，2023–2028 CAGR 58%"} ]}),
+      table:D.table(["年份","规模","说明"],[["2023","8 亿元","实际"],["2024E","21 亿元","预测"],["2028E","79 亿元","CAGR 58%"]]),
+      src:"来源："+a("头豹研究院 2024-08",U.toubao)+"。这是目前唯一公开的中国“端侧模型”而非“端侧硬件”口径，发布于 2024 年，未见后续更新" }),
+    D.card({ title:"基础模型公司融资：模型层资本的主流向", sub:"十亿美元，Crunchbase“Foundational AI”类别。浅色为 2026 年一季度单季值",
+      body:D.column({ unit:" 十亿美元", h:160, items:[
+        {l:"2022", v:1.4}, {l:"2023", v:23.2}, {l:"2024", v:31.4}, {l:"2025", v:88.9},
+        {l:"2026 Q1", v:178, color:C.light, tip:"2026 年一季度单季 $178B / 24 笔，OpenAI、Anthropic、xAI 占绝大部分"} ]}),
+      table:D.table(["年份","融资额","笔数"],[["2022","$1.4B","—"],["2023","$23.2B","—"],["2024","$31.4B","52"],["2025","$88.9B","66"],["2026 Q1","$178B","24"]]),
+      src:"来源："+a("Crunchbase 2026-04-01",U.cb)+"。对照：Tracxn“Edge AI Platforms”分类 506 家公司累计融资仅 $714M，说明端侧模型的资本主要流向通用基础模型公司，而非纯端侧赛道" }),
+    D.card({ title:"中国大模型赛道 2026 上半年融资", sub:"亿元，IT桔子口径。合计 1,598.5 亿元，占同期 AI 融资过半；前三家占 58%",
+      body:D.hbar({ unit:" 亿元", labelW:88, items:[
+        {l:"DeepSeek", v:510, tip:"DeepSeek：510 亿元，首轮外部融资，投后 >3,500 亿元"},
+        {l:"阶跃星辰", v:230, tip:"阶跃星辰：230 亿元，含 B+ 轮与 Pre-IPO"},
+        {l:"月之暗面", v:189, tip:"月之暗面 Kimi：189 亿元，2026 年上半年多轮"},
+        {l:"其余公司", v:669.5, color:C.mute, tip:"其余公司合计：669.5 亿元；2026H1 大模型赛道单笔均值 7.04 亿元"} ]}),
+      table:D.table(["公司","融资额","占比"],[["DeepSeek","510 亿元","32%"],["阶跃星辰","230 亿元","14%"],["月之暗面","189 亿元","12%"],["其余","669.5 亿元","42%"],["合计","1,598.5 亿元","—"]]),
+      src:"来源："+a("IT桔子 2026H1 报告",U.itjz)+" · "+a("虎嗅转述 2026-07-03",U.itjzNews)+"。同期中国 AI 一级市场融资 3,077 亿元（1,203 起），已超 2025 全年" }),
+    D.card({ title:"开源生态：底座衍生数量与下载分布", sub:"上：Hugging Face Hub 上以各家模型为基座的衍生模型数，个，Llama 为按倍数推算（浅色）。下：全时段下载量按参数规模占比，%，中间档为按余数推算",
+      body:D.hbar({ unit:" 个", labelW:96, items:[
+        {l:"阿里 Qwen", v:151448, vl:"151,448", tip:"Qwen 衍生模型 151,448 个，2026 年内下载 20.45 亿次（HF）；阿里自报 >460 个开源模型、30 亿次下载"},
+        {l:"Google Gemma", v:82506, vl:"82,506", tip:"Google 衍生模型 82,506 个，2026 年内下载 4.18 亿次（HF）；Gemma 累计下载 >10 亿次（Google）"},
+        {l:"Meta Llama", v:58000, vl:"≈58,000", color:C.light, tip:"按 HF“Qwen 为 Meta 的 2.6 倍”推算约 58,000 个；Meta 2024-12 自报 >85,000（口径不同）；2026 年内下载 2.27 亿次"} ]})
+        + '<div style="margin-top:10px">' + D.stacked({ segs:[
+        {l:"<1B 参数", v:83, color:C.s1, tip:"HF 官方：<1B 参数模型占全部下载 83%"},
+        {l:"1B–100B", v:16, color:C.s3, tip:"按 100% − 83% − 1% 推算，HF 未给出该分桶"},
+        {l:">100B", v:1, color:C.s2, tip:"HF 官方：>100B 参数模型仅占 1%"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"<1B 参数 83%"},{c:C.s3,l:"1B–100B 约 16%（推算）"},{c:C.s2,l:">100B 1%"}]),
+      table:D.table(["底座","衍生模型数","2026 年内下载"],[["Qwen","151,448","20.45 亿"],["Gemma","82,506","4.18 亿"],["Llama","≈58,000（推算）","2.27 亿"]]),
+      src:"来源："+a("Hugging Face 2026-08-14",U.hf)+" · "+a("Fortune 2026-08-15",U.fortune)+" · "+a("Google 2026-08-20",U.gemma)+"。同一报告：模型仓库数 2026-01 → 08 由 243 万增至 296 万；1.5% 的仓库贡献 99.2% 的下载" })
+  ];
+  document.getElementById("dz-model").innerHTML = `<div class="dz-head"><h2>模型层数据</h2><span class="n">模型能力、模型市场与模型层资本三类口径；整机 / 硬件口径见第一页。悬停查看口径，展开“数据表”查看数值</span></div><div class="dz-grid c3">${cards.join("")}</div>`;
+
+  DZ.tip();
+})();
+</script>
+
+<script>
+(function(){
+  const D=DZ, C=D.C, a=D.a;
+  const U = {
+    cpMod:"https://counterpointresearch.com/en/insights/global-cellular-iot-module-shipments-in-2025",
+    berg:"https://www.berginsight.com/cellular-iot-module-revenues-grew-19-percent-to-us-56-billion-in-2025/",
+    cpOdm:"https://counterpointresearch.com/en/insights/ODM-and-IDH-Smartphone-Shipments-Fell-10-percent-YoY-in-H2-2025",
+    cpOdmPct:"https://counterpointresearch.com/en/insights/post-insight-research-notes-blogs-outsourced-portion-of-total-smartphone-shipments-reached-44-in-2024",
+    nb:"https://www.abnotebook.com/a/23540",
+    tf:"https://www.eet-china.com/mp/a485515.html",
+    idc:"https://www.eetasia.com/global-spending-on-edge-computing-to-reach-450b-by-2029/",
+    idcCn:"https://m.c114.com.cn/w39-1260950.html",
+    gk:"https://m.gkong.com/news/120123.html",
+    idcExp:"https://cn.investing.com/news/stock-market-article/news-3548121",
+    hw:"https://finance.sina.com.cn/tech/digi/2025-05-26/doc-inexucqa3941196.shtml",
+    hw26:"https://news.qq.com/rain/a/20260523A07XD300",
+    hm:"https://news.qq.com/rain/a/20260205A02FFQ00",
+    jetson:"https://nvidianews.nvidia.com/news/nvidia-announces-jetson-orin-nano-2-robotics-computer-to-redefine-entry-level-edge-ai",
+    qaby:"https://www.gelonghui.com/p/1852385"
+  };
+  const cards = [
+    D.card({ title:"蜂窝 IoT 模组：中国厂商主导", sub:"2025 年全球出货 +15%；移远以 36% 份额居首。收入口径前五合计占 73%",
+      body:D.hbar({ unit:" %", labelW:88, items:[
+        {l:"移远", v:36, tip:"移远通信：36%，+11%（Counterpoint 2025 全年出货份额）"},
+        {l:"中移物联", v:11, tip:"中移物联：11%，+45%"},
+        {l:"日海 / 芯讯通", v:8, tip:"日海：8%，+37%"},
+        {l:"利尔达", v:5, tip:"利尔达：+69%（份额未入前五，增速居前）"},
+        {l:"Telit / 其他", v:40, color:C.mute, tip:"Telit Cinterion 海外第一（+13%）；其余厂商合计"} ]}),
+      table:D.table(["厂商","2025 出货份额","增速"],[["移远","36%（#1）","+11%"],["中移物联","11%（#2）","+45%"],["日海","8%（#3）","+37%"],["广和通","未入前三（Q1'26 #3）","—"]]),
+      src:"来源："+a("Counterpoint 2026-03-11",U.cpMod)+" · "+a("Berg Insight 2026-06-26",U.berg)+"。Berg：2025 出货 6.12 亿颗（+33%），收入 $5.6B（+19%）。AI 嵌入式模组占比 2023 年 6% → 2030 年预计 25%" }),
+    D.card({ title:"智能手机 ODM：外包设计与代工的规模", sub:"外包（ODM/IDH）设计占全球手机出货 44%（2024）；2025 H1 +7%、H2 -10%，头部集中",
+      body:D.tiles([
+        {v:"44<small>%</small>", k:"ODM / IDH 占全球手机出货", d:"2024 年创纪录，2025 年占比未单独披露（Counterpoint）"},
+        {v:"+7<small>% → -10%</small>", k:"ODM 出货增速 2025 上下半年", d:"H1 +7%，H2 -10%；低价机型（<$150）出货 -11%"},
+        {v:"华勤 > 龙旗 > 天珑 > 立讯", k:"2025 全球手机 ODM 出货排名", d:"闻泰 ODM 自 2025 起并入立讯（第 4）"},
+        {v:"1.28<small>亿台</small>", k:"台湾五大 ODM 2025 笔电出货合计", d:"广达 4,590 万 + 仁宝 2,800 万 + 纬创 2,410 万 + 英业达 2,130 万 + 和硕 900 万"} ]),
+      src:"来源："+a("Counterpoint 2026-04-16",U.cpOdm)+" · "+a("Counterpoint 2024 占比",U.cpOdmPct)+"。2026 年笔电出货预计 -9.4%（TrendForce）" }),
+    D.card({ title:"边缘计算市场与中国算力投资", sub:"全球边缘支出与中国的边缘算力设备、AI 投资结构",
+      body:D.tiles([
+        {v:"$265<small>B → $450B</small>", k:"全球边缘支出 2025 → 2029E", d:"IDC 2026-03；到 2029 服务支出将超硬件"},
+        {v:"75.8<small>亿元</small>", k:"中国现场级边缘算力设备 2024", d:"台式/无风扇工控机、工业主板、HMI、边缘盒；2023 年 83.2 亿，2024 同比下滑（IDC 中国）"},
+        {v:"74.3<small>%</small>", k:"2026 中国 AI 支出中硬件占比", d:"IDC 中国；软件 + 服务合计仅约 25.7%"},
+        {v:"$8.4<small>亿</small>", k:"全球边缘 AI 盒子 2031E", d:"2024 年 $3.74 亿；中国台湾 + 大陆产量占 >95%（QYResearch）"} ]),
+      src:"来源："+a("IDC 2026-03-04",U.idc)+" · "+a("IDC 中国 2025-02",U.gk)+" · "+a("IDC 中国 2026-09",U.idcExp)+" · "+a("QYResearch",U.qaby) }),
+    D.card({ title:"AI 硬件方案与生态规模", sub:"面向 AI 眼镜 / AI 玩具 / 机器人的方案与集成分发渠道",
+      body:D.tiles([
+        {v:"1,452<small>万台</small>", k:"全球智能眼镜 2025 出货（IDC 预测）", d:"+42.5%；中国 291 万台（+121%）"},
+        {v:"292<small>亿元</small>", k:"中国 AI 玩具市场 2025", d:"+17.8%；2028E 超 700 亿元（洛图科技）"},
+        {v:"300<small>万</small>", k:"NVIDIA Jetson / 机器人栈开发者", d:"Jetson 200 万+、机器人栈 300 万+（NVIDIA 2026-08）"},
+        {v:"665<small>万</small>", k:"鲲鹏 + 昇腾开发者", d:"8,800+ 伙伴、23,900+ 认证解决方案（华为 KADC 2025）"} ]),
+      src:"来源："+a("IDC 2025-11-05",U.hm)+" · "+a("洛图科技 2026-03",U.hm)+" · "+a("NVIDIA 2026-08",U.jetson)+" · "+a("华为 KADC 2025",U.hw) })
+  ];
+  document.getElementById("dz-solution").innerHTML = `<div class="dz-head"><h2>方案与集成层数据</h2><span class="n">ODM / 模组 / 边缘 / 集成四类口径；整机与硬件市场见第一页，模型能力见第二页。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  DZ.tip();
+})();
+</script>
+</body>
+</html>
