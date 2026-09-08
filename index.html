@@ -777,6 +777,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
       </ul>
     </div>
   </div>
+
+  <div class="dz" id="dz-wearable"></div>
 </div>
 
 <script>
@@ -1717,6 +1719,83 @@ const DZ = (() => {
       src:"来源："+a("IDTechEx",U.idtechex)+" · "+a("NVIDIA GR00T N1.7",U.groot)+"。“成本”存在制造成本 / BOM 成本 / 平均售价三种口径，不可互换" })
   ];
   document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（91 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  DZ.tip();
+})();
+</script>
+
+<script>
+/* ===================== L5 可穿戴 / XR 层数据 ===================== */
+(function(){
+  const D=DZ, C=D.C, a=D.a;
+  const U = {
+    idcGlasses:"https://my.idc.com/getdoc.jsp?containerId=prUS53809325",
+    cpH2:"https://counterpointresearch.com/en/insights/Global-Smart-Glasses-Shipments-Grew-139-Percent-YoY-in-H2-2025",
+    omdia:"https://omdia.tech.informa.com/pr/2026/mar/global-ai-glasses-shipments-reach-8point7-million-units-with-mainland-china-emerging-as-the-fastest-growing-market",
+    idcShift:"https://my.idc.com/getdoc.jsp?containerId=prUS53278025",
+    visionPro:"https://apple.slashdot.org/story/26/01/01/189219/idc-estimates-apple-shipped-just-45000-vision-pros-last-quarter",
+    oura:"https://www.cnbc.com/2025/10/14/oura-ringmaker-valuation-fundraise.html",
+    whoop:"https://news.crunchbase.com/venture/wearable-fitness-tech-ai-whoop-seriesg-funding/",
+    xreal:"https://eu.36kr.com/en/p/3759537313563137",
+    meta:"https://www.luxurytribune.com/en/meta-increases-its-stake-in-essilorluxottica-and-accelerates-smart-glasses-development",
+    fitbit:"https://www.cnbc.com/2019/11/01/google-to-acquire-fitbit-valuing-the-smartwatch-maker-at-about-2point1-billion.html",
+    ar1:"https://9to5google.com/2025/06/10/snapdragon-ar1-gen-1/"
+  };
+  const cards = [
+    D.card({ title:"AI 眼镜：本层增速最快的细分", sub:"2025 年出货同比三位数增长，2029 年出货量预计超 4,000 万台",
+      body:D.tiles([
+        {v:"+322<small>%</small>", k:"全球 AI 眼镜 2025 年出货同比", d:"8.7M 台，Meta 占 85.2% 份额（Omdia 2026-03）"},
+        {v:"+139<small>%</small>", k:"全球智能眼镜 2025 H2 出货同比", d:"H1 同比 +110%；AR 智能眼镜 H2 同比 +148%（Counterpoint）"},
+        {v:"4,000<small>万台</small>", k:"全球智能眼镜 2029 年出货预测", d:"2024-2029 五年 CAGR 55.6%，全终端品类最高增速（IDC）"},
+        {v:"700<small>万副</small>", k:"Ray-Ban Meta + Oakley Meta 2025 年出货", d:"Meta / EssilorLuxottica 合作产品线（行业估算）"} ]),
+      src:"来源："+a("Omdia 2026-03",U.omdia)+" · "+a("Counterpoint 2025",U.cpH2)+" · "+a("IDC",U.idcGlasses)+"。不同机构口径差异较大，出货量层面 IDC 覆盖更广（含 AR 头显），Omdia 仅统计 AI 眼镜细分" }),
+    D.card({ title:"结构反转：头显降温、眼镜升温", sub:"2025 年 XR 大盘出货量结构性变化，资本与出货量正从沉浸式头显向轻量眼镜迁移",
+      body:D.tiles([
+        {v:"-42.8<small>%</small>", k:"传统 VR/MR 头显 2025 年出货同比", d:"IDC 2025：XR 大盘整体 +41.6%（达 1,450 万台），但头显细分下滑（IDC）"},
+        {v:"+211.2<small>%</small>", k:"智能眼镜等其余品类 2025 年出货同比", d:"同一份 IDC 统计中的对比项"},
+        {v:"39万台 → 4.5<small>万台/季</small>", k:"Apple Vision Pro 出货：2024 全年 → 2025 Q4", d:"高端 MR 走量困难，与 AI 眼镜爆发式增长形成对比（IDC）"},
+        {v:"74.6<small>%</small>", k:"Meta Quest 2024 全年 VR 头显市场份额", d:"传统 VR 头显仍由 Meta 主导（IDC / 聚合数据）"} ]),
+      src:"来源："+a("IDC 2025",U.idcShift)+" · "+a("Apple Vision Pro 出货",U.visionPro) }),
+    D.card({ title:"49 家玩家：品类与地区结构（自有口径）", sub:"本页 WEARABLE_PLAYERS 数据集，按品类、地区交叉统计条目数（含跨品类重复登场的大厂）",
+      body:D.hbar({ unit:" 家", labelW:118, items:[
+        {l:"AI 眼镜", v:13, tip:"AI 眼镜：13 家，中国 9 / 美国 4 / 欧洲 0 / 其他 0"},
+        {l:"智能手表", v:11, tip:"智能手表：11 家，中国 6 / 美国 2 / 欧洲 2 / 其他 1"},
+        {l:"XR 头显", v:10, tip:"XR 头显：10 家，中国 4 / 美国 3 / 欧洲 1 / 其他 2"},
+        {l:"智能耳机", v:10, tip:"智能耳机：10 家，中国 6 / 美国 2 / 欧洲 0 / 其他 2"},
+        {l:"健康可穿戴", v:5, tip:"健康可穿戴：5 家，中国 2 / 美国 1 / 欧洲 2 / 其他 0"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["AI眼镜","手表","XR头显","耳机","健康"], cols:["中国","美国","欧洲","其他"],
+        vals:[[9,4,0,0],[6,2,2,1],[4,3,1,2],[6,2,0,2],[2,1,2,0]] }) + '</div>',
+      table:D.table(["品类","中国","美国","欧洲","其他","合计"],[["AI 眼镜","9","4","0","0","13"],["智能手表","6","2","2","1","11"],["XR 头显","4","3","1","2","10"],["智能耳机","6","2","0","2","10"],["健康可穿戴","2","1","2","0","5"]]),
+      src:"来源：自有口径（可穿戴XR层数据支撑清单 E1 节），数据来自本页 WEARABLE_PLAYERS 数组，2026-09-08 核实" }),
+    D.card({ title:"自有口径：13 家创业公司融资 Top5 与地区结构", sub:"49 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+      body:D.hbar({ unit:" 百万美元", labelW:130, items:[
+        {l:"Oura", v:500, tip:"Oura：本页卡片累计融资 >$5 亿（2024-12 口径），2025-10 最新一轮已至 $900M+/估值 $11B（见清单 C2）"},
+        {l:"Whoop", v:400, tip:"Whoop：累计融资 >$400M，2025 Series G $575M 后估值 $10.1B"},
+        {l:"XREAL", v:300, tip:"XREAL：累计融资 >$3 亿美元，2026-01 上市前估值 $833M"},
+        {l:"Rokid", v:281.7, tip:"Rokid：累计融资 >20 亿元（≈$281.7M），另有 PitchBook 口径 $2.58B，数据源冲突"},
+        {l:"雷鸟创新", v:70.4, tip:"雷鸟创新：累计融资 >5 亿元（≈$70.4M）"} ]})
+        + '<div style="margin-top:10px">' + D.stacked({ segs:[
+        {l:"中国", v:48.3, color:C.s1, tip:"中国 10 家创业公司合计 ≈$933.8M，占 48.3%"},
+        {l:"欧洲", v:31.0, color:C.s2, tip:"欧洲 2 家（Varjo + Oura）合计 $600M，占 31.0%"},
+        {l:"美国", v:20.7, color:C.mute, tip:"美国 1 家（Whoop）合计 $400M，占 20.7%"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"中国 48.3%"},{c:C.s2,l:"欧洲 31.0%"},{c:C.mute,l:"美国 20.7%"}]),
+      table:D.table(["指标","数值"],[["已披露融资创业公司数","13 家"],["合计已披露融资","≈$1.93B"],["融资梯队 $300M-1B","3 家（Oura/Whoop/XREAL）"],["融资梯队 ≥$1B","0 家"]]),
+      src:"来源：自有口径（可穿戴XR层数据支撑清单 E2 节），2026-09-08 计算" }),
+    D.card({ title:"估值与并购里程碑", sub:"健康可穿戴估值刷新纪录；大厂近两年以少数股权投资为主，鲜见整体并购",
+      body:D.tiles([
+        {v:"$11<small>B</small>", k:"Oura 最新估值", d:"2025-10 Series E 融资 $900M+，较 2024-12 的 $5.2B 翻倍以上（CNBC）"},
+        {v:"$10.1<small>B</small>", k:"Whoop 最新估值", d:"2025 Series G 融资 $575M，营收年化跑赢率 $1.1B（Crunchbase）"},
+        {v:"€4.33<small>B</small>", k:"Meta 持有 EssilorLuxottica 股权价值", d:"分两轮增持至约 5%，性质为战略投资而非并购（2025 年内）"},
+        {v:"$2.1<small>B</small>", k:"Google 收购 Fitbit（历史参照）", d:"2019 宣布、2021 完成，是本层近年少见的整体并购案例"} ]),
+      src:"来源："+a("Oura",U.oura)+" · "+a("Whoop",U.whoop)+" · "+a("Meta-EssilorLuxottica",U.meta)+" · "+a("Google-Fitbit",U.fitbit) }),
+    D.card({ title:"技术拐点：芯片与显示的轻量化竞赛", sub:"AI 眼镜端侧算力持续提升，显示模组同步小型化，电池容量仍是核心工程约束",
+      body:D.tiles([
+        {v:"1.2<small>秒</small>", k:"Qualcomm AR1+ 首 Token 时间", d:"支持 Llama 1B 参数模型端侧运行（128K 上下文），封装体积缩小 26%（2025-06）"},
+        {v:"250<small>mAh</small>", k:"智能眼镜电池容量上限", d:"对比手机约 5000mAh，是眼镜形态最核心的工程约束（Qualcomm XR 总经理访谈）"},
+        {v:"0.3cc → 0.15cc", k:"Micro-LED 模组体积缩小（2021→2024）", d:"JBD Hummingbird Mini，亮度突破 6,000 尼特（传统波导上限约 1,500 尼特）"},
+        {v:"12<small>天</small>", k:"智能戒指最长续航（RingConn Gen2）", d:"Oura Ring 4 / Galaxy Ring 约 7-8 天；Ring 5 号称 9 天但支持 80 分钟快充" }]),
+      src:"来源："+a("Qualcomm AR1 Gen1",U.ar1)+"。含显示屏眼镜受光学模组功耗限制，续航与无显示纯音频眼镜不在同一技术曲线，不可直接比较" })
+  ];
+  document.getElementById("dz-wearable").innerHTML = `<div class="dz-head"><h2>L5 可穿戴 / XR 数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（49 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
   DZ.tip();
 })();
 </script>
