@@ -89,8 +89,9 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 
 /* ===================== 页签与视图切换 ===================== */
 .tabs { position: sticky; top: 0; z-index: 5; display: flex; gap: 6px; align-items: center; margin: -24px -24px 18px; padding: 10px 24px; background: #fff; border-bottom: 1px solid #e5e7eb; }
-.tab { border: 1px solid #d1d5db; background: #fff; border-radius: 6px; padding: 6px 14px; font-size: 13px; cursor: pointer; color: #374151; font-weight: 600; font-family: inherit; }
-.tab:hover { border-color: #6a1b9a; color: #6a1b9a; }
+.tabs::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; margin-left: -50vw; background: #fff; border-bottom: 1px solid #e5e7eb; z-index: -1; }
+.tab { position: relative; border: 1px solid #111214; background: #111214; border-radius: 6px; padding: 6px 14px; font-size: 13px; cursor: pointer; color: #fff; font-weight: 600; font-family: inherit; }
+.tab:hover { border-color: #a25be0; color: #c69bf0; }
 .tab.active { background: #6a1b9a; border-color: #6a1b9a; color: #fff; }
 .tabs .hint { margin-left: auto; color: #9ca3af; font-size: 11px; }
 .view { display: none; }
@@ -253,13 +254,13 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 <body>
 <div class="page">
   <div class="tabs">
-    <button class="tab active" data-view="map">① 产业链全景图</button>
-    <button class="tab" data-view="chip">② L1 芯片厂商</button>
-    <button class="tab" data-view="model">③ L3 模型层</button>
-    <button class="tab" data-view="solution">④ L4 方案与集成层</button>
-    <button class="tab" data-view="robot">⑤ L5 终端设备层：机器人 / 具身智能</button>
-    <button class="tab" data-view="wearable">⑥ L5 终端设备层：可穿戴 / XR</button>
-    <button class="tab" data-view="nativehw">⑦ L5 终端设备层：AI原生新硬件</button>
+    <button class="tab active" data-view="map">产业链全景图</button>
+    <button class="tab" data-view="chip">L1 芯片厂商</button>
+    <button class="tab" data-view="model">L3 模型层</button>
+    <button class="tab" data-view="solution">L4 方案与集成层</button>
+    <button class="tab" data-view="robot">L5 终端设备层：机器人 / 具身智能</button>
+    <button class="tab" data-view="wearable">L5 终端设备层：可穿戴 / XR</button>
+    <button class="tab" data-view="nativehw">L5 终端设备层：AI原生新硬件</button>
   </div>
 
   <!-- ====================== 视图一：产业链全景图（原页面，保留不动） ====================== -->
