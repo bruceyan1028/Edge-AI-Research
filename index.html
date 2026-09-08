@@ -173,6 +173,13 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
 .C-consumer   { --cc: #ef6c00; --cc-bg: #fff3e0; }
 .C-embodied   { --cc: #c62828; --cc-bg: #ffebee; }
 
+/* L5 可穿戴 / XR 品类 */
+.C-xrheadset  { --cc: #6a1b9a; --cc-bg: #f3e5f5; }
+.C-glasses    { --cc: #1565c0; --cc-bg: #e3f2fd; }
+.C-watch      { --cc: #00838f; --cc-bg: #e0f7fa; }
+.C-earable    { --cc: #ef6c00; --cc-bg: #fff3e0; }
+.C-health     { --cc: #2e7d32; --cc-bg: #e8f5e9; }
+
 .insights { margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .ins { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px; }
 .ins h3 { margin: 0 0 6px; font-size: 13px; color: #111827; }
@@ -228,7 +235,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
     <button class="tab" data-view="model">② 模型层详解（L3 玩家图谱）</button>
     <button class="tab" data-view="solution">③ 方案与集成层详解（L4 玩家图谱）</button>
     <button class="tab" data-view="robot">④ 终端设备层详解（L5 机器人 / 具身智能）</button>
-    <span class="hint">点击页签切换视图 · 全景图中 L3 / L4 / 机器人卡片可直接跳转</span>
+    <button class="tab" data-view="wearable">⑤ 终端设备层详解（L5 可穿戴 / XR）</button>
+    <span class="hint">点击页签切换视图 · 全景图中 L3 / L4 / 机器人 / 可穿戴卡片可直接跳转</span>
   </div>
 
   <!-- ====================== 视图一：产业链全景图（原页面，保留不动） ====================== -->
@@ -307,7 +315,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
             <div class="card"><div class="t">PC / AI PC</div><div class="d">与Intel / AMD / 高通 / 微软结盟</div>
               <div class="tags"><span class="tag">联想</span><span class="tag">惠普</span><span class="tag">戴尔</span><span class="tag">华硕</span><span class="tag">宏碁</span><span class="tag">Surface</span><span class="tag">Mac</span></div></div>
             <div class="card"><div class="t">可穿戴 / XR</div><div class="d">功耗与延迟约束最苛刻</div>
-              <div class="tags"><span class="tag">Meta</span><span class="tag">Vision Pro</span><span class="tag">Rokid</span><span class="tag">雷鸟</span><span class="tag">XREAL</span><span class="tag">Oura</span><span class="tag">Garmin</span></div></div>
+              <div class="tags"><span class="tag">Meta</span><span class="tag">Vision Pro</span><span class="tag">Rokid</span><span class="tag">雷鸟</span><span class="tag">XREAL</span><span class="tag">Oura</span><span class="tag">Garmin</span></div>
+              <div><a class="golink" data-view="wearable">查看玩家详解 →</a></div></div>
             <div class="card"><div class="t">AI原生新硬件</div><div class="d">AI Pin、录音卡、AI玩具、AI眼镜</div>
               <div class="tags"><span class="tag">Plaud</span><span class="tag">Limitless</span><span class="tag">Rabbit</span><span class="tag">Humane</span><span class="tag">跃然创新</span></div></div>
           </div>
@@ -671,6 +680,79 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
         <li><b>人形核心部件复用工业机器人供应链：</b>谐波减速器、行星滚柱丝杠、灵巧手、六维力传感器均源自工业 / 协作机器人供应链，人形放量直接利好绿的谐波、双环传动、兆威机电等国产部件厂商——这是"具身智能"最有确定性的落地支点。</li>
         <li><b>基础模型公司与硬件深度绑定：</b>NVIDIA（Isaac GR00T）、Google DeepMind（Gemini Robotics / RT-2）公开押注"基础模型 + 仿真 + 机器人"全栈；Figure、1X 等又反向获得 OpenAI、微软、英伟达等资本绑定，形成"模型公司既是供应商也是股东"的交叉持股结构。</li>
         <li><b>口径：</b>① 本页只覆盖 L5 终端设备层中"机器人 / 具身智能"这一分支（即全景图 L5 卡片），不含手机 / PC / 汽车 / 消费 IoT 等终端；② 人形机器人尚未形成可比的量产财务口径，故不强行统一附市值 / 营收，仅标注上市状态与集团归属；③ 上市状态、集团归属与代表性产品基于 2026 年 9 月初公开信息核实，融资额逐家差异大，为避免失真只保留定性描述，具体轮次与金额以公司官方披露为准；④ 入选标准以"自主品牌整机 / 具身模型"为核心，代工、纯部件配套（除已品牌化的减速器 / 丝杠龙头）、研究机构与仅做展示的样机不单列。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== 视图五：终端设备层详解（可穿戴 / XR） ====================== -->
+<div class="view" id="view-wearable">
+  <div class="mp-hero">
+    <div class="txt">
+      <h1>L5 终端设备层详解：可穿戴 / XR 玩家图谱</h1>
+      <div class="sub">两个维度交叉展开：<b>纵向 = 品类 / 环节</b>（XR 头显、AI 眼镜、智能手表、智能耳机、健康可穿戴），<b>横向 = 国家 / 地区</b>（中国、美国、欧洲、其他）。每张卡片 = 一家公司：代表产品 / 方案 · 定位 · 场景 · 状态。可用上方筛选器按地区、品类、场景、状态与关键词过滤。</div>
+    </div>
+    <div class="stats" id="l5w-stats"></div>
+  </div>
+
+  <div class="toolbar" id="l5w-toolbar">
+    <span class="lb">地区</span>
+    <div class="grp" data-dim="r">
+      <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+    </div>
+    <span class="lb">品类</span>
+    <div class="grp" data-dim="c">
+      <button class="chip on" data-v="xrheadset">XR 头显</button><button class="chip on" data-v="glasses">AI 眼镜</button><button class="chip on" data-v="watch">智能手表</button><button class="chip on" data-v="earable">智能耳机</button><button class="chip on" data-v="health">健康可穿戴</button>
+    </div>
+    <span class="lb">场景</span>
+    <div class="grp" data-dim="t">
+      <button class="chip on" data-v="MR">MR</button><button class="chip on" data-v="VR">VR</button><button class="chip on" data-v="AR">AR</button><button class="chip on" data-v="拍摄">拍摄</button><button class="chip on" data-v="翻译">翻译</button><button class="chip on" data-v="运动">运动</button><button class="chip on" data-v="健康监测">健康监测</button><button class="chip on" data-v="降噪">降噪</button><button class="chip on" data-v="睡眠">睡眠</button>
+    </div>
+    <span class="lb">状态</span>
+    <div class="grp" data-dim="o">
+      <button class="chip on" data-v="1">已上市</button><button class="chip on" data-v="2">未上市</button><button class="chip on" data-v="3">子公司 / 已被收购</button>
+    </div>
+    <input type="search" id="l5w-q" placeholder="搜索公司 / 产品 / 关键词…">
+    <span class="cnt" id="l5w-cnt"></span>
+    <button class="reset" id="l5w-reset">重置</button>
+  </div>
+
+  <div class="matrix" id="l5w-matrix">
+    <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
+      <div class="tip"><b>口径说明</b>归属地按公司总部；AI 眼镜与传统智能手表 / 耳机并列，因为“端侧 AI + 多模态感知”正在重塑这两类存量品类。中国台湾企业归入中国列并以"台湾"标注（截至 2026 年 9 月初）。</div></div>
+    <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">AI 眼镜创业公司密度最高 + 智能手表 / 手环全球出货龙头（华米、小米生态链）+ VR/MR 硬件供应链最完整</div></div>
+    <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">生态定义者——Apple（Vision Pro / Watch / AirPods）与 Meta（Ray-Ban / Quest）双巨头主导 XR 与 AI 眼镜叙事</div></div>
+    <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">运动 / 户外可穿戴强区（Garmin 虽为美企但欧洲市场深耕、Polar、Suunto），XR 与 AI 眼镜玩家稀少</div></div>
+    <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan 等</small></div><div class="c">三星 Galaxy 生态全栈自研（手表 / 耳机 / XR 头显 Moohan）；日系传感器与精密光学供应链深厚</div></div>
+  </div>
+
+  <div class="insights">
+    <div class="ins">
+      <h3>按品类看：AI 眼镜是最活跃的新变量</h3>
+      <ul>
+        <li><b>XR 头显：</b>Apple Vision Pro 定义高端空间计算形态但出货有限，Meta Quest 以性价比占据消费 VR 大部分市场；中国字节 PICO、三星 Moohan（联合 Google / 高通）跟进 MR 赛道，整体仍处于内容生态培育期。</li>
+        <li><b>AI 眼镜：</b>2023–2026 年增长最快的新品类，Meta Ray-Ban 系列证明"轻量 AI + 拍摄 + 语音"的可行商业模式；中国厂商（Rokid、雷鸟、蜂巢科技、小米、百度）密集跟进，多数走"无显示 AI 音频眼镜"到"轻量光波导显示"的渐进路线。</li>
+        <li><b>智能手表：</b>成熟品类，Apple Watch 与华米、小米生态链主导出货量；健康监测（心率 / 血氧 / ECG）与运动数据是核心卖点，AI 端侧化体现在异常检测与语音助理增强。</li>
+        <li><b>智能耳机：</b>AirPods 定义品类天花板，主打空间音频、主动降噪与实时翻译；中国品牌（华为、小米）与传统 Hi-Fi 厂商（Bose、Sony）在降噪算法与端侧语音芯片上竞争。</li>
+        <li><b>健康可穿戴：</b>Oura、Whoop 等专注睡眠 / 恢复指标的垂类硬件公司崛起，与手表 / 手环形成差异化；核心壁垒是传感器算法而非算力。</li>
+      </ul>
+    </div>
+    <div class="ins">
+      <h3>按国家看：三种生态形态</h3>
+      <ul>
+        <li><b>中国：</b>AI 眼镜创业公司全球最密集（Rokid、雷鸟创新、蜂巢科技、INMO），叠加手机厂商（小米、百度、华为）快速跟进；智能手表 / 手环出货量全球领先（华米、小米生态链），光学与传感器供应链最完整。</li>
+        <li><b>美国：</b>Apple 与 Meta 分别以"高端生态锁定"和"轻量走量 + 广告数据"两种打法定义品类；Google 通过与三星、Warby Parker 合作重回 XR/眼镜赛道；健康可穿戴创业公司（Oura、Whoop）活跃。</li>
+        <li><b>欧洲：</b>运动 / 户外可穿戴传统强区（Garmin 美企但欧洲市场深耕、Polar 芬兰、Suunto 芬兰），XR 与 AI 眼镜领域缺少本土巨头，多依赖美系生态。</li>
+        <li><b>其他：</b>三星走"手表 + 耳机 + XR 头显"全栈自研路线并与 Google/高通联合推出 Moohan；日本在精密光学、传感器与显示面板供应链上话语权仍强，但终端品牌参与度低。</li>
+      </ul>
+    </div>
+    <div class="ins wide">
+      <h3>交叉观察与口径说明</h3>
+      <ul>
+        <li><b>AI 眼镜是"端侧 AI"在可穿戴品类的最新落点：</b>相比手表 / 耳机的成熟形态，AI 眼镜把摄像头 + 麦克风 + 端侧多模态模型首次整合进日常佩戴设备，是本页增长最快、竞争最激烈的细分。</li>
+        <li><b>健康监测算法与端侧推理深度绑定：</b>心率异常检测、睡眠分期、跌倒检测等均需在低功耗 MCU / 小型 NPU 上实时运行，是可穿戴品类"端侧 AI"最早规模化落地的场景，早于生成式 AI 叙事。</li>
+        <li><b>生态锁定 vs 硬件性价比两条路线并行：</b>Apple / Meta 依靠系统生态与内容锁定用户，中国厂商更多以硬件迭代速度与价格竞争抢占增量市场，尤其在 AI 眼镜这一新兴品类。</li>
+        <li><b>口径：</b>① 本页只覆盖 L5 终端设备层中"可穿戴 / XR"这一分支（即全景图 L5 卡片），不含手机 / PC / 汽车 / 机器人等终端；② 归属地按公司总部认定；③ 上市状态、代表产品基于 2026 年 9 月初公开信息核实，具体参数与融资以官方披露为准；④ 入选标准以"自主品牌终端整机"为核心，纯代工与仅做展示的概念机不单列。</li>
       </ul>
     </div>
   </div>
@@ -1096,10 +1178,106 @@ const CATS_ROBOT = [
 ];
 const ROBOT_TAGS = ["人形","工业","协作臂","物流","服务","清洁","无人机","医疗","核心部件","具身模型"];
 
+/* ===================== L5 可穿戴 / XR 玩家数据 =====================
+   r: 地区 CN/US/EU/OT   c: 品类 xrheadset/glasses/watch/earable/health
+   o: 状态 1已上市 2未上市 3子公司/已被收购
+   m: 代表产品 / 方案   d: 定位说明   t: 场景标签   tw: 中国台湾企业
+*/
+const WEARABLE_PLAYERS = [
+  /* ---------- 中国 · XR 头显 ---------- */
+  {n:"字节跳动 · PICO", e:"ByteDance PICO", r:"CN", c:"xrheadset", o:3, m:"PICO 4 Ultra · PICO XR 一体机", d:"字节跳动 2021 年收购的 VR 一体机品牌，国内消费 VR 出货量领先，2025 年起转向企业 / 教育市场补贴消费端萎缩", f:"<span class='fv'>字节跳动 2021 年以 ~90 亿元收购</span><span class='fk'>· 并入字节跳动大力智能，未单列财务</span>", t:["VR","MR"]},
+  {n:"大朋VR", e:"DPVR", r:"CN", c:"xrheadset", o:2, m:"E4 系列 VR 一体机 · PC VR 头显", d:"国内最早的 VR 硬件厂商之一，聚焦教育、企业与主题乐园等 To B 场景", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 早期由暴风集团、软银中国等投资</span>", t:["VR"]},
+  {n:"小派科技", e:"Pimax", r:"CN", c:"xrheadset", o:2, m:"Pimax Crystal / Dream Air 超广视场角 VR", d:"以超高分辨率与超广视场角 PC VR 头显切入海外硬核玩家与模拟训练市场，众筹起家", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 多轮众筹 + 战略投资，海外收入占比高</span>", t:["VR"]},
+  {n:"宏达电", e:"HTC · 中国台湾", r:"CN", c:"xrheadset", o:1, tw:true, m:"VIVE 系列 VR / MR 头显", d:"曾经的智能手机巨头转型 XR，VIVE 系列覆盖消费与企业级 VR / MR，近年营收持续承压", f:"<span class='fx'>已上市 · 台交所 2498</span><span class='fv'>市值 ≈300 亿新台币（2026-09）</span><span class='fk'>· VR / XR 业务营收持续下滑，企业级转型进行中</span>", t:["VR","MR"]},
+
+  /* ---------- 中国 · AI 眼镜 ---------- */
+  {n:"Rokid", e:"若琪", r:"CN", c:"glasses", o:2, m:"Rokid Glasses · Rokid Max AR 眼镜", d:"国内 AI / AR 眼镜最早入局者之一，兼顾轻量显示与语音 Agent，覆盖消费与行业（巡检 / 导览）双线", f:"<span class='fv'>累计融资 >20 亿元</span><span class='fk'>· 2025 年新一轮融资，多家产业方 / 国资参与</span>", t:["AR","拍摄","翻译"]},
+  {n:"雷鸟创新", e:"Thunderbird", r:"CN", c:"glasses", o:2, m:"雷鸟 V3 / X3 系列 AI 眼镜", d:"TCL 系孵化的 AI 眼镜品牌，2025 年出货量国内领先，主打拍摄、翻译与语音助理", f:"<span class='fv'>累计融资 >5 亿元</span><span class='fk'>· TCL 集团孵化，多轮外部融资</span><span class='fk'>· 2025 年国内 AI 眼镜出货量领先梯队</span>", t:["拍摄","翻译","AR"]},
+  {n:"蜂巢科技", e:"Hive", r:"CN", c:"glasses", o:2, m:"闪极 AI 眼镜 · Hive AI Glasses", d:"以极致性价比切入 AI 音频眼镜市场，主打拍摄与实时翻译，众筹与线上渠道起量快", f:"<span class='fv'>累计融资 ~1 亿元</span><span class='fk'>· 天使 / Pre-A 轮，多家消费电子基金</span>", t:["拍摄","翻译"]},
+  {n:"影目科技", e:"INMO", r:"CN", c:"glasses", o:2, m:"INMO Air2 / GO2 AR 眼镜", d:"轻量光波导 AR 眼镜代表，覆盖消费与行业巡检场景，强调独立算力与长续航", f:"<span class='fv'>累计融资 >5 亿元</span><span class='fk'>· 多轮融资，产业方与消费电子基金参与</span>", t:["AR","拍摄"]},
+  {n:"李未可科技", e:"Lawa", r:"CN", c:"glasses", o:2, m:"Meta Lens 系列 AI 眼镜", d:"AI 音频眼镜早期玩家，联合天猫精灵等生态做语音助理与运动场景眼镜", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 多轮融资，消费电子与文旅产业方</span>", t:["拍摄","运动"]},
+  {n:"XREAL", e:"", r:"CN", c:"glasses", o:2, m:"XREAL One / Air 系列 AR 眼镜", d:"消费级光学 AR 眼镜出货全球领先的中国团队，主打大屏观影 / 游戏投屏，海外收入占比高", f:"<span class='fv'>累计融资 >3 亿美元</span><span class='fk'>· 2025 年新一轮融资，阿里、高通等参与</span><span class='fk'>· 全球消费 AR 眼镜出货量领先</span>", t:["AR","拍摄"]},
+  {n:"小米", e:"Xiaomi", r:"CN", c:"glasses", o:1, m:"小米 AI 眼镜 · 小爱同学眼镜端", d:"依托手机 + 生态链快速跟进 AI 眼镜品类，主打性价比与小爱同学语音生态打通", f:"<span class='fx'>已上市 · 港交所 01810</span><span class='fv'>市值 ≈1.5 万亿港元（2026-09）</span><span class='fk'>· AI 眼镜为集团 IoT / 生态链新品类，未单列财务</span>", t:["拍摄","翻译"]},
+  {n:"百度", e:"Baidu", r:"CN", c:"glasses", o:1, m:"小度 AI 眼镜", d:"依托文心大模型与小度生态推出 AI 眼镜，主打语音助理、拍摄与信息流入口", f:"<span class='fx'>已上市 · 港交所 09888 & NASDAQ BIDU</span><span class='fv'>市值 ≈3,200 亿港元（2026-09）</span><span class='fk'>· AI 眼镜为小度硬件新品类，未单列财务</span>", t:["拍摄","翻译"]},
+  {n:"华为", e:"Huawei", r:"CN", c:"glasses", o:2, m:"华为智能眼镜 2 · 联合眼镜厂商联名款", d:"与国内多家眼镜品牌联名，依托鸿蒙生态与麒麟芯片做音频 + 拍摄智能眼镜", f:"<span class='fv'>未单独上市，集团自有资金投入</span><span class='fk'>· 多品牌联名（如与暴龙、雪莱特等眼镜厂商）</span>", t:["拍摄","翻译"]},
+
+  /* ---------- 中国 · 智能手表 ---------- */
+  {n:"华米科技", e:"Zepp Health", r:"CN", c:"watch", o:1, m:"Amazfit 系列智能手表 / 手环", d:"小米生态链起家、已独立上市的可穿戴品牌，全球出货量领先，向自有品牌 Amazfit 转型多年", f:"<span class='fx'>已上市 · NYSE ZEPP</span><span class='fv'>市值 ≈$2 亿（2026-09）</span><span class='fk'>· Amazfit 品牌全球出货量位居前列，健康监测算法为核心卖点</span>", t:["运动","健康监测"]},
+  {n:"华为", e:"Huawei", r:"CN", c:"watch", o:2, m:"WATCH GT / Fit 系列", d:"依托鸿蒙生态打通手机、手表、耳机全场景互联，健康监测（ECG / 血压）功能持续加码", f:"<span class='fv'>未单独上市，集团自有资金投入</span><span class='fk'>· 可穿戴为鸿蒙全场景战略重要一环</span>", t:["运动","健康监测"]},
+  {n:"小米", e:"Xiaomi", r:"CN", c:"watch", o:1, m:"小米手环 / Watch 系列", d:"全球性价比智能手环 / 手表出货量长期领先，依托生态链快速迭代", f:"<span class='fx'>已上市 · 港交所 01810</span><span class='fv'>市值 ≈1.5 万亿港元（2026-09）</span><span class='fk'>· 可穿戴为 IoT 与生活消费产品分部重要品类</span>", t:["运动","健康监测"]},
+  {n:"荣耀", e:"HONOR", r:"CN", c:"watch", o:3, m:"荣耀 Watch 系列", d:"从华为分拆独立后延续可穿戴产品线，主打运动健康与年轻化设计", f:"<span class='fv'>2020 年从华为分拆独立</span><span class='fk'>· 未单独披露可穿戴业务财务</span>", t:["运动","健康监测"]},
+  {n:"OPPO", e:"", r:"CN", c:"watch", o:2, m:"OPPO Watch 系列", d:"依托 ColorOS 生态与手机厂商渠道优势推出智能手表，主打健康监测与快充", f:"<span class='fv'>未单独上市，集团自有资金投入</span>", t:["运动","健康监测"]},
+  {n:"vivo", e:"", r:"CN", c:"watch", o:2, m:"vivo WATCH 系列", d:"依托蓝心大模型生态推出智能手表，覆盖健康监测与运动场景", f:"<span class='fv'>未单独上市，集团自有资金投入</span>", t:["运动","健康监测"]},
+
+  /* ---------- 中国 · 智能耳机 ---------- */
+  {n:"华为", e:"Huawei", r:"CN", c:"earable", o:2, m:"FreeBuds 系列 TWS 耳机", d:"依托麒麟芯片与鸿蒙生态的高端 TWS 耳机，主打主动降噪与全场景音频接续", f:"<span class='fv'>未单独上市，集团自有资金投入</span>", t:["降噪"]},
+  {n:"小米", e:"Xiaomi", r:"CN", c:"earable", o:1, m:"Redmi Buds / 小米 Buds 系列", d:"性价比 TWS 耳机全球出货量领先梯队，依托生态链快速覆盖多价位段", f:"<span class='fx'>已上市 · 港交所 01810</span><span class='fv'>市值 ≈1.5 万亿港元（2026-09）</span>", t:["降噪"]},
+  {n:"韶音", e:"Shokz", r:"CN", c:"earable", o:2, m:"骨传导运动耳机（OpenRun 系列）", d:"骨传导耳机品类开创者与全球龙头，主打运动场景下的开放式听觉体验", f:"<span class='fv'>未上市，自筹盈利为主</span><span class='fk'>· 全球骨传导耳机市占领先</span>", t:["运动","降噪"]},
+  {n:"万魔声学", e:"1MORE", r:"CN", c:"earable", o:2, m:"1MORE 系列 TWS / 头戴耳机", d:"小米生态链声学代表企业，覆盖 TWS、头戴与降噪多品类，曾冲刺科创板 IPO", f:"<span class='fv'>累计融资 ~5 亿元</span><span class='fx'>2021 年科创板 IPO 曾获受理，后终止</span>", t:["降噪"]},
+  {n:"OPPO", e:"", r:"CN", c:"earable", o:2, m:"Enco 系列 TWS 耳机", d:"依托手机渠道推出 TWS 耳机，主打主动降噪与游戏低延迟模式", f:"<span class='fv'>未单独上市，集团自有资金投入</span>", t:["降噪"]},
+  {n:"vivo", e:"", r:"CN", c:"earable", o:2, m:"TWS 系列耳机", d:"依托手机渠道推出 TWS 耳机，主打音质调校与蓝心语音生态联动", f:"<span class='fv'>未单独上市，集团自有资金投入</span>", t:["降噪"]},
+
+  /* ---------- 中国 · 健康可穿戴 ---------- */
+  {n:"乐心医疗", e:"Lifesense", r:"CN", c:"health", o:1, m:"智能体脂秤 / 血压计 / 健康手环", d:"家用健康监测硬件老牌厂商，产品覆盖体脂、血压、心率等家庭健康场景", f:"<span class='fx'>已上市 · 深交所 300562</span><span class='fv'>市值 ≈30 亿元（2026-09）</span><span class='fk'>· 家用健康监测设备为主业</span>", t:["健康监测"]},
+  {n:"咕咚", e:"Codoon", r:"CN", c:"health", o:2, m:"咕咚运动手环 · 智能跑鞋", d:"运动 App 起家延伸至智能硬件，主打运动数据追踪与健康管理", f:"<span class='fv'>累计融资 ~3 亿元</span><span class='fk'>· 多轮融资，君联资本等参与</span>", t:["运动","健康监测"]},
+
+  /* ---------- 美国 · XR 头显 ---------- */
+  {n:"Apple", e:"苹果", r:"US", c:"xrheadset", o:1, m:"Vision Pro 空间计算头显", d:"以“空间计算”定义高端 MR 品类，深度整合 visionOS 生态与 M/R 系列芯片，出货有限但定义了行业标杆", f:"<span class='fx'>已上市 · NASDAQ AAPL</span><span class='fv'>市值 ≈3.5 万亿美元（2026-09）</span><span class='fk'>· Vision Pro 出货量有限，定位高端生态旗舰而非走量产品</span>", t:["MR"]},
+  {n:"Meta", e:"", r:"US", c:"xrheadset", o:1, m:"Quest 系列 VR 一体机", d:"消费级 VR 头显出货量全球领先，以性价比 + Horizon 生态主导独立 VR 市场", f:"<span class='fx'>已上市 · NASDAQ META</span><span class='fv'>市值 ≈1.8 万亿美元（2026-09）</span><span class='fk'>· Reality Labs 常年亏损，由集团广告业务反哺 XR 长期投入</span>", t:["VR","MR"]},
+  {n:"Valve", e:"", r:"US", c:"xrheadset", o:2, m:"Index VR · 传闻中的新一代头显（Deckard）", d:"PC 游戏平台 Steam 母公司，面向硬核 PC VR 玩家，出货量小但生态号召力强", f:"<span class='fv'>私有公司，自筹盈利（Steam 平台收入支撑）</span><span class='fk'>· 未披露硬件业务财务</span>", t:["VR"]},
+
+  /* ---------- 美国 · AI 眼镜 ---------- */
+  {n:"Meta", e:"", r:"US", c:"glasses", o:1, m:"Ray-Ban Meta · Oakley Meta HSTN AI 眼镜", d:"与 EssilorLuxottica 联名的 AI 眼镜验证了“轻量 AI + 拍摄 + 语音”商业模式，是当前全球出货量最大的智能眼镜产品线", f:"<span class='fx'>已上市 · NASDAQ META</span><span class='fv'>市值 ≈1.8 万亿美元（2026-09）</span><span class='fk'>· Ray-Ban Meta 系列被视为 AI 眼镜品类走量的标杆案例</span>", t:["拍摄","AR"]},
+  {n:"Google", e:"", r:"US", c:"glasses", o:2, m:"Android XR 智能眼镜（联合三星 / Warby Parker / Gentle Monster）", d:"通过 Android XR 平台联合硬件伙伴重回智能眼镜赛道，依托 Gemini 多模态模型做语音与视觉助理", f:"<span class='fv'>Alphabet 全资研究 / 平台业务</span><span class='fk'>· 依托 Alphabet 研发投入，未单列财务</span>", t:["拍摄","翻译","AR"]},
+  {n:"Snap", e:"", r:"US", c:"glasses", o:1, m:"Spectacles AR 眼镜（开发者版）", d:"社交媒体公司延伸的 AR 眼镜产品线，长期面向开发者与创作者生态、尚未大规模消费级出货", f:"<span class='fx'>已上市 · NYSE SNAP</span><span class='fv'>市值 ≈$150 亿（2026-09）</span><span class='fk'>· Spectacles 多代迭代但仍处早期生态培育阶段</span>", t:["AR","拍摄"]},
+  {n:"Even Realities", e:"", r:"US", c:"glasses", o:2, m:"Even G1 轻量显示 AI 眼镜", d:"主打轻量单色波导显示 + 无摄像头设计的日常 AI 眼镜，强调隐私与长续航的差异化路线", f:"<span class='fv'>累计融资未公开披露</span><span class='fk'>· 众筹与直销渠道起量</span>", t:["拍摄","翻译"]},
+
+  /* ---------- 美国 · 智能手表 ---------- */
+  {n:"Apple", e:"苹果", r:"US", c:"watch", o:1, m:"Apple Watch 系列", d:"全球智能手表出货量与营收长期领先者，深度绑定 iOS 生态与健康监测（ECG / 血氧）功能", f:"<span class='fx'>已上市 · NASDAQ AAPL</span><span class='fv'>市值 ≈3.5 万亿美元（2026-09）</span><span class='fk'>· Watch 为可穿戴与家居分部核心产品</span>", t:["运动","健康监测"]},
+  {n:"Fitbit", e:"Google 旗下", r:"US", c:"watch", o:3, m:"Fitbit Sense / Versa 系列", d:"运动手环品类早期开创者，2021 年被 Google 收购后并入 Pixel / Android 健康生态", f:"<span class='fv'>Google 2021 年以 ~$21 亿收购</span><span class='fk'>· 并入 Google 硬件部门，未单独披露财务</span>", t:["运动","健康监测"]},
+
+  /* ---------- 美国 · 智能耳机 ---------- */
+  {n:"Apple", e:"苹果", r:"US", c:"earable", o:1, m:"AirPods 系列", d:"TWS 耳机品类定义者与全球出货量 / 营收领先者，主打空间音频、主动降噪与健康监测拓展（心率）", f:"<span class='fx'>已上市 · NASDAQ AAPL</span><span class='fv'>市值 ≈3.5 万亿美元（2026-09）</span><span class='fk'>· AirPods 为可穿戴与家居分部重要收入来源</span>", t:["降噪"]},
+  {n:"Bose", e:"", r:"US", c:"earable", o:2, m:"QuietComfort 系列降噪耳机", d:"主动降噪耳机的技术开创者之一，长期主打音质与降噪算法而非生态锁定", f:"<span class='fv'>创始人 / 员工持股私有公司，不上市</span><span class='fk'>· 未披露财务数据</span>", t:["降噪"]},
+
+  /* ---------- 美国 · 健康可穿戴 ---------- */
+  {n:"Whoop", e:"", r:"US", c:"health", o:2, m:"Whoop 4.0 / 5.0 健身追踪器（订阅制）", d:"无屏幕健身 / 恢复追踪器，采用硬件 + 订阅制商业模式，聚焦运动员与健身爱好者", f:"<span class='fv'>累计融资 >$400M</span><span class='fk'>· 2021 年 F 轮 @ $37 亿估值，SoftBank 等参与</span>", t:["健康监测","睡眠","运动"]},
+
+  /* ---------- 欧洲 · XR 头显 ---------- */
+  {n:"Varjo", e:"芬兰", r:"EU", c:"xrheadset", o:2, m:"Varjo XR-4 / Aero 企业级 VR/MR 头显", d:"面向仿真训练、工业设计与国防的高保真企业级 VR / MR 头显，主打人眼分辨率显示", f:"<span class='fv'>累计融资 ~$100M</span><span class='fk'>· 多轮融资，聚焦企业 / 政府客户</span>", t:["VR","MR"]},
+
+  /* ---------- 欧洲 · 智能手表 / 健康可穿戴 ---------- */
+  {n:"Garmin", e:"瑞士注册", r:"EU", c:"watch", o:1, m:"Fenix / Forerunner 系列运动手表", d:"户外与专业运动手表龙头，主打精准 GPS 定位与长续航，深耕跑步 / 骑行 / 潜水等垂直运动场景", f:"<span class='fx'>已上市 · NYSE GRMN（瑞士注册）</span><span class='fv'>市值 ≈$400 亿（2026-09）</span><span class='fk'>· 户外与健身分部为核心增长引擎</span>", t:["运动","健康监测"]},
+  {n:"Polar", e:"芬兰", r:"EU", c:"watch", o:2, m:"Vantage / Ignite 系列运动手表", d:"心率监测技术的先驱厂商，主打专业运动员训练分析与恢复指导", f:"<span class='fv'>私有公司，创始人家族持股为主</span><span class='fk'>· 未披露详细财务数据</span>", t:["运动","健康监测"]},
+  {n:"Oura", e:"芬兰 / 美国双总部", r:"EU", c:"health", o:2, m:"Oura Ring 智能戒指", d:"以指环形态切入睡眠与恢复监测的品类开创者，采用硬件 + 订阅制商业模式，带动“智能戒指”成为新可穿戴形态", f:"<span class='fv'>累计融资 >$5 亿</span><span class='fk'>· 2024 年估值 ~$52 亿，Fidelity 等参与</span>", t:["睡眠","健康监测"]},
+  {n:"Withings", e:"法国", r:"EU", c:"health", o:2, m:"智能体脂秤 / 血压计 / 睡眠分析垫", d:"家用医疗级健康监测硬件厂商，产品覆盖体重管理、心血管与睡眠监测，强调医疗认证与临床级精度", f:"<span class='fv'>2016 年曾被诺基亚收购、2018 年创始团队回购独立</span><span class='fk'>· 未披露详细财务数据</span>", t:["健康监测","睡眠"]},
+
+  /* ---------- 其他 · XR 头显 ---------- */
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"xrheadset", o:1, m:"Galaxy XR（Moohan）· 联合 Google / 高通", d:"联合 Google（Android XR）与高通（骁龙 XR2+）推出的 MR 头显，是三星对抗 Apple Vision Pro 的旗舰产品", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span><span class='fk'>· Galaxy XR 为三星移动业务新战略品类</span>", t:["MR"]},
+  {n:"索尼", e:"Sony · 日本", r:"OT", c:"xrheadset", o:1, m:"PlayStation VR2", d:"依托 PlayStation 主机生态的游戏 VR 头显，主打高保真游戏体验与触觉反馈手柄", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈20 万亿日元（2026-09）</span><span class='fk'>· PSVR2 为游戏与网络服务分部产品线之一</span>", t:["VR"]},
+
+  /* ---------- 其他 · 智能手表 ---------- */
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"watch", o:1, m:"Galaxy Watch 系列", d:"安卓阵营智能手表出货量领先品牌，深度整合 Wear OS 与三星健康生态", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span><span class='fk'>· Galaxy Watch 为移动体验分部核心可穿戴产品</span>", t:["运动","健康监测"]},
+
+  /* ---------- 其他 · 智能耳机 ---------- */
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"earable", o:1, m:"Galaxy Buds 系列", d:"安卓阵营 TWS 耳机出货量领先品牌，主打与 Galaxy 手机 / 手表的生态联动", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span>", t:["降噪"]},
+  {n:"索尼", e:"Sony · 日本", r:"OT", c:"earable", o:1, m:"WF / WH 系列降噪耳机", d:"消费电子巨头的高端降噪耳机产品线，长期在主动降噪算法与音质调校上口碑领先", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈20 万亿日元（2026-09）</span><span class='fk'>· 耳机为电子产品与解决方案分部重要品类</span>", t:["降噪"]},
+];
+
+const CATS_WEARABLE = [
+  {k:"xrheadset", n:"XR 头显", s:"XR Headsets · VR / MR 一体机与 PC VR", def:"提供沉浸式空间计算与虚拟 / 混合现实体验的头戴设备，Apple、Meta、三星定义高端与消费两条产品线", biz:"竞争逻辑：生态内容 + 芯片自研 + 生态锁定；消费 VR 走性价比放量，MR/空间计算走高端生态"},
+  {k:"glasses", n:"AI 眼镜", s:"AI Glasses · 轻量显示 / 纯音频 AI 眼镜", def:"把摄像头 + 麦克风 + 端侧多模态模型整合进日常眼镜形态，是可穿戴品类中增长最快的新兴细分", biz:"竞争逻辑：轻量化 + 长续航 + 生态语音助理；Meta Ray-Ban 验证走量商业模式，中国厂商密度最高"},
+  {k:"watch", n:"智能手表", s:"Smartwatches · 通用手表 / 专业运动手表", def:"成熟的可穿戴品类，覆盖通知提醒、运动追踪与健康监测，Apple 与安卓阵营（三星 / 华为 / 小米）分庭抗礼", biz:"竞争逻辑：生态绑定 + 电池续航 + 健康监测精度；专业运动垂类（Garmin/Polar）另辟蹊径"},
+  {k:"earable", n:"智能耳机", s:"Earables · TWS / 骨传导 / 降噪耳机", def:"真无线耳机品类，核心竞争维度为主动降噪算法、空间音频与生态互联，部分厂商拓展骨传导等差异化形态", biz:"竞争逻辑：降噪算法 + 生态互联 + 音质；苹果 AirPods 定义品类天花板"},
+  {k:"health", n:"健康可穿戴", s:"Health Wearables · 戒指 / 手环 / 家用健康监测设备", def:"以睡眠、恢复、心血管等健康指标监测为核心卖点的垂类硬件，常采用硬件 + 订阅制商业模式", biz:"竞争逻辑：传感器算法精度 + 医疗认证 + 订阅粘性；智能戒指是近年最受关注的新形态"}
+];
+const WEARABLE_TAGS = ["MR","VR","AR","拍摄","翻译","运动","健康监测","降噪","睡眠"];
+
 initLayer({ prefix:"l3", players:PLAYERS, cats:CATS, regions:REGIONS, oLabels:OPEN });
 const OPEN4 = {1:"已上市", 2:"未上市", 3:"子公司 / 已被收购"};
 initLayer({ prefix:"l4", players:PLAYERS4, cats:CATS4, regions:REGIONS, oLabels:OPEN4 });
 initLayer({ prefix:"l5", players:ROBOT_PLAYERS, cats:CATS_ROBOT, regions:REGIONS, oLabels:OPEN4 });
+initLayer({ prefix:"l5w", players:WEARABLE_PLAYERS, cats:CATS_WEARABLE, regions:REGIONS, oLabels:OPEN4 });
 (function(){ const h = location.hash.replace("#",""); if (h && document.getElementById("view-" + h)) show(h); else measure(); })();
 </script>
 
