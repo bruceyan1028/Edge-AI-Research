@@ -158,6 +158,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .pc-o.o1 { color: #2e7d32; border-color: #a5d6a7; background: #e8f5e9; }
 .pc-o.o2 { color: #ef6c00; border-color: #ffcc80; background: #fff3e0; }
 .pc-o.o3 { color: #616161; border-color: #e0e0e0; background: #f5f5f5; }
+.pc-o.o4 { color: #6a3bb5; border-color: #d3c2f0; background: #f3edfd; }
 .pc-m { font-size: 10.5px; color: #111827; margin: 3px 0 2px; line-height: 1.4; }
 .pc-d { font-size: 10.5px; color: #6b7280; line-height: 1.4; margin-bottom: 4px; }
 .pc .tags .tag { background: var(--cc-bg); }
@@ -419,8 +420,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
             <div class="tags"><span class="tag">TVM / OctoML</span><span class="tag">Modular</span><span class="tag">Neural Magic</span><span class="tag">Deci</span><span class="tag">Nota AI</span><span class="tag">Latent AI</span></div></div>
           <div class="card"><div class="t">操作系统与平台</div><div class="d">OS内置系统级AI能力与API，决定应用接入方式</div>
             <div class="tags"><span class="tag">Apple Intelligence</span><span class="tag">Android AICore</span><span class="tag">Windows Copilot+</span><span class="tag">鸿蒙</span><span class="tag">QNX</span><span class="tag">Android Automotive</span><span class="tag">斑马智行</span></div></div>
-          <div class="card"><div class="t">端侧MLOps与开发平台</div><div class="d">数据采集、训练、部署、监控一站式</div>
-            <div class="tags"><span class="tag">Edge Impulse</span><span class="tag">Roboflow</span><span class="tag">Qeexo</span><span class="tag">SensiML</span><span class="tag">Hugging Face</span></div></div>
+          <div class="card"><div class="t">端侧MLOps与开发平台</div><div class="d">数据采集、训练、部署、监控一站式，含设备队列 OTA 与容器化运维</div>
+            <div class="tags"><span class="tag">Edge Impulse</span><span class="tag">Roboflow</span><span class="tag">Qeexo</span><span class="tag">SensiML</span><span class="tag">balena</span><span class="tag">Hugging Face</span></div></div>
         </div>
       </div>
     </div>
@@ -503,7 +504,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="toolbar" id="l1c-toolbar">
       <span class="lb">地区</span>
       <div class="grp" data-dim="r">
-        <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+        <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
       </div>
       <span class="lb">品类</span>
       <div class="grp" data-dim="c">
@@ -525,11 +526,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="matrix" id="l1c-matrix">
       <div class="rsrc">
       <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
-        <div class="tip"><b>口径说明</b>归属地按公司总部，中国台湾企业归入中国列并标注；上市公司附市值与最近财年营收 / 净利，未上市附累计融资与估值，子公司 / 已被收购 / 已停运附交易或退出要素（截至 2026 年 9 月初）；海外与台湾公司金额统一折算为美元，中国大陆公司保留人民币 / 港元；本页聚焦芯片厂商本身，IP授权商 / 晶圆代工 / 存储器 / 传感器 / EDA等上下游配套见全景图 L1 层。</div></div>
-      <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">边缘AI加速芯片赛道最密集（车规 / 存算一体创业公司扎堆），视觉IoT SoC大陆厂商绝对主导、台湾奇景光电 / 联咏科技补充差异化玩家</div></div>
+        <div class="tip"><b>口径说明</b>归属地按公司总部；中国台湾企业单独标注并计入“其他”列（本页 3 家：联发科、奇景光电、联咏科技）；上市公司附市值与最近财年营收 / 净利，未上市附累计融资与估值，子公司 / 已被收购 / 已停运附交易或退出要素（截至 2026 年 9 月初）；海外与中国台湾公司金额统一折算为美元，中国大陆公司保留人民币 / 港元；本页聚焦芯片厂商本身，IP授权商 / 晶圆代工 / 存储器 / 传感器 / EDA等上下游配套见全景图 L1 层。</div></div>
+      <div class="colhead R-CN"><div class="n">中国大陆 <small>Chinese Mainland</small></div><div class="c">边缘AI加速芯片赛道最密集（车规 / 存算一体创业公司扎堆），视觉IoT SoC 领域以 7 家上市厂商形成绝对主导</div></div>
       <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">通用终端SoC绝对龙头（高通 / 苹果），边缘AI加速芯片创业公司数量最多但淘汰率高</div></div>
       <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">MCU传统强区（ST、英飞凌、Nordic），边缘AI加速芯片以存算一体 / 神经形态架构差异化</div></div>
-      <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · Israel</small></div><div class="c">韩国NPU三强冲刺IPO、以色列边缘AI芯片并购退出案例集中（台湾企业已并入"中国"列统计）</div></div>
+      <div class="colhead R-OT"><div class="n">其他 <small>Taiwan · Korea · Japan · Israel</small></div><div class="c">中国台湾在手机SoC（联发科全球第一）与视觉IoT SoC（奇景、联咏）份额可观；韩国NPU三强冲刺IPO、以色列边缘AI芯片并购退出案例集中</div></div>
       </div>
     </div>
 
@@ -541,17 +542,17 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <ul>
           <li><b>通用终端SoC：</b>手机 / PC / 汽车主控，NPU算力是唯一竞争焦点，头部高度集中且多为纵向一体化大厂（苹果、三星既做SoC也做整机）。中国厂商（海思、展锐）受出口管制或估值待验证的IPO叙事驱动；三星靠自研Exynos重夺份额、减少对高通的授权费依赖，是这一品类少见的"份额逆转"案例。</li>
           <li><b>专用边缘AI加速芯片：</b>本页最拥挤、故事最丰富的品类（本页收录29家）。中国车规 / 存算一体创业公司密集融资（后摩智能、亿铸科技、知存科技），美国创业公司数量最多但也最先出清——Untether AI已停止运营、Kinara被NXP以$307M收购、Hailo从$1.2B独角兽跌至被Microchip收购，是这条赛道高风险的直接证据；地平线、爱芯元智等则已完成港股IPO，进入"以芯片+算法软硬一体"的下半场竞争。</li>
-          <li><b>视觉 / IoT SoC：</b>大陆厂商绝对主导（瑞芯微 / 全志 / 晶晨 / 恒玄等均已上市），受益于安防招标回暖与存储涨价周期，正向机器人 / 汽车主控延伸；台湾奇景光电（超低功耗视觉AI处理器）与联咏科技（安防SoC+DDI双主业）是此前被遗漏、此次补入的非大陆玩家，反映该品类并非中国大陆完全独占。</li>
+          <li><b>视觉 / IoT SoC：</b>大陆厂商绝对主导（瑞芯微 / 全志 / 晶晨 / 恒玄等均已上市），受益于安防招标回暖与存储涨价周期，正向机器人 / 汽车主控延伸；中国台湾的奇景光电（超低功耗视觉AI处理器）与联咏科技（安防SoC+DDI双主业）提供差异化产品线，本版已按总部单独计入“其他”列，反映该品类并非中国大陆完全独占。</li>
           <li><b>MCU / TinyML芯片：</b>格局最稳定，被ST、英飞凌、TI、NXP、Microchip等传统MCU大厂长期把持，护城河是生态工具链而非单点算力；变化在于这些大厂正把NPU集成进主流MCU产品线（NXP MCX N、Nordic nRF54LM20B），同时中国厂商（乐鑫、兆易创新、中微半导体）借存储涨价周期加速追赶。</li>
         </ul>
       </div>
       <div class="ins">
         <h3>按国家看：四种生态形态</h3>
         <ul>
-          <li><b>中国（含台湾）：</b>边缘AI加速芯片与视觉 / IoT SoC两大品类的绝对主场，车规芯片（地平线、黑芝麻）与存算一体创业公司（知存、后摩、亿铸）密集涌现；台湾联发科手机SoC出货量全球第一，奇景光电、联咏科技在视觉IoT SoC补充差异化产品线；MCU / TinyML品类正处于追赶阶段。</li>
+          <li><b>中国大陆：</b>边缘AI加速芯片与视觉 / IoT SoC两大品类的绝对主场，车规芯片（地平线、黑芝麻）与存算一体创业公司（知存、后摩、亿铸）密集涌现；视觉 / IoT SoC 的 7 家上市厂商（瑞芯微、全志、晶晨、恒玄等）几乎垄断该品类；MCU / TinyML品类正处于追赶阶段。</li>
           <li><b>美国：</b>通用终端SoC（高通、苹果、英特尔、AMD）绝对领先，同时是边缘AI加速芯片创业公司最密集也最先出清的市场，NVIDIA的Jetson产品线是唯一横跨"通用算力巨头"与"边缘AI芯片"两个身份的公司。</li>
           <li><b>欧洲：</b>无手机 / PC终端与OS入口，通用终端SoC品类为空；优势集中在MCU传统强区（ST、英飞凌、Nordic）与差异化架构的边缘AI创业公司（Axelera数字存算一体、Innatera神经形态、GreenWaves超低功耗RISC-V），后者普遍资本厚度弱于美中同类。</li>
-          <li><b>其他：</b>台湾联发科手机SoC份额全球第一；韩国DEEPX等NPU三强正冲刺IPO前最后一轮融资，三星靠自研Exynos向上游延伸；以色列Hailo的独角兽崩塌与被收购是本页最典型的边缘AI芯片退出案例。</li>
+          <li><b>其他：</b>本版把中国台湾企业由“中国”列改计入本列，联发科手机SoC出货份额全球第一（2025 年 34.4%），奇景光电与联咏科技补充视觉 / IoT SoC 的差异化产品线；韩国DEEPX等NPU三强正冲刺IPO前最后一轮融资，三星靠自研Exynos向上游延伸；以色列Hailo的独角兽崩塌与被收购是本页最典型的边缘AI芯片退出案例。</li>
         </ul>
       </div>
       <div class="ins wide">
@@ -559,7 +560,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <ul>
           <li><b>纵向一体化玩家跨品类出现：</b>NVIDIA（Tegra/Jetson）、高通（Snapdragon汽车 / XR）、三星（Exynos）、苹果（A/M系列）等公司本身也出现在模型层、方案与集成层等其他视图中，是"研发一颗芯片、覆盖多层价值链"的战略缩影，本页仅标注其L1芯片产品线，避免与其他层重复计入营收 / 市值。</li>
           <li><b>边缘AI加速芯片赛道的高波动性：</b>本品类内并存IPO成功（地平线、爱芯元智）、SPAC上市后暴跌（Blaize）、独角兽估值崩塌后被收购（Hailo）、直接停止运营（Untether AI）四种截然不同的结局，是本页数据最能体现"芯片创业九死一生"的品类，建议结合各公司 f 字段的融资 / 退出细节交叉阅读。</li>
-          <li><b>口径：</b>① "中国"列含中国台湾企业（卡片以"台湾"标注），市值折算为美元；② 大陆企业保留人民币 / 港元，海外折算为美元；③ 子公司 / 已被收购 / 已停运（如海思、Untether AI、Hailo）标注母公司与交易 / 退出要素；④ 数据截至 2026 年 9 月初，营收多为 2025 财年或最近披露季度，市值 / 估值为 2026-09 快照，部分数据（如寒武纪市值、云天励飞市值）因第三方口径差异较大，标注"需以实时行情为准"；⑤ 本页聚焦芯片厂商本身，不含IP授权商、晶圆代工、存储器、传感器、EDA与设计服务等L1上下游配套厂商，这些环节仍只出现在全景图中。</li>
+          <li><b>口径：</b>① 归属地按公司总部，中国台湾企业单独标注并计入"其他"列（本页 3 家：联发科、奇景光电、联咏科技），市值折算为美元——此为 2026-09-08 修订，此前版本将其并入"中国"列；② 中国大陆企业保留人民币 / 港元，海外折算为美元；③ 子公司 / 已被收购 / 已停运（如海思、Untether AI、Hailo）标注母公司与交易 / 退出要素；④ 数据截至 2026 年 9 月初，营收多为 2025 财年或最近披露季度，市值 / 估值为 2026-09 快照，部分数据（如寒武纪市值、云天励飞市值）因第三方口径差异较大，标注"需以实时行情为准"；⑤ 本页聚焦芯片厂商本身，不含IP授权商、晶圆代工、存储器、传感器、EDA与设计服务等L1上下游配套厂商，这些环节仍只出现在全景图中。</li>
         </ul>
       </div>
     </div>
@@ -578,7 +579,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="toolbar" id="l3-toolbar">
       <span class="lb">地区</span>
       <div class="grp" data-dim="r">
-        <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+        <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
       </div>
       <span class="lb">类型</span>
       <div class="grp" data-dim="c">
@@ -601,7 +602,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <div class="rsrc">
       <div class="corner" tabindex="0"><b>体量 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
         <div class="tip"><b>口径说明</b>归属地按公司总部；开源状态指其端侧代表模型的权重是否公开；创业公司卡片附融资 / 估值 / 上市状态，垂类公司卡片附市值 / 营收 / 融资（截至 2026 年 9 月初）；海外公司金额统一折算为美元，中国公司保留人民币 / 港元。</div></div>
-      <div class="colhead R-CN"><div class="n">中国 <small>China</small></div><div class="c">手机厂"人人自研"+ 开源底座外溢 + 语音 / 视觉垂类上市公司群</div></div>
+      <div class="colhead R-CN"><div class="n">中国大陆 <small>Chinese Mainland</small></div><div class="c">手机厂"人人自研"+ 开源底座外溢 + 语音 / 视觉垂类上市公司群</div></div>
       <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">平台大厂掌握 OS 级入口，创业公司做架构创新（SSM / 液态网络）</div></div>
       <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">缺少终端 / OS 大厂，依托 Mistral、压缩技术与语音实验室，多被美企收购</div></div>
       <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · Canada · India · UAE 等</small></div><div class="c">韩国财阀式全栈、日本偏机器人 / 工业、加拿大语音创业聚集、中东主权模型</div></div>
@@ -623,9 +624,9 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <h3>按国家看：四种生态形态</h3>
         <ul>
           <li><b>美国：</b>Google / Apple / Microsoft / Meta 掌握 Android、iOS、Windows 三大 OS 入口，端侧模型 API 由它们定义；创业公司集中在新架构（Liquid、Cartesia、Zyphra）与开源平台（Hugging Face）。OpenAI 发布开放权重模型标志闭源巨头也进入端侧。</li>
-          <li><b>中国：</b>玩家数量最多。阿里 Qwen 与 DeepSeek 蒸馏模型成为全球端侧衍生模型的事实底座；手机厂自研模型密度全球最高；语音 / 视觉垂类形成一批上市公司（讯飞、商汤、虹软、云从、云知声、出门问问、云天励飞）。</li>
+          <li><b>中国大陆：</b>玩家数量最多。阿里 Qwen 与 DeepSeek 蒸馏模型成为全球端侧衍生模型的事实底座；手机厂自研模型密度全球最高；语音 / 视觉垂类形成一批上市公司（讯飞、商汤、虹软、云从、云知声、出门问问、云天励飞）。</li>
           <li><b>欧洲：</b>无消费级终端与 OS 大厂，"大厂端侧小模型"一栏为空。基础模型能力集中在 Mistral；特色是压缩（Multiverse）、语音（Kyutai、Speechmatics）与 tinyML（Plumerai、Imagimob），后者多被美国 / 德国半导体厂或平台收购。</li>
-          <li><b>其他：</b>韩国三星、LG、Naver、Kakao 呈财阀式全栈自研并强调韩语；日本 Sakana、PFN、NTT 面向日语与机器人 / 工业边缘；加拿大 Picovoice、Cohere 聚集在语音与企业端侧；阿联酋 TII 为主权模型研究机构。</li>
+          <li><b>其他：</b>韩国三星、LG、Naver、Kakao 呈财阀式全栈自研并强调韩语；日本 Sakana、PFN、NTT 面向日语与机器人 / 工业边缘；加拿大 Picovoice、Cohere 聚集在语音与企业端侧；阿联酋主权研究机构双雄——TII（Falcon）与 MBZUAI 下属 IFM（K2 Horizon，0.9B–375B 全开源，0.9B/3.7B/7B 三档明确面向手表 / 手机端侧）。</li>
         </ul>
       </div>
       <div class="ins wide">
@@ -651,7 +652,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="toolbar" id="l4-toolbar">
       <span class="lb">地区</span>
       <div class="grp" data-dim="r">
-        <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+        <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
       </div>
       <span class="lb">类型</span>
       <div class="grp" data-dim="c">
@@ -673,11 +674,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="matrix" id="l4-matrix">
       <div class="rsrc">
       <div class="corner" tabindex="0"><b>环节 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
-        <div class="tip"><b>口径说明</b>归属地按公司总部，中国台湾企业归入中国列并标注；上市公司附市值与最近财年营收 / 净利，未上市附累计融资与估值，子公司 / 已被收购附母公司与收购金额（截至 2026 年 9 月初）；海外与台湾公司金额统一折算为美元，中国大陆公司保留人民币 / 港元。</div></div>
-      <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">手机 ODM 三巨头 + 模组全球过半份额 + 台湾 PC / 服务器代工 + 昇腾 / 鸿蒙生态集成商</div></div>
+        <div class="tip"><b>口径说明</b>归属地按公司总部；中国台湾企业单独标注并计入“其他”列（本页 12 家：鸿海、广达、仁宝、纬创、和硕、英业达、研华、凌华、宜鼎、立端、Moxa、神基）；上市公司附市值与最近财年营收 / 净利，未上市附累计融资与估值，子公司 / 已被收购附母公司与收购金额（截至 2026 年 9 月初）；海外与中国台湾公司金额统一折算为美元，中国大陆公司保留人民币 / 港元。</div></div>
+      <div class="colhead R-CN"><div class="n">中国大陆 <small>Chinese Mainland</small></div><div class="c">手机 ODM 三巨头 + 蜂窝 IoT 模组全球超九成份额 + 昇腾 / 鸿蒙生态集成商</div></div>
       <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">EMS 巨头与边缘平台创业公司；模组与边缘软件正被高通、Semtech 等芯片厂收编</div></div>
       <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业嵌入式与 SoM 传统强区（Kontron、congatec、u-blox），无手机 / PC 代工</div></div>
-      <div class="colhead R-OT"><div class="n">其他 <small>Canada · Japan · Korea · India · Israel</small></div><div class="c">加拿大 EMS、日本元器件模组、印韩工程服务与集成</div></div>
+      <div class="colhead R-OT"><div class="n">其他 <small>Taiwan · Canada · Japan · Korea · India</small></div><div class="c">中国台湾主导笔电 / 服务器代工与工控嵌入式（本页 12 家，本列过半）；加拿大 EMS、日本元器件模组、印韩工程服务与集成</div></div>
       </div>
     </div>
 
@@ -687,19 +688,19 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <div class="ins">
         <h3>按环节看：四类玩家的分工与差异</h3>
         <ul>
-          <li><b>ODM / 整机与代工：</b>是端侧 AI 的商业化主战场。手机 ODM 外包设计占全球出货 44%，头部（华勤、龙旗、立讯）高度集中；台湾五大代工在笔电与 AI 服务器代工上举足轻重，AI 服务器占广达 / 纬创营收已超七成。</li>
+          <li><b>ODM / 整机与代工：</b>是端侧 AI 的商业化主战场。手机 ODM 外包设计占全球出货 44%，头部（华勤、龙旗、立讯）高度集中；中国台湾五大代工在笔电与 AI 服务器代工上举足轻重，AI 服务器占广达 / 纬创营收已超七成。</li>
           <li><b>模组与 SoM：</b>中国厂商主导蜂窝 IoT 模组（移远 36%、中移 11%、日海 8%），全球份额 >90%；高算力智能模组（美格 29%）是把端侧模型能力推向中长尾设备的关键载体，AI 嵌入式模组占比预计 2030 年达 25%。</li>
-          <li><b>边缘计算硬件与平台：</b>工业 PC、边缘 AI 盒子与数据接入平台，受益于"算力下沉"；研华、凌华等台系工控厂商绑定 NVIDIA Jetson 生态，浪潮、新华三主打中国边缘服务器与 AI 推理。</li>
+          <li><b>边缘计算硬件与平台：</b>工业 PC、边缘 AI 盒子与数据接入平台，受益于"算力下沉"；研华、凌华等中国台湾工控厂商绑定 NVIDIA Jetson 生态，浪潮、新华三主打中国边缘服务器与 AI 推理。</li>
           <li><b>行业方案与集成：</b>行业 know-how 与客户关系壁垒。中国特色的华为昇腾 / 开源鸿蒙系统集成商（软通、中软、拓维、润和、诚迈）构成生态主力；海外由埃森哲、凯捷、WWT 等大型集成商覆盖。</li>
         </ul>
       </div>
       <div class="ins">
         <h3>按国家看：四种生态形态</h3>
         <ul>
-          <li><b>中国（含台湾）：</b>数量最多、环节最全。大陆在手机 ODM（华勤 / 龙旗 / 立讯）、蜂窝 IoT 模组（全球超九成份额）与通信模组上全球领先；台湾在笔电、服务器代工与工控嵌入式（研华、凌华、宜鼎、神基）上占主导。</li>
+          <li><b>中国大陆：</b>本页玩家数量最多（28 家）、环节最全，在手机 ODM（华勤 / 龙旗 / 立讯）、蜂窝 IoT 模组（全球超九成份额）与昇腾 / 鸿蒙生态集成商上全球领先；本版已把中国台湾企业按总部改计入“其他”列。</li>
           <li><b>美国：</b>以 EMS 巨头（Flex、Jabil、Sanmina 承接云 / AI 基础设施）与模组 / SoM 上市公司（Semtech、Digi、Lantronix）为主，边缘平台创业公司多；芯片厂（高通）正通过收购向下游整合。</li>
           <li><b>欧洲：</b>无手机 / PC 代工，专注工业嵌入式与 SoM 传统强区（Kontron、congatec、Toradex、SECO、u-blox）；集成商由凯捷等大型服务商代表。</li>
-          <li><b>其他：</b>加拿大 Celestica 在超大规模数据中心基础设施上快速崛起；日本村田在元器件与通信模组占优；印韩（Tata Elxsi、HCLTech、LG CNS、NTT DATA）以大工程服务 / 集成商身份切入。</li>
+          <li><b>其他：</b>本列因中国台湾企业改按总部归类而成为本页第二大区（19 家）：鸿海 / 广达 / 仁宝 / 纬创 / 和硕 / 英业达五大代工主导笔电与 AI 服务器组装，研华 / 凌华 / 宜鼎 / 立端 / Moxa / 神基在工控嵌入式与边缘计算硬件上占主导；此外加拿大 Celestica 在超大规模数据中心基础设施上快速崛起，日本村田在元器件与通信模组占优，印韩（Tata Elxsi、HCLTech、LG CNS、NTT DATA）以大工程服务 / 集成商身份切入。</li>
         </ul>
       </div>
       <div class="ins wide">
@@ -708,7 +709,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
           <li><b>硬件 > 软件的集成层：</b>方案与集成层是"端侧 AI 落地"的最后一公里，但其价值高度集中在硬件（2026 年中国 AI 支出硬件占 74.3%），模型与软件的增值正被压缩到 L2/L3，这正是集成层利润率普遍偏低的原因。</li>
           <li><b>AI 驱动的两极化：</b>端侧 AI 让代工与模组厂商分化。拥抱 AI 服务器 / AI 手机的（广达、纬创、华勤、立讯、Celestica、Sanmina）营收与市值跃升；以传统笔电 / 手机组装为主的（仁宝、和硕、比亚迪电子）增长承压。</li>
           <li><b>芯片厂向下整合：</b>高通收购 Edge Impulse、Arduino、Modular，英飞凌收购 Imagimob，Advent 私有化 u-blox——芯片厂与资本正在把"方案与集成层"的入口也纳入整合范围。</li>
-          <li><b>口径：</b>① "中国"列含中国台湾企业（卡片以"台湾"标注），市值折算为美元（汇率按 2026-09 初约 31 新台币 / 美元估算）。② 大陆企业保留人民币 / 港元，海外折算为美元。③ 子公司 / 已被收购（如 Arduino、u-blox、NTT DATA、研祥）标注母公司与交易要素。④ 数据截至 2026 年 9 月初，营收多为 2025 财年，市值 / 估值为 2026-09 快照。</li>
+          <li><b>口径：</b>① 归属地按公司总部，中国台湾企业单独标注并计入"其他"列（本页 12 家），市值按 2026-09 初约 31 新台币 / 美元折算为美元——此为 2026-09-08 修订，此前版本将其并入"中国"列。② 中国大陆企业保留人民币 / 港元，海外折算为美元。③ 子公司 / 已被收购（如 Arduino、u-blox、NTT DATA、研祥）标注母公司与交易要素。④ 数据截至 2026 年 9 月初，营收多为 2025 财年，市值 / 估值为 2026-09 快照。</li>
         </ul>
       </div>
     </div>
@@ -728,7 +729,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   <div class="toolbar" id="l5-toolbar">
     <span class="lb">地区</span>
     <div class="grp" data-dim="r">
-      <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+      <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
     </div>
     <span class="lb">品类</span>
     <div class="grp" data-dim="c">
@@ -740,7 +741,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     </div>
     <span class="lb">状态</span>
     <div class="grp" data-dim="o">
-      <button class="chip on" data-v="1">已上市</button><button class="chip on" data-v="2">未上市</button><button class="chip on" data-v="3">子公司 / 已被收购</button>
+      <button class="chip on" data-v="1">已上市</button><button class="chip on" data-v="2">未上市</button><button class="chip on" data-v="3">子公司 / 已被收购</button><button class="chip on" data-v="4">高校 / 研究机构</button>
     </div>
     <input type="search" id="l5-q" placeholder="搜索公司 / 产品 / 关键词…">
     <span class="cnt" id="l5-cnt"></span>
@@ -750,11 +751,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   <div class="matrix" id="l5-matrix">
     <div class="rsrc">
     <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
-      <div class="tip"><b>口径说明</b>归属地按公司总部；"具身智能"作为独立 L5 赛道单列。人形机器人在 2026 年仍处样机 / 试点阶段，绝大多数未形成可比的量产营收，因此卡片以"代表产品 + 定位"为主、不强行统一附财务数据，仅对入选主体的状态（上市 / 未上市 / 归属）做标注（截至 2026 年 9 月初）。中国台湾企业归入中国列并以"台湾"标注。</div></div>
-    <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">人形机器人创业公司全球最密 + 消费 / 服务机器人全球龙头 + 核心部件（谐波减速器 / 行星滚柱丝杠）国产替代最活跃</div></div>
-    <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">资本最集中——人形明星公司（Figure / 1X / Agility）+ 具身智能基础模型（Physical Intelligence / Skild）+ 英伟达全栈生态</div></div>
-    <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业机器人四大家族之二（ABB / KUKA）+ 协作机器人发源地（UR），人形与具身模型玩家稀少</div></div>
-    <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · UAE 等</small></div><div class="c">工业机器人另两大家族（发那科 / 安川）在日；韩系财阀全栈（现代 · 波士顿动力、三星 · Rainbow）押注人形</div></div>
+      <div class="tip"><b>口径说明</b>归属地按公司总部；"具身智能"作为独立 L5 赛道单列。人形机器人在 2026 年仍处样机 / 试点阶段，绝大多数未形成可比的量产营收，因此卡片以"代表产品 + 定位"为主、不强行统一附财务数据，仅对入选主体的状态（上市 / 未上市 / 归属）做标注（截至 2026 年 9 月初）。中国台湾企业单独标注并计入“其他”列（本页暂无）。</div></div>
+    <div class="colhead R-CN"><div class="n">中国大陆 <small>Chinese Mainland</small></div><div class="c">人形机器人创业公司全球最密 + 消费 / 服务机器人全球龙头 + 核心部件（谐波减速器 / 行星滚柱丝杠）国产替代最活跃</div></div>
+    <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">资本最集中——人形明星公司（Figure / 1X / Agility）+ 具身智能基础模型（Physical Intelligence / Skild）+ 英伟达全栈生态 + CMU 机器人研究院等高校研究力量</div></div>
+    <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业机器人四大家族之二（ABB / KUKA）+ 协作机器人发源地（UR）；人形以德国 DLR、KIT 等公立研究机构与 Neura Robotics 为主，具身模型玩家稀少</div></div>
+    <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · Canada 等</small></div><div class="c">工业机器人另两大家族（发那科 / 安川）在日；韩系财阀全栈（现代 · 波士顿动力、三星 · Rainbow）押注人形</div></div>
     </div>
   </div>
 
@@ -768,15 +769,15 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <li><b>工业机器人 / AGV·AMR：</b>少数已高度成熟的存量市场。全球四大家族（发那科、ABB、安川、库卡）主导工业臂，中国以埃斯顿、汇川、新松做国产替代；AGV / AMR 是最快增长细分，极智嘉、海康机器人、快仓（中国）与 Symbotic、Locus（美国）切入仓储自动化。</li>
         <li><b>服务 / 商用机器人：</b>中国玩家密度最高、出货量最大（送餐、酒店、商用清洁），商业模式已验证并加速出海（普渡、擎朗、云迹、高仙）；日本软银 Pepper、LG 等为老牌参与者。</li>
         <li><b>消费机器人 / 无人机：</b>规模最大、最成熟的一类。中国品牌在扫地机占据全球主导（科沃斯、石头、追觅、云鲸），大疆垄断消费无人机；iRobot 已明显掉队，集中体现"中国制造 + 品牌"对"美国发明者"的替代。</li>
-        <li><b>具身智能模型 / 核心部件：</b>分两条不同的押注线——VLA 具身基础模型公司押"一个模型、千机千面"（Physical Intelligence、Skild、银河通用、穹彻），核心部件公司押"人形量产带来的国产替代"（绿的谐波、双环传动、兆威机电），两者互为风险对冲。</li>
+        <li><b>具身智能模型 / 核心部件：</b>分两条不同的押注线——VLA 具身基础模型公司押"一个模型、千机千面"（Physical Intelligence、Skild、Field AI、银河通用、穹彻），其中 Field AI 走的是"不造机器人、只做加装软件层"的路线，靠改造客户存量机队而非等待新硬件放量，核心部件公司押"人形量产带来的国产替代"（绿的谐波、双环传动、兆威机电），两者互为风险对冲。</li>
       </ul>
     </div>
     <div class="ins">
       <h3>按国家看：四种生态形态</h3>
       <ul>
-        <li><b>中国：</b>玩家数量全球第一，且"人形创业公司 + 消费 / 服务机器人产业 + 核心部件供应链"三位一体，是唯一能把量产叙事落到供应链成本上的地区。人形以宇树 / 智元 / 优必选为排头兵；消费与服务端的科沃斯 / 石头 / 普渡 / 大疆已是全球出货领先者。</li>
-        <li><b>美国：</b>几乎没有工业 / 消费机器人大型制造，但资本与基础模型最强。人形明星公司（Figure、1X、Agility、Apptronik、Tesla）+ 具身智能基础模型（Physical Intelligence、Skild）+ 机器人全栈平台（NVIDIA Isaac，英伟达既是"卖铲人"也是无数入局方的股东）。</li>
-        <li><b>欧洲：</b>传统强区——工业机器人四大家族占两家（ABB、库卡），协作机器人发源地（Universal Robots）。人形与具身模型例外地稀少（Neura、PAL），资本与人才进一步流向美国。</li>
+        <li><b>中国大陆：</b>玩家数量全球第一，且"人形创业公司 + 消费 / 服务机器人产业 + 核心部件供应链"三位一体，是唯一能把量产叙事落到供应链成本上的地区。人形以宇树 / 智元 / 优必选为排头兵；消费与服务端的科沃斯 / 石头 / 普渡 / 大疆已是全球出货领先者。</li>
+        <li><b>美国：</b>几乎没有工业 / 消费机器人大型制造，但资本与基础模型最强。人形明星公司（Figure、1X、Agility、Apptronik、Tesla）+ 具身智能基础模型（Physical Intelligence、Skild、Field AI）+ 机器人全栈平台（NVIDIA Isaac，英伟达既是"卖铲人"也是无数入局方的股东）+ 学术与非营利研究机构（CMU 机器人研究院 2026 年新启用 Robotics Innovation Center，做人形运动规划与技能基础模型 BFM-Zero）。计入 Field AI 的 $405M 后，本页已披露融资的创业公司中美国合计已反超中国（50.2% vs 47.7%）。</li>
+        <li><b>欧洲：</b>传统强区——工业机器人四大家族占两家（ABB、库卡），协作机器人发源地（Universal Robots）。人形以创业公司（Neura、PAL）加公立研究机构（德国 DLR 机器人与机电一体化研究所、KIT H²T 实验室，均为 Robotics Institute Germany 成员）为主，具身模型例外地稀少，商业化资本与人才进一步流向美国；软件层另有德累斯顿的 Wandelbots（本次由"美国"更正为德国总部）。</li>
         <li><b>其他：</b>日本握有工业机器人另两大家族（发那科、安川），是工业机器人的技术守成者；韩国走财阀全栈路线——现代收购波士顿动力、三星入股 Rainbow Robotics，用集团资源叠加国家战略押注人形。</li>
       </ul>
     </div>
@@ -805,7 +806,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   <div class="toolbar" id="l5w-toolbar">
     <span class="lb">地区</span>
     <div class="grp" data-dim="r">
-      <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+      <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
     </div>
     <span class="lb">品类</span>
     <div class="grp" data-dim="c">
@@ -827,11 +828,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   <div class="matrix" id="l5w-matrix">
     <div class="rsrc">
     <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
-      <div class="tip"><b>口径说明</b>归属地按公司总部；AI 眼镜与传统智能手表 / 耳机并列，因为“端侧 AI + 多模态感知”正在重塑这两类存量品类。中国台湾企业归入中国列并以"台湾"标注（截至 2026 年 9 月初）。</div></div>
-    <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">AI 眼镜创业公司密度最高 + 智能手表 / 手环全球出货龙头（华米、小米生态链）+ VR/MR 硬件供应链最完整</div></div>
+      <div class="tip"><b>口径说明</b>归属地按公司总部；AI 眼镜与传统智能手表 / 耳机并列，因为“端侧 AI + 多模态感知”正在重塑这两类存量品类。中国台湾企业单独标注并计入“其他”列（本页 1 家：宏达电 HTC）（截至 2026 年 9 月初）。</div></div>
+    <div class="colhead R-CN"><div class="n">中国大陆 <small>Chinese Mainland</small></div><div class="c">AI 眼镜创业公司密度最高 + 智能手表 / 手环全球出货龙头（华米、小米生态链）+ VR/MR 硬件供应链最完整</div></div>
     <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">生态定义者——Apple（Vision Pro / Watch / AirPods）与 Meta（Ray-Ban / Quest）双巨头主导 XR 与 AI 眼镜叙事</div></div>
     <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">运动 / 户外可穿戴强区（Garmin 虽为美企但欧洲市场深耕、Polar、Suunto），XR 与 AI 眼镜玩家稀少</div></div>
-    <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan 等</small></div><div class="c">三星 Galaxy 生态全栈自研（手表 / 耳机 / XR 头显 Moohan）；日系传感器与精密光学供应链深厚</div></div>
+    <div class="colhead R-OT"><div class="n">其他 <small>Taiwan · Hong Kong · Korea · Japan 等</small></div><div class="c">三星 Galaxy 生态全栈自研（手表 / 耳机 / XR 头显 Moohan）；日系传感器与精密光学供应链深厚；中国台湾宏达电（HTC）是 VIVE 系列 XR 头显的老牌玩家；中国香港 Solos 是 AI 眼镜品类代表</div></div>
     </div>
   </div>
 
@@ -842,7 +843,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <h3>按品类看：AI 眼镜是最活跃的新变量</h3>
       <ul>
         <li><b>XR 头显：</b>Apple Vision Pro 定义高端空间计算形态但出货有限，Meta Quest 以性价比占据消费 VR 大部分市场；中国字节 PICO、三星 Moohan（联合 Google / 高通）跟进 MR 赛道，整体仍处于内容生态培育期。</li>
-        <li><b>AI 眼镜：</b>2023–2026 年增长最快的新品类，Meta Ray-Ban 系列证明"轻量 AI + 拍摄 + 语音"的可行商业模式；中国厂商（Rokid、雷鸟、蜂巢科技、小米、百度）密集跟进，多数走"无显示 AI 音频眼镜"到"轻量光波导显示"的渐进路线。</li>
+        <li><b>AI 眼镜：</b>2023–2026 年增长最快的新品类，Meta Ray-Ban 系列证明"轻量 AI + 拍摄 + 语音"的可行商业模式；中国厂商（Rokid、雷鸟、蜂巢科技、小米、百度）密集跟进，多数走"无显示 AI 音频眼镜"到"轻量光波导显示"的渐进路线；另有 Even Realities 与 Halliday 以"显示优先 + 不装摄像头"反向切入（前者镜架 599 美元、2026-07 估值达 10 亿美元，后者靠 Kickstarter 330 万美元创品类众筹纪录后把场景收窄到会议），以及 Brilliant Labs 这类小团队用全开源硬件做差异化。</li>
         <li><b>智能手表：</b>成熟品类，Apple Watch 与华米、小米生态链主导出货量；健康监测（心率 / 血氧 / ECG）与运动数据是核心卖点，AI 端侧化体现在异常检测与语音助理增强。</li>
         <li><b>智能耳机：</b>AirPods 定义品类天花板，主打空间音频、主动降噪与实时翻译；中国品牌（华为、小米）与传统 Hi-Fi 厂商（Bose、Sony）在降噪算法与端侧语音芯片上竞争。</li>
         <li><b>健康可穿戴：</b>Oura、Whoop 等专注睡眠 / 恢复指标的垂类硬件公司崛起，与手表 / 手环形成差异化；核心壁垒是传感器算法而非算力。</li>
@@ -851,10 +852,10 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="ins">
       <h3>按国家看：三种生态形态</h3>
       <ul>
-        <li><b>中国：</b>AI 眼镜创业公司全球最密集（Rokid、雷鸟创新、蜂巢科技、INMO），叠加手机厂商（小米、百度、华为）快速跟进；智能手表 / 手环出货量全球领先（华米、小米生态链），光学与传感器供应链最完整。</li>
+        <li><b>中国大陆：</b>AI 眼镜创业公司全球最密集（Rokid、雷鸟创新、蜂巢科技、INMO、Even Realities、Halliday、Looktech），叠加手机厂商（小米、百度、华为）快速跟进；路线已分化——多数拼性价比与出货速度，Even Realities 反其道走高端显示优先并成为本品类首家独角兽；智能手表 / 手环出货量全球领先（华米、小米生态链），光学与传感器供应链最完整。</li>
         <li><b>美国：</b>Apple 与 Meta 分别以"高端生态锁定"和"轻量走量 + 广告数据"两种打法定义品类；Google 通过与三星、Warby Parker 合作重回 XR/眼镜赛道；健康可穿戴创业公司（Oura、Whoop）活跃。</li>
         <li><b>欧洲：</b>运动 / 户外可穿戴传统强区（Garmin 美企但欧洲市场深耕、Polar 芬兰、Suunto 芬兰），XR 与 AI 眼镜领域缺少本土巨头，多依赖美系生态。</li>
-        <li><b>其他：</b>三星走"手表 + 耳机 + XR 头显"全栈自研路线并与 Google/高通联合推出 Moohan；日本在精密光学、传感器与显示面板供应链上话语权仍强，但终端品牌参与度低。</li>
+        <li><b>其他：</b>新加坡开始出现 AI 眼镜注册主体——Brilliant Labs（开源硬件 + 端侧 NPU）注册于此，但创始人与资方均在美国，是典型的"注册地 ≠ 团队所在地"案例；中国香港 Solos（源自美股 Kopin 剥离，总部在香港科学园，2026-09-08 起由"中国大陆"改计入本列）则是"总部地 = 归属地"的对照案例；三星走"手表 + 耳机 + XR 头显"全栈自研路线并与 Google/高通联合推出 Moohan；日本在精密光学、传感器与显示面板供应链上话语权仍强，但终端品牌参与度低。</li>
       </ul>
     </div>
     <div class="ins wide">
@@ -863,7 +864,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <li><b>AI 眼镜是"端侧 AI"在可穿戴品类的最新落点：</b>相比手表 / 耳机的成熟形态，AI 眼镜把摄像头 + 麦克风 + 端侧多模态模型首次整合进日常佩戴设备，是本页增长最快、竞争最激烈的细分。</li>
         <li><b>健康监测算法与端侧推理深度绑定：</b>心率异常检测、睡眠分期、跌倒检测等均需在低功耗 MCU / 小型 NPU 上实时运行，是可穿戴品类"端侧 AI"最早规模化落地的场景，早于生成式 AI 叙事。</li>
         <li><b>生态锁定 vs 硬件性价比两条路线并行：</b>Apple / Meta 依靠系统生态与内容锁定用户，中国厂商更多以硬件迭代速度与价格竞争抢占增量市场，尤其在 AI 眼镜这一新兴品类。</li>
-        <li><b>口径：</b>① 本页只覆盖 L5 终端设备层中"可穿戴 / XR"这一分支（即全景图 L5 卡片），不含手机 / PC / 汽车 / 机器人等终端；② 归属地按公司总部认定；③ 上市状态、代表产品基于 2026 年 9 月初公开信息核实，具体参数与融资以官方披露为准；④ 入选标准以"自主品牌终端整机"为核心，纯代工与仅做展示的概念机不单列。</li>
+        <li><b>口径：</b>① 本页只覆盖 L5 终端设备层中"可穿戴 / XR"这一分支（即全景图 L5 卡片），不含手机 / PC / 汽车 / 机器人等终端；② 归属地按公司总部认定，边界案例已在卡片内注明：Even Realities 主体在深圳（柏林为其欧洲子公司，故归中国大陆而非德国）、Solos 总部在香港科学园（虽由美国上市公司 Kopin 剥离而来），2026-09-08 起中国香港企业与中国台湾企业同口径计入"其他"、不再并入"中国大陆"，故 Solos 由中国大陆改归其他、Brilliant Labs 注册于新加坡但创始团队与资方在美国，Halliday 法律主体虽在香港 / 新加坡，但由上海未目科技（moody）团队孵化控股、实际运营重心在上海，故仍归中国大陆；③ 上市状态、代表产品基于 2026 年 9 月初公开信息核实，具体参数与融资以官方披露为准；④ 入选标准以"自主品牌终端整机"为核心，纯代工与仅做展示的概念机不单列。</li>
       </ul>
     </div>
   </div>
@@ -882,7 +883,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   <div class="toolbar" id="l5n-toolbar">
     <span class="lb">地区</span>
     <div class="grp" data-dim="r">
-      <button class="chip on" data-v="CN">中国</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+      <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
     </div>
     <span class="lb">品类</span>
     <div class="grp" data-dim="c">
@@ -905,7 +906,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="rsrc">
     <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
       <div class="tip"><b>口径说明</b>归属地按公司总部；本页只覆盖不戴在脸上的"全新形态"端侧 AI 硬件——AI Pin / 录音挂件、无屏 AI 助理（含桌面 / 手持盒子与 AI 音箱）、AI 陪伴玩具 / 桌面机器人、AI 翻译硬件，AI 眼镜已单列入"可穿戴 / XR"页不在此重复。这一品类是 2024–2026 年最新兴起、也是淘汰率最高的端侧终端分支，Humane、Limitless 等早期明星已被收购或停售（截至 2026 年 9 月初）。</div></div>
-    <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">供应链成本与出货速度最快，AI 玩具（跃然创新、FoloToy）与录音硬件（讯飞、时空壶、出门问问）密度最高，且多数已实现盈利</div></div>
+    <div class="colhead R-CN"><div class="n">中国大陆 <small>Chinese Mainland</small></div><div class="c">供应链成本与出货速度最快，AI 玩具（跃然创新、FoloToy）与录音硬件（讯飞、时空壶、出门问问）密度最高，且多数已实现盈利</div></div>
     <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">品类定义者与资本焦点——Plaud/Bee/Limitless/Friend 引领叙事，但也是 Humane 停产、Limitless 被 Meta 收购等淘汰案例最集中的地区</div></div>
     <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">玩家稀少，翻译硬件是少数本土优势细分（波兰 Vasco）</div></div>
     <div class="colhead R-OT"><div class="n">其他 <small>Japan · Korea · India 等</small></div><div class="c">日本翻译机（Pocketalk）与家庭陪伴机器人（Sony aibo）老牌玩家；印度 Miko 是儿童 AI 陪伴机器人出海代表</div></div>
@@ -928,7 +929,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="ins">
       <h3>按国家看：三种打法</h3>
       <ul>
-        <li><b>中国：</b>供应链与制造成本优势最明显，AI 玩具与录音硬件两条线均已跑出盈利或规模化出货的公司（跃然创新、萌友智能、科大讯飞、时空壶、出门问问）；开发套件层更是本页中国玩家最密集的一块——嘉楠、乐鑫、矽递、瑞莎、华为昇腾、M5Stack 与开源项目小智 AI 共同构成一条从芯片、模组到参考设计的完整本土供给链，这也是国内 AI 玩具能快速起量的根本原因。</li>
+        <li><b>中国大陆：</b>供应链与制造成本优势最明显，AI 玩具与录音硬件两条线均已跑出盈利或规模化出货的公司（跃然创新、萌友智能、科大讯飞、时空壶、出门问问）；开发套件层更是本页中国玩家最密集的一块——嘉楠、乐鑫、矽递、瑞莎、华为昇腾、M5Stack 与开源项目小智 AI 共同构成一条从芯片、模组到参考设计的完整本土供给链，这也是国内 AI 玩具能快速起量的根本原因。</li>
         <li><b>美国：</b>资本与媒体关注度最高、但淘汰率也最高——Humane 停产、Limitless 被收购、Rabbit 长期"叫好不叫座"；Plaud、Genspark、Nirva 是少数例外，反而是"轻量刚需切口 + 自负盈亏"的打法跑通；OpenAI 用 65 亿美元收购 io 押注下一代无屏助理。真正稳定获利的其实是卖"铲子"的 NVIDIA——Jetson 模组同时支撑着松果派、矽递 reComputer 等中外产品。</li>
         <li><b>欧洲：</b>消费级几乎空白（仅波兰 Vasco 翻译硬件），但在开发套件层反而有两张王牌：英国树莓派（2024 年伦交所上市，AI HAT+ 系列）与意大利 Arduino（2025 年 10 月被高通收购），是欧洲少有的具备全球影响力的硬件品牌。</li>
         <li><b>其他：</b>日本（Pocketalk 翻译机、Sony aibo / Casio Moflin 陪伴机器人）以存量成熟品类为主；印度 Miko、Aiden Hardware 与新加坡 Lingverse 则代表新兴市场在儿童陪伴、自动化硬件等细分上的新尝试，鲜有新兴 AI Pin 类创业公司。</li>
@@ -1037,6 +1038,7 @@ const PLAYERS = [
   {n:"Preferred Networks", e:"日本", r:"OT", c:"startup", o:2, m:"PLaMo 2 1B / 8B · PLaMo Lite", d:"日本 AI 独角兽，结合自研 MN-Core 芯片，面向机器人 / 工业边缘", f:"<span class='fv'>累计融资 ~$310M</span><span class='fk'>· 2025-04 延伸轮 ~$35M（据报为 down round）</span><span class='fk'>· 历史峰值估值 ~$3.2B（2019 年）</span><span class='fk'>· 团队 ~400 人，暂无 IPO 计划</span>", t:["语言","多模态"]},
   {n:"Cohere", e:"加拿大", r:"OT", c:"startup", o:2, m:"Command R7B · Aya 小尺寸", d:"企业级私有部署，7B 面向端侧 / 边缘 CPU 推理", f:"<span class='fv'>累计融资 ~$1.6B</span><span class='fk'>· 2025-09 $600M @ $7B，Radical / Inovia 领投，NVIDIA、AMD 参与</span><span class='fx'>2026-04 宣布并购 Aleph Alpha，Series E 在谈 @ ~$20B（Schwarz 领投 ~$600M）</span><span class='fk'>· 团队 ~650–1,180 人</span>", t:["语言","多模态"]},
   {n:"TII", e:"阿联酋", r:"OT", c:"startup", o:1, lab:true, m:"Falcon-H1 0.5B–3B · Falcon3 1B", d:"主权研究机构，Falcon-H1 混合注意力 / SSM，面向边缘", f:"<span class='fv'>阿布扎比政府 ATRC 下属研究机构</span><span class='fk'>· 2024 年承诺 $300M 设立 Falcon Foundation</span><span class='fk'>· 商业化由子公司 AI71 承担</span>", gov:true, t:["语言"]},
+  {n:"IFM", e:"Institute of Foundation Models · MBZUAI", r:"OT", c:"startup", o:1, lab:true, m:"K2 Horizon 0.9B（手表/眼镜级）· 3.7B / 7B（手机级）", d:"阿布扎比 MBZUAI 下属研究机构，K2 Horizon 系列 0.9B–375B 全开源（权重、代码、训练数据、中间检查点），0.9B/3.7B/7B 三档明确面向端侧；Apache 2.0 协议，day-zero 支持 vLLM / SGLang / Ollama", f:"<span class='fv'>MBZUAI（阿布扎比政府资助大学）下属研究机构</span><span class='fk'>· 非市场化融资，经费来自阿布扎比政府</span>", gov:true, t:["语言"]},
   {n:"Upstage", e:"韩国", r:"OT", c:"startup", o:2, m:"Solar Mini · Solar Pro", d:"深度上采样架构，面向本地部署与文档 AI", f:"<span class='fv'>累计融资 ~$280M</span><span class='fk'>· 2026-04 C 轮首关 ~$126M，Sazze 领投，现代 / 起亚参与</span><span class='fk'>· 估值 >$700M（韩媒按本币口径称“独角兽”）</span><span class='fx'>拟 2026H2 提交 IPO 预审</span>", t:["语言"]},
 
   /* ---------- 其他地区 · 垂类模态 / 算法 ---------- */
@@ -1059,7 +1061,7 @@ const CATS = [
 const OPEN = {1:"开放权重", 2:"部分开放", 3:"闭源"};
 
 /* ---------- 渲染矩阵 ---------- */
-const REGION_META = { CN:{n:"中国",c:"#c62828"}, US:{n:"美国",c:"#1565c0"}, EU:{n:"欧洲",c:"#2e7d32"}, OT:{n:"其他",c:"#6d4c41"} };
+const REGION_META = { CN:{n:"中国大陆",c:"#c62828"}, US:{n:"美国",c:"#1565c0"}, EU:{n:"欧洲",c:"#2e7d32"}, OT:{n:"其他",c:"#6d4c41"} };
 
 /* ---------- 通用：渲染矩阵 + 统计 + 筛选 ---------- */
 const LAYOUTS = [];
@@ -1215,70 +1217,70 @@ document.querySelectorAll("[data-view]").forEach(el => el.addEventListener("clic
 */
 const CHIP_PLAYERS = [
   /* ---- 通用终端SoC ---- */
-  {n:"高通", e:"Qualcomm", r:"US", c:"gensoc", o:1, m:"骁龙8系列（手机）· Snapdragon X2（PC，NPU 80–85TOPS）· Reality Elite（XR，48TOPS）", d:"手机SoC绝对龙头，全力扩张PC / 汽车 / XR；汽车业务年化营收已超$5B", f:"<span class='fx'>已上市 · NASDAQ QCOM</span><span class='fv'>市值 ≈$188B（2026-08）</span><span class='fk'>· FY2025 营收 $44.3B（芯片业务$38.4B），车载营收创纪录 $1.33B/季</span>", t:["手机","PC","汽车","XR"]},
-  {n:"苹果", e:"Apple", r:"US", c:"gensoc", o:1, m:"A19系列 + Neural Engine · M6（台积电2nm）", d:"垂直整合芯片战略，Neural Engine是端侧Siri / AI功能核心", f:"<span class='fx'>已上市 · NASDAQ AAPL</span><span class='fv'>市值处于$3–4万亿美元区间（分析师口径不一，2026-09）</span><span class='fk'>· 集团整体营收 ≈$391B（FY2025预估）</span>", t:["手机","PC","Neural Engine"]},
-  {n:"英特尔", e:"Intel", r:"US", c:"gensoc", o:1, m:"Panther Lake（Core Ultra，集成NPU）", d:"聚焦PC市场，与高通 / AMD在NPU算力上正面竞争", f:"<span class='fx'>已上市 · NASDAQ INTC</span><span class='fk'>· 具体财务数据本次未独立核实</span>", t:["PC","NPU"]},
-  {n:"AMD", e:"", r:"US", c:"gensoc", o:1, m:"Ryzen AI（移动端）", d:"PC端NPU SoC厂商，2025年收购Untether AI工程团队强化边缘AI布局", f:"<span class='fx'>已上市 · NASDAQ AMD</span><span class='fk'>· 具体财务数据本次未独立核实</span>", t:["PC","NPU"]},
-  {n:"Google", e:"Tensor", r:"US", c:"gensoc", o:3, m:"Tensor G6（Pixel 11系列）", d:"Pixel自研SoC，G6的TPU算力较G5提升50%，搭配Titan M3安全芯片", f:"<span class='fx'>Alphabet（NASDAQ GOOGL）硬件部门，不单独披露财务</span>", t:["手机","TPU/NPU"]},
-  {n:"海思", e:"HiSilicon", r:"CN", c:"gensoc", o:3, m:"麒麟（Kirin）9030系列，新一代麒麟芯片计划2026秋发布", d:"华为全资子公司自研SoC，先进制程受出口管制持续制约", f:"<span class='fx'>华为全资子公司，无独立财务披露</span><span class='fk'>· 2024年收入据第三方估算同比翻倍，高端安卓SoC份额约12%</span>", t:["手机","NPU","受出口管制影响"]},
-  {n:"紫光展锐", e:"UNISOC", r:"CN", c:"gensoc", o:2, m:"虎贲 / T系列手机SoC", d:"中国第四大手机SoC厂商，科创板IPO辅导已完成，冲刺“国产手机芯片第一股”", f:"<span class='fv'>估值 ≈¥700–750亿元（2024–2025轮次），IPO估值预期¥800亿–1,000亿元</span><span class='fk'>· 2024年营收 ¥145 亿元（+11%）· 国家大基金持股12.76%，英特尔中国持股10.85%</span>", t:["手机","IPO在即"]},
-  {n:"联发科", e:"MediaTek", r:"CN", c:"gensoc", o:1, tw:true, m:"天玑（Dimensity）9000/9500系列 · NPU 990", d:"全球智能手机SoC出货量第一（2025年份额34.4%），ASIC业务目标2026年营收破$1B", f:"<span class='fx'>已上市 · 台湾证交所 2454</span><span class='fk'>· Q4 营收 NT$1,501.9 亿元（+8.8%）</span>", t:["手机","汽车","XR","ASIC"]},
-  {n:"三星", e:"Samsung · Exynos", r:"OT", c:"gensoc", o:1, m:"Exynos 2600（2nm）· Exynos 2700 研发中", d:"凭Galaxy S26搭载Exynos重夺手机芯片份额（5%→7%），借此减半支付高通授权费", f:"<span class='fx'>已上市 · 韩交所 005930</span><span class='fk'>· 公司整体市值处于万亿美元级别（2026-09，未单独核实）</span>", t:["手机","NPU","2nm"]},
+  {n:"高通", e:"Qualcomm", r:"US", c:"gensoc", o:1, m:"骁龙8系列（手机）· Snapdragon X2（PC，NPU 80–85TOPS）· Reality Elite（XR，48TOPS）", d:"手机SoC绝对龙头，全力扩张PC / 汽车 / XR；汽车业务年化营收已超$5B", f:"<span class='fx'>已上市 · NASDAQ QCOM</span><span class='fv'>市值 ≈$188B（2026-08）</span><span class='fk'>· FY2025 营收 $44.3B（芯片业务$38.4B），车载营收创纪录 $1.33B/季</span>", t:["手机","PC","汽车"]},
+  {n:"苹果", e:"Apple", r:"US", c:"gensoc", o:1, m:"A19系列 + Neural Engine · M6（台积电2nm）", d:"垂直整合芯片战略，Neural Engine是端侧Siri / AI功能核心", f:"<span class='fx'>已上市 · NASDAQ AAPL</span><span class='fv'>市值处于$3–4万亿美元区间（分析师口径不一，2026-09）</span><span class='fk'>· 集团整体营收 ≈$391B（FY2025预估）</span>", t:["手机","PC"]},
+  {n:"英特尔", e:"Intel", r:"US", c:"gensoc", o:1, m:"Panther Lake（Core Ultra，集成NPU）", d:"聚焦PC市场，与高通 / AMD在NPU算力上正面竞争", f:"<span class='fx'>已上市 · NASDAQ INTC</span><span class='fk'>· 具体财务数据本次未独立核实</span>", t:["PC"]},
+  {n:"AMD", e:"", r:"US", c:"gensoc", o:1, m:"Ryzen AI（移动端）", d:"PC端NPU SoC厂商，2025年收购Untether AI工程团队强化边缘AI布局", f:"<span class='fx'>已上市 · NASDAQ AMD</span><span class='fk'>· 具体财务数据本次未独立核实</span>", t:["PC"]},
+  {n:"Google", e:"Tensor", r:"US", c:"gensoc", o:3, m:"Tensor G6（Pixel 11系列）", d:"Pixel自研SoC，G6的TPU算力较G5提升50%，搭配Titan M3安全芯片", f:"<span class='fx'>Alphabet（NASDAQ GOOGL）硬件部门，不单独披露财务</span>", t:["手机"]},
+  {n:"海思", e:"HiSilicon", r:"CN", c:"gensoc", o:3, m:"麒麟（Kirin）9030系列，新一代麒麟芯片计划2026秋发布", d:"华为全资子公司自研SoC，先进制程受出口管制持续制约", f:"<span class='fx'>华为全资子公司，无独立财务披露</span><span class='fk'>· 2024年收入据第三方估算同比翻倍，高端安卓SoC份额约12%</span>", t:["手机"]},
+  {n:"紫光展锐", e:"UNISOC", r:"CN", c:"gensoc", o:2, m:"虎贲 / T系列手机SoC", d:"中国第四大手机SoC厂商，科创板IPO辅导已完成，冲刺“国产手机芯片第一股”", f:"<span class='fv'>估值 ≈¥700–750亿元（2024–2025轮次），IPO估值预期¥800亿–1,000亿元</span><span class='fk'>· 2024年营收 ¥145 亿元（+11%）· 国家大基金持股12.76%，英特尔中国持股10.85%</span>", t:["手机"]},
+  {n:"联发科", e:"MediaTek", r:"OT", c:"gensoc", o:1, tw:true, m:"天玑（Dimensity）9000/9500系列 · NPU 990", d:"全球智能手机SoC出货量第一（2025年份额34.4%），ASIC业务目标2026年营收破$1B", f:"<span class='fx'>已上市 · 台湾证交所 2454</span><span class='fk'>· Q4 营收 ≈$4.8B（+8.8%）</span>", t:["手机","汽车"]},
+  {n:"三星", e:"Samsung · Exynos", r:"OT", c:"gensoc", o:1, m:"Exynos 2600（2nm）· Exynos 2700 研发中", d:"凭Galaxy S26搭载Exynos重夺手机芯片份额（5%→7%），借此减半支付高通授权费", f:"<span class='fx'>已上市 · 韩交所 005930</span><span class='fk'>· 公司整体市值处于万亿美元级别（2026-09，未单独核实）</span>", t:["手机"]},
 
   /* ---- 专用边缘AI加速芯片 ---- */
-  {n:"地平线机器人", e:"Horizon Robotics", r:"CN", c:"edgeai", o:1, m:"征程（Journey）6系列（J6P 560TOPS）+ HSD算法芯片方案", d:"中国ADAS芯片出货量龙头（累计超1,100万套），从卖芯片转向芯片+算法软硬一体", f:"<span class='fx'>已上市 · 港交所 9660</span><span class='fv'>2025 营收 ¥37.6 亿元（+57.7%）</span><span class='fk'>· 调整后经营亏损 ¥23.7 亿元，研发投入¥51.5亿元（+63%）· 目标2027年盈亏平衡</span>", t:["汽车/ADAS","具身智能"]},
-  {n:"黑芝麻智能", e:"Black Sesame", r:"CN", c:"edgeai", o:1, m:"华山A1000/A2000系列 · 武当C1200/C1296", d:"ADAS芯片赛道追赶者，落后地平线约一年，舱驾融合是差异化重点", f:"<span class='fx'>已上市 · 港交所 2533（2024-08 IPO募资HK$9.5亿，首日破发33%）</span><span class='fv'>H1 2026 营收 ¥4.58 亿元（+81.3%）</span><span class='fk'>· H1 2026 净亏 ¥7.7 亿元，具身智能收入 ¥4,720万元</span>", t:["汽车/ADAS","舱驾一体","具身智能"]},
-  {n:"爱芯元智", e:"AXERA", r:"CN", c:"edgeai", o:1, m:"爱芯通元（混合精度NPU）+ 爱芯智眸（AI-ISP）", d:"全球中高端视觉边缘推理芯片出货量最大厂商（2024年），累计出货超1.65亿颗", f:"<span class='fx'>已上市 · 港交所 00600（2026-02上市，港股首家边缘AI芯片公司）</span><span class='fv'>IPO募资净额 ≈HK$28亿，上市首日市值 ≈HK$166亿</span><span class='fk'>· 启明创投领投Pre-A轮</span>", t:["视觉推理","汽车","IPO已完成"]},
-  {n:"寒武纪", e:"Cambricon", r:"CN", c:"edgeai", o:1, m:"思元系列AI加速卡（云边协同，业务重心已偏向云端）", d:"中国AI加速卡份额第二（8%，仅次于华为昇腾37%），边缘业务为次要板块", f:"<span class='fx'>已上市 · 科创板 688256</span><span class='fv'>Q1 2026 营收 ¥28.85 亿元（+159.6%），净利 ¥10.13 亿元（+185%）</span><span class='fk'>· 市值估算区间差异较大（¥3,500亿–6,500亿元不等），需以实时行情为准</span>", t:["AI加速卡","云边协同"]},
-  {n:"知存科技", e:"Witmem", r:"CN", c:"edgeai", o:2, m:"WTM2101 存算一体（Compute-in-Memory）芯片", d:"存算一体架构领先者，主攻语音 / 传感器超低功耗边缘推理", f:"<span class='fv'>累计融资 ≈¥6亿元（A/B1/B2轮）</span><span class='fk'>· B2轮¥2亿元由国投创业领投</span>", t:["存算一体","IoT/语音"]},
-  {n:"后摩智能", e:"Houmo AI", r:"CN", c:"edgeai", o:2, m:"M50 存算一体大算力AI芯片", d:"存算一体独角兽，主攻汽车智能驾驶，M50已进入联想 / 长城AI PC", f:"<span class='fv'>历史融资：Pre-A ¥3亿元（启明创投）、数亿元Pre-A+（华创资本）</span><span class='fk'>· 2026年暂无新轮次确认</span>", t:["存算一体","汽车","具身智能"]},
-  {n:"亿铸科技", e:"Yizhu", r:"CN", c:"edgeai", o:2, m:"GP-IMC（通用存算一体架构）大算力AI芯片", d:"自称中国首家GP-IMC架构AI芯片公司，2026年融资最活跃的存算一体创业公司", f:"<span class='fv'>累计融资 &gt;¥10亿元（截至2026年中）</span><span class='fk'>· 2026-04 洪山资本领投战略轮，2025-10 兴湘资本等领投B+轮</span>", t:["存算一体","大算力"]},
-  {n:"云天励飞", e:"Intellifusion", r:"CN", c:"edgeai", o:1, m:"GPNPU架构推理芯片", d:"AI芯片厂商，正冲刺A+H两地上市（第二次递表港交所）", f:"<span class='fx'>已上市 · 科创板 688343，2026-04再度递表港交所</span><span class='fv'>2025 营收 ¥13.39 亿元（+46%），净亏 ¥4.22 亿元（同比收窄30.5%）</span><span class='fk'>· 市值数据存在较大口径差异，需以实时行情为准</span>", t:["AI推理","企业级场景"]},
-  {n:"芯驰科技", e:"SemiDrive", r:"CN", c:"edgeai", o:2, m:"车规SoC，向具身智能全栈芯片延伸（“战略2.0”）", d:"车规级芯片厂商，业务从ADAS / 座舱扩展至机器人 / 具身智能", f:"<span class='fv'>Series C ≈$100M（2026-05，苏产投领投）</span><span class='fk'>· 此前Series B+ ≈¥10亿元（2025，上汽金石领投）</span>", t:["汽车规格","具身智能"]},
-  {n:"芯擎科技", e:"SiEngine", r:"CN", c:"edgeai", o:2, m:"龍鹰二号（5nm舱驾融合芯片）", d:"吉利系车规与工业计算平台厂商", f:"<span class='fv'>2026上半年完成 &gt;$200M融资，多家产业 / 国资基金参与</span>", t:["汽车","舱驾融合","5nm"]},
-  {n:"NVIDIA", e:"英伟达", r:"US", c:"edgeai", o:1, m:"Jetson/Tegra（边缘 / 机器人）· DRIVE AGX Thor（汽车）", d:"边缘 / 机器人计算平台事实标准，已在模型层等其他视图详解，此处补充其端侧Jetson产品线", f:"<span class='fx'>已上市 · NASDAQ NVDA，已在其他层详解</span><span class='fv'>汽车业务FY2026营收$2.3B（+39%）</span><span class='fk'>· Jetson Orin Nano 2（2026-08发布）推理性能翻倍、功耗-40%</span>", t:["汽车/机器人/PC","已在其他层出现"]},
-  {n:"Ambarella", e:"", r:"US", c:"edgeai", o:1, m:"CV72/CV75（5nm）· CV7/CV8（2nm）Edge AI SoC", d:"摄像头 / 视觉边缘AI SoC龙头，Edge AI已占营收80%", f:"<span class='fx'>已上市 · NASDAQ AMBA</span><span class='fv'>市值 ≈$3.6B（2026-05，波动较大）</span><span class='fk'>· FY2026营收创纪录$390.7M（+37%），净亏$75.9M</span>", t:["安防/汽车","视觉AI"]},
-  {n:"Syntiant", e:"", r:"US", c:"edgeai", o:1, m:"神经决策处理器（NDP）", d:"超低功耗常开语音 / 传感器推理芯片，服务可穿戴 / 耳戴设备", f:"<span class='fx'>已上市 · NASDAQ SYTN（2026-07递交S-1，预计Q3定价）</span><span class='fv'>末轮私有估值 $646M（2024-12）</span><span class='fk'>· 累计融资 $302–311M，Intel Capital / 微软M12等参投</span>", t:["语音/可穿戴","IoT"]},
-  {n:"SiMa.ai", e:"", r:"US", c:"edgeai", o:2, m:"MLSoC 平台（Physical AI）", d:"面向视觉 / 机器人的边缘AI SoC厂商，美光近期加入为战略投资方", f:"<span class='fv'>累计融资 ≈$355M</span><span class='fk'>· 第三方估算最新估值 ≈$960M（未经公司确认）</span>", t:["视觉/机器人","Physical AI"]},
-  {n:"Mythic", e:"", r:"US", c:"edgeai", o:2, m:"模拟存算一体AI芯片", d:"曾濒临倒闭后重整旗鼓，与本田 / 洛克希德·马丁合作汽车与国防场景", f:"<span class='fv'>2026-01完成$125M融资（洛克希德·马丁、本田、DCVC参投）</span><span class='fk'>· 2026-02与本田成立合资，2026-05收购Videantis</span>", t:["汽车/国防","模拟存算"]},
-  {n:"Quadric", e:"", r:"US", c:"edgeai", o:2, m:"GPNPU（通用型NPU）IP/芯片", d:"面向端侧LLM / 汽车 / 企业视觉的推理平台", f:"<span class='fv'>Series C $30M（2026-01），累计融资$72M</span><span class='fk'>· 2025年产品营收同比增长超3倍</span>", t:["边缘LLM","汽车","IP+芯片"]},
-  {n:"Tenstorrent", e:"", r:"US", c:"edgeai", o:2, m:"可编程AI计算平台（RISC-V架构，覆盖边缘到数据中心）", d:"业务横跨边缘与数据中心，2026年传出被高通以$8–10B洽购（未证实）", f:"<span class='fv'>Series D $693M+（2024-12），估值 ≈$2.6B，累计融资$1.18B</span><span class='fk'>· 高通潜在收购传闻未获官方证实（2026-06）</span>", t:["RISC-V","边缘+数据中心","潜在并购标的"]},
-  {n:"Recogni", e:"", r:"US", c:"edgeai", o:2, m:"生成式AI推理芯片（源自汽车感知场景）", d:"汽车感知起家，现转向生成式AI推理场景", f:"<span class='fv'>累计融资$176M（5轮），最近一轮2024-02（金额未披露）</span><span class='fk'>· 投资方含博世、大陆集团、丰田AI Ventures、宝马i Ventures</span>", t:["汽车感知","生成式AI推理"]},
-  {n:"MemryX", e:"", r:"US", c:"edgeai", o:2, m:"MX3芯片（视觉推理）· MX4（数据中心路线图）", d:"视觉AI推理加速器，主打自动驾驶 / 机器人 / 工业场景超低功耗", f:"<span class='fv'>累计融资 ≈$63M（Series B $44M，2025-03）</span><span class='fk'>· 2026-07与沙特Ebttikar Technology达成合作</span>", t:["视觉/机器人/工业","IoT"]},
-  {n:"EnCharge AI", e:"", r:"US", c:"edgeai", o:2, m:"模拟存算一体AI芯片", d:"抗噪型模拟存算架构，主打低功耗推理", f:"<span class='fv'>超额认购的Series B $100M（Tiger Global领投），累计融资&gt;$144M</span><span class='fk'>· 估值传闻差异极大（$430M–$5B不等），需谨慎核实</span>", t:["模拟存算","国防关联投资方"]},
-  {n:"Blaize Holdings", e:"", r:"US", c:"edgeai", o:1, m:"可编程AI边缘处理器", d:"面向智慧城市 / 国防 / 零售 / 企业的边缘计算芯片，SPAC上市后股价剧烈波动", f:"<span class='fx'>已上市 · NASDAQ BZAI（SPAC上市）</span><span class='fv'>市值从 ≈$474M（2026年初）跌至 ≈$76.8M（2026-08）</span><span class='fk'>· TTM营收$50.4M，FY2026营收指引上调至$130M</span>", t:["智慧城市/国防","SPAC上市后波动大"]},
-  {n:"Untether AI", e:"", r:"US", c:"edgeai", o:3, m:"SpeedAI芯片（已停产）", d:"融资失败后于2025年6月停止运营，工程团队被AMD收编，是边缘AI芯片融资风险的典型案例", f:"<span class='fx'>已停止运营（2025-06清算）</span><span class='fk'>· 工程团队被AMD acqui-hire，产品不再支持</span>", t:["已停止运营"]},
-  {n:"Kinara", e:"", r:"US", c:"edgeai", o:3, m:"Ara-2系列可编程低功耗NPU", d:"高性能低功耗可编程NPU厂商，2025年10月被NXP以$307M全现金收购完成，强化NXP在工业 / 汽车边缘AI的NPU与软件产品线", f:"<span class='fx'>已被NXP收购（2025-10完成，交易金额$307M）</span>", t:["NPU","已被收购(NXP)"]},
-  {n:"Axelera AI", e:"", r:"EU", c:"edgeai", o:2, m:"AIPU数字存算一体芯片：Metis · Europa（629TOPS INT8）", d:"欧盟史上最大AI半导体融资获得者，数字存算一体架构，客户超500家", f:"<span class='fv'>Series C &gt;$250M（2026-02，Innovation Industries领投，贝莱德 / 三星Catalyst参投）</span><span class='fk'>· 累计融资&gt;$450M（2021年创立至今）</span>", t:["欧洲","数字存算一体","电信/航空/企业"]},
-  {n:"GreenWaves Technologies", e:"", r:"EU", c:"edgeai", o:2, m:"GAP9（基于RISC-V，面向耳戴设备）", d:"法国超低功耗RISC-V DSP/AI芯片厂商，主打降噪耳戴场景，法国防务基金参投", f:"<span class='fv'>累计融资 ≈€33M，末轮Series B €20M（2023-02）</span><span class='fk'>· 员工仅约49人，资本厚度明显弱于Arm / Nordic / Ambiq等竞对</span>", t:["可穿戴","RISC-V","国防关联"]},
-  {n:"Innatera", e:"", r:"EU", c:"edgeai", o:2, m:"Pulsar 神经形态微控制器（已量产）", d:"荷兰代尔夫特理工大学孵化的类脑（脉冲神经网络）芯片厂商，正从IP设计商转向全栈芯片供应商", f:"<span class='fv'>累计融资 $32–43M（口径不一），末轮Series A延伸轮 $21M</span><span class='fk'>· 欧盟EIC Fund等参投</span>", t:["神经形态芯片","智能家居/工业IoT/可穿戴"]},
-  {n:"Hailo", e:"", r:"OT", c:"edgeai", o:3, m:"Hailo-8/10 边缘AI处理器", d:"典型的估值过山车案例：独角兽（$1.2B）→估值暴跌至&lt;$500M→SPAC上市失败→被Microchip收购", f:"<span class='fx'>已被Microchip Technology收购（2026年中，交易金额未披露）</span><span class='fv'>峰值估值$1.2B（2024）暴跌至&lt;$500M（2026）</span><span class='fk'>· 2026年初裁员10%，收购前曾聚焦机器人赛道</span>", t:["机器人","已被收购(Microchip)"]},
-  {n:"耐能", e:"Kneron", r:"OT", c:"edgeai", o:2, m:"Edge AI SoC + AI模型", d:"台系资本背景（鸿海、光宝、台达电投资），总部位于圣地亚哥", f:"<span class='fv'>累计融资$226M（10轮），末轮公开披露$49M（2023-09）</span><span class='fk'>· 2024年曾传按约$1B估值洽谈新一轮$300M融资，2026年未确认</span>", t:["IoT/安防","台系资本"]},
-  {n:"DEEPX", e:"", r:"OT", c:"edgeai", o:2, m:"边缘AI NPU芯片（机器人 / 嵌入式）", d:"韩国NPU三强之一（另两家Rebellions、FuriosaAI），IPO前加速冲刺融资估值", f:"<span class='fv'>Series D首轮完成，估值$2.2B（2026-08，较前轮约4倍）</span><span class='fk'>· 此前Series C（2024-05）估值$529M</span>", t:["机器人/嵌入式","韩国NPU三强之一"]},
+  {n:"地平线机器人", e:"Horizon Robotics", r:"CN", c:"edgeai", o:1, m:"征程（Journey）6系列（J6P 560TOPS）+ HSD算法芯片方案", d:"中国ADAS芯片出货量龙头（累计超1,100万套），从卖芯片转向芯片+算法软硬一体", f:"<span class='fx'>已上市 · 港交所 9660</span><span class='fv'>2025 营收 ¥37.6 亿元（+57.7%）</span><span class='fk'>· 调整后经营亏损 ¥23.7 亿元，研发投入¥51.5亿元（+63%）· 目标2027年盈亏平衡</span>", t:["汽车","机器人"]},
+  {n:"黑芝麻智能", e:"Black Sesame", r:"CN", c:"edgeai", o:1, m:"华山A1000/A2000系列 · 武当C1200/C1296", d:"ADAS芯片赛道追赶者，落后地平线约一年，舱驾融合是差异化重点", f:"<span class='fx'>已上市 · 港交所 2533（2024-08 IPO募资HK$9.5亿，首日破发33%）</span><span class='fv'>H1 2026 营收 ¥4.58 亿元（+81.3%）</span><span class='fk'>· H1 2026 净亏 ¥7.7 亿元，具身智能收入 ¥4,720万元</span>", t:["汽车","机器人"]},
+  {n:"爱芯元智", e:"AXERA", r:"CN", c:"edgeai", o:1, m:"爱芯通元（混合精度NPU）+ 爱芯智眸（AI-ISP）", d:"全球中高端视觉边缘推理芯片出货量最大厂商（2024年），累计出货超1.65亿颗", f:"<span class='fx'>已上市 · 港交所 00600（2026-02上市，港股首家边缘AI芯片公司）</span><span class='fv'>IPO募资净额 ≈HK$28亿，上市首日市值 ≈HK$166亿</span><span class='fk'>· 启明创投领投Pre-A轮</span>", t:["安防","汽车"]},
+  {n:"寒武纪", e:"Cambricon", r:"CN", c:"edgeai", o:1, m:"思元系列AI加速卡（云边协同，业务重心已偏向云端）", d:"中国AI加速卡份额第二（8%，仅次于华为昇腾37%），边缘业务为次要板块", f:"<span class='fx'>已上市 · 科创板 688256</span><span class='fv'>Q1 2026 营收 ¥28.85 亿元（+159.6%），净利 ¥10.13 亿元（+185%）</span><span class='fk'>· 市值估算区间差异较大（¥3,500亿–6,500亿元不等），需以实时行情为准</span>", t:["IoT"]},
+  {n:"知存科技", e:"Witmem", r:"CN", c:"edgeai", o:2, m:"WTM2101 存算一体（Compute-in-Memory）芯片", d:"存算一体架构领先者，主攻语音 / 传感器超低功耗边缘推理", f:"<span class='fv'>累计融资 ≈¥6亿元（A/B1/B2轮）</span><span class='fk'>· B2轮¥2亿元由国投创业领投</span>", t:["存算一体","IoT"]},
+  {n:"后摩智能", e:"Houmo AI", r:"CN", c:"edgeai", o:2, m:"M50 存算一体大算力AI芯片", d:"存算一体独角兽，主攻汽车智能驾驶，M50已进入联想 / 长城AI PC", f:"<span class='fv'>历史融资：Pre-A ¥3亿元（启明创投）、数亿元Pre-A+（华创资本）</span><span class='fk'>· 2026年暂无新轮次确认</span>", t:["存算一体","汽车","机器人"]},
+  {n:"亿铸科技", e:"Yizhu", r:"CN", c:"edgeai", o:2, m:"GP-IMC（通用存算一体架构）大算力AI芯片", d:"自称中国首家GP-IMC架构AI芯片公司，2026年融资最活跃的存算一体创业公司", f:"<span class='fv'>累计融资 &gt;¥10亿元（截至2026年中）</span><span class='fk'>· 2026-04 洪山资本领投战略轮，2025-10 兴湘资本等领投B+轮</span>", t:["存算一体"]},
+  {n:"云天励飞", e:"Intellifusion", r:"CN", c:"edgeai", o:1, m:"GPNPU架构推理芯片", d:"AI芯片厂商，正冲刺A+H两地上市（第二次递表港交所）", f:"<span class='fx'>已上市 · 科创板 688343，2026-04再度递表港交所</span><span class='fv'>2025 营收 ¥13.39 亿元（+46%），净亏 ¥4.22 亿元（同比收窄30.5%）</span><span class='fk'>· 市值数据存在较大口径差异，需以实时行情为准</span>", t:["安防"]},
+  {n:"芯驰科技", e:"SemiDrive", r:"CN", c:"edgeai", o:2, m:"车规SoC，向具身智能全栈芯片延伸（“战略2.0”）", d:"车规级芯片厂商，业务从ADAS / 座舱扩展至机器人 / 具身智能", f:"<span class='fv'>Series C ≈$100M（2026-05，苏产投领投）</span><span class='fk'>· 此前Series B+ ≈¥10亿元（2025，上汽金石领投）</span>", t:["汽车","机器人"]},
+  {n:"芯擎科技", e:"SiEngine", r:"CN", c:"edgeai", o:2, m:"龍鹰二号（5nm舱驾融合芯片）", d:"吉利系车规与工业计算平台厂商", f:"<span class='fv'>2026上半年完成 &gt;$200M融资，多家产业 / 国资基金参与</span>", t:["汽车"]},
+  {n:"NVIDIA", e:"英伟达", r:"US", c:"edgeai", o:1, m:"Jetson/Tegra（边缘 / 机器人）· DRIVE AGX Thor（汽车）", d:"边缘 / 机器人计算平台事实标准，已在模型层等其他视图详解，此处补充其端侧Jetson产品线", f:"<span class='fx'>已上市 · NASDAQ NVDA，已在其他层详解</span><span class='fv'>汽车业务FY2026营收$2.3B（+39%）</span><span class='fk'>· Jetson Orin Nano 2（2026-08发布）推理性能翻倍、功耗-40%</span>", t:["汽车","机器人","PC"]},
+  {n:"Ambarella", e:"", r:"US", c:"edgeai", o:1, m:"CV72/CV75（5nm）· CV7/CV8（2nm）Edge AI SoC", d:"摄像头 / 视觉边缘AI SoC龙头，Edge AI已占营收80%", f:"<span class='fx'>已上市 · NASDAQ AMBA</span><span class='fv'>市值 ≈$3.6B（2026-05，波动较大）</span><span class='fk'>· FY2026营收创纪录$390.7M（+37%），净亏$75.9M</span>", t:["安防","汽车"]},
+  {n:"Syntiant", e:"", r:"US", c:"edgeai", o:1, m:"神经决策处理器（NDP）", d:"超低功耗常开语音 / 传感器推理芯片，服务可穿戴 / 耳戴设备", f:"<span class='fx'>已上市 · NASDAQ SYTN（2026-07递交S-1，预计Q3定价）</span><span class='fv'>末轮私有估值 $646M（2024-12）</span><span class='fk'>· 累计融资 $302–311M，Intel Capital / 微软M12等参投</span>", t:["可穿戴","IoT"]},
+  {n:"SiMa.ai", e:"", r:"US", c:"edgeai", o:2, m:"MLSoC 平台（Physical AI）", d:"面向视觉 / 机器人的边缘AI SoC厂商，美光近期加入为战略投资方", f:"<span class='fv'>累计融资 ≈$355M</span><span class='fk'>· 第三方估算最新估值 ≈$960M（未经公司确认）</span>", t:["机器人"]},
+  {n:"Mythic", e:"", r:"US", c:"edgeai", o:2, m:"模拟存算一体AI芯片", d:"曾濒临倒闭后重整旗鼓，与本田 / 洛克希德·马丁合作汽车与国防场景", f:"<span class='fv'>2026-01完成$125M融资（洛克希德·马丁、本田、DCVC参投）</span><span class='fk'>· 2026-02与本田成立合资，2026-05收购Videantis</span>", t:["汽车","存算一体"]},
+  {n:"Quadric", e:"", r:"US", c:"edgeai", o:2, m:"GPNPU（通用型NPU）IP/芯片", d:"面向端侧LLM / 汽车 / 企业视觉的推理平台", f:"<span class='fv'>Series C $30M（2026-01），累计融资$72M</span><span class='fk'>· 2025年产品营收同比增长超3倍</span>", t:["汽车"]},
+  {n:"Tenstorrent", e:"", r:"US", c:"edgeai", o:2, m:"可编程AI计算平台（RISC-V架构，覆盖边缘到数据中心）", d:"业务横跨边缘与数据中心，2026年传出被高通以$8–10B洽购（未证实）", f:"<span class='fv'>Series D $693M+（2024-12），估值 ≈$2.6B，累计融资$1.18B</span><span class='fk'>· 高通潜在收购传闻未获官方证实（2026-06）</span>", t:["RISC-V"]},
+  {n:"Recogni", e:"", r:"US", c:"edgeai", o:2, m:"生成式AI推理芯片（源自汽车感知场景）", d:"汽车感知起家，现转向生成式AI推理场景", f:"<span class='fv'>累计融资$176M（5轮），最近一轮2024-02（金额未披露）</span><span class='fk'>· 投资方含博世、大陆集团、丰田AI Ventures、宝马i Ventures</span>", t:["汽车"]},
+  {n:"MemryX", e:"", r:"US", c:"edgeai", o:2, m:"MX3芯片（视觉推理）· MX4（数据中心路线图）", d:"视觉AI推理加速器，主打自动驾驶 / 机器人 / 工业场景超低功耗", f:"<span class='fv'>累计融资 ≈$63M（Series B $44M，2025-03）</span><span class='fk'>· 2026-07与沙特Ebttikar Technology达成合作</span>", t:["机器人","安防","IoT"]},
+  {n:"EnCharge AI", e:"", r:"US", c:"edgeai", o:2, m:"模拟存算一体AI芯片", d:"抗噪型模拟存算架构，主打低功耗推理", f:"<span class='fv'>超额认购的Series B $100M（Tiger Global领投），累计融资&gt;$144M</span><span class='fk'>· 估值传闻差异极大（$430M–$5B不等），需谨慎核实</span>", t:["存算一体"]},
+  {n:"Blaize Holdings", e:"", r:"US", c:"edgeai", o:1, m:"可编程AI边缘处理器", d:"面向智慧城市 / 国防 / 零售 / 企业的边缘计算芯片，SPAC上市后股价剧烈波动", f:"<span class='fx'>已上市 · NASDAQ BZAI（SPAC上市）</span><span class='fv'>市值从 ≈$474M（2026年初）跌至 ≈$76.8M（2026-08）</span><span class='fk'>· TTM营收$50.4M，FY2026营收指引上调至$130M</span>", t:["安防"]},
+  {n:"Untether AI", e:"", r:"US", c:"edgeai", o:3, m:"SpeedAI芯片（已停产）", d:"融资失败后于2025年6月停止运营，工程团队被AMD收编，是边缘AI芯片融资风险的典型案例", f:"<span class='fx'>已停止运营（2025-06清算）</span><span class='fk'>· 工程团队被AMD acqui-hire，产品不再支持</span>", t:["IoT"]},
+  {n:"Kinara", e:"", r:"US", c:"edgeai", o:3, m:"Ara-2系列可编程低功耗NPU", d:"高性能低功耗可编程NPU厂商，2025年10月被NXP以$307M全现金收购完成，强化NXP在工业 / 汽车边缘AI的NPU与软件产品线", f:"<span class='fx'>已被NXP收购（2025-10完成，交易金额$307M）</span>", t:["汽车","安防"]},
+  {n:"Axelera AI", e:"", r:"EU", c:"edgeai", o:2, m:"AIPU数字存算一体芯片：Metis · Europa（629TOPS INT8）", d:"欧盟史上最大AI半导体融资获得者，数字存算一体架构，客户超500家", f:"<span class='fv'>Series C &gt;$250M（2026-02，Innovation Industries领投，贝莱德 / 三星Catalyst参投）</span><span class='fk'>· 累计融资&gt;$450M（2021年创立至今）</span>", t:["存算一体"]},
+  {n:"GreenWaves Technologies", e:"", r:"EU", c:"edgeai", o:2, m:"GAP9（基于RISC-V，面向耳戴设备）", d:"法国超低功耗RISC-V DSP/AI芯片厂商，主打降噪耳戴场景，法国防务基金参投", f:"<span class='fv'>累计融资 ≈€33M，末轮Series B €20M（2023-02）</span><span class='fk'>· 员工仅约49人，资本厚度明显弱于Arm / Nordic / Ambiq等竞对</span>", t:["可穿戴","RISC-V"]},
+  {n:"Innatera", e:"", r:"EU", c:"edgeai", o:2, m:"Pulsar 神经形态微控制器（已量产）", d:"荷兰代尔夫特理工大学孵化的类脑（脉冲神经网络）芯片厂商，正从IP设计商转向全栈芯片供应商", f:"<span class='fv'>累计融资 $32–43M（口径不一），末轮Series A延伸轮 $21M</span><span class='fk'>· 欧盟EIC Fund等参投</span>", t:["IoT","可穿戴"]},
+  {n:"Hailo", e:"", r:"OT", c:"edgeai", o:3, m:"Hailo-8/10 边缘AI处理器", d:"典型的估值过山车案例：独角兽（$1.2B）→估值暴跌至&lt;$500M→SPAC上市失败→被Microchip收购", f:"<span class='fx'>已被Microchip Technology收购（2026年中，交易金额未披露）</span><span class='fv'>峰值估值$1.2B（2024）暴跌至&lt;$500M（2026）</span><span class='fk'>· 2026年初裁员10%，收购前曾聚焦机器人赛道</span>", t:["机器人"]},
+  {n:"耐能", e:"Kneron", r:"OT", c:"edgeai", o:2, m:"Edge AI SoC + AI模型", d:"台系资本背景（鸿海、光宝、台达电投资），总部位于圣地亚哥", f:"<span class='fv'>累计融资$226M（10轮），末轮公开披露$49M（2023-09）</span><span class='fk'>· 2024年曾传按约$1B估值洽谈新一轮$300M融资，2026年未确认</span>", t:["IoT","安防"]},
+  {n:"DEEPX", e:"", r:"OT", c:"edgeai", o:2, m:"边缘AI NPU芯片（机器人 / 嵌入式）", d:"韩国NPU三强之一（另两家Rebellions、FuriosaAI），IPO前加速冲刺融资估值", f:"<span class='fv'>Series D首轮完成，估值$2.2B（2026-08，较前轮约4倍）</span><span class='fk'>· 此前Series C（2024-05）估值$529M</span>", t:["机器人"]},
 
   /* ---- 视觉 / IoT SoC ---- */
-  {n:"瑞芯微", e:"Rockchip", r:"CN", c:"visioniot", o:1, m:"RK3588 · RK1860（协处理器规划）· 下一代RK3688", d:"中国AIoT SoC龙头，向工业 / 汽车 / 具身机器人拓展（主控为“小脑”+协处理器为“大脑”架构）", f:"<span class='fx'>已上市 · 科创板 603893</span><span class='fv'>市值 ≈¥781亿元（2026-04）</span><span class='fk'>· H1 2026营收¥28.77亿元（+40.6%），净利¥8.59亿元（+61.7%）</span>", t:["AIoT","机器人","汽车"]},
-  {n:"全志科技", e:"Allwinner", r:"CN", c:"visioniot", o:1, m:"AIoT SoC + 存储 / SoC组合产品", d:"中端AIoT SoC厂商，受益于存储芯片涨价周期", f:"<span class='fx'>已上市 · 深交所 300458</span><span class='fv'>市值 ≈¥316亿元</span><span class='fk'>· Q1 2026营收¥9.12亿元（+47.1%），净利¥2.03亿元（+121.8%）</span>", t:["AIoT","存储+SoC"]},
-  {n:"晶晨股份", e:"Amlogic", r:"CN", c:"visioniot", o:1, m:"电视 / 家庭终端SoC", d:"中国第一、全球第二的家庭智能终端SoC厂商，筹划港股二次上市", f:"<span class='fx'>已上市 · 科创板 688099，2026-09申请港股上市</span><span class='fv'>2025营收¥67.91亿元，净利¥8.7亿元</span><span class='fk'>· H1 2026营收¥43.91亿元（+31.9%）</span>", t:["TV/家庭终端","拟港股上市"]},
-  {n:"恒玄科技", e:"BES", r:"CN", c:"visioniot", o:1, m:"可穿戴 / 音频SoC（耳机、手表）", d:"可穿戴 / 音频SoC龙头，2026年初受消费电子需求走弱冲击", f:"<span class='fx'>已上市 · 科创板 688608</span><span class='fk'>· Q1 2026营收¥6.69亿元（-32.7%），净利¥0.89亿元（-53.3%）· 现金储备¥52.67亿元，占总资产67.3%</span>", t:["可穿戴/音频","AI眼镜"]},
-  {n:"星宸科技", e:"SigmaStar", r:"CN", c:"visioniot", o:1, m:"安防 / 汽车摄像头SoC", d:"安防与车载摄像头AI SoC厂商，近期增长强劲", f:"<span class='fx'>已上市 · 深交所 301536</span><span class='fv'>市值 ≈¥239亿元（2026-07）</span><span class='fk'>· Q1 2026净利同比+330.3%，滚动市盈率约73–93倍</span>", t:["安防","汽车摄像头"]},
-  {n:"富瀚微", e:"Fullhan", r:"CN", c:"visioniot", o:1, m:"安防 / 监控 ISP+SoC", d:"受益于2026年中国安防行业招标回暖", f:"<span class='fx'>已上市 · 深交所 300613</span><span class='fv'>Q1 2026营收¥5.59亿元（+75.5%），净利¥0.85亿元（+481.1%）</span>", t:["安防","ISP芯片"]},
-  {n:"炬芯科技", e:"Actions", r:"CN", c:"visioniot", o:1, m:"音频 / AIoT SoC", d:"AI赋能的音频产品占比持续提升（Q1 2026超25%）", f:"<span class='fx'>已上市 · 科创板 688049</span><span class='fv'>2025营收¥9.2亿元（+41.5%），净利¥2.05亿元（+92%）</span>", t:["音频","AIoT"]},
-  {n:"奇景光电", e:"Himax Technologies", r:"CN", c:"visioniot", o:1, tw:true, m:"WiseEye2超低功耗AI视觉处理器（双Arm Cortex-M55核）", d:"电池供电终端设备的always-on超低功耗视觉AI处理器代表厂商，2025年WiseEye2进入宏碁AI PC（Swift Edge 14）量产", f:"<span class='fx'>已上市 · NASDAQ HIMX</span><span class='fk'>· 具体市值/营收数据本次未独立核实，建议后续补充</span>", t:["视觉IoT","AI PC","超低功耗"]},
-  {n:"联咏科技", e:"Novatek Microelectronics", r:"CN", c:"visioniot", o:1, tw:true, m:"安防 / IoT AI ISP SoC + 显示驱动IC（DDI）双主业", d:"台湾第三大、全球fabless IC设计公司第8（2024年销售额排名），2025年推出自研NPU架构新一代Edge AI SoC，支持端侧多模态大模型；DDI仍为营收主力，AI芯片为多元化产品线之一", f:"<span class='fx'>已上市 · 台湾证交所 TWSE 3034</span><span class='fk'>· 具体市值/营收数据本次未独立核实，建议后续补充</span>", t:["安防/IoT","DDI+AI SoC"]},
+  {n:"瑞芯微", e:"Rockchip", r:"CN", c:"visioniot", o:1, m:"RK3588 · RK1860（协处理器规划）· 下一代RK3688", d:"中国AIoT SoC龙头，向工业 / 汽车 / 具身机器人拓展（主控为“小脑”+协处理器为“大脑”架构）", f:"<span class='fx'>已上市 · 科创板 603893</span><span class='fv'>市值 ≈¥781亿元（2026-04）</span><span class='fk'>· H1 2026营收¥28.77亿元（+40.6%），净利¥8.59亿元（+61.7%）</span>", t:["IoT","机器人","汽车"]},
+  {n:"全志科技", e:"Allwinner", r:"CN", c:"visioniot", o:1, m:"AIoT SoC + 存储 / SoC组合产品", d:"中端AIoT SoC厂商，受益于存储芯片涨价周期", f:"<span class='fx'>已上市 · 深交所 300458</span><span class='fv'>市值 ≈¥316亿元</span><span class='fk'>· Q1 2026营收¥9.12亿元（+47.1%），净利¥2.03亿元（+121.8%）</span>", t:["IoT"]},
+  {n:"晶晨股份", e:"Amlogic", r:"CN", c:"visioniot", o:1, m:"电视 / 家庭终端SoC", d:"中国第一、全球第二的家庭智能终端SoC厂商，筹划港股二次上市", f:"<span class='fx'>已上市 · 科创板 688099，2026-09申请港股上市</span><span class='fv'>2025营收¥67.91亿元，净利¥8.7亿元</span><span class='fk'>· H1 2026营收¥43.91亿元（+31.9%）</span>", t:["IoT"]},
+  {n:"恒玄科技", e:"BES", r:"CN", c:"visioniot", o:1, m:"可穿戴 / 音频SoC（耳机、手表）", d:"可穿戴 / 音频SoC龙头，2026年初受消费电子需求走弱冲击", f:"<span class='fx'>已上市 · 科创板 688608</span><span class='fk'>· Q1 2026营收¥6.69亿元（-32.7%），净利¥0.89亿元（-53.3%）· 现金储备¥52.67亿元，占总资产67.3%</span>", t:["可穿戴"]},
+  {n:"星宸科技", e:"SigmaStar", r:"CN", c:"visioniot", o:1, m:"安防 / 汽车摄像头SoC", d:"安防与车载摄像头AI SoC厂商，近期增长强劲", f:"<span class='fx'>已上市 · 深交所 301536</span><span class='fv'>市值 ≈¥239亿元（2026-07）</span><span class='fk'>· Q1 2026净利同比+330.3%，滚动市盈率约73–93倍</span>", t:["安防","汽车"]},
+  {n:"富瀚微", e:"Fullhan", r:"CN", c:"visioniot", o:1, m:"安防 / 监控 ISP+SoC", d:"受益于2026年中国安防行业招标回暖", f:"<span class='fx'>已上市 · 深交所 300613</span><span class='fv'>Q1 2026营收¥5.59亿元（+75.5%），净利¥0.85亿元（+481.1%）</span>", t:["安防"]},
+  {n:"炬芯科技", e:"Actions", r:"CN", c:"visioniot", o:1, m:"音频 / AIoT SoC", d:"AI赋能的音频产品占比持续提升（Q1 2026超25%）", f:"<span class='fx'>已上市 · 科创板 688049</span><span class='fv'>2025营收¥9.2亿元（+41.5%），净利¥2.05亿元（+92%）</span>", t:["IoT"]},
+  {n:"奇景光电", e:"Himax Technologies", r:"OT", c:"visioniot", o:1, tw:true, m:"WiseEye2超低功耗AI视觉处理器（双Arm Cortex-M55核）", d:"电池供电终端设备的always-on超低功耗视觉AI处理器代表厂商，2025年WiseEye2进入宏碁AI PC（Swift Edge 14）量产", f:"<span class='fx'>已上市 · NASDAQ HIMX</span><span class='fk'>· 具体市值/营收数据本次未独立核实，建议后续补充</span>", t:["IoT","PC"]},
+  {n:"联咏科技", e:"Novatek Microelectronics", r:"OT", c:"visioniot", o:1, tw:true, m:"安防 / IoT AI ISP SoC + 显示驱动IC（DDI）双主业", d:"台湾第三大、全球fabless IC设计公司第8（2024年销售额排名），2025年推出自研NPU架构新一代Edge AI SoC，支持端侧多模态大模型；DDI仍为营收主力，AI芯片为多元化产品线之一", f:"<span class='fx'>已上市 · 台湾证交所 TWSE 3034</span><span class='fk'>· 具体市值/营收数据本次未独立核实，建议后续补充</span>", t:["安防","IoT"]},
 
   /* ---- MCU / TinyML芯片 ---- */
-  {n:"德州仪器", e:"TI", r:"US", c:"mcu", o:1, m:"实时控制类MCU", d:"聚焦工业 / 汽车实时控制MCU", f:"<span class='fx'>已上市 · NASDAQ TXN</span><span class='fk'>· 具体财务数据本次未独立核实</span>", t:["工业/汽车MCU"]},
-  {n:"恩智浦", e:"NXP", r:"US", c:"mcu", o:1, m:"S32汽车分区平台 · MCX N（Cortex-M33 + eIQ Neutron NPU）", d:"通过并购（Kinara NPU技术、TTTech Auto）加码边缘AI能力", f:"<span class='fx'>已上市 · NASDAQ NXPI</span><span class='fv'>Q1 2026营收$3.18B（+12%）</span>", t:["汽车分区架构","NPU集成MCU"]},
-  {n:"Microchip Technology", e:"", r:"US", c:"mcu", o:1, m:"PIC/AVR MCU + MCU/模拟组合", d:"传统低端MCU龙头，同时加速布局数据中心业务", f:"<span class='fx'>已上市 · NASDAQ MCHP</span><span class='fv'>市值 $46–51B区间</span><span class='fk'>· TTM营收（截至2026-03）$4.713B（+7.1%）</span>", t:["低功耗MCU","数据中心业务增长快"]},
-  {n:"Ambiq", e:"", r:"US", c:"mcu", o:1, m:"SPOT超低功耗SoC · Atomiq（集成NPU的SoC，2026-01）", d:"超低功耗边缘AI SoC纯玩家，已有超3亿台设备搭载", f:"<span class='fx'>已上市 · NASDAQ AMBQ（2025-07 IPO）</span><span class='fv'>IPO净募资$99.8M，2026年增发募资$179.4M</span>", t:["超低功耗","TinyML","IPO已完成"]},
-  {n:"意法半导体", e:"STMicroelectronics", r:"EU", c:"mcu", o:1, m:"STM32（Cortex-M）+ AI生态工具链", d:"通用MCU生态最广泛的厂商，同时布局AI数据中心业务（目标2026年营收$1B）", f:"<span class='fx'>已上市 · NYSE/Euronext STM</span><span class='fv'>FY2025营收$11.80B（-11.1%）</span>", t:["通用MCU","STM32 AI生态"]},
-  {n:"英飞凌", e:"Infineon", r:"EU", c:"mcu", o:1, m:"汽车级功率+MCU模块", d:"汽车半导体营收龙头（&gt;$8B），功率模块与MCU双强", f:"<span class='fx'>已上市 · 法兰克福 IFX</span><span class='fv'>汽车半导体营收 &gt;$8B</span>", t:["汽车MCU/功率","市场份额领先"]},
-  {n:"Nordic Semiconductor", e:"", r:"EU", c:"mcu", o:1, m:"nRF54系列（含集成NPU的nRF54LM20B，CES 2026）", d:"蓝牙 / 无线连接MCU龙头，进军超低功耗边缘AI", f:"<span class='fx'>已上市 · 奥斯陆 NOD</span><span class='fv'>市值 ≈$3.2–3.8B</span><span class='fk'>· Q2 2026营收$219M（+33%）</span>", t:["无线连接","低功耗边缘AI"]},
-  {n:"乐鑫科技", e:"Espressif", r:"CN", c:"mcu", o:1, m:"ESP32系列（WiFi/蓝牙MCU），规划WiFi7+端侧AI芯片", d:"全球WiFi MCU龙头，IoT设备渗透率极高", f:"<span class='fx'>已上市 · 科创板 688018</span><span class='fv'>2025营收¥25.65亿元（+27.8%），净利¥4.98亿元（+46.7%）</span>", t:["WiFi MCU","IoT"]},
-  {n:"兆易创新", e:"GigaDevice", r:"CN", c:"mcu", o:1, m:"MCU + NOR/NAND闪存 + 利基型DRAM", d:"受益于2026年存储芯片供给紧张，MCU+存储双主业", f:"<span class='fx'>已上市 · 科创板 603986 + 港股（2026-01上市）</span><span class='fv'>市值 ≈¥2,166亿元（2026-04）</span><span class='fk'>· 2025营收¥92.03亿元（+25.1%），H1 2026净利同比大增（受存储涨价驱动）</span>", t:["MCU+存储","A+H两地上市"]},
-  {n:"中微半导体", e:"China Micro Semicon", r:"CN", c:"mcu", o:1, m:"智能控制类MCU（中国出货量第一，2024年）", d:"深圳MCU厂商强势反转，受益于2026年MCU涨价潮", f:"<span class='fx'>已上市 · 科创板 688380，2026-03再度申请港股上市</span><span class='fv'>2025营收¥11.22亿元，净利¥2.84亿元（扭亏为盈后持续增长）</span>", t:["智能控制MCU","涨价潮"]},
-  {n:"瑞萨电子", e:"Renesas", r:"OT", c:"mcu", o:1, m:"RA8P1（Cortex-M85 + Ethos-U55）+ Reality AI 工具链", d:"全球MCU头部厂商，边缘AI产品线覆盖工具链到芯片", f:"<span class='fx'>已上市 · 东京证交所 6723</span><span class='fk'>· 具体2026年财务数据本次未独立核实，建议后续补充</span>", t:["工业/汽车MCU","边缘AI工具链"]},
+  {n:"德州仪器", e:"TI", r:"US", c:"mcu", o:1, m:"实时控制类MCU", d:"聚焦工业 / 汽车实时控制MCU", f:"<span class='fx'>已上市 · NASDAQ TXN</span><span class='fk'>· 具体财务数据本次未独立核实</span>", t:["安防","汽车"]},
+  {n:"恩智浦", e:"NXP", r:"US", c:"mcu", o:1, m:"S32汽车分区平台 · MCX N（Cortex-M33 + eIQ Neutron NPU）", d:"通过并购（Kinara NPU技术、TTTech Auto）加码边缘AI能力", f:"<span class='fx'>已上市 · NASDAQ NXPI</span><span class='fv'>Q1 2026营收$3.18B（+12%）</span>", t:["汽车"]},
+  {n:"Microchip Technology", e:"", r:"US", c:"mcu", o:1, m:"PIC/AVR MCU + MCU/模拟组合", d:"传统低端MCU龙头，同时加速布局数据中心业务", f:"<span class='fx'>已上市 · NASDAQ MCHP</span><span class='fv'>市值 $46–51B区间</span><span class='fk'>· TTM营收（截至2026-03）$4.713B（+7.1%）</span>", t:["IoT"]},
+  {n:"Ambiq", e:"", r:"US", c:"mcu", o:1, m:"SPOT超低功耗SoC · Atomiq（集成NPU的SoC，2026-01）", d:"超低功耗边缘AI SoC纯玩家，已有超3亿台设备搭载", f:"<span class='fx'>已上市 · NASDAQ AMBQ（2025-07 IPO）</span><span class='fv'>IPO净募资$99.8M，2026年增发募资$179.4M</span>", t:["IoT","可穿戴"]},
+  {n:"意法半导体", e:"STMicroelectronics", r:"EU", c:"mcu", o:1, m:"STM32（Cortex-M）+ AI生态工具链", d:"通用MCU生态最广泛的厂商，同时布局AI数据中心业务（目标2026年营收$1B）", f:"<span class='fx'>已上市 · NYSE/Euronext STM</span><span class='fv'>FY2025营收$11.80B（-11.1%）</span>", t:["IoT"]},
+  {n:"英飞凌", e:"Infineon", r:"EU", c:"mcu", o:1, m:"汽车级功率+MCU模块", d:"汽车半导体营收龙头（&gt;$8B），功率模块与MCU双强", f:"<span class='fx'>已上市 · 法兰克福 IFX</span><span class='fv'>汽车半导体营收 &gt;$8B</span>", t:["汽车"]},
+  {n:"Nordic Semiconductor", e:"", r:"EU", c:"mcu", o:1, m:"nRF54系列（含集成NPU的nRF54LM20B，CES 2026）", d:"蓝牙 / 无线连接MCU龙头，进军超低功耗边缘AI", f:"<span class='fx'>已上市 · 奥斯陆 NOD</span><span class='fv'>市值 ≈$3.2–3.8B</span><span class='fk'>· Q2 2026营收$219M（+33%）</span>", t:["IoT","可穿戴"]},
+  {n:"乐鑫科技", e:"Espressif", r:"CN", c:"mcu", o:1, m:"ESP32系列（WiFi/蓝牙MCU），规划WiFi7+端侧AI芯片", d:"全球WiFi MCU龙头，IoT设备渗透率极高", f:"<span class='fx'>已上市 · 科创板 688018</span><span class='fv'>2025营收¥25.65亿元（+27.8%），净利¥4.98亿元（+46.7%）</span>", t:["IoT"]},
+  {n:"兆易创新", e:"GigaDevice", r:"CN", c:"mcu", o:1, m:"MCU + NOR/NAND闪存 + 利基型DRAM", d:"受益于2026年存储芯片供给紧张，MCU+存储双主业", f:"<span class='fx'>已上市 · 科创板 603986 + 港股（2026-01上市）</span><span class='fv'>市值 ≈¥2,166亿元（2026-04）</span><span class='fk'>· 2025营收¥92.03亿元（+25.1%），H1 2026净利同比大增（受存储涨价驱动）</span>", t:["IoT"]},
+  {n:"中微半导体", e:"China Micro Semicon", r:"CN", c:"mcu", o:1, m:"智能控制类MCU（中国出货量第一，2024年）", d:"深圳MCU厂商强势反转，受益于2026年MCU涨价潮", f:"<span class='fx'>已上市 · 科创板 688380，2026-03再度申请港股上市</span><span class='fv'>2025营收¥11.22亿元，净利¥2.84亿元（扭亏为盈后持续增长）</span>", t:["IoT"]},
+  {n:"瑞萨电子", e:"Renesas", r:"OT", c:"mcu", o:1, m:"RA8P1（Cortex-M85 + Ethos-U55）+ Reality AI 工具链", d:"全球MCU头部厂商，边缘AI产品线覆盖工具链到芯片", f:"<span class='fx'>已上市 · 东京证交所 6723</span><span class='fk'>· 具体2026年财务数据本次未独立核实，建议后续补充</span>", t:["安防","汽车"]},
 ];
 
 const CATS_CHIP = [
@@ -1295,12 +1297,12 @@ const PLAYERS4 = [
   {n:"立讯精密", e:"Luxshare", r:"CN", c:"odm", o:1, m:"消费电子精密制造 + 收购的闻泰 ODM 业务 + 汽车 / 通信", d:"2025 年起承接闻泰 ODM 大部分客户资源，手机 ODM 出货升至全球第四；AI 手机 / AI PC 代工放量", t:["手机","PC","汽车","IoT"], f:"已上市（002475）· 市值 ≈4,330 亿元 · 2025 营收 3,323 亿元（+24%），净利 166 亿元 · 员工 41.6 万" },
   {n:"比亚迪电子", e:"BYD Electronic", r:"CN", c:"odm", o:1, m:"消费电子组装 + 汽车电子 + AI 算力基础设施", d:"安卓阵营主要整机代工之一，手机零部件自供率高；AI 服务器液冷板量产爬坡", t:["手机","汽车","服务器"], f:"已上市（0285.HK）· 市值 ≈605 亿港元 · 2025 营收 1,795 亿元（+1%），净利 35 亿元（-18%）· 员工 ~16.5 万" },
   {n:"光弘科技", e:"DBG", r:"CN", c:"odm", o:1, m:"消费电子 / 汽车电子 / 网络通讯 EMS", d:"华勤、龙旗供应链上的 EMS，为国内大客户做算力板卡，拓展服务器模组与液冷卡", t:["手机","汽车","IoT"], f:"已上市（300735）· 市值 ≈155 亿元 · 2025 营收 90 亿元（+31%），净利 2.9 亿元 · 员工 1.9 万" },
-  {n:"鸿海 / 富士康", e:"Hon Hai", r:"CN", c:"odm", o:1, tw:true, m:"消费电子 EMS + 服务器 / AI 机柜代工 + 组件", d:"全球 EMS 市占 >40%；AI 机柜出货全球最大供应商，云端网络业务占营收过半", t:["服务器","PC","手机","IoT","机器人"], f:"已上市（2317.TW）· 市值 ≈$115B · 2025 营收 ≈$261B（+18%），净利 ≈$6.1B · 员工 ~65 万" },
-  {n:"广达", e:"Quanta", r:"CN", c:"odm", o:1, tw:true, m:"笔电 / 服务器 ODM（含 AI 服务器）", d:"全球笔电 ODM 第一，AI 服务器占服务器营收 75–80%；笔电营收占比已降至 <15%", t:["PC","服务器"], f:"已上市（2382.TW）· 市值 ≈$43B · 2025 营收 ≈$68B（+51%），净利 ≈$2.4B · 员工 ~1.16 万（母公司）" },
-  {n:"仁宝", e:"Compal", r:"CN", c:"odm", o:1, tw:true, m:"笔电 / 非 PC（服务器、车用、穿戴）ODM", d:"笔电 ODM 第二梯队；AI 服务器占服务器营收约 70%，桃园 AI 服务器制造中心于 2026-08 启用", t:["PC","服务器"], f:"已上市（2324.TW）· 市值 ≈$5.7B · 2025 营收 ≈$24B（-17%），净利 ≈$0.19B · 员工 ~7,900（母公司）" },
-  {n:"纬创", e:"Wistron", r:"CN", c:"odm", o:1, tw:true, m:"笔电 + 服务器 / AI 机柜代工", d:"服务器占营收已近八成，AI 相关营收占比约七成；德州厂量产 GB 系列运算板", t:["PC","服务器"], f:"已上市（3231.TW）· 市值 ≈$20B · 2025 营收 ≈$70B（+108%），净利 ≈$0.88B · 员工 ~1.46 万（母公司）" },
-  {n:"和硕", e:"Pegatron", r:"CN", c:"odm", o:1, tw:true, m:"笔电 / 消费电子 EMS + 服务器拓展", d:"笔电代工，2026 年服务器营收目标增十倍，拓展边缘 AI 桌机与推理服务器", t:["PC","服务器","IoT"], f:"已上市（4938.TW）· 市值 ≈$8.1B · 2025 营收 ≈$36B（-1%），净利 ≈$0.46B · 员工 ~7,500（母公司）" },
-  {n:"英业达", e:"Inventec", r:"CN", c:"odm", o:1, tw:true, m:"笔电 + 服务器 ODM + 车用", d:"服务器占营收接近五成，AI 服务器营收增>30%；车用营收翻倍", t:["PC","服务器","汽车"], f:"已上市（2356.TW）· 市值 ≈$7.6B · 2025 营收 ≈$22B（+7%），净利 ≈$0.28B · 员工 ~6,800（母公司）" },
+  {n:"鸿海 / 富士康", e:"Hon Hai", r:"OT", c:"odm", o:1, tw:true, m:"消费电子 EMS + 服务器 / AI 机柜代工 + 组件", d:"全球 EMS 市占 >40%；AI 机柜出货全球最大供应商，云端网络业务占营收过半", t:["服务器","PC","手机","IoT","机器人"], f:"已上市（2317.TW）· 市值 ≈$115B · 2025 营收 ≈$261B（+18%），净利 ≈$6.1B · 员工 ~65 万" },
+  {n:"广达", e:"Quanta", r:"OT", c:"odm", o:1, tw:true, m:"笔电 / 服务器 ODM（含 AI 服务器）", d:"全球笔电 ODM 第一，AI 服务器占服务器营收 75–80%；笔电营收占比已降至 <15%", t:["PC","服务器"], f:"已上市（2382.TW）· 市值 ≈$43B · 2025 营收 ≈$68B（+51%），净利 ≈$2.4B · 员工 ~1.16 万（母公司）" },
+  {n:"仁宝", e:"Compal", r:"OT", c:"odm", o:1, tw:true, m:"笔电 / 非 PC（服务器、车用、穿戴）ODM", d:"笔电 ODM 第二梯队；AI 服务器占服务器营收约 70%，桃园 AI 服务器制造中心于 2026-08 启用", t:["PC","服务器"], f:"已上市（2324.TW）· 市值 ≈$5.7B · 2025 营收 ≈$24B（-17%），净利 ≈$0.19B · 员工 ~7,900（母公司）" },
+  {n:"纬创", e:"Wistron", r:"OT", c:"odm", o:1, tw:true, m:"笔电 + 服务器 / AI 机柜代工", d:"服务器占营收已近八成，AI 相关营收占比约七成；德州厂量产 GB 系列运算板", t:["PC","服务器"], f:"已上市（3231.TW）· 市值 ≈$20B · 2025 营收 ≈$70B（+108%），净利 ≈$0.88B · 员工 ~1.46 万（母公司）" },
+  {n:"和硕", e:"Pegatron", r:"OT", c:"odm", o:1, tw:true, m:"笔电 / 消费电子 EMS + 服务器拓展", d:"笔电代工，2026 年服务器营收目标增十倍，拓展边缘 AI 桌机与推理服务器", t:["PC","服务器","IoT"], f:"已上市（4938.TW）· 市值 ≈$8.1B · 2025 营收 ≈$36B（-1%），净利 ≈$0.46B · 员工 ~7,500（母公司）" },
+  {n:"英业达", e:"Inventec", r:"OT", c:"odm", o:1, tw:true, m:"笔电 + 服务器 ODM + 车用", d:"服务器占营收接近五成，AI 服务器营收增>30%；车用营收翻倍", t:["PC","服务器","汽车"], f:"已上市（2356.TW）· 市值 ≈$7.6B · 2025 营收 ≈$22B（+7%），净利 ≈$0.28B · 员工 ~6,800（母公司）" },
 
   {n:"移远通信", e:"Quectel", r:"CN", c:"module", o:1, m:"蜂窝 IoT 模组 + 天线 + 机器人方案", d:"全球蜂窝 IoT 模组出货第一（份额 36%）；2025 出货 4.43 亿片，进军 AI 算力模组与机器人", t:["IoT","汽车","机器人"], f:"已上市（603236）· 市值 ≈252 亿元 · 2025 营收 243 亿元（+31%），净利 8.4 亿元 · 员工 ~9,000" },
   {n:"广和通", e:"Fibocom", r:"CN", c:"module", o:1, m:"无线通信模组 + AI Box + 智能算力模组", d:"全球蜂窝模组出货前三；AI Box 达 48 TOPS，港股募资 55% 投 AI 模组研发，2026 年拟收购航盛电子", t:["IoT","汽车","机器人"], f:"已上市（300638 + H股 00638）· 市值 ≈155 亿元 · 2025 营收 70 亿元（-15%），净利 3.5 亿元 · 员工 ~1,900" },
@@ -1312,16 +1314,16 @@ const PLAYERS4 = [
   {n:"矽递科技", e:"Seeed Studio", r:"CN", c:"module", o:2, m:"开源硬件 / 边缘 AI 与机器人套件 + 传感模组", d:"面向开发者的开源边缘硬件平台，国家级专精特新“小巨人”；2023 年撤回创业板 IPO", t:["IoT","机器人"], f:"未上市 · 累计融资 ≈1.2 亿元（IDG、深创投等）· 估值未披露 · 员工 ~260" },
   {n:"涂鸦智能", e:"Tuya", r:"CN", c:"module", o:1, m:"IoT 云平台 + 智能模组 + 智能解决方案", d:"全球 IoT 平台龙头，注册开发者 >200 万，向 AI 硬件方案与机器人延伸", t:["IoT","机器人"], f:"已上市（NYSE TUYA + 港股 2391）· 市值 ≈$1.2B · 2025 营收 $3.2 亿（+8%），净利 $0.58 亿" },
 
-  {n:"研华", e:"Advantech", r:"CN", c:"edge", o:1, tw:true, m:"工业 PC / 嵌入式板卡 / 边缘计算硬件与平台", d:"全球工控与嵌入式龙头；边缘 AI 硬件占营收 20.5%，2026 目标 30%，深度绑定 NVIDIA Jetson", t:["工业","机器人","服务器"], f:"已上市（2395.TW）· 市值 ≈$19B · 2025 营收 ≈$22.8B（+19%），净利 ≈$3.4B · 员工 ~9,500" },
-  {n:"凌华", e:"ADLINK", r:"CN", c:"edge", o:1, tw:true, m:"COM 模块 + 边缘计算平台 + 机器人 / 车载显示", d:"2025 边缘计算平台营收 $62M；机器人约占营收 6–7%，5 款机器人已量产", t:["工业","机器人","汽车"], f:"已上市（6166.TW）· 市值 ≈$8.1B（换算口径存在差异，见注）· 2025 营收 ≈$3.8B（+17%），净利 ≈$0.16B · 员工 ~1,600" },
-  {n:"宜鼎 / Aetina", e:"Innodisk", r:"CN", c:"edge", o:1, tw:true, m:"工业存储 + 边缘 AI 解决方案（Aetina 子公司为 NVIDIA 伙伴）", d:"AI 方案约占营收 6%；Aetina 2025Q4 转盈并启动 IPO 计划，为 NVIDIA Elite / MGX 伙伴，主打 Jetson 边缘系统", t:["工业","机器人","服务器"], f:"已上市（5289.TW）· 市值 ≈$4.4B · 2025 营收 ≈$4.6B（+60%），净利 ≈$0.66B · 员工 ~1,150" },
-  {n:"立端", e:"Lanner", r:"CN", c:"edge", o:1, tw:true, m:"网络安全 / 边缘计算整机与平台", d:"专注网络与边缘计算工控整机，2026 上半年营收 +18%", t:["工业","服务器"], f:"已上市（6245.TW）· 市值 ≈$0.38B · 2025 营收 ≈$2.3B（-3.5%），净利 ≈$0.21B · 员工 ~980" },
+  {n:"研华", e:"Advantech", r:"OT", c:"edge", o:1, tw:true, m:"工业 PC / 嵌入式板卡 / 边缘计算硬件与平台", d:"全球工控与嵌入式龙头；边缘 AI 硬件占营收 20.5%，2026 目标 30%，深度绑定 NVIDIA Jetson", t:["工业","机器人","服务器"], f:"已上市（2395.TW）· 市值 ≈$19B · 2025 营收 ≈$22.8B（+19%），净利 ≈$3.4B · 员工 ~9,500" },
+  {n:"凌华", e:"ADLINK", r:"OT", c:"edge", o:1, tw:true, m:"COM 模块 + 边缘计算平台 + 机器人 / 车载显示", d:"2025 边缘计算平台营收 $62M；机器人约占营收 6–7%，5 款机器人已量产", t:["工业","机器人","汽车"], f:"已上市（6166.TW）· 市值 ≈$8.1B（换算口径存在差异，见注）· 2025 营收 ≈$3.8B（+17%），净利 ≈$0.16B · 员工 ~1,600" },
+  {n:"宜鼎 / Aetina", e:"Innodisk", r:"OT", c:"edge", o:1, tw:true, m:"工业存储 + 边缘 AI 解决方案（Aetina 子公司为 NVIDIA 伙伴）", d:"AI 方案约占营收 6%；Aetina 2025Q4 转盈并启动 IPO 计划，为 NVIDIA Elite / MGX 伙伴，主打 Jetson 边缘系统", t:["工业","机器人","服务器"], f:"已上市（5289.TW）· 市值 ≈$4.4B · 2025 营收 ≈$4.6B（+60%），净利 ≈$0.66B · 员工 ~1,150" },
+  {n:"立端", e:"Lanner", r:"OT", c:"edge", o:1, tw:true, m:"网络安全 / 边缘计算整机与平台", d:"专注网络与边缘计算工控整机，2026 上半年营收 +18%", t:["工业","服务器"], f:"已上市（6245.TW）· 市值 ≈$0.38B · 2025 营收 ≈$2.3B（-3.5%），净利 ≈$0.21B · 员工 ~980" },
   {n:"浪潮信息", e:"Inspur", r:"CN", c:"edge", o:1, m:"服务器 / 边缘服务器 / 液冷整机", d:"中国服务器与边缘服务器份额第一，AI 服务器份额>50%；边缘服务器为独立产品线", t:["服务器","工业"], f:"已上市（000977）· 市值 ≈1,140 亿元 · 2025 营收 1,648 亿元（+43%），净利 24 亿元 · 员工 ~6,900" },
   {n:"紫光股份 / 新华三", e:"H3C", r:"CN", c:"edge", o:1, m:"ICT 基础设施（交换机 / 服务器 / 网络）+ 边缘推理", d:"新华三中国 X86 服务器份额第三、AI 服务器第二；边缘推理 UniServer 产品线，2025 营收 +38%", t:["服务器","工业","IoT"], f:"已上市（000938）· 市值 ≈1,009 亿元 · 新华三 2025 营收 760 亿元（+38%），净利 31.5 亿元 · 集团员工 1.6 万" },
   {n:"研祥智能", e:"EVOC", r:"CN", c:"edge", o:3, m:"工业计算机 / 边缘 AI 节点 + 工业云", d:"2022 年港股私有化退市；自述全球已部署 4,300 万个工业 AI 节点，2026 启动“AI³”战略", t:["工业","IoT"], f:"已退市（原 2308.HK）· 2022 年 H 股私有化 · FY2025 未披露 · 集团下设 AI 服务器子公司亿万克" },
   {n:"映云科技", e:"EMQ", r:"CN", c:"edge", o:2, m:"物联网消息中间件 / 边缘数据基础设施（EMQX）", d:"连接超 5 亿台设备、25M 辆车的边缘消息平台，主打车联网与工业边缘数据接入", t:["IoT","汽车","工业"], f:"未上市 · 累计融资 ≈2 亿元（高瓴、GGV、嘉御等）· 员工 ~110" },
-  {n:"Moxa 四零四", e:"Moxa", r:"CN", c:"edge", o:2, tw:true, m:"工业网络 + 边缘计算网关 / 设备联网平台", d:"工业通讯与边缘计算网关龙头，主攻工厂与轨道交通边缘网络", t:["工业","IoT"], f:"未上市（中国台湾）· 营收未披露 · 全球工业网络设备主要供应商" },
-  {n:"神基", e:"Getac", r:"CN", c:"edge", o:1, tw:true, m:"强固型电脑 / 平板 + 边缘 AI 解决方案", d:"军工与工业强固型终端龙头，向边缘 AI 现场方案延伸", t:["工业","IoT"], f:"已上市（3005.TW）· 市值 ≈$2B · 强固型电脑全球主要供应商" },
+  {n:"Moxa 四零四", e:"Moxa", r:"OT", c:"edge", o:2, tw:true, m:"工业网络 + 边缘计算网关 / 设备联网平台", d:"工业通讯与边缘计算网关龙头，主攻工厂与轨道交通边缘网络", t:["工业","IoT"], f:"未上市（中国台湾）· 营收未披露 · 全球工业网络设备主要供应商" },
+  {n:"神基", e:"Getac", r:"OT", c:"edge", o:1, tw:true, m:"强固型电脑 / 平板 + 边缘 AI 解决方案", d:"军工与工业强固型终端龙头，向边缘 AI 现场方案延伸", t:["工业","IoT"], f:"已上市（3005.TW）· 市值 ≈$2B · 强固型电脑全球主要供应商" },
 
   {n:"中科创达", e:"Thundersoft", r:"CN", c:"si", o:1, m:"智能操作系统（手机 / 汽车 / IoT）+ 边缘 AI 整机", d:"高通深度绑定伙伴；智能物联网 2025 营收 +133%，滴水 AIOS 运行 30B 端侧模型，AIBOX 200 TOPS", t:["手机","汽车","机器人","IoT"], f:"已上市（300496）· 市值 ≈274 亿元 · 2025 营收 78 亿元（+44%），净利 4.5 亿元 · 员工 1.87 万" },
   {n:"软通动力", e:"iSoftStone", r:"CN", c:"si", o:1, m:"IT 服务 + 鲲鹏 / 昇腾整机（软通计算机）", d:"AI 相关营收占比约 53%；旗下软通计算机做昇腾整机与开源鸿蒙终端，发布端侧推理四卡液冷工作站", t:["PC","服务器","IoT"], f:"已上市（301236）· 市值 ≈390 亿元 · 2025 营收 351 亿元（+12%），净利 2.1 亿元 · 员工 9.2 万" },
@@ -1364,7 +1366,7 @@ const PLAYERS4 = [
 
   {n:"Tata Elxsi", e:"塔塔埃尔克西", r:"OT", c:"si", o:1, m:"汽车工程研发（自动驾驶）+ 边缘 AI 感知方案", d:"汽车业务占比 55%；为美企开发边缘 AI 感知 / 自主系统，为日本车企做车联网路线图", t:["汽车","工业"], f:"已上市（NSE TATAELXSI）· 市值 $2.3B · FY26 营收 $397M，净利 $66M · 员工 1.1 万" },
   {n:"HCLTech", e:"", r:"OT", c:"si", o:1, m:"IT 服务 + 工程研发服务（含边缘 / 半导体）", d:"工程研发服务约占总营收 16.5%；先进 AI 业务年化 $620M，2026 年批准 3,500 亿卢比 AI 数据中心投资", t:["工业","IoT"], f:"已上市（NSE HCLTECH）· 市值 $37B · FY26 营收 $14.7B，净利 $1.9B · 员工 22.7 万" },
-  {n:"LG CNS", e:"", r:"OT", c:"si", o:1, m:"IT 服务 + AI 云 + 智能工程（制造 / 物流）", d:"AI 与云占营收 59%；获 LG 电子 1900 亿韩元“物理 AI”基础设施 / 人形机器人订单", t:["工业","机器人"], f:"已上市（KRX 064400）· 市值 $5.3B · 2025 营收 $4.6B（+3%），净利 $325M · 员工 ~6,800" },
+  {n:"LG CNS", e:"", r:"OT", c:"si", o:1, m:"IT 服务 + AI 云 + 智能工程（制造 / 物流）", d:"AI 与云占营收 59%；获 LG 电子 ≈$138M“物理 AI”基础设施 / 人形机器人订单", t:["工业","机器人"], f:"已上市（KRX 064400）· 市值 $5.3B · 2025 营收 $4.6B（+3%），净利 $325M · 员工 ~6,800" },
   {n:"NTT DATA", e:"", r:"OT", c:"si", o:3, m:"IT 服务 / 集成 + 边缘即服务（Edge-as-a-Service）", d:"2025-09 NTT 以 ¥2.4 兆完成对其私有化；Edge AI 平台与爱立信合作私有 5G / 物理 AI，Cargill 50 站点落地", t:["工业","IoT"], f:"NTT 全资子公司（2025-09 私有化）· FY25 营收 ≈$32B（+8%），净利 ≈$1.7B · 员工 ~19.8 万" },
 ];
 
@@ -1450,11 +1452,12 @@ const ROBOT_PLAYERS = [
   {n:"1X Technologies", e:"", r:"US", c:"humanoid", o:2, m:"NEO（家用）· EVE（服务）", d:"OpenAI 领投的挪威 / 美国团队，主打家庭服务人形", f:"<span class='fv'>累计融资 >$150M</span><span class='fk'>· 2024-03 B 轮（OpenAI 领投）</span><span class='fk'>· NEO 2026 年量产爬坡</span>", t:["人形","服务"]},
   {n:"Apptronik", e:"", r:"US", c:"humanoid", o:2, m:"Apollo 人形", d:"获 Google DeepMind 投资的德州团队，与 GXO（物流）、奔驰（装配）等合作落地", f:"<span class='fv'>累计融资 >$400M</span><span class='fk'>· 2025-03 战略轮，Google DeepMind / 奔驰 / GXO 参与</span>", t:["人形","物流","工业"]},
   {n:"Boston Dynamics", e:"（现代旗下）", r:"US", c:"humanoid", o:3, m:"Atlas（电动版）· Spot 四足 · Stretch", d:"世界顶级运动机器人/动态平衡，现代汽车全资收购后向电动 Atlas 商业化演进", f:"<span class='fv'>现代汽车 2021 年收购 ~$1.1B</span><span class='fk'>· 并入现代机器人部门，未单独披露营收</span>", t:["人形","工业"]},
+  {n:"CMU 机器人研究院", e:"Robotics Institute · 卡内基梅隆大学", r:"US", c:"humanoid", o:4, lab:true, m:"Humanoids@CMU 研究计划 · BFM-Zero 技能基础模型", d:"全球顶尖学术机器人项目，2026 年新启用 Robotics Innovation Center（含人形测试设施，7.5 万加仑水箱、1.5 英亩户外场地），FieldAI 为首家入驻企业租户；Humanoids@CMU（Chris Atkeson 等）聚焦机器人学习与动态运动规划，Legged Systems Group 做腿式机器人动力学与控制，BFM-Zero 让人形机器人通过无监督强化学习自主切换技能", f:"<span class='fv'>卡内基梅隆大学下属研究院，经费来自联邦科研项目（DARPA / NSF）与企业合作</span><span class='fk'>· Robotics Innovation Center 2026 年启用，FieldAI 为首家入驻企业租户</span>", gov:true, t:["人形"]},
 
   /* ---------- 美国 · 工业 / 物流 ---------- */
   {n:"Symbotic", e:"", r:"US", c:"industrial", o:1, m:"仓储自动化系统 / 机器人分拣", d:"与沃尔玛深度绑定的仓储自动化后起之秀，软硬件一体，市值曾居仓储机器人第一", f:"<span class='fx'>已上市 · NASDAQ SYM</span><span class='fv'>市值 ≈400 亿美元（2026-09）</span><span class='fk'>· FY2025 营收 ~$31B（+50%，含沃尔玛合作）</span>", t:["物流","工业"]},
   {n:"Locus Robotics", e:"", r:"US", c:"industrial", o:2, m:"AMR（Locus Vector 系列）", d:"仓库点到点 AMR 头部，聚焦电商 / 履约中心，商业化落地密度高", f:"<span class='fv'>累计融资 ~$200M</span><span class='fk'>· 2022-12 E 轮（估值未披露），已服务超 100 仓库</span>", t:["物流"]},
-  {n:"Wandelbots", e:"", r:"US", c:"industrial", o:2, m:"机器人编程与示教软件（NOVA）", d:"以拖拽示教 + 预训练降低工业机器人编程门槛，做连接传统工业臂与“具身”的软件层（德国团队、美国运营）", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2025-02 C 轮，多家工业 / VC</span>", t:["协作臂","工业"]},
+  {n:"Wandelbots", e:"德国", r:"EU", c:"industrial", o:2, m:"机器人编程与示教软件（NOVA）", d:"以拖拽示教 + 预训练降低工业机器人编程门槛，做连接传统工业臂与“具身”的软件层；总部德累斯顿，在美国另设商务团队", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2025-02 C 轮，多家工业 / VC</span>", t:["协作臂","工业"]},
   {n:"Exotec", e:"法国", r:"US", c:"industrial", o:2, m:"Skypod 箱式仓储机器人", d:"料箱式（货到人）仓储机器人全球头部，法国团队、美国为主市场，亚马逊 / 沃尔玛等客户", f:"<span class='fv'>累计融资 >$350M</span><span class='fk'>· 2022-01 C 轮 $335M @ $2B</span><span class='fk'>· 全球 900+ 仓库部署</span>", t:["物流"]},
   {n:"Vecna Robotics", e:"", r:"US", c:"industrial", o:2, m:"托盘搬运 AMR · 仓库软件", d:"托盘级 AMR 与仓库编排软件，聚焦整车搬运与分拣场景", f:"<span class='fv'>累计融资 ~$55M</span><span class='fk'>· 2020-10 由 Tiger 主导的融资</span>", t:["物流"]},
 
@@ -1471,6 +1474,7 @@ const ROBOT_PLAYERS = [
   /* ---------- 美国 · 具身智能模型 ---------- */
   {n:"Physical Intelligence", e:"", r:"US", c:"embodied", o:2, m:"π0 / π0.5 具身基础模型", d:"“一个模型控制多种机器人”路线的头部玩家，估值领先，定义 VLA 基础模型方向", f:"<span class='fv'>累计融资 >$800M</span><span class='fk'>· 2025-11 A 轮 $600M @ $5.6B（OpenAI、软银、Thrive 等）</span><span class='fk'>· 2026 年洽谈新一轮，估值或再上台阶</span>", t:["具身模型"]},
   {n:"Skild AI", e:"", r:"US", c:"embodied", o:2, m:"Skild Brain 基础模型", d:"以“可扩展 + 通用技能”为目标的具身基础模型新锐，获软银 / 光速等大额融资", f:"<span class='fv'>累计融资 >$400M</span><span class='fk'>· 2025-04 A 轮 $300M @ $2.4B-3B（软银、光速、红杉）</span><span class='fk'>· 2026-06 传新一轮 ~$500M 融资</span>", t:["具身模型"]},
+  {n:"Field AI", e:"FieldAI", r:"US", c:"embodied", o:2, m:"Field Foundation Models（FFMs）· EDGE 端侧运行时", d:"NASA-JPL / DARPA 地下挑战赛团队创办，走“物理优先 + 内生风险感知”的具身基础模型路线；自身不造机器人，把模型作为软件层加装到客户已有的四足 / 人形 / 轮式平台，可在无地图、无 GPS 条件下于边缘端完成决策，推理延迟低于 100ms 且支持完全离线", f:"<span class='fv'>累计融资 $405M</span><span class='fk'>· 2025-08 两轮合计 $405M，估值 $2B（Bezos Expeditions、Prysm、淡马锡领投，NVIDIA、Intel Capital、Gates Frontier 参投）</span><span class='fk'>· 2026-02 现代汽车集团战略投资，金额未披露；已与卡特彼勒、波士顿动力达成合作</span>", t:["具身模型"]},
   {n:"Covariant", e:"", r:"US", c:"embodied", o:3, m:"抓取 AI 模型（Brain）· 分拣机器人", d:"仓库抓取 AI 先驱，团队与部分资产 2024 年被亚马逊收购，并入其机器人部门", f:"<span class='fv'>2024-08 核心团队与部分资产被亚马逊收购</span><span class='fk'>· 其余资产独立运营（Marketplace 平台）</span>", t:["具身模型","物流"]},
   {n:"NVIDIA", e:"英伟达", r:"US", c:"embodied", o:1, m:"Isaac GR00T / Jetson Thor · Omniverse 仿真", d:"机器人“卖铲人”：芯片 + 仿真 + 基础模型全栈，几乎人人形的投资方与平台", f:"<span class='fx'>已上市 · NASDAQ NVDA</span><span class='fv'>市值 ≈4.6 万亿美元（2026-09）</span><span class='fk'>· 机器人 / 具身为三大增长曲线之一</span>", t:["具身模型","工业"]},
   {n:"Google DeepMind", e:"", r:"US", c:"embodied", o:3, m:"Gemini Robotics / RT-2 具身模型", d:"谷歌将 Gemini 扩展至具身，开放 RT 系列模型并与硬件伙伴（Apptronik 等）合作", f:"<span class='fv'>Alphabet 全资研究部门</span><span class='fk'>· 依托 Alphabet 研发投入，未单列财务</span>", t:["具身模型","人形"]},
@@ -1478,6 +1482,8 @@ const ROBOT_PLAYERS = [
   /* ---------- 欧洲 · 人形机器人 ---------- */
   {n:"Neura Robotics", e:"德国", r:"EU", c:"humanoid", o:2, m:"4NE-1 人形 · 协作臂", d:"欧洲少有的人形玩家，主打“家庭 + 工业”双场景，自称首发欧洲“认知机器人”", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2025-06 从零开始 4NE-1 量产（估值未披露）</span><span class='fk'>· 德国 / 工业场景落地</span>", t:["人形","工业","服务"]},
   {n:"PAL Robotics", e:"西班牙", r:"EU", c:"humanoid", o:2, m:"TALOS / ARI 人形 · 科研平台", d:"欧洲老牌人形 / 双足研究平台，面向科研与服务", f:"<span class='fv'>累计融资 ~$40M</span><span class='fk'>· 科研 / 服务双市场，估值未披露</span>", t:["人形","服务"]},
+  {n:"DLR 机器人与机电一体化研究所", e:"Institute of Robotics and Mechatronics · 德国宇航中心", r:"EU", c:"humanoid", o:4, lab:true, m:"Rollin' Justin / Agile Justin · neoDavid 人形", d:"欧洲人形机器人研究重镇，覆盖硬件、步态控制、力交互与具身 AI；主导 EU 卓越网络 euROBIN，并在 Robotics Institute Germany（RIG）中负责产业技术转移", f:"<span class='fv'>德国宇航中心（DLR）下属公立研究所，经费来自联邦与欧盟科研项目</span><span class='fk'>· Robotics Institute Germany（2024–2028，联邦资助 €20M）成员机构之一</span>", gov:true, t:["人形"]},
+  {n:"KIT 高性能人形技术实验室", e:"H²T · 卡尔斯鲁厄理工学院", r:"EU", c:"humanoid", o:4, lab:true, m:"ARMAR 人形机器人系列（ARMAR-6 等）", d:"由 Tamim Asfour 领导，聚焦人形机器人机械-信息一体化与从人类经验中学习的认知机器人；Asfour 同时担任 Robotics Institute Germany 发言人", f:"<span class='fv'>卡尔斯鲁厄理工学院（KIT）下属公立研究实验室，经费来自德国联邦与州科研项目</span><span class='fk'>· Robotics Institute Germany（2024–2028，联邦资助 €20M）成员机构之一</span>", gov:true, t:["人形"]},
 
   /* ---------- 欧洲 · 工业 / 物流 ---------- */
   {n:"ABB", e:"", r:"EU", c:"industrial", o:1, m:"工业机器人（六轴 / 协作 YuMi）", d:"“工业机器人四大家族”之一，瑞士总部，机器人业务持续向 AI / 软件（Adaptive Robotics）延展", f:"<span class='fx'>已上市 · SIX ABBN & NYSE ABB</span><span class='fv'>市值 ≈1,100 亿美元（2026-09）</span><span class='fk'>· 机器人业务营收占比 ~2-3 成</span>", t:["工业","协作臂"]},
@@ -1489,19 +1495,19 @@ const ROBOT_PLAYERS = [
   {n:"Parrot", e:"法国", r:"EU", c:"consumer", o:1, m:"消费 / 行业无人机（Anafi 系列）", d:"老牌欧洲无人机厂商，巴黎交易所上市，海外业务承压", f:"<span class='fx'>已上市 · EPA PARRO</span><span class='fv'>市值 ≈€180M（2026-09）</span><span class='fk'>· 无人机 / 车载 / 物联网多业务，海外承压</span>", t:["无人机"]},
 
   /* ---------- 其他 · 人形机器人 ---------- */
-  {n:"现代汽车", e:"Hyundai · 韩国", r:"OT", c:"humanoid", o:3, m:"波士顿动力（Atlas / Spot / Stretch）", d:"以集团战略收购波士顿动力，押注人形与工业机器人全栈，是全球财阀式布局的代表", f:"<span class='fx'>已上市 · KRX 005380</span><span class='fv'>市值 ≈60 万亿韩元（2026-09）</span><span class='fk'>· 2021 年收购 ~$1.1B 持有波士顿动力多数股权</span>", t:["人形","工业"]},
+  {n:"现代汽车", e:"Hyundai · 韩国", r:"OT", c:"humanoid", o:3, m:"波士顿动力（Atlas / Spot / Stretch）", d:"以集团战略收购波士顿动力，押注人形与工业机器人全栈，是全球财阀式布局的代表", f:"<span class='fx'>已上市 · KRX 005380</span><span class='fv'>市值 ≈$43.5B（2026-09）</span><span class='fk'>· 2021 年收购 ~$1.1B 持有波士顿动力多数股权</span>", t:["人形","工业"]},
   {n:"Rainbow Robotics", e:"韩国", r:"OT", c:"humanoid", o:2, m:"HUBO 人形 · 协作臂", d:"韩国人形 / 协作机器人公司，三星大额增持并拟将其纳入合并，是“三星子公司 + 人形”的财阀路线", f:"<span class='fv'>三星 2024 / 2025 多次增持至 ~49.8%</span><span class='fk'>· 拟被三星纳入合并（韩国上市）</span>", t:["人形","协作臂"]},
 
   /* ---------- 其他 · 工业 / 物流 ---------- */
-  {n:"发那科", e:"FANUC", r:"OT", c:"industrial", o:1, m:"工业机器人（六轴）· 数控系统", d:"“四大家族”之一，日本，工业机器人出货量全球领先", f:"<span class='fx'>已上市 · TSE 6954</span><span class='fv'>市值 ≈5.5 万亿日元（2026-09）</span><span class='fk'>· 全球工业机器人出货量领先</span>", t:["工业"]},
-  {n:"安川电机", e:"Yaskawa", r:"OT", c:"industrial", o:1, m:"工业机器人与伺服 / 变频", d:"“四大家族”之一，日本，运动控制 + 机器人一体化", f:"<span class='fx'>已上市 · TSE 6506</span><span class='fv'>市值 ≈1.6 万亿日元（2026-09）</span><span class='fk'>· 运动控制 + 机器人双主业</span>", t:["工业"]},
-  {n:"川崎重工", e:"Kawasaki", r:"OT", c:"industrial", o:1, m:"工业机器人（六轴 / 焊接）", d:"日本老牌工业机器人厂商，聚焦焊接、汽车与一般工业", f:"<span class='fx'>已上市 · TSE 7012</span><span class='fv'>市值 ≈1.2 万亿日元（2026-09）</span><span class='fk'>· 机器人 + 重工 / 造船多业务</span>", t:["工业"]},
-  {n:"Doosan Robotics", e:"斗山 · 韩国", r:"OT", c:"industrial", o:1, m:"协作机器人（A / O 系列）", d:"韩国协作机器人龙头，韩国上市，向一般工业与餐饮延展", f:"<span class='fx'>已上市 · KOSDAQ 454910</span><span class='fv'>市值 ≈3.5 万亿韩元（2026-09）</span><span class='fk'>· 2023 年 IPO，韩国协作机器人龙头</span>", t:["协作臂"]},
+  {n:"发那科", e:"FANUC", r:"OT", c:"industrial", o:1, m:"工业机器人（六轴）· 数控系统", d:"“四大家族”之一，日本，工业机器人出货量全球领先", f:"<span class='fx'>已上市 · TSE 6954</span><span class='fv'>市值 ≈$36.7B（2026-09）</span><span class='fk'>· 全球工业机器人出货量领先</span>", t:["工业"]},
+  {n:"安川电机", e:"Yaskawa", r:"OT", c:"industrial", o:1, m:"工业机器人与伺服 / 变频", d:"“四大家族”之一，日本，运动控制 + 机器人一体化", f:"<span class='fx'>已上市 · TSE 6506</span><span class='fv'>市值 ≈$10.7B（2026-09）</span><span class='fk'>· 运动控制 + 机器人双主业</span>", t:["工业"]},
+  {n:"川崎重工", e:"Kawasaki", r:"OT", c:"industrial", o:1, m:"工业机器人（六轴 / 焊接）", d:"日本老牌工业机器人厂商，聚焦焊接、汽车与一般工业", f:"<span class='fx'>已上市 · TSE 7012</span><span class='fv'>市值 ≈$8.0B（2026-09）</span><span class='fk'>· 机器人 + 重工 / 造船多业务</span>", t:["工业"]},
+  {n:"Doosan Robotics", e:"斗山 · 韩国", r:"OT", c:"industrial", o:1, m:"协作机器人（A / O 系列）", d:"韩国协作机器人龙头，韩国上市，向一般工业与餐饮延展", f:"<span class='fx'>已上市 · KOSDAQ 454910</span><span class='fv'>市值 ≈$2.5B（2026-09）</span><span class='fk'>· 2023 年 IPO，韩国协作机器人龙头</span>", t:["协作臂"]},
 
   /* ---------- 其他 · 服务 / 消费 / 无人机 ---------- */
   {n:"软银机器人", e:"SoftBank Robotics · 日本", r:"OT", c:"service", o:3, m:"Pepper / Whiz 系列", d:"以情感机器人 / 商用清洁为主，2016 年推动 Pepper 消费化后转型 B 端", f:"<span class='fv'>软银集团旗下，曾为独立子公司</span><span class='fk'>· Pepper 停产 / 转型，转向 B 端清洁</span>", t:["服务","清洁"]},
-  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"consumer", o:1, m:"JetBot / Ballie 家庭机器人", d:"家电巨头的家庭 AI 机器人布局，拟把 Rainbow Robotics 纳入合并强化人形", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span><span class='fk'>· 2025 收购 / 增持 Rainbow 股权</span>", t:["服务","清洁"]},
-  {n:"LG Electronics", e:"韩国", r:"OT", c:"consumer", o:1, m:"CLOi 服务 / 家庭机器人", d:"家电 + 服务机器人，获 LG 集团“物理 AI”基础设施相关订单", f:"<span class='fx'>已上市 · KRX 066570</span><span class='fv'>市值 ≈30 万亿韩元（2026-09）</span><span class='fk'>· 布局家庭 / 商用服务机器人</span>", t:["服务"]},
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"consumer", o:1, m:"JetBot / Ballie 家庭机器人", d:"家电巨头的家庭 AI 机器人布局，拟把 Rainbow Robotics 纳入合并强化人形", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈$430B（2026-09）</span><span class='fk'>· 2025 收购 / 增持 Rainbow 股权</span>", t:["服务","清洁"]},
+  {n:"LG Electronics", e:"韩国", r:"OT", c:"consumer", o:1, m:"CLOi 服务 / 家庭机器人", d:"家电 + 服务机器人，获 LG 集团“物理 AI”基础设施相关订单", f:"<span class='fx'>已上市 · KRX 066570</span><span class='fv'>市值 ≈$21.7B（2026-09）</span><span class='fk'>· 布局家庭 / 商用服务机器人</span>", t:["服务"]},
   {n:"Sanctuary AI", e:"加拿大", r:"OT", c:"humanoid", o:2, m:"Phoenix 人形 · 碳纤维机械手", d:"加拿大通用人形，以 20+ 自由度碳纤维灵巧手为差异化，主打工业与危险作业", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2024-12 战略轮</span><span class='fk'>· 加拿大 / 北美工业客户</span>", t:["人形","工业"]},
 ];
 
@@ -1524,7 +1530,7 @@ const WEARABLE_PLAYERS = [
   {n:"字节跳动 · PICO", e:"ByteDance PICO", r:"CN", c:"xrheadset", o:3, m:"PICO 4 Ultra · PICO XR 一体机", d:"字节跳动 2021 年收购的 VR 一体机品牌，国内消费 VR 出货量领先，2025 年起转向企业 / 教育市场补贴消费端萎缩", f:"<span class='fv'>字节跳动 2021 年以 ~90 亿元收购</span><span class='fk'>· 并入字节跳动大力智能，未单列财务</span>", t:["VR","MR"]},
   {n:"大朋VR", e:"DPVR", r:"CN", c:"xrheadset", o:2, m:"E4 系列 VR 一体机 · PC VR 头显", d:"国内最早的 VR 硬件厂商之一，聚焦教育、企业与主题乐园等 To B 场景", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 早期由暴风集团、软银中国等投资</span>", t:["VR"]},
   {n:"小派科技", e:"Pimax", r:"CN", c:"xrheadset", o:2, m:"Pimax Crystal / Dream Air 超广视场角 VR", d:"以超高分辨率与超广视场角 PC VR 头显切入海外硬核玩家与模拟训练市场，众筹起家", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 多轮众筹 + 战略投资，海外收入占比高</span>", t:["VR"]},
-  {n:"宏达电", e:"HTC · 中国台湾", r:"CN", c:"xrheadset", o:1, tw:true, m:"VIVE 系列 VR / MR 头显", d:"曾经的智能手机巨头转型 XR，VIVE 系列覆盖消费与企业级 VR / MR，近年营收持续承压", f:"<span class='fx'>已上市 · 台交所 2498</span><span class='fv'>市值 ≈300 亿新台币（2026-09）</span><span class='fk'>· VR / XR 业务营收持续下滑，企业级转型进行中</span>", t:["VR","MR"]},
+  {n:"宏达电", e:"HTC · 中国台湾", r:"OT", c:"xrheadset", o:1, tw:true, m:"VIVE 系列 VR / MR 头显", d:"曾经的智能手机巨头转型 XR，VIVE 系列覆盖消费与企业级 VR / MR，近年营收持续承压", f:"<span class='fx'>已上市 · 台交所 2498</span><span class='fv'>市值 ≈300 亿新台币（2026-09）</span><span class='fk'>· VR / XR 业务营收持续下滑，企业级转型进行中</span>", t:["VR","MR"]},
 
   /* ---------- 中国 · AI 眼镜 ---------- */
   {n:"Rokid", e:"若琪", r:"CN", c:"glasses", o:2, m:"Rokid Glasses · Rokid Max AR 眼镜", d:"国内 AI / AR 眼镜最早入局者之一，兼顾轻量显示与语音 Agent，覆盖消费与行业（巡检 / 导览）双线", f:"<span class='fv'>累计融资 >20 亿元</span><span class='fk'>· 2025 年新一轮融资，多家产业方 / 国资参与</span>", t:["AR","拍摄","翻译"]},
@@ -1533,6 +1539,10 @@ const WEARABLE_PLAYERS = [
   {n:"影目科技", e:"INMO", r:"CN", c:"glasses", o:2, m:"INMO Air2 / GO2 AR 眼镜", d:"轻量光波导 AR 眼镜代表，覆盖消费与行业巡检场景，强调独立算力与长续航", f:"<span class='fv'>累计融资 >5 亿元</span><span class='fk'>· 多轮融资，产业方与消费电子基金参与</span>", t:["AR","拍摄"]},
   {n:"李未可科技", e:"Lawa", r:"CN", c:"glasses", o:2, m:"Meta Lens 系列 AI 眼镜", d:"AI 音频眼镜早期玩家，联合天猫精灵等生态做语音助理与运动场景眼镜", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 多轮融资，消费电子与文旅产业方</span>", t:["拍摄","运动"]},
   {n:"XREAL", e:"", r:"CN", c:"glasses", o:2, m:"XREAL One / Air 系列 AR 眼镜", d:"消费级光学 AR 眼镜出货全球领先的中国团队，主打大屏观影 / 游戏投屏，海外收入占比高", f:"<span class='fv'>累计融资 >3 亿美元</span><span class='fk'>· 2025 年新一轮融资，阿里、高通等参与</span><span class='fk'>· 全球消费 AR 眼镜出货量领先</span>", t:["AR","拍摄"]},
+  {n:"Even Realities", e:"逸文科技", r:"CN", c:"glasses", o:2, m:"Even G1 / G2 轻量显示 AI 眼镜", d:"深圳团队创办、以柏林子公司做欧美运营与设计的高端 AI 眼镜厂商，走“显示优先 + 无摄像头”路线，用配套指环而非摄像头交互；镜架零售 599 美元，过半用户在美国", f:"<span class='fv'>累计融资 >$1.6 亿</span><span class='fk'>· 2026-07 Pre-B 轮 $150M，投后估值 $10 亿（美团龙珠领投、腾讯超额跟投）</span><span class='fk'>· 境内主体深圳市逸文科技有限公司，柏林 Even Realities GmbH 为欧洲子公司</span>", t:["AR","翻译"]},
+  {n:"Halliday", e:"未目科技 moody 孵化", r:"CN", c:"glasses", o:2, m:"Halliday G1 / G2 无摄像头显示眼镜", d:"上海彩瞳品牌 moody（未目科技）核心团队孵化、独立运营的 AI 眼镜品牌，法律主体为香港 Halliday Global Ltd. 与新加坡 Halliday Holdings，团队分布上海 / 深圳 / 旧金山 / 新加坡，创始人慈然同时是 moody 创始人兼 CEO；坚持不装摄像头。一代用 Gyges Labs 的 DigiWindow 微型模组把画面直投眼球，无需波导因而可自由适配 -8.0~+2.0 处方镜片，35 克；2026-07 的 G2 改用双目衍射光波导（600×300 每眼、25.2° 视场角、1,600 尼特、49 克），场景收窄到会议与职场生产力，与 Gyges Labs 已实质分道", f:"<span class='fv'>无公开披露的股权融资轮次</span><span class='fk'>· Kickstarter 众筹 $3,305,917、8,023 名支持者（2025-01 至 03），为 AI 眼镜品类众筹纪录；Indiegogo 金额未披露</span><span class='fk'>· G1 零售 $489→$499、国行首发 2,499 元；G2 $599，2026-09 起首批发货</span><span class='fx'>G1 交付延期且口碑不佳（Engadget 54/100），公司已重建工程与供应链团队</span>", t:["AR","翻译"]},
+  {n:"Looktech", e:"回车科技 Entertech", r:"CN", c:"glasses", o:2, m:"Looktech AI 眼镜 · LT-AIGL-RT01", d:"杭州回车电子科技（浙大系脑机接口公司，2014 年成立）由脑电眼镜转型的 AI 眼镜产品线，无显示、纯音频 + 1300 万像素摄像头，助手 Memo 支持声纹解锁；主打海外市场。官网只披露加州主体 Looktech Inc.，未提及杭州母公司", f:"<span class='fv'>Kickstarter 众筹约 US$1.1–1.2M</span><span class='fk'>· 2024-12 至 2025-02，约 4,400–4,800 名支持者；各来源金额口径不一</span><span class='fk'>· 品牌层面无 VC 股权融资；母公司回车科技累计披露融资约 1,700 万元</span><span class='fx'>交付严重延期：原定 2025-04 发货，官网至 2026-09 仍挂“预售 $299 · 预计 2025-11 发货”，未找到任何支持者收货的公开证据</span>", t:["拍摄","翻译"]},
+  {n:"Solos", e:"Solos Technology · 中国香港", r:"OT", c:"glasses", o:2, hk:true, m:"AirGo V2 / A5 / A6 智能眼镜", d:"2019 年从美国上市公司 Kopin（NASDAQ: KOPN）剥离独立的音频型 AI 眼镜品牌，Kopin 换取母公司 Solos Incorporation 20% 股权；注册主体与总部在香港科学园，另在美国马萨诸塞设点——归属地按香港总部认定，2026-09-08 起中国香港企业统一计入“其他”列，不再并入“中国大陆”。专利 SmartHinge 模块化换镜框 + 不绑定单一大模型的开放助手（ChatGPT / Claude / Gemini / DeepSeek）", f:"<span class='fv'>无公开披露的机构融资轮次</span><span class='fk'>· 2019 年剥离时 Kopin 按其他股东出资价估算 20% 持股公允价值 60 万美元</span><span class='fk'>· A5 $249、V2 $299（2026-01 CES 开售，2026-07 全球发布）；A6 约 19 克，价格未定</span><span class='fx'>2026-01 在美国马萨诸塞州联邦法院起诉 Meta 与 EssilorLuxottica 专利侵权，索赔数十亿美元</span>", t:["运动","翻译"]},
   {n:"小米", e:"Xiaomi", r:"CN", c:"glasses", o:1, m:"小米 AI 眼镜 · 小爱同学眼镜端", d:"依托手机 + 生态链快速跟进 AI 眼镜品类，主打性价比与小爱同学语音生态打通", f:"<span class='fx'>已上市 · 港交所 01810</span><span class='fv'>市值 ≈1.5 万亿港元（2026-09）</span><span class='fk'>· AI 眼镜为集团 IoT / 生态链新品类，未单列财务</span>", t:["拍摄","翻译"]},
   {n:"百度", e:"Baidu", r:"CN", c:"glasses", o:1, m:"小度 AI 眼镜", d:"依托文心大模型与小度生态推出 AI 眼镜，主打语音助理、拍摄与信息流入口", f:"<span class='fx'>已上市 · 港交所 09888 & NASDAQ BIDU</span><span class='fv'>市值 ≈3,200 亿港元（2026-09）</span><span class='fk'>· AI 眼镜为小度硬件新品类，未单列财务</span>", t:["拍摄","翻译"]},
   {n:"华为", e:"Huawei", r:"CN", c:"glasses", o:2, m:"华为智能眼镜 2 · 联合眼镜厂商联名款", d:"与国内多家眼镜品牌联名，依托鸿蒙生态与麒麟芯片做音频 + 拍摄智能眼镜", f:"<span class='fv'>未单独上市，集团自有资金投入</span><span class='fk'>· 多品牌联名（如与暴龙、雪莱特等眼镜厂商）</span>", t:["拍摄","翻译"]},
@@ -1566,7 +1576,6 @@ const WEARABLE_PLAYERS = [
   {n:"Meta", e:"", r:"US", c:"glasses", o:1, m:"Ray-Ban Meta · Oakley Meta HSTN AI 眼镜", d:"与 EssilorLuxottica 联名的 AI 眼镜验证了“轻量 AI + 拍摄 + 语音”商业模式，是当前全球出货量最大的智能眼镜产品线", f:"<span class='fx'>已上市 · NASDAQ META</span><span class='fv'>市值 ≈1.8 万亿美元（2026-09）</span><span class='fk'>· Ray-Ban Meta 系列被视为 AI 眼镜品类走量的标杆案例</span>", t:["拍摄","AR"]},
   {n:"Google", e:"", r:"US", c:"glasses", o:2, m:"Android XR 智能眼镜（联合三星 / Warby Parker / Gentle Monster）", d:"通过 Android XR 平台联合硬件伙伴重回智能眼镜赛道，依托 Gemini 多模态模型做语音与视觉助理", f:"<span class='fv'>Alphabet 全资研究 / 平台业务</span><span class='fk'>· 依托 Alphabet 研发投入，未单列财务</span>", t:["拍摄","翻译","AR"]},
   {n:"Snap", e:"", r:"US", c:"glasses", o:1, m:"Spectacles AR 眼镜（开发者版）", d:"社交媒体公司延伸的 AR 眼镜产品线，长期面向开发者与创作者生态、尚未大规模消费级出货", f:"<span class='fx'>已上市 · NYSE SNAP</span><span class='fv'>市值 ≈$150 亿（2026-09）</span><span class='fk'>· Spectacles 多代迭代但仍处早期生态培育阶段</span>", t:["AR","拍摄"]},
-  {n:"Even Realities", e:"", r:"US", c:"glasses", o:2, m:"Even G1 轻量显示 AI 眼镜", d:"主打轻量单色波导显示 + 无摄像头设计的日常 AI 眼镜，强调隐私与长续航的差异化路线", f:"<span class='fv'>累计融资未公开披露</span><span class='fk'>· 众筹与直销渠道起量</span>", t:["拍摄","翻译"]},
 
   /* ---------- 美国 · 智能手表 ---------- */
   {n:"Apple", e:"苹果", r:"US", c:"watch", o:1, m:"Apple Watch 系列", d:"全球智能手表出货量与营收长期领先者，深度绑定 iOS 生态与健康监测（ECG / 血氧）功能", f:"<span class='fx'>已上市 · NASDAQ AAPL</span><span class='fv'>市值 ≈3.5 万亿美元（2026-09）</span><span class='fk'>· Watch 为可穿戴与家居分部核心产品</span>", t:["运动","健康监测"]},
@@ -1588,16 +1597,19 @@ const WEARABLE_PLAYERS = [
   {n:"Oura", e:"芬兰 / 美国双总部", r:"EU", c:"health", o:2, m:"Oura Ring 智能戒指", d:"以指环形态切入睡眠与恢复监测的品类开创者，采用硬件 + 订阅制商业模式，带动“智能戒指”成为新可穿戴形态", f:"<span class='fv'>累计融资 >$5 亿</span><span class='fk'>· 2024 年估值 ~$52 亿，Fidelity 等参与</span>", t:["睡眠","健康监测"]},
   {n:"Withings", e:"法国", r:"EU", c:"health", o:2, m:"智能体脂秤 / 血压计 / 睡眠分析垫", d:"家用医疗级健康监测硬件厂商，产品覆盖体重管理、心血管与睡眠监测，强调医疗认证与临床级精度", f:"<span class='fv'>2016 年曾被诺基亚收购、2018 年创始团队回购独立</span><span class='fk'>· 未披露详细财务数据</span>", t:["健康监测","睡眠"]},
 
+  /* ---------- 其他 · AI 眼镜 ---------- */
+  {n:"Brilliant Labs", e:"新加坡", r:"OT", c:"glasses", o:2, m:"Halo · Frame 开源 AI 眼镜", d:"前 Apple 员工 Bobak Tavangar 创办的约 10 人开源 AI 眼镜公司，法律主体 Brilliant Labs Pte. Ltd.（新加坡，2023-04 注册）。Halo 售价 $399、重约 40 克，用 Alif Balletto B1（Cortex-M55 + Ethos-U55 NPU）做端侧推理，0.2 英寸硅基 OLED 微显示屏，跑 Liquid AI 的 LFM2-VL-450M 视觉语言模型；硬件设计与固件全部开源到 GitHub", f:"<span class='fv'>累计融资 $600 万</span><span class='fk'>· 2023-06 种子轮 $3M（Oculus 联创 Brendan Iribe、Siri 联创 Adam Cheyer、Pebble 创始人 Eric Migicovsky、Plug &amp; Play 领投）</span><span class='fk'>· 2024-02 Niantic CEO John Hanke 追投，金额未披露；2024-02 之后无新融资公告</span><span class='fx'>Halo 2026-08 起发货；出货量与估值均未公开</span>", t:["AR","拍摄"]},
+
   /* ---------- 其他 · XR 头显 ---------- */
-  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"xrheadset", o:1, m:"Galaxy XR（Moohan）· 联合 Google / 高通", d:"联合 Google（Android XR）与高通（骁龙 XR2+）推出的 MR 头显，是三星对抗 Apple Vision Pro 的旗舰产品", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span><span class='fk'>· Galaxy XR 为三星移动业务新战略品类</span>", t:["MR"]},
-  {n:"索尼", e:"Sony · 日本", r:"OT", c:"xrheadset", o:1, m:"PlayStation VR2", d:"依托 PlayStation 主机生态的游戏 VR 头显，主打高保真游戏体验与触觉反馈手柄", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈20 万亿日元（2026-09）</span><span class='fk'>· PSVR2 为游戏与网络服务分部产品线之一</span>", t:["VR"]},
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"xrheadset", o:1, m:"Galaxy XR（Moohan）· 联合 Google / 高通", d:"联合 Google（Android XR）与高通（骁龙 XR2+）推出的 MR 头显，是三星对抗 Apple Vision Pro 的旗舰产品", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈$430B（2026-09）</span><span class='fk'>· Galaxy XR 为三星移动业务新战略品类</span>", t:["MR"]},
+  {n:"索尼", e:"Sony · 日本", r:"OT", c:"xrheadset", o:1, m:"PlayStation VR2", d:"依托 PlayStation 主机生态的游戏 VR 头显，主打高保真游戏体验与触觉反馈手柄", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈$133B（2026-09）</span><span class='fk'>· PSVR2 为游戏与网络服务分部产品线之一</span>", t:["VR"]},
 
   /* ---------- 其他 · 智能手表 ---------- */
-  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"watch", o:1, m:"Galaxy Watch 系列", d:"安卓阵营智能手表出货量领先品牌，深度整合 Wear OS 与三星健康生态", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span><span class='fk'>· Galaxy Watch 为移动体验分部核心可穿戴产品</span>", t:["运动","健康监测"]},
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"watch", o:1, m:"Galaxy Watch 系列", d:"安卓阵营智能手表出货量领先品牌，深度整合 Wear OS 与三星健康生态", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈$430B（2026-09）</span><span class='fk'>· Galaxy Watch 为移动体验分部核心可穿戴产品</span>", t:["运动","健康监测"]},
 
   /* ---------- 其他 · 智能耳机 ---------- */
-  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"earable", o:1, m:"Galaxy Buds 系列", d:"安卓阵营 TWS 耳机出货量领先品牌，主打与 Galaxy 手机 / 手表的生态联动", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈6,000 万亿韩元（2026-09）</span>", t:["降噪"]},
-  {n:"索尼", e:"Sony · 日本", r:"OT", c:"earable", o:1, m:"WF / WH 系列降噪耳机", d:"消费电子巨头的高端降噪耳机产品线，长期在主动降噪算法与音质调校上口碑领先", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈20 万亿日元（2026-09）</span><span class='fk'>· 耳机为电子产品与解决方案分部重要品类</span>", t:["降噪"]},
+  {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"earable", o:1, m:"Galaxy Buds 系列", d:"安卓阵营 TWS 耳机出货量领先品牌，主打与 Galaxy 手机 / 手表的生态联动", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈$430B（2026-09）</span>", t:["降噪"]},
+  {n:"索尼", e:"Sony · 日本", r:"OT", c:"earable", o:1, m:"WF / WH 系列降噪耳机", d:"消费电子巨头的高端降噪耳机产品线，长期在主动降噪算法与音质调校上口碑领先", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈$133B（2026-09）</span><span class='fk'>· 耳机为电子产品与解决方案分部重要品类</span>", t:["降噪"]},
 ];
 
 const CATS_WEARABLE = [
@@ -1653,7 +1665,7 @@ const NATIVEHW_PLAYERS = [
   {n:"网易有道", e:"NetEase Youdao", r:"CN", c:"translator", o:1, m:"有道词典笔 / AI 翻译笔", d:"依托有道自有大模型的词典笔 / 翻译笔硬件产品线，主打中小学生英语学习与查词翻译场景", f:"<span class='fx'>已上市 · NYSE DAO</span><span class='fk'>· 学习硬件为智能硬件业务核心收入来源之一</span>", t:["翻译","儿童教育"]},
 
   /* ---------- 其他 · AI 陪伴玩具 ---------- */
-  {n:"索尼", e:"Sony · 日本", r:"OT", c:"toy", o:1, m:"aibo AI 陪伴机器狗", d:"消费电子巨头旗下的情感陪伴机器人品牌，1999 年首代产品即开创品类，现款融合云端 AI 实现更丰富的情感表达与成长型交互", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈20 万亿日元（2026-09）</span><span class='fk'>· aibo 为娱乐 / 机器人业务线的长期品牌资产</span>", t:["陪伴","桌面机器人"]},
+  {n:"索尼", e:"Sony · 日本", r:"OT", c:"toy", o:1, m:"aibo AI 陪伴机器狗", d:"消费电子巨头旗下的情感陪伴机器人品牌，1999 年首代产品即开创品类，现款融合云端 AI 实现更丰富的情感表达与成长型交互", f:"<span class='fx'>已上市 · TSE 6758</span><span class='fv'>市值 ≈$133B（2026-09）</span><span class='fk'>· aibo 为娱乐 / 机器人业务线的长期品牌资产</span>", t:["陪伴","桌面机器人"]},
   {n:"卡西欧", e:"Casio · 日本", r:"OT", c:"toy", o:1, m:"Moflin AI 陪伴毛绒机器人", d:"消费电子厂商推出的圆润毛绒形态 AI 陪伴机器人，通过持续学习佩戴者互动模式形成独特“性格”，主打情感陪伴而非实用功能", f:"<span class='fx'>已上市 · TSE 6952</span><span class='fk'>· Moflin 为卡西欧新兴消费硬件品类</span>", t:["陪伴"]},
   {n:"Miko", e:"印度", r:"OT", c:"toy", o:2, m:"Miko AI 儿童陪伴机器人", d:"印度儿童教育陪伴机器人代表公司，产品覆盖对话、编程启蒙与家长监护功能，是少数在该细分成规模出海的新兴市场公司", f:"<span class='fv'>据公开报道已完成多轮融资</span><span class='fk'>· 印度及中东、东南亚市场出货量领先</span>", t:["儿童教育","陪伴"]},
   {n:"Lingverse", e:"iKairos · 新加坡", r:"OT", c:"toy", o:2, m:"iKairos 模块化 AI 陪伴硬件", d:"可拆卸的“Neural Core”模块，居家时插入底座变身桌面陪伴机器人、出门时可作为项链佩戴，配合 LifeOS 主动建议系统，2026 年 IFA 柏林首发", f:"<span class='fv'>Pre-A 轮融资 $2,900 万</span><span class='fk'>· 目前仅开放预约，未公布定价与出货时间</span>", t:["陪伴","桌面机器人"]},
@@ -1690,7 +1702,7 @@ const CATS_NATIVEHW = [
 const NATIVEHW_TAGS = ["录音","会议纪要","语音助理","陪伴","儿童教育","翻译","桌面机器人","智能家居","自动化操作","开发套件","情绪记录","边缘计算","机器视觉","教育科研","开源硬件"];
 
 initLayer({ prefix:"l3", players:PLAYERS, cats:CATS, regions:REGIONS, oLabels:OPEN });
-const OPEN4 = {1:"已上市", 2:"未上市", 3:"子公司 / 已被收购"};
+const OPEN4 = {1:"已上市", 2:"未上市", 3:"子公司 / 已被收购", 4:"高校 / 研究机构"};
 initLayer({ prefix:"l1c", players:CHIP_PLAYERS, cats:CATS_CHIP, regions:REGIONS, oLabels:OPEN4 });
 initLayer({ prefix:"l4", players:PLAYERS4, cats:CATS4, regions:REGIONS, oLabels:OPEN4 });
 initLayer({ prefix:"l5", players:ROBOT_PLAYERS, cats:CATS_ROBOT, regions:REGIONS, oLabels:OPEN4 });
@@ -2002,16 +2014,16 @@ const DZ = (() => {
         {v:"57<small>%</small>", k:"中国国产品牌本土市占率", d:"此前十年约 28%，2024 年首次过半（IFR）"},
         {v:"132<small>台/万人</small>", k:"全球机器人密度均值", d:"韩国最高 1220，中国 166（制造业口径，全球第 22）（IFR 2025-09）"} ]),
       src:"来源："+a("IFR World Robotics 2025",U.ifr)+" · "+a("IFR 机器人密度 2025-09-25",U.ifrDensity)+"。IFR 只发布台数，未发布美元市场规模" }),
-    D.card({ title:"91 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+    D.card({ title:"95 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
       body:D.hbar({ unit:" 家", labelW:118, items:[
-        {l:"人形机器人", v:26, tip:"人形机器人：26 家，中国 15 / 美国 6 / 欧洲 2 / 其他 3"},
-        {l:"工业 / AGV·AMR", v:25, tip:"工业机器人 / AGV·AMR：25 家，中国 12 / 美国 5 / 欧洲 4 / 其他 4"},
-        {l:"具身模型 / 部件", v:16, tip:"具身智能模型 / 核心部件：16 家，中国 11 / 美国 5 / 欧洲 0 / 其他 0"},
-        {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国 7 / 美国 4 / 欧洲 0 / 其他 1"},
-        {l:"消费 / 无人机", v:12, tip:"消费机器人 / 无人机：12 家，中国 7 / 美国 2 / 欧洲 1 / 其他 2"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费"], cols:["中国","美国","欧洲","其他"],
-        vals:[[15,6,2,3],[12,5,4,4],[11,5,0,0],[7,4,0,1],[7,2,1,2]] }) + '</div>',
-      table:D.table(["品类","中国","美国","欧洲","其他","合计"],[["人形机器人","15","6","2","3","26"],["工业/AGV·AMR","12","5","4","4","25"],["具身模型/部件","11","5","0","0","16"],["服务/商用","7","4","0","1","12"],["消费/无人机","7","2","1","2","12"]]),
+        {l:"人形机器人", v:29, tip:"人形机器人：29 家，中国大陆 15 / 美国 7 / 欧洲 4 / 其他 3（新增 CMU 机器人研究院，紧接此前新增的 DLR、KIT H²T 两家德国人形机器人研究机构之后）"},
+        {l:"工业 / AGV·AMR", v:25, tip:"工业机器人 / AGV·AMR：25 家，中国大陆 12 / 美国 4 / 欧洲 5 / 其他 4（Wandelbots 总部德累斯顿，本次由“美国”改计入“欧洲”）"},
+        {l:"具身模型 / 部件", v:17, tip:"具身智能模型 / 核心部件：17 家，中国大陆 11 / 美国 6 / 欧洲 0 / 其他 0"},
+        {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国大陆 7 / 美国 4 / 欧洲 0 / 其他 1"},
+        {l:"消费 / 无人机", v:12, tip:"消费机器人 / 无人机：12 家，中国大陆 7 / 美国 2 / 欧洲 1 / 其他 2"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[15,7,4,3],[12,4,5,4],[11,6,0,0],[7,4,0,1],[7,2,1,2]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","15","7","4","3","29"],["工业/AGV·AMR","12","4","5","4","25"],["具身模型/部件","11","6","0","0","17"],["服务/商用","7","4","0","1","12"],["消费/无人机","7","2","1","2","12"]]),
       src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-08 核实" }),
     D.card({ title:"资本：全球与中国机器人融资升温", sub:"十亿美元 / 亿元，一级市场 VC 口径；2026 年数据均为检索时点的年内累计值，非全年终值",
       body:D.column({ unit:" 十亿美元", h:160, items:[
@@ -2019,7 +2031,7 @@ const DZ = (() => {
         {l:"2026 年内", v:18.8, vl:"$18.8B", color:C.light, tip:"2026 年至检索时点已达 $18.8B，已超 2025 全年（Crunchbase）"} ]}),
       table:D.table(["指标","数值","说明"],[["全球机器人融资 2025","$14B","+70%，超越 2021 年峰值"],["全球机器人融资 2026 年内","$18.8B","已超 2025 全年"],["中国具身智能融资 2025 年前 11 月","334.73 亿元","2024 同期 4 倍"],["全球机器人基础模型融资 2025","$2.2B","“机器人大脑”细分"]]),
       src:"来源："+a("Crunchbase News",U.cb)+" · "+a("36氪·具身万象 2025-12",U.itjz)+"。不同统计窗口（前8月/前11月/滚动12月）不可简单相加" }),
-    D.card({ title:"自有口径：50 家创业公司融资 Top5 与地区结构", sub:"91 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+    D.card({ title:"自有口径：51 家创业公司融资 Top5 与地区结构", sub:"95 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:140, items:[
         {l:"Figure AI", v:1900, vl:"$1.9B", tip:"Figure AI：累计融资 $1.9B，2025-09 Series C 估值 $39B"},
         {l:"智元机器人", v:845, tip:"智元机器人：累计融资约 $845M（≈60 亿元）"},
@@ -2027,11 +2039,11 @@ const DZ = (() => {
         {l:"海柔创新", v:563, tip:"海柔创新 HAI ROBOTICS：累计融资约 $563M"},
         {l:"银河通用", v:423, tip:"银河通用：最新一轮融资超 $300M，累计约 $423M，投后估值 $3B"} ]})
         + '<div style="margin-top:10px">' + D.stacked({ segs:[
-        {l:"中国", v:49, color:C.s1, tip:"中国 32 家创业公司合计 ≈$5.41B，占 49%"},
-        {l:"美国", v:48, color:C.s2, tip:"美国 15 家创业公司合计 ≈$5.29B，占 48%"},
-        {l:"欧洲+其他", v:3, color:C.mute, tip:"欧洲 2 家 + 其他 1 家合计 ≈$0.24B，占 3%"} ]}) + '</div>',
-      legend:D.legend([{c:C.s1,l:"中国 49%"},{c:C.s2,l:"美国 48%"},{c:C.mute,l:"欧洲 + 其他 3%"}]),
-      table:D.table(["指标","数值"],[["已披露融资创业公司数","50 家"],["合计已披露融资","≈$10.9B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","9 家"]]),
+        {l:"中国大陆", v:47.7, color:C.s1, tip:"中国大陆 32 家创业公司合计 ≈$5.41B，占 47.7%"},
+        {l:"美国", v:50.2, color:C.s2, tip:"美国 16 家创业公司合计 ≈$5.70B，占 50.2%（较上版新增 Field AI $405M，美国由此反超中国）"},
+        {l:"欧洲+其他", v:2.1, color:C.mute, tip:"欧洲 2 家 + 其他 1 家合计 ≈$0.24B，占 2.1%"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"中国大陆 47.7%"},{c:C.s2,l:"美国 50.2%"},{c:C.mute,l:"欧洲 + 其他 2.1%"}]),
+      table:D.table(["指标","数值"],[["已披露融资创业公司数","51 家"],["合计已披露融资","≈$11.3B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","10 家"]]),
       src:"来源：自有口径（机器人层数据支撑清单 E2 节），2026-09-08 计算" }),
     D.card({ title:"估值与并购里程碑", sub:"人形机器人第一梯队公司估值与年内最大并购交易",
       body:D.tiles([
@@ -2048,7 +2060,7 @@ const DZ = (() => {
         {v:"2-3<small>个数量级</small>", k:"仿真训练吞吐量提升", d:"Isaac Gym/Lab 较 CPU 方案；单 RTX 4090 可达 8.5-9.5 万 FPS（NVIDIA）"} ]),
       src:"来源："+a("IDTechEx",U.idtechex)+" · "+a("NVIDIA GR00T N1.7",U.groot)+"。“成本”存在制造成本 / BOM 成本 / 平均售价三种口径，不可互换" })
   ];
-  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（91 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（95 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
   DZ.tip();
 })();
 </script>
@@ -2085,30 +2097,31 @@ const DZ = (() => {
         {v:"39万台 → 4.5<small>万台/季</small>", k:"Apple Vision Pro 出货：2024 全年 → 2025 Q4", d:"高端 MR 走量困难，与 AI 眼镜爆发式增长形成对比（IDC）"},
         {v:"74.6<small>%</small>", k:"Meta Quest 2024 全年 VR 头显市场份额", d:"传统 VR 头显仍由 Meta 主导（IDC / 聚合数据）"} ]),
       src:"来源："+a("IDC 2025",U.idcShift)+" · "+a("Apple Vision Pro 出货",U.visionPro) }),
-    D.card({ title:"49 家玩家：品类与地区结构（自有口径）", sub:"本页 WEARABLE_PLAYERS 数据集，按品类、地区交叉统计条目数（含跨品类重复登场的大厂）",
+    D.card({ title:"53 家玩家：品类与地区结构（自有口径）", sub:"本页 WEARABLE_PLAYERS 数据集，按品类、地区交叉统计条目数（含跨品类重复登场的大厂）",
       body:D.hbar({ unit:" 家", labelW:118, items:[
-        {l:"AI 眼镜", v:13, tip:"AI 眼镜：13 家，中国 9 / 美国 4 / 欧洲 0 / 其他 0"},
-        {l:"智能手表", v:11, tip:"智能手表：11 家，中国 6 / 美国 2 / 欧洲 2 / 其他 1"},
-        {l:"XR 头显", v:10, tip:"XR 头显：10 家，中国 4 / 美国 3 / 欧洲 1 / 其他 2"},
-        {l:"智能耳机", v:10, tip:"智能耳机：10 家，中国 6 / 美国 2 / 欧洲 0 / 其他 2"},
-        {l:"健康可穿戴", v:5, tip:"健康可穿戴：5 家，中国 2 / 美国 1 / 欧洲 2 / 其他 0"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["AI眼镜","手表","XR头显","耳机","健康"], cols:["中国","美国","欧洲","其他"],
-        vals:[[9,4,0,0],[6,2,2,1],[4,3,1,2],[6,2,0,2],[2,1,2,0]] }) + '</div>',
-      table:D.table(["品类","中国","美国","欧洲","其他","合计"],[["AI 眼镜","9","4","0","0","13"],["智能手表","6","2","2","1","11"],["XR 头显","4","3","1","2","10"],["智能耳机","6","2","0","2","10"],["健康可穿戴","2","1","2","0","5"]]),
+        {l:"AI 眼镜", v:17, tip:"AI 眼镜：17 家，中国大陆 12 / 美国 3 / 欧洲 0 / 其他 2（Solos 总部香港科学园，本次由“中国大陆”改计入“其他”）"},
+        {l:"智能手表", v:11, tip:"智能手表：11 家，中国大陆 6 / 美国 2 / 欧洲 2 / 其他 1"},
+        {l:"XR 头显", v:10, tip:"XR 头显：10 家，中国大陆 3 / 美国 3 / 欧洲 1 / 其他 3（宏达电 HTC 由“中国”改计入“其他”）"},
+        {l:"智能耳机", v:10, tip:"智能耳机：10 家，中国大陆 6 / 美国 2 / 欧洲 0 / 其他 2"},
+        {l:"健康可穿戴", v:5, tip:"健康可穿戴：5 家，中国大陆 2 / 美国 1 / 欧洲 2 / 其他 0"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["AI眼镜","手表","XR头显","耳机","健康"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[12,3,0,2],[6,2,2,1],[3,3,1,3],[6,2,0,2],[2,1,2,0]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["AI 眼镜","12","3","0","2","17"],["智能手表","6","2","2","1","11"],["XR 头显","3","3","1","3","10"],["智能耳机","6","2","0","2","10"],["健康可穿戴","2","1","2","0","5"]]),
       src:"来源：自有口径（可穿戴XR层数据支撑清单 E1 节），数据来自本页 WEARABLE_PLAYERS 数组，2026-09-08 核实" }),
-    D.card({ title:"自有口径：13 家创业公司融资 Top5 与地区结构", sub:"49 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+    D.card({ title:"自有口径：15 家创业公司融资 Top5 与地区结构", sub:"53 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:130, items:[
         {l:"Oura", v:500, tip:"Oura：本页卡片累计融资 >$5 亿（2024-12 口径），2025-10 最新一轮已至 $900M+/估值 $11B（见清单 C2）"},
         {l:"Whoop", v:400, tip:"Whoop：累计融资 >$400M，2025 Series G $575M 后估值 $10.1B"},
         {l:"XREAL", v:300, tip:"XREAL：累计融资 >$3 亿美元，2026-01 上市前估值 $833M"},
         {l:"Rokid", v:281.7, tip:"Rokid：累计融资 >20 亿元（≈$281.7M），另有 PitchBook 口径 $2.58B，数据源冲突"},
-        {l:"雷鸟创新", v:70.4, tip:"雷鸟创新：累计融资 >5 亿元（≈$70.4M）"} ]})
+        {l:"Even Realities", v:160, tip:"Even Realities（逸文科技）：2026-07 Pre-B 轮 $150M，累计 >$160M，投后估值 $10 亿；本轮由美团龙珠领投、腾讯跟投"} ]})
         + '<div style="margin-top:10px">' + D.stacked({ segs:[
-        {l:"中国", v:48.3, color:C.s1, tip:"中国 10 家创业公司合计 ≈$933.8M，占 48.3%"},
-        {l:"欧洲", v:31.0, color:C.s2, tip:"欧洲 2 家（Varjo + Oura）合计 $600M，占 31.0%"},
-        {l:"美国", v:20.7, color:C.mute, tip:"美国 1 家（Whoop）合计 $400M，占 20.7%"} ]}) + '</div>',
-      legend:D.legend([{c:C.s1,l:"中国 48.3%"},{c:C.s2,l:"欧洲 31.0%"},{c:C.mute,l:"美国 20.7%"}]),
-      table:D.table(["指标","数值"],[["已披露融资创业公司数","13 家"],["合计已披露融资","≈$1.93B"],["融资梯队 $300M-1B","3 家（Oura/Whoop/XREAL）"],["融资梯队 ≥$1B","0 家"]]),
+        {l:"中国大陆", v:52.1, color:C.s1, tip:"中国大陆 11 家创业公司合计 ≈$1,093.8M，占 52.1%（较上版新增 Even Realities，其地区归属由美国修正为中国；Halliday 与 Looktech 同归中国，但只有众筹、无股权融资，不计入）"},
+        {l:"欧洲", v:28.6, color:C.s2, tip:"欧洲 2 家（Varjo + Oura）合计 $600M，占 28.6%"},
+        {l:"美国", v:19.0, color:C.mute, tip:"美国 1 家（Whoop）合计 $400M，占 19.0%"},
+        {l:"其他", v:0.3, color:C.s3, tip:"其他 1 家（Brilliant Labs $6M），占 0.3%"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"中国大陆 52.1%"},{c:C.s2,l:"欧洲 28.6%"},{c:C.mute,l:"美国 19.0%"},{c:C.s3,l:"其他 0.3%"}]),
+      table:D.table(["指标","数值"],[["已披露融资创业公司数","15 家"],["合计已披露融资","≈$2.10B"],["融资梯队 $300M-1B","3 家（Oura/Whoop/XREAL）"],["融资梯队 $100M-300M","2 家（Rokid/Even Realities）"],["融资梯队 ≥$1B","0 家"]]),
       src:"来源：自有口径（可穿戴XR层数据支撑清单 E2 节），2026-09-08 计算" }),
     D.card({ title:"估值与并购里程碑", sub:"健康可穿戴估值刷新纪录；大厂近两年以少数股权投资为主，鲜见整体并购",
       body:D.tiles([
@@ -2125,7 +2138,7 @@ const DZ = (() => {
         {v:"12<small>天</small>", k:"智能戒指最长续航（RingConn Gen2）", d:"Oura Ring 4 / Galaxy Ring 约 7-8 天；Ring 5 号称 9 天但支持 80 分钟快充" }]),
       src:"来源："+a("Qualcomm AR1 Gen1",U.ar1)+"。含显示屏眼镜受光学模组功耗限制，续航与无显示纯音频眼镜不在同一技术曲线，不可直接比较" })
   ];
-  document.getElementById("dz-wearable").innerHTML = `<div class="dz-head"><h2>L5 可穿戴 / XR 数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（49 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-wearable").innerHTML = `<div class="dz-head"><h2>L5 可穿戴 / XR 数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（53 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
   DZ.tip();
 })();
 </script>
@@ -2223,20 +2236,20 @@ const DZ = (() => {
       src:"来源："+a("Fortune Business Insights",U.fortune)+" · "+a("QY Research",U.qyr)+" · "+a("中商产业研究院",U.zhongshang)+" · "+a("BubblePal",U.bubble)+" · "+a("Ropet",U.ropet)+" · "+a("芙崽",U.fuzozo)+"。**出货数字全部出自公司自述或融资稿，无第三方监测**（洛图只公开词典笔与电子纸单词卡）。主体易混淆：BubblePal 属跃然创新，芙崽属珞博智能，是两家不同公司" }),
     D.card({ title:"41 家玩家：品类与地区结构（自有口径）", sub:"本页 NATIVEHW_PLAYERS 数据集，按品类、地区交叉统计条目数。条目数 ≠ 公司数（科大讯飞出现两次），去重后 40 家",
       body:D.hbar({ unit:" 家", labelW:132, items:[
-        {l:"开发套件 / 极客硬件", v:12, tip:"开发套件：12 家，中国 8 / 美国 2 / 欧洲 2 / 其他 0——本层中国玩家最密集的一块"},
-        {l:"AI Pin / 挂件录音", v:9, tip:"AI Pin：9 家，中国 2 / 美国 7 / 欧洲 0 / 其他 0——高度美国化（77.8%）"},
-        {l:"AI 陪伴玩具", v:9, tip:"AI 玩具：9 家，中国 4 / 美国 1 / 欧洲 0 / 其他 4——地区最分散"},
-        {l:"无屏 AI 助理", v:6, tip:"无屏助理：6 家，中国 2 / 美国 3 / 欧洲 0 / 其他 1"},
-        {l:"AI 翻译硬件", v:5, tip:"翻译硬件：5 家，中国 3 / 美国 0 / 欧洲 1 / 其他 1——唯一美国完全缺席的品类"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["开发套件","AI Pin","AI玩具","无屏助理","翻译硬件"], cols:["中国","美国","欧洲","其他"],
+        {l:"开发套件 / 极客硬件", v:12, tip:"开发套件：12 家，中国大陆 8 / 美国 2 / 欧洲 2 / 其他 0——本层中国玩家最密集的一块"},
+        {l:"AI Pin / 挂件录音", v:9, tip:"AI Pin：9 家，中国大陆 2 / 美国 7 / 欧洲 0 / 其他 0——高度美国化（77.8%）"},
+        {l:"AI 陪伴玩具", v:9, tip:"AI 玩具：9 家，中国大陆 4 / 美国 1 / 欧洲 0 / 其他 4——地区最分散"},
+        {l:"无屏 AI 助理", v:6, tip:"无屏助理：6 家，中国大陆 2 / 美国 3 / 欧洲 0 / 其他 1"},
+        {l:"AI 翻译硬件", v:5, tip:"翻译硬件：5 家，中国大陆 3 / 美国 0 / 欧洲 1 / 其他 1——唯一美国完全缺席的品类"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["开发套件","AI Pin","AI玩具","无屏助理","翻译硬件"], cols:["中国大陆","美国","欧洲","其他"],
         vals:[[8,2,2,0],[2,7,0,0],[4,1,0,4],[2,3,0,1],[3,0,1,1]] }) + '</div>'
         + '<div style="margin-top:10px">' + D.stacked({ segs:[
         {l:"未上市", v:61.0, color:C.s1, tip:"未上市 25 家"},
         {l:"已上市", v:29.3, color:C.s2, tip:"已上市 12 家：出门问问、科大讯飞（×2）、网易有道、嘉楠、乐鑫、NVIDIA、树莓派、索尼、卡西欧、Source Next"},
         {l:"已被收购", v:9.8, color:C.mute, tip:"子公司 / 已被收购 4 家：Limitless（Meta）、Bee（Amazon）、Humane（HP）、Arduino（高通）"} ]}) + '</div>',
       legend:D.legend([{c:C.s1,l:"未上市 61.0%"},{c:C.s2,l:"已上市 29.3%"},{c:C.mute,l:"已被收购 9.8%"}]),
-      table:D.table(["品类","中国","美国","欧洲","其他","合计"],[["开发套件","8","2","2","0","12"],["AI Pin","2","7","0","0","9"],["AI 玩具","4","1","0","4","9"],["无屏助理","2","3","0","1","6"],["翻译硬件","3","0","1","1","5"],["合计","19","13","3","6","41"]]),
-      src:"来源：自有口径（AI原生新硬件层数据支撑清单 E 节），数据来自本页 NATIVEHW_PLAYERS 数组，2026-09-08 核实。地区占比：中国 46.3% / 美国 31.7% / 其他 14.6% / 欧洲 7.3%。**欧洲全层仅 3 家**（波兰 Vasco、英国树莓派、意大利 Arduino），且 2 家在开发套件品类——消费级几乎空白" }),
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["开发套件","8","2","2","0","12"],["AI Pin","2","7","0","0","9"],["AI 玩具","4","1","0","4","9"],["无屏助理","2","3","0","1","6"],["翻译硬件","3","0","1","1","5"],["合计","19","13","3","6","41"]]),
+      src:"来源：自有口径（AI原生新硬件层数据支撑清单 E 节），数据来自本页 NATIVEHW_PLAYERS 数组，2026-09-08 核实。地区占比：中国大陆 46.3% / 美国 31.7% / 其他 14.6% / 欧洲 7.3%。**欧洲全层仅 3 家**（波兰 Vasco、英国树莓派、意大利 Arduino），且 2 家在开发套件品类——消费级几乎空白" }),
     D.card({ title:"开发套件：树莓派财报与「算力/美元」曲线", sub:"本层条目最多的品类（12 家），也是唯一有上市公司逐年披露出货量的品类——为端侧 AI 从消费终端下沉到开发者硬件提供量化坐标",
       body:D.column({ h:172, unit:" 百万台", title:"树莓派出货量：MCU 芯片首次超过板卡（2025 为 the cross-over year）", items:[
         {l:"板卡24", v:7.0, color:C.s1, tip:"FY2024 板卡及模组出货 700 万台"},
@@ -2293,15 +2306,15 @@ const DZ = (() => {
         {v:"-11.3<small>%</small>", k:"IDC对2026年全球PC总出货的下修预测", d:"内存短缺推高成本所致，供给瓶颈而非需求转弱"},
         {v:"-0.9<small>%</small>", k:"IDC对2026年全球手机总出货的预测", d:"2026 Q1实际出货已同比-2.9%，打破连续10个季度增长纪录" } ]),
       src:"来源："+a("Gartner AI PC",U.gartner)+" · "+a("IDC PC预测",U.idcPc)+" · "+a("IDC AI手机",U.idcPhone)+" · "+a("Counterpoint",U.cpPhone) }),
-    D.card({ title:"58 家玩家：品类与地区结构（自有口径）", sub:"本页 CHIP_PLAYERS 数据集，按品类、地区交叉统计条目数（台湾企业归入“中国”列）",
+    D.card({ title:"58 家玩家：品类与地区结构（自有口径）", sub:"本页 CHIP_PLAYERS 数据集，按品类、地区交叉统计条目数（中国台湾企业计入“其他”列）",
       body:D.hbar({ unit:" 家", labelW:130, items:[
-        {l:"专用边缘AI加速芯片", v:29, tip:"专用边缘AI加速芯片：29 家，中国10 / 美国13 / 欧洲3 / 其他3"},
-        {l:"MCU / TinyML芯片", v:11, tip:"MCU / TinyML芯片：11 家，中国3 / 美国4 / 欧洲3 / 其他1"},
-        {l:"通用终端SoC", v:9, tip:"通用终端SoC：9 家，中国3 / 美国5 / 欧洲0 / 其他1"},
-        {l:"视觉 / IoT SoC", v:9, tip:"视觉 / IoT SoC：9 家，中国9（含台湾2家）/ 美国0 / 欧洲0 / 其他0"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["边缘AI加速","MCU/TinyML","通用SoC","视觉/IoT"], cols:["中国","美国","欧洲","其他"],
-        vals:[[10,13,3,3],[3,4,3,1],[3,5,0,1],[9,0,0,0]] }) + '</div>',
-      table:D.table(["品类","中国","美国","欧洲","其他","合计"],[["专用边缘AI加速芯片","10","13","3","3","29"],["MCU / TinyML芯片","3","4","3","1","11"],["通用终端SoC","3","5","0","1","9"],["视觉 / IoT SoC","9","0","0","0","9"]]),
+        {l:"专用边缘AI加速芯片", v:29, tip:"专用边缘AI加速芯片：29 家，中国大陆10 / 美国13 / 欧洲3 / 其他3"},
+        {l:"MCU / TinyML芯片", v:11, tip:"MCU / TinyML芯片：11 家，中国大陆3 / 美国4 / 欧洲3 / 其他1"},
+        {l:"通用终端SoC", v:9, tip:"通用终端SoC：9 家，中国大陆2 / 美国5 / 欧洲0 / 其他2（联发科由“中国”改计入“其他”）"},
+        {l:"视觉 / IoT SoC", v:9, tip:"视觉 / IoT SoC：9 家，中国大陆7 / 美国0 / 欧洲0 / 其他2（奇景光电、联咏科技改计入“其他”）"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["边缘AI加速","MCU/TinyML","通用SoC","视觉/IoT"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[10,13,3,3],[3,4,3,1],[2,5,0,2],[7,0,0,2]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["专用边缘AI加速芯片","10","13","3","3","29"],["MCU / TinyML芯片","3","4","3","1","11"],["通用终端SoC","2","5","0","2","9"],["视觉 / IoT SoC","7","0","0","2","9"]]),
       src:"来源：自有口径（芯片层数据支撑清单 E节），数据来自本页 CHIP_PLAYERS 数组，2026-09-08 核实" }),
     D.card({ title:"融资与并购：边缘AI芯片仍是资本活跃赛道", sub:"2025年8月-2026年7月边缘AI芯片/半导体细分融资约$1.4B（32笔），并购活动同步升温",
       body:D.tiles([

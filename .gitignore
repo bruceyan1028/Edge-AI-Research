@@ -2,3 +2,4 @@
 .build/
 .claude/
 _tmp/
+node_modules/
