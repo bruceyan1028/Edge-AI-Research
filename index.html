@@ -116,26 +116,37 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
 .toolbar .cnt { margin-left: auto; font-size: 11px; color: #6b7280; }
 .toolbar .reset { font-size: 11px; color: #6a1b9a; cursor: pointer; text-decoration: underline; background: none; border: 0; font-family: inherit; }
 
-.matrix { display: grid; grid-template-columns: 150px 1.15fr 1.15fr .85fr .85fr; gap: 8px; }
-.corner { border-radius: 8px; background: #fff; border: 1px solid #e5e7eb; padding: 8px 10px; font-size: 10.5px; color: #6b7280; line-height: 1.45; display: flex; flex-direction: column; justify-content: center; }
-.corner, .colhead { position: sticky; top: var(--head-top, 100px); z-index: 3; box-shadow: 0 2px 6px rgba(0,0,0,.08); }
-.corner { flex-direction: row; align-items: center; gap: 6px; cursor: default; }
+/* 矩阵：每个体量板块自成一个网格，列宽按本板块玩家分布自适应（见 layout()） */
+.matrix { display: flex; flex-direction: column; gap: 12px; }
+.mblock { display: grid; grid-template-columns: 150px repeat(4, 1fr); gap: 8px; }
+.mblock.hide { display: none; }
+.mblock .rowhead { grid-row: span 2; }
+.corner { border-radius: 8px; background: #fff; border: 1px solid #e5e7eb; padding: 8px 10px; font-size: 10.5px; color: #6b7280; line-height: 1.45; display: flex; flex-direction: column; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+.corner { flex-direction: row; align-items: center; gap: 6px; cursor: default; position: relative; align-self: flex-start; }
 .corner b { color: #111827; font-size: 11px; white-space: nowrap; }
 .corner .info { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 50%; border: 1px solid #9ca3af; color: #6b7280; font-size: 9px; font-weight: 700; font-family: Georgia, serif; font-style: italic; }
-.corner .tip { display: none; position: absolute; left: 0; top: calc(100% + 6px); width: 300px; background: #fff; border: 1px solid #d1d5db; border-radius: 6px; padding: 8px 10px; box-shadow: 0 4px 12px rgba(0,0,0,.12); color: #374151; font-size: 10.5px; line-height: 1.5; z-index: 20; }
-.corner .tip b { display: block; margin-bottom: 3px; color: #111827; font-size: 11px; }
-.corner:hover .tip, .corner:focus-within .tip { display: block; }
-.colhead { border-radius: 8px; padding: 8px 10px; color: #fff; background: var(--rc); }
-.colhead .n { font-size: 14px; font-weight: 700; display: flex; align-items: baseline; gap: 6px; }
-.colhead .n small { font-size: 10.5px; font-weight: 400; opacity: .9; }
-.colhead .c { font-size: 10.5px; opacity: .92; margin-top: 3px; line-height: 1.45; }
+.corner .tip, .rbar .tip { display: none; position: absolute; left: 0; top: calc(100% + 6px); width: 300px; background: #fff; border: 1px solid #d1d5db; border-radius: 6px; padding: 8px 10px; box-shadow: 0 4px 12px rgba(0,0,0,.12); color: #374151; font-size: 10.5px; line-height: 1.5; z-index: 20; white-space: normal; font-weight: 400; text-align: left; }
+.corner .tip b, .rbar .tip b { display: block; margin-bottom: 3px; color: #111827; font-size: 11px; }
+.corner:hover .tip, .corner:focus-within .tip, .rbar:hover .tip, .rbar:focus-within .tip { display: block; }
+
+/* 地区栏：每个体量板块单独一条，紧凑，悬浮看该地区特征 */
+.rbar { position: relative; z-index: 1; border-radius: 8px; padding: 5px 10px; background: var(--rc); color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: baseline; gap: 6px; overflow: hidden; white-space: nowrap; cursor: help; }
+.rbar:hover, .rbar:focus-within { z-index: 30; overflow: visible; }
+.rbar small { font-size: 10.5px; font-weight: 400; opacity: .9; overflow: hidden; text-overflow: ellipsis; }
+.rbar .rn { margin-left: auto; flex: 0 0 auto; font-style: normal; font-size: 10.5px; font-weight: 700; background: rgba(255,255,255,.24); border-radius: 9px; padding: 0 7px; }
+.rbar.narrow { padding: 5px 6px; font-size: 12px; }
+.rbar.narrow small { display: none; }
+.rbar.rt .tip { left: auto; right: 0; }
+.rsrc { display: none; }
 .rowhead { border-radius: 8px; padding: 10px; background: var(--cc-bg); border-left: 5px solid var(--cc); display: flex; flex-direction: column; gap: 6px; }
 .rowhead .n { font-size: 14px; font-weight: 700; color: var(--cc); line-height: 1.3; }
 .rowhead .n small { display: block; font-size: 10.5px; font-weight: 400; color: #6b7280; margin-top: 2px; }
 .rowhead .def { font-size: 10.5px; color: #4b5563; line-height: 1.45; }
 .rowhead .biz { font-size: 10.5px; color: var(--cc); border-top: 1px dashed var(--cc); padding-top: 5px; line-height: 1.45; }
-.cell { background: var(--cc-bg); border-radius: 8px; padding: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(172px, 1fr)); gap: 6px; align-content: start; }
+.cell { background: var(--cc-bg); border-radius: 8px; padding: 8px; display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 6px; align-content: start; min-width: 0; }
 .cell.empty::after { content: "— 无匹配玩家 —"; color: #9ca3af; font-size: 11px; grid-column: 1 / -1; text-align: center; padding: 10px; }
+.cell.thin { padding: 8px 4px; }
+.cell.thin.empty::after { writing-mode: vertical-rl; content: "无匹配玩家"; letter-spacing: 2px; padding: 6px 0; justify-self: center; }
 
 .pc { background: #fff; border-radius: 6px; padding: 6px 8px; border-left: 3px solid var(--cc); box-shadow: 0 1px 2px rgba(0,0,0,.06); min-width: 0; }
 .pc.hide { display: none; }
@@ -498,12 +509,14 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
     </div>
 
     <div class="matrix" id="l3-matrix">
+      <div class="rsrc">
       <div class="corner" tabindex="0"><b>体量 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
         <div class="tip"><b>口径说明</b>归属地按公司总部；开源状态指其端侧代表模型的权重是否公开；创业公司卡片附融资 / 估值 / 上市状态，垂类公司卡片附市值 / 营收 / 融资（截至 2026 年 9 月初）；海外公司金额统一折算为美元，中国公司保留人民币 / 港元。</div></div>
       <div class="colhead R-CN"><div class="n">中国 <small>China</small></div><div class="c">手机厂"人人自研"+ 开源底座外溢 + 语音 / 视觉垂类上市公司群</div></div>
       <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">平台大厂掌握 OS 级入口，创业公司做架构创新（SSM / 液态网络）</div></div>
       <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">缺少终端 / OS 大厂，依托 Mistral、压缩技术与语音实验室，多被美企收购</div></div>
       <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · Canada · India · UAE 等</small></div><div class="c">韩国财阀式全栈、日本偏机器人 / 工业、加拿大语音创业聚集、中东主权模型</div></div>
+      </div>
     </div>
 
     <div class="dz" id="dz-model"></div>
@@ -569,12 +582,14 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
     </div>
 
     <div class="matrix" id="l4-matrix">
+      <div class="rsrc">
       <div class="corner" tabindex="0"><b>环节 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
         <div class="tip"><b>口径说明</b>归属地按公司总部，中国台湾企业归入中国列并标注；上市公司附市值与最近财年营收 / 净利，未上市附累计融资与估值，子公司 / 已被收购附母公司与收购金额（截至 2026 年 9 月初）；海外与台湾公司金额统一折算为美元，中国大陆公司保留人民币 / 港元。</div></div>
       <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">手机 ODM 三巨头 + 模组全球过半份额 + 台湾 PC / 服务器代工 + 昇腾 / 鸿蒙生态集成商</div></div>
       <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">EMS 巨头与边缘平台创业公司；模组与边缘软件正被高通、Semtech 等芯片厂收编</div></div>
       <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业嵌入式与 SoM 传统强区（Kontron、congatec、u-blox），无手机 / PC 代工</div></div>
       <div class="colhead R-OT"><div class="n">其他 <small>Canada · Japan · Korea · India · Israel</small></div><div class="c">加拿大 EMS、日本元器件模组、印韩工程服务与集成</div></div>
+      </div>
     </div>
 
     <div class="dz" id="dz-solution"></div>
@@ -645,12 +660,14 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
   </div>
 
   <div class="matrix" id="l5-matrix">
+    <div class="rsrc">
     <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
       <div class="tip"><b>口径说明</b>归属地按公司总部；"具身智能"作为独立 L5 赛道单列。人形机器人在 2026 年仍处样机 / 试点阶段，绝大多数未形成可比的量产营收，因此卡片以"代表产品 + 定位"为主、不强行统一附财务数据，仅对入选主体的状态（上市 / 未上市 / 归属）做标注（截至 2026 年 9 月初）。中国台湾企业归入中国列并以"台湾"标注。</div></div>
     <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">人形机器人创业公司全球最密 + 消费 / 服务机器人全球龙头 + 核心部件（谐波减速器 / 行星滚柱丝杠）国产替代最活跃</div></div>
     <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">资本最集中——人形明星公司（Figure / 1X / Agility）+ 具身智能基础模型（Physical Intelligence / Skild）+ 英伟达全栈生态</div></div>
     <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">工业机器人四大家族之二（ABB / KUKA）+ 协作机器人发源地（UR），人形与具身模型玩家稀少</div></div>
     <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan · UAE 等</small></div><div class="c">工业机器人另两大家族（发那科 / 安川）在日；韩系财阀全栈（现代 · 波士顿动力、三星 · Rainbow）押注人形</div></div>
+    </div>
   </div>
 
   <div class="insights">
@@ -720,12 +737,14 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
   </div>
 
   <div class="matrix" id="l5w-matrix">
+    <div class="rsrc">
     <div class="corner" tabindex="0"><b>品类 ↓ &nbsp;/&nbsp; 地区 →</b><span class="info" aria-label="口径说明">i</span>
       <div class="tip"><b>口径说明</b>归属地按公司总部；AI 眼镜与传统智能手表 / 耳机并列，因为“端侧 AI + 多模态感知”正在重塑这两类存量品类。中国台湾企业归入中国列并以"台湾"标注（截至 2026 年 9 月初）。</div></div>
     <div class="colhead R-CN"><div class="n">中国 <small>China · 含台湾</small></div><div class="c">AI 眼镜创业公司密度最高 + 智能手表 / 手环全球出货龙头（华米、小米生态链）+ VR/MR 硬件供应链最完整</div></div>
     <div class="colhead R-US"><div class="n">美国 <small>United States</small></div><div class="c">生态定义者——Apple（Vision Pro / Watch / AirPods）与 Meta（Ray-Ban / Quest）双巨头主导 XR 与 AI 眼镜叙事</div></div>
     <div class="colhead R-EU"><div class="n">欧洲 <small>Europe</small></div><div class="c">运动 / 户外可穿戴强区（Garmin 虽为美企但欧洲市场深耕、Polar、Suunto），XR 与 AI 眼镜玩家稀少</div></div>
     <div class="colhead R-OT"><div class="n">其他 <small>Korea · Japan 等</small></div><div class="c">三星 Galaxy 生态全栈自研（手表 / 耳机 / XR 头显 Moohan）；日系传感器与精密光学供应链深厚</div></div>
+    </div>
   </div>
 
   <div class="insights">
@@ -873,13 +892,39 @@ const OPEN = {1:"开放权重", 2:"部分开放", 3:"闭源"};
 const REGION_META = { CN:{n:"中国",c:"#c62828"}, US:{n:"美国",c:"#1565c0"}, EU:{n:"欧洲",c:"#2e7d32"}, OT:{n:"其他",c:"#6d4c41"} };
 
 /* ---------- 通用：渲染矩阵 + 统计 + 筛选 ---------- */
+const LAYOUTS = [];
+const relayout = () => LAYOUTS.forEach(f => f());
+/* 每个体量（品类）板块独立成一个 .mblock 网格：自带一条地区栏 + 一行单元格，
+   列宽由 layout() 按该板块内各地区的实际玩家数（受筛选影响）动态分配 */
 function initLayer(cfg){
   const P = cfg.prefix, matrix = document.getElementById(P + "-matrix");
+  /* 页面里以 .rsrc 隐藏块保存表头文案（口径说明 + 各地区特征），此处读出后复用 */
+  const src = matrix.querySelector(".rsrc");
+  const cornerHTML = src.querySelector(".corner").innerHTML;
+  const rMeta = {};
+  src.querySelectorAll(".colhead").forEach(ch => {
+    const r = [...ch.classList].find(c => c.startsWith("R-")).slice(2);
+    rMeta[r] = { n: ch.querySelector(".n").childNodes[0].textContent.trim(), s: ch.querySelector(".n small").innerHTML, c: ch.querySelector(".c").innerHTML };
+  });
+  matrix.innerHTML = "";
+
+  const blocks = [];
   cfg.cats.forEach(cat => {
+    const blk = document.createElement("div");
+    blk.className = "mblock";
     const rh = document.createElement("div");
     rh.className = "rowhead C-" + cat.k;
     rh.innerHTML = `<div class="n">${cat.n}<small>${cat.s}</small></div><div class="def">${cat.def}</div><div class="biz">${cat.biz}</div>`;
-    matrix.appendChild(rh);
+    blk.appendChild(rh);
+    cfg.regions.forEach(r => {
+      const bar = document.createElement("div");
+      bar.className = "rbar R-" + r;
+      bar.tabIndex = 0;
+      bar.dataset.r = r;
+      bar.innerHTML = `${rMeta[r].n} <small>${rMeta[r].s}</small><i class="rn"></i>` +
+        `<div class="tip"><b>${rMeta[r].n} · ${cat.n}</b>${rMeta[r].c}</div>`;
+      blk.appendChild(bar);
+    });
     cfg.regions.forEach(r => {
       const cell = document.createElement("div");
       cell.className = "cell C-" + cat.k;
@@ -896,13 +941,52 @@ function initLayer(cfg){
           `<div class="tags">${p.t.map(t => `<span class="tag">${t}</span>`).join("")}${p.lab ? `<span class="tag lab">研究机构</span>` : ""}</div>`;
         cell.appendChild(el);
       });
-      matrix.appendChild(cell);
+      blk.appendChild(cell);
     });
+    matrix.appendChild(blk);
+    blocks.push(blk);
   });
+  /* 口径说明只保留一份，置于矩阵顶部 */
+  const corner = document.createElement("div");
+  corner.className = "corner"; corner.tabIndex = 0;
+  corner.innerHTML = cornerHTML;
+  matrix.insertBefore(corner, matrix.firstChild);
+
   const stats = document.getElementById(P + "-stats");
   const cnt = k => cfg.players.filter(p => p.r === k).length;
   stats.innerHTML = `<div class="stat"><div class="v">${cfg.players.length}</div><div class="k">玩家总数</div></div>` +
     cfg.regions.map(r => `<div class="stat"><div class="v" style="color:${REGION_META[r].c}">${cnt(r)}</div><div class="k">${REGION_META[r].n}</div></div>`).join("");
+
+  /* 按每个板块内各地区的可见玩家数分配列宽：空地区压成窄条，其余按卡片数加权 */
+  const MINW = 176, THINW = 96, RH = 150, GAP = 8;
+  function layout(){
+    const avail = matrix.clientWidth - RH - GAP * cfg.regions.length;
+    if (avail <= 0) return;   /* 视图未激活（宽度为 0）时跳过，切回来时由 ResizeObserver 补算 */
+    blocks.forEach(blk => {
+      const counts = cfg.regions.map(r =>
+        [...blk.querySelectorAll(`.cell[data-r="${r}"] .pc`)].filter(el => !el.classList.contains("hide")).length);
+      const thin = counts.map(n => n === 0);
+      const free = Math.max(1, avail - thin.filter(Boolean).length * THINW);
+      const total = counts.reduce((a, b) => a + b, 0);
+      const cols = counts.map((n, i) => {
+        if (thin[i]) return THINW + "px";
+        /* 每列至少放得下一张卡；剩余宽度按玩家数比例分配 */
+        return `minmax(${MINW}px, ${((total ? n / total : 1 / counts.length) * free).toFixed(2)}fr)`;
+      });
+      blk.style.gridTemplateColumns = `${RH}px ${cols.join(" ")}`;
+      blk.querySelectorAll(".cell").forEach((c, i) => c.classList.toggle("thin", thin[i % cfg.regions.length]));
+      blk.querySelectorAll(".rbar").forEach((b, i) => {
+        b.classList.toggle("narrow", thin[i]);
+        b.querySelector(".rn").textContent = counts[i] || "0";
+      });
+    });
+    /* 悬浮说明卡宽 300px，靠右的地区栏改为右对齐，避免溢出视口 */
+    const right = matrix.getBoundingClientRect().right;
+    matrix.querySelectorAll(".rbar").forEach(b =>
+      b.classList.toggle("rt", b.getBoundingClientRect().left + 300 > right));
+  }
+  new ResizeObserver(layout).observe(matrix);
+  LAYOUTS.push(layout);   /* 视图从 display:none 切回来时 ResizeObserver 不触发，由 show() 补调 */
 
   const tb = document.getElementById(P + "-toolbar"), q = document.getElementById(P + "-q"), cntEl = document.getElementById(P + "-cnt");
   const active = dim => [...tb.querySelectorAll(`.grp[data-dim="${dim}"] .chip.on`)].map(b => b.dataset.v);
@@ -919,7 +1003,11 @@ function initLayer(cfg){
       const any = [...cell.querySelectorAll(".pc")].some(el => !el.classList.contains("hide"));
       cell.classList.toggle("empty", !any);
     });
+    /* 整个体量板块一个玩家都不剩时隐藏，避免留下一排空地区窄条 */
+    blocks.forEach(blk => blk.classList.toggle("hide",
+      ![...blk.querySelectorAll(".pc")].some(el => !el.classList.contains("hide"))));
     cntEl.textContent = `显示 ${shown} / ${cfg.players.length}`;
+    layout();
   }
   tb.addEventListener("click", e => {
     const b = e.target.closest(".chip"); if (!b) return;
@@ -932,14 +1020,10 @@ function initLayer(cfg){
   apply();
 }
 
-/* ---------- 吸顶高度测量 ---------- */
+/* ---------- 吸顶高度测量（只有页签 + 筛选栏吸顶，地区栏随板块滚动） ---------- */
 const rootEl = document.documentElement, tabsEl = document.querySelector(".tabs");
 function measure(){
-  const th = tabsEl.getBoundingClientRect().height;
-  const tb = document.querySelector(".view.active .toolbar");
-  const tbh = tb ? tb.getBoundingClientRect().height : 0;
-  rootEl.style.setProperty("--tabs-h", th + "px");
-  rootEl.style.setProperty("--head-top", (th + tbh + 8) + "px");
+  rootEl.style.setProperty("--tabs-h", tabsEl.getBoundingClientRect().height + "px");
 }
 document.querySelectorAll(".toolbar").forEach(tb => new ResizeObserver(measure).observe(tb));
 window.addEventListener("resize", measure);
@@ -950,7 +1034,7 @@ function show(id){
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === id));
   if (location.hash !== "#" + id) history.replaceState(null, "", "#" + id);
   window.scrollTo(0, 0);
-  requestAnimationFrame(measure);
+  measure(); relayout();
 }
 document.querySelectorAll("[data-view]").forEach(el => el.addEventListener("click", () => show(el.dataset.view)));
 
