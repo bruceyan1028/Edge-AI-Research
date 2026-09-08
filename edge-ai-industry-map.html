@@ -683,6 +683,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; }
       </ul>
     </div>
   </div>
+
+  <div class="dz" id="dz-robot"></div>
 </div>
 
 <!-- ====================== 视图五：终端设备层详解（可穿戴 / XR） ====================== -->
@@ -1547,6 +1549,90 @@ const DZ = (() => {
       src:"来源："+a("IDC 2025-11-05",U.hm)+" · "+a("洛图科技 2026-03",U.hm)+" · "+a("NVIDIA 2026-08",U.jetson)+" · "+a("华为 KADC 2025",U.hw) })
   ];
   document.getElementById("dz-solution").innerHTML = `<div class="dz-head"><h2>方案与集成层数据</h2><span class="n">ODM / 模组 / 边缘 / 集成四类口径；整机与硬件市场见第一页，模型能力见第二页。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  DZ.tip();
+})();
+</script>
+
+<script>
+/* ===================== L5 机器人层数据 ===================== */
+(function(){
+  const D=DZ, C=D.C, a=D.a;
+  const U = {
+    gs:"https://www.humanoidhub.ai/news/goldman-sachs-has-quadrupled-its-forecast-for-the-humanoid-robot-market-size-with-e-commerce-warehouses-and-automotive-production-lines-expected-to-be-the-earliest-adopters-1886b277-f701-443e-869c-90363f16618b",
+    boa:"https://medium.com/write-a-catalyst/bofa-says-3-billion-humanoid-robots-will-exist-by-2060-eb1e994b6699",
+    ifr:"https://ifr.org/ifr-press-releases/news/global-robot-demand-in-factories-doubles-over-10-years",
+    ifrDensity:"https://ifr.org/downloads/press_docs/2025-09-25-IFR_press_release_China_in_English.pdf",
+    cb:"https://news.crunchbase.com/robotics/startup-venture-funding-surges-2026-data/",
+    itjz:"https://www.36kr.com/p/3768920808391176",
+    figure:"https://www.figure.ai/news/series-c",
+    softbank:"https://group.softbank/en/news/press/20251008",
+    yinhe:"https://finance.sina.com.cn/stock/hyyj/2025-12-19/doc-inhckerv6948134.shtml",
+    zhiyuan:"https://news.qq.com/rain/a/20250524A05DWA00",
+    idtechex:"https://www.dcvelocity.com/material-handling/robotics/humanoid-robot-costs-will-fall-rapidly-by-2030-but-roi-could-vary",
+    groot:"https://forums.developer.nvidia.com/t/early-access-isaac-gr00t-n1-7-open-reasoning-vla-model-for-humanoid-robotics/366916"
+  };
+  const cards = [
+    D.card({ title:"人形机器人：预测与现状的鸿沟", sub:"全球出货量预测普遍在 2035 年达百万台级，但当前实际保有量仅约万台级，跨 2-3 个数量级",
+      body:D.tiles([
+        {v:"650<small>万台</small>", k:"高盛 2035 年出货预测", d:"较 2024 年原始预测 $38B/2035 上调 6 倍，市场机会约 $138B（Goldman Sachs 2026）"},
+        {v:"1000<small>万台</small>", k:"美银 2035 年出货预测", d:"另一情景：2030 年 100 万台、2035 年 1000 万台（Bank of America）"},
+        {v:"1.6<small>万台</small>", k:"当前全球实际保有量", d:"截至检索时点，与上述预测相差 1-2 个数量级（Counterpoint，经 BofA 报告引用）"},
+        {v:"5,500<small>台</small>", k:"宇树科技 2025 年出货", d:"全球单一公司出货量第一（招股书 / 公开报道）"} ]),
+      src:"来源："+a("Goldman Sachs 2026",U.gs)+" · "+a("Bank of America",U.boa)+"。长期预测应视为情景推演，引用时建议同时标注当前基数" }),
+    D.card({ title:"工业机器人：已高度成熟的存量市场", sub:"唯一有权威台数统计的机器人细分；中国是全球增长的主引擎",
+      body:D.tiles([
+        {v:"54.2<small>万台</small>", k:"全球 2024 年新增装机", d:"亚洲占 74%；中国占全球新增 54%（IFR《World Robotics 2025》）"},
+        {v:"466.4<small>万台</small>", k:"全球在役保有量", d:"2024 年，同比 +9%（IFR）"},
+        {v:"57<small>%</small>", k:"中国国产品牌本土市占率", d:"此前十年约 28%，2024 年首次过半（IFR）"},
+        {v:"132<small>台/万人</small>", k:"全球机器人密度均值", d:"韩国最高 1220，中国 166（制造业口径，全球第 22）（IFR 2025-09）"} ]),
+      src:"来源："+a("IFR World Robotics 2025",U.ifr)+" · "+a("IFR 机器人密度 2025-09-25",U.ifrDensity)+"。IFR 只发布台数，未发布美元市场规模" }),
+    D.card({ title:"91 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+      body:D.hbar({ unit:" 家", labelW:118, items:[
+        {l:"人形机器人", v:26, tip:"人形机器人：26 家，中国 15 / 美国 6 / 欧洲 2 / 其他 3"},
+        {l:"工业 / AGV·AMR", v:25, tip:"工业机器人 / AGV·AMR：25 家，中国 12 / 美国 5 / 欧洲 4 / 其他 4"},
+        {l:"具身模型 / 部件", v:16, tip:"具身智能模型 / 核心部件：16 家，中国 11 / 美国 5 / 欧洲 0 / 其他 0"},
+        {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国 7 / 美国 4 / 欧洲 0 / 其他 1"},
+        {l:"消费 / 无人机", v:12, tip:"消费机器人 / 无人机：12 家，中国 7 / 美国 2 / 欧洲 1 / 其他 2"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费"], cols:["中国","美国","欧洲","其他"],
+        vals:[[15,6,2,3],[12,5,4,4],[11,5,0,0],[7,4,0,1],[7,2,1,2]] }) + '</div>',
+      table:D.table(["品类","中国","美国","欧洲","其他","合计"],[["人形机器人","15","6","2","3","26"],["工业/AGV·AMR","12","5","4","4","25"],["具身模型/部件","11","5","0","0","16"],["服务/商用","7","4","0","1","12"],["消费/无人机","7","2","1","2","12"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-08 核实" }),
+    D.card({ title:"资本：全球与中国机器人融资升温", sub:"十亿美元 / 亿元，一级市场 VC 口径；2026 年数据均为检索时点的年内累计值，非全年终值",
+      body:D.column({ unit:" 十亿美元", h:160, items:[
+        {l:"2025", v:14, vl:"$14B"},
+        {l:"2026 年内", v:18.8, vl:"$18.8B", color:C.light, tip:"2026 年至检索时点已达 $18.8B，已超 2025 全年（Crunchbase）"} ]}),
+      table:D.table(["指标","数值","说明"],[["全球机器人融资 2025","$14B","+70%，超越 2021 年峰值"],["全球机器人融资 2026 年内","$18.8B","已超 2025 全年"],["中国具身智能融资 2025 年前 11 月","334.73 亿元","2024 同期 4 倍"],["全球机器人基础模型融资 2025","$2.2B","“机器人大脑”细分"]]),
+      src:"来源："+a("Crunchbase News",U.cb)+" · "+a("36氪·具身万象 2025-12",U.itjz)+"。不同统计窗口（前8月/前11月/滚动12月）不可简单相加" }),
+    D.card({ title:"自有口径：50 家创业公司融资 Top5 与地区结构", sub:"91 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+      body:D.hbar({ unit:" 百万美元", labelW:140, items:[
+        {l:"Figure AI", v:1900, vl:"$1.9B", tip:"Figure AI：累计融资 $1.9B，2025-09 Series C 估值 $39B"},
+        {l:"智元机器人", v:845, tip:"智元机器人：累计融资约 $845M（≈60 亿元）"},
+        {l:"Physical Intelligence", v:800, tip:"Physical Intelligence：累计融资约 $800M"},
+        {l:"海柔创新", v:563, tip:"海柔创新 HAI ROBOTICS：累计融资约 $563M"},
+        {l:"银河通用", v:423, tip:"银河通用：最新一轮融资超 $300M，累计约 $423M，投后估值 $3B"} ]})
+        + '<div style="margin-top:10px">' + D.stacked({ segs:[
+        {l:"中国", v:49, color:C.s1, tip:"中国 32 家创业公司合计 ≈$5.41B，占 49%"},
+        {l:"美国", v:48, color:C.s2, tip:"美国 15 家创业公司合计 ≈$5.29B，占 48%"},
+        {l:"欧洲+其他", v:3, color:C.mute, tip:"欧洲 2 家 + 其他 1 家合计 ≈$0.24B，占 3%"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"中国 49%"},{c:C.s2,l:"美国 48%"},{c:C.mute,l:"欧洲 + 其他 3%"}]),
+      table:D.table(["指标","数值"],[["已披露融资创业公司数","50 家"],["合计已披露融资","≈$10.9B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","9 家"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E2 节），2026-09-08 计算" }),
+    D.card({ title:"估值与并购里程碑", sub:"人形机器人第一梯队公司估值与年内最大并购交易",
+      body:D.tiles([
+        {v:"$39<small>B</small>", k:"Figure AI 最新估值", d:"2025-09 Series C，融资超 $1B（Figure AI 官方）"},
+        {v:"$3<small>B</small>", k:"银河通用最新估值", d:"2025-12 融资超 $300M，刷新中国具身智能单轮及累计融资纪录"},
+        {v:"$5.375<small>B</small>", k:"SoftBank 收购 ABB 机器人业务", d:"2025-10-08 宣布，预计 2026 年中-末交割，近两年机器人领域最大并购"},
+        {v:"150<small>亿元</small>", k:"智元机器人一级市场估值", d:"另拟 2026 年赴港 IPO，目标估值 400-500 亿港元（两者口径不同不可相加）"} ]),
+      src:"来源："+a("Figure AI",U.figure)+" · "+a("银河通用",U.yinhe)+" · "+a("SoftBank Group",U.softbank)+" · "+a("智元机器人",U.zhiyuan) }),
+    D.card({ title:"技术拐点：整机成本曲线与 VLA 模型迭代", sub:"人形机器人平均售价预计 6 年内降至三分之一；VLA 具身模型两年内四次迭代",
+      body:D.tiles([
+        {v:"$114,700 → $37,000", k:"人形机器人平均售价 2024→2030", d:"IDTechEx 预测，降幅约 68%"},
+        {v:"5万 → <1万<small>元</small>", k:"中国灵巧手均价两年降幅", d:"部分六自由度产品报价低至 6,000-8,000 元（厂商自述，非第三方审计）"},
+        {v:"RT-2 → π0 → GR00T N1 → N1.7", k:"VLA 模型里程碑（2023-07→2026-04）", d:"N1.7 首个“灵巧性 scaling law”：训练数据 1000 小时→2 万小时，任务完成率提升超 1 倍"},
+        {v:"2-3<small>个数量级</small>", k:"仿真训练吞吐量提升", d:"Isaac Gym/Lab 较 CPU 方案；单 RTX 4090 可达 8.5-9.5 万 FPS（NVIDIA）"} ]),
+      src:"来源："+a("IDTechEx",U.idtechex)+" · "+a("NVIDIA GR00T N1.7",U.groot)+"。“成本”存在制造成本 / BOM 成本 / 平均售价三种口径，不可互换" })
+  ];
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（91 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
   DZ.tip();
 })();
 </script>
