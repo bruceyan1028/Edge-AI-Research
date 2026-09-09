@@ -165,13 +165,6 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .spec .caret { color: #a25be0; font-weight: 700; margin-left: 4px; font-size: 9px; }
 .spec-note { font-size: 11px; color: #6b7280; margin: 0 0 20px; line-height: 1.6; }
 /* ---- 架构路线族谱 ---- */
-.archmap { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 10px; margin: 12px 0 8px; }
-.archc { border: 1px solid #e5e7eb; border-radius: 8px; padding: 11px 13px; background: #fff; border-left: 4px solid #2a78d6; }
-.archc h4 { margin: 0 0 2px; font-size: 13px; color: #111214; }
-.archc .kn { font-size: 10.5px; color: #6b7280; margin-bottom: 6px; }
-.archc .mech { font-size: 11px; color: #52514e; line-height: 1.6; margin-bottom: 7px; }
-.archc .ms { font-size: 10.5px; color: #4b5563; line-height: 1.75; }
-.archc .ms b { color: #6a1b9a; }
 .sec-h { margin: 26px 0 4px; font-size: 15px; color: #111214; font-weight: 800; }
 .sec-s { font-size: 11.5px; color: #6b7280; margin-bottom: 10px; line-height: 1.6; }
 .golink { display: inline-block; margin-top: 5px; font-size: 10px; color: #fff; background: rgba(255,255,255,.22); border-radius: 3px; padding: 1px 6px; cursor: pointer; }
@@ -770,10 +763,6 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <table class="spec" id="spec-table"><thead id="spec-head"></thead><tbody id="spec-body"></tbody></table>
       </div>
       <p class="spec-note" id="spec-foot"></p>
-
-      <div class="sec-h">端侧架构已经真正分叉：13 条路线</div>
-      <div class="sec-s">Transformer 在云端仍是唯一答案，但端侧的瓶颈不是算力而是<b>内存带宽与 KV cache</b>——这直接催生了线性注意力、SSM 与 RNN 的复活。每张卡列出该路线的机理与走这条路的具体型号。</div>
-      <div class="archmap" id="spec-archmap"></div>
 
       <div class="dz" id="dz-spec"></div>
 
@@ -2400,14 +2389,6 @@ document.getElementById("spec-stats").innerHTML =
 
 document.getElementById("spec-foot").innerHTML =
   "口径说明：① 全部性能数字为<b>厂商官方自报</b>，不含第三方跑分与本项目实测；同一栏内必须同时出现「prefill / decode / TTFT 哪一种」「具名硬件」「量化位宽」，缺任何一项都在「披露档」列降级。② 参数量以 config.json 或技术报告为准，不采用 Hugging Face 侧栏数字——后者会把 U8 打包的字节数当成参数，Falcon-E-1B 因此显示为 0.5B。③ 上下文取<b>端侧实际可用值</b>而非宣传值：Llama 3.2 量化版从 128K 降到 8K、Phi Silica 发运 2K、Jamba 官方自承训练窗口只有 32K/64K。④ 表格<b>以地区为最外层分块</b>，最左侧竖条即地区（中国大陆 / 美国 / 欧洲 / 其他）——只有「其他」块内才在厂商名前标出具体国家（韩国、日本、以色列、加拿大、阿联酋、印度）。地区内再<b>按厂商合并成字块</b>，同一母公司的子品牌并入一块（Google DeepMind → Google，Meta FAIR / Meta Superintelligence Labs → Meta，腾讯 AngelSlim → 腾讯），子品牌名保留在型号下方的小字。⑤ 点击表头排序时<b>地区分块与厂商字块都不拆散</b>：先在每个字块内部排序，再按各字块首位值在<b>本地区内部</b>排列字块，跨地区不重排；第三次点击取消排序。参数量、上下文按数值排，未披露者按 0 处理。⑥ 每行统一压到<b>两行高</b>，超出部分省略为「…」，<b>鼠标悬停任意单元格可看完整原文</b>（光标变成问号的格子即被截断）；终端与模态列为标签化摘要，悬停可看官方完整表述。⑦ 厂商图标优先取官网 favicon，取不到（离线打开、网络受限）时自动回落到该厂商的品牌色字符标。⑧ 点击任意行展开该型号的口径提示。数据检索日期 2026-09-09。";
-
-/* ---- 架构路线族谱 ---- */
-document.getElementById("spec-archmap").innerHTML = AORDER.map(k=>{
-  const A=AL[k], ms=SPEC.filter(m=>m.a===k);
-  return '<div class="archc" style="border-left-color:'+A[2]+'"><h4>'+A[0]+'</h4>'
-    + '<div class="kn">'+ms.length+' 款型号</div><div class="mech">'+A[1]+'</div>'
-    + '<div class="ms">'+ms.map(m=>"<b>"+esc(m.n)+"</b>").join(" · ")+'</div></div>';
-}).join("");
 
 /* ---- 图表 ---- */
 (function(){
