@@ -738,17 +738,13 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <div class="grp" data-dim="r">
           <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
         </div>
-        <span class="lb">架构</span>
-        <div class="grp" data-dim="a">
-          <button class="chip on" data-v="dense">Dense</button><button class="chip on" data-v="moe">MoE</button><button class="chip on" data-v="lin">线性注意力</button><button class="chip on" data-v="conv">短卷积</button><button class="chip on" data-v="ssm">Mamba/SSM</button><button class="chip on" data-v="swa">滑窗混合</button><button class="chip on" data-v="ple">PLE</button><button class="chip on" data-v="matformer">MatFormer</button><button class="chip on" data-v="rnn">纯 RNN</button><button class="chip on" data-v="encdec">Enc-Dec</button><button class="chip on" data-v="bitnet">三值</button><button class="chip on" data-v="ifp">NAND 稀疏</button><button class="chip on" data-v="unk">未披露</button>
-        </div>
         <span class="lb">终端</span>
         <div class="grp" data-dim="k">
           <button class="chip on" data-v="phone">手机</button><button class="chip on" data-v="pc">PC</button><button class="chip on" data-v="board">单板 / MCU</button><button class="chip on" data-v="other">机器人 / IoT</button>
         </div>
-        <span class="lb">性能披露</span>
-        <div class="grp" data-dim="d">
-          <button class="chip on" data-v="3">完整三元组</button><button class="chip on" data-v="2">缺一角</button><button class="chip on" data-v="1">仅相对 / 数据中心</button><button class="chip on" data-v="0">未披露</button>
+        <span class="lb">模态</span>
+        <div class="grp" data-dim="mo">
+          <button class="chip on" data-v="t">文</button><button class="chip on" data-v="i">图</button><button class="chip on" data-v="a">音</button><button class="chip on" data-v="v">视</button>
         </div>
         <span class="lb">许可</span>
         <div class="grp" data-dim="o">
@@ -2315,10 +2311,10 @@ function vcell(g,rg,n,span){
     + '<span class="vm">'+cy+n+' 款</span></span></div></td>';
 }
 function apply(){
-  const r=active("r"), a=active("a"), k=active("k"), d=active("d"), o=active("o");
+  const r=active("r"), k=active("k"), mo=active("mo"), o=active("o");
   const kw=q.value.trim().toLowerCase();
-  const rows=SPEC.filter(m => r.includes(m.r) && a.includes(m.a) && d.includes(String(m.d)) && o.includes(String(m.o))
-    && m._k.some(x=>k.includes(x)) && (!kw || m._q.indexOf(kw)>=0));
+  const rows=SPEC.filter(m => r.includes(m.r) && o.includes(String(m.o))
+    && m._k.some(x=>k.includes(x)) && (!m._m.length || m._m.some(x=>mo.includes(x))) && (!kw || m._q.indexOf(kw)>=0));
   const map=new Map();
   rows.forEach(m=>{ if(!map.has(m._g)) map.set(m._g,[]); map.get(m._g).push(m); });
   let groups=[...map.entries()].map(e=>({g:e[0],ms:e[1]}));
