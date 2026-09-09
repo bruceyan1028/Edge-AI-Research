@@ -96,6 +96,84 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .tabs .hint { margin-left: auto; color: #9ca3af; font-size: 11px; }
 .view { display: none; }
 .view.active { display: block; }
+/* ---- 子页签 ---- */
+.subtabs { display: flex; gap: 6px; align-items: center; margin: 0 0 16px; padding-bottom: 10px; border-bottom: 2px solid #ede9f4; }
+.subtab { border: 1px solid #d8cfe6; background: #faf8fd; border-radius: 999px; padding: 7px 18px; font-size: 13px; cursor: pointer; color: #6a1b9a; font-weight: 700; font-family: inherit; }
+.subtab:hover { background: #f2eafa; }
+.subtab.active { background: #6a1b9a; border-color: #6a1b9a; color: #fff; }
+.subtabs .sn { margin-left: auto; font-size: 11px; color: #9ca3af; }
+.subview { display: none; }
+.subview.active { display: block; }
+/* ---- 型号指标宽表 ---- */
+.spec-wrap { border: 1px solid #e5e7eb; border-radius: 8px; overflow: auto; max-height: 76vh; background: #fff; margin-bottom: 8px; }
+.spec { border-collapse: separate; border-spacing: 0; font-size: 11.5px; width: 100%; min-width: 1868px; }
+.spec th { position: sticky; top: 0; z-index: 2; background: #111214; color: #fff; font-weight: 700; text-align: left; padding: 8px 9px; white-space: nowrap; cursor: pointer; user-select: none; }
+.spec th:hover { background: #6a1b9a; }
+.spec th:first-child { left: 0; z-index: 4; width: 28px; min-width: 28px; padding: 8px 0; cursor: default; }
+.spec th:first-child:hover { background: #111214; }
+.spec th:nth-child(2) { left: 28px; z-index: 4; }
+.spec th .ar { opacity: .3; margin-left: 4px; font-size: 9px; }
+.spec th.srt { background: #6a1b9a; }
+.spec th.srt .ar { opacity: 1; }
+.spec td { padding: 7px 9px; border-bottom: 1px solid #eceef1; vertical-align: middle; color: #374151; line-height: 1.55; background: var(--rw, #fff); }
+/* 每行最多两行，超出省略；完整内容走 title 悬停 */
+.spec td .cl { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; max-height: 3.1em; }
+.spec td.ovf { cursor: help; }
+.spec td.ovf .cl { position: relative; }
+/* 最左侧地区竖条：一个地区一块，纵向排字 */
+.spec td.rail { position: sticky; left: 0; z-index: 3; width: 28px; min-width: 28px; padding: 0; text-align: center;
+  vertical-align: middle; background: var(--vc); color: #fff; border-bottom: 2px solid #fff; }
+.spec .rl { writing-mode: vertical-rl; text-orientation: upright; letter-spacing: 3px; font-size: 11.5px; font-weight: 800; }
+.spec tbody tr.mr:hover td:not(.vg):not(.rail) { background: #f4ecfb; }
+.spec tr.mr { cursor: pointer; }
+.spec tr.r0 > td { border-top: 3px solid #cfd3da; }
+.spec tr.g0 > td { border-top: 2px solid #ded6ea; }
+.spec .mn { font-weight: 700; color: #111214; white-space: nowrap; }
+.spec .c-rel, .spec .c-dev, .spec .c-mo { white-space: nowrap; }
+.spec .c-p { min-width: 132px; }
+.spec .c-ctx { min-width: 124px; }
+.spec .arc { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10.5px; font-weight: 700; white-space: nowrap; color: #fff; }
+/* 厂商字块（rowspan 合并，紧贴左侧地区竖条） */
+.spec td.vg { position: sticky; left: 28px; z-index: 1; width: 168px; min-width: 168px; padding: 8px 9px 8px 10px;
+  border-right: 1px solid #e5e7eb; border-bottom: 2px solid #fff; background: var(--vbg); }
+.spec .vh { display: flex; align-items: center; gap: 7px; }
+.spec .lg { position: relative; flex: 0 0 22px; width: 22px; height: 22px; border-radius: 5px; overflow: hidden;
+  background: var(--vc); color: #fff; font-size: 10px; font-weight: 800; line-height: 1; display: flex; align-items: center; justify-content: center; }
+.spec .lg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; padding: 2px; box-sizing: border-box; }
+.spec .lg.l3 { font-size: 7.5px; letter-spacing: -.2px; }
+.spec .vt { min-width: 0; flex: 1; }
+.spec .vn { display: block; font-size: 11.5px; font-weight: 800; color: #111214; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.spec .vm { display: block; margin-top: 2px; font-size: 9.5px; line-height: 1.3; color: #6b7280; white-space: nowrap; }
+.spec .vr { display: inline-block; font-size: 9.5px; font-weight: 700; color: #fff; background: var(--vc); border-radius: 3px; padding: 0 4px; margin-right: 4px; }
+/* 终端 / 模态小标签 */
+.spec .kc { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; margin: 0 3px 3px 0; white-space: nowrap; border: 1px solid; }
+.spec .k-phone { color: #2a78d6; border-color: #bcd6f5; background: #eef5fe; }
+.spec .k-pc    { color: #6a1b9a; border-color: #ddc9ef; background: #f6eefc; }
+.spec .k-board { color: #a8710a; border-color: #f0dcae; background: #fdf7e8; }
+.spec .k-other { color: #128660; border-color: #b6e6d3; background: #eafaf3; }
+.spec .m-t { color: #374151; border-color: #d5d8dd; background: #f3f4f6; }
+.spec .m-i { color: #c2500f; border-color: #f6cdb6; background: #fdf1ea; }
+.spec .m-a { color: #0e7490; border-color: #b3dfe9; background: #e9f7fb; }
+.spec .m-v { color: #a3155f; border-color: #f2bed6; background: #fdeef5; }
+.spec .sml { font-size: 10px; color: #9ca3af; margin-top: 2px; font-weight: 400; }
+.spec .rg { font-size: 10.5px; color: #6b7280; white-space: nowrap; }
+.spec .o1 { color: #1baf7a; font-weight: 700; } .spec .o2 { color: #c2830a; font-weight: 700; } .spec .o3 { color: #9ca3af; font-weight: 700; }
+.spec .d3 { color: #1baf7a; font-weight: 700; } .spec .d2 { color: #2a78d6; font-weight: 700; } .spec .d1 { color: #c2830a; font-weight: 700; } .spec .d0 { color: #c3c2b7; font-weight: 700; }
+.spec .nd { color: #b7b6ad; }
+.spec .wp { min-width: 300px; } .spec .wq { min-width: 210px; } .spec .wl { min-width: 150px; }
+.spec tr.det td { background: #fffaf3; border-bottom: 2px solid #f0dcc2; color: #7c4a12; font-size: 11px; padding: 9px 14px; line-height: 1.65; }
+.spec .caret { color: #a25be0; font-weight: 700; margin-left: 4px; font-size: 9px; }
+.spec-note { font-size: 11px; color: #6b7280; margin: 0 0 20px; line-height: 1.6; }
+/* ---- 架构路线族谱 ---- */
+.archmap { display: grid; grid-template-columns: repeat(auto-fill, minmax(258px, 1fr)); gap: 10px; margin: 12px 0 8px; }
+.archc { border: 1px solid #e5e7eb; border-radius: 8px; padding: 11px 13px; background: #fff; border-left: 4px solid #2a78d6; }
+.archc h4 { margin: 0 0 2px; font-size: 13px; color: #111214; }
+.archc .kn { font-size: 10.5px; color: #6b7280; margin-bottom: 6px; }
+.archc .mech { font-size: 11px; color: #52514e; line-height: 1.6; margin-bottom: 7px; }
+.archc .ms { font-size: 10.5px; color: #4b5563; line-height: 1.75; }
+.archc .ms b { color: #6a1b9a; }
+.sec-h { margin: 26px 0 4px; font-size: 15px; color: #111214; font-weight: 800; }
+.sec-s { font-size: 11.5px; color: #6b7280; margin-bottom: 10px; line-height: 1.6; }
 .golink { display: inline-block; margin-top: 5px; font-size: 10px; color: #fff; background: rgba(255,255,255,.22); border-radius: 3px; padding: 1px 6px; cursor: pointer; }
 .golink:hover { background: rgba(255,255,255,.38); }
 
@@ -185,6 +263,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .C-service    { --cc: #00838f; --cc-bg: #e0f7fa; }
 .C-consumer   { --cc: #ef6c00; --cc-bg: #fff3e0; }
 .C-embodied   { --cc: #c62828; --cc-bg: #ffebee; }
+.C-data       { --cc: #2e7d32; --cc-bg: #e8f5e9; }
 
 /* L5 可穿戴 / XR 品类 */
 .C-xrheadset  { --cc: #6a1b9a; --cc-bg: #f3e5f5; }
@@ -216,6 +295,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   .view { display: none !important; }
   .view.active { display: block !important; }
   .toolbar { display: none; }
+  .subtabs { display: none; }
+  .subview { display: none !important; }
+  .subview.active { display: block !important; }
+  .spec-wrap { max-height: none; overflow: visible; }
+  .spec th, .spec td.vg, .spec td.rail { position: static; }
 }
 
 /* ===================== 数据图表区 ===================== */
@@ -568,6 +652,13 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 
   <!-- ====================== 视图三：模型层详解 ====================== -->
   <div class="view" id="view-model">
+    <div class="subtabs">
+      <button class="subtab active" data-sub="l3-players">端侧模型玩家图谱</button>
+      <button class="subtab" data-sub="l3-spec">技术路线与指标对比</button>
+      <span class="sn">前者按公司梳理格局，后者按具体型号对比硬参数与官方声称性能</span>
+    </div>
+
+    <div class="subview active" id="sub-l3-players">
     <div class="mp-hero">
       <div class="txt">
         <h1>L3 模型层详解：端侧模型玩家图谱</h1>
@@ -637,6 +728,56 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
           <li><b>口径：</b>① "大厂"指拥有终端、OS 或云分发入口的科技巨头与手机厂；"创业公司"指以通用基础模型为主业的公司，含独角兽与研究机构；"垂类"指以单一模态算法为主业的公司。② 开放权重 = 端侧代表模型权重公开可下载；部分开放 = 仅部分尺寸 / 研究许可开放；闭源 = 仅通过产品或 API 提供。③ 融资、估值、上市与并购信息基于 2026 年 9 月初公开报道核实，其中标注"进行中 / 传 / 未确认"的为媒体援引知情人士、尚无官方确认；海外公司的欧元、日元、韩元金额按融资发生时汇率折算为美元，中国公司保留人民币 / 港元；代表模型版本迭代快，引用前请以官方发布为准。④ 创业公司仅收录累计融资约 ≥1 亿美元、估值 ≥10 亿美元或有政府 / 捐赠资助的主体；RWKV、Nexa AI、Aizip、Pleias 等小体量创业公司，以及声智、Plumerai、Imagimob、Snips、ID R&D、audEERING、Useful Sensors、Fluent.ai、Fairy Devices 等小体量或已被小额收购的垂类公司未列入；Sensory、Picovoice、Innovatrics 虽无机构融资，但为自筹盈利的成熟供应商，予以保留。MiniMax、月之暗面虽融资规模大，但无端侧小模型产品，未列入。</li>
         </ul>
       </div>
+    </div>
+    </div>
+
+    <div class="subview" id="sub-l3-spec">
+      <div class="mp-hero">
+        <div class="txt">
+          <h1>L3 模型层详解：技术路线与指标对比</h1>
+          <div class="sub">上一页按<b>公司</b>梳理格局，这一页下沉到 <b>73 款具体型号</b>：参数量、架构路线、上下文、官方量化方案与体积、官方声称的端侧性能，以及每条数字背后的口径。<b>所有性能均为厂商自报，不含第三方跑分</b>。表格<b>先按地区分块</b>（最左侧竖条），地区内再<b>按厂商分块</b>，同一厂商的型号归在同一个字块下；每行统一压到两行高，超出的字省略，<b>悬停可看完整原文</b>；表头可点击排序（分块不拆散），点击任意一行展开该型号的口径提示。</div>
+        </div>
+        <div class="stats" id="spec-stats"></div>
+      </div>
+
+      <div class="toolbar" id="spec-toolbar">
+        <span class="lb">地区</span>
+        <div class="grp" data-dim="r">
+          <button class="chip on" data-v="CN">中国大陆</button><button class="chip on" data-v="US">美国</button><button class="chip on" data-v="EU">欧洲</button><button class="chip on" data-v="OT">其他</button>
+        </div>
+        <span class="lb">架构</span>
+        <div class="grp" data-dim="a">
+          <button class="chip on" data-v="dense">Dense</button><button class="chip on" data-v="moe">MoE</button><button class="chip on" data-v="lin">线性注意力</button><button class="chip on" data-v="conv">短卷积</button><button class="chip on" data-v="ssm">Mamba/SSM</button><button class="chip on" data-v="swa">滑窗混合</button><button class="chip on" data-v="ple">PLE</button><button class="chip on" data-v="matformer">MatFormer</button><button class="chip on" data-v="rnn">纯 RNN</button><button class="chip on" data-v="encdec">Enc-Dec</button><button class="chip on" data-v="bitnet">三值</button><button class="chip on" data-v="ifp">NAND 稀疏</button><button class="chip on" data-v="unk">未披露</button>
+        </div>
+        <span class="lb">终端</span>
+        <div class="grp" data-dim="k">
+          <button class="chip on" data-v="phone">手机</button><button class="chip on" data-v="pc">PC</button><button class="chip on" data-v="board">单板 / MCU</button><button class="chip on" data-v="other">机器人 / IoT</button>
+        </div>
+        <span class="lb">性能披露</span>
+        <div class="grp" data-dim="d">
+          <button class="chip on" data-v="3">完整三元组</button><button class="chip on" data-v="2">缺一角</button><button class="chip on" data-v="1">仅相对 / 数据中心</button><button class="chip on" data-v="0">未披露</button>
+        </div>
+        <span class="lb">许可</span>
+        <div class="grp" data-dim="o">
+          <button class="chip on" data-v="1">OSI 可商用</button><button class="chip on" data-v="2">开源受限</button><button class="chip on" data-v="3">闭源 / 禁商用</button>
+        </div>
+        <input type="search" id="spec-q" placeholder="搜索型号 / 厂商 / 架构 / 关键词…">
+        <span class="cnt" id="spec-cnt"></span>
+        <button class="reset" id="spec-reset">重置</button>
+      </div>
+
+      <div class="spec-wrap">
+        <table class="spec" id="spec-table"><thead id="spec-head"></thead><tbody id="spec-body"></tbody></table>
+      </div>
+      <p class="spec-note" id="spec-foot"></p>
+
+      <div class="sec-h">端侧架构已经真正分叉：13 条路线</div>
+      <div class="sec-s">Transformer 在云端仍是唯一答案，但端侧的瓶颈不是算力而是<b>内存带宽与 KV cache</b>——这直接催生了线性注意力、SSM 与 RNN 的复活。每张卡列出该路线的机理与走这条路的具体型号。</div>
+      <div class="archmap" id="spec-archmap"></div>
+
+      <div class="dz" id="dz-spec"></div>
+
+      <div class="insights" id="spec-ins"></div>
     </div>
   </div>
   <!-- ====================== 视图四：方案与集成层详解 ====================== -->
@@ -733,11 +874,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     </div>
     <span class="lb">品类</span>
     <div class="grp" data-dim="c">
-      <button class="chip on" data-v="humanoid">人形机器人</button><button class="chip on" data-v="industrial">工业 / 物流</button><button class="chip on" data-v="service">服务 / 商用</button><button class="chip on" data-v="consumer">消费 / 无人机</button><button class="chip on" data-v="embodied">具身模型 / 部件</button>
+      <button class="chip on" data-v="humanoid">人形机器人</button><button class="chip on" data-v="industrial">工业 / 物流</button><button class="chip on" data-v="service">服务 / 商用</button><button class="chip on" data-v="consumer">消费 / 无人机</button><button class="chip on" data-v="embodied">具身模型 / 部件</button><button class="chip on" data-v="data">数据层 / 数据服务</button>
     </div>
     <span class="lb">场景</span>
     <div class="grp" data-dim="t">
-      <button class="chip on" data-v="人形">人形</button><button class="chip on" data-v="工业">工业</button><button class="chip on" data-v="协作臂">协作臂</button><button class="chip on" data-v="物流">物流</button><button class="chip on" data-v="服务">服务</button><button class="chip on" data-v="清洁">清洁</button><button class="chip on" data-v="无人机">无人机</button><button class="chip on" data-v="医疗">医疗</button><button class="chip on" data-v="核心部件">核心部件</button><button class="chip on" data-v="具身模型">具身模型</button>
+      <button class="chip on" data-v="人形">人形</button><button class="chip on" data-v="工业">工业</button><button class="chip on" data-v="协作臂">协作臂</button><button class="chip on" data-v="物流">物流</button><button class="chip on" data-v="服务">服务</button><button class="chip on" data-v="清洁">清洁</button><button class="chip on" data-v="无人机">无人机</button><button class="chip on" data-v="医疗">医疗</button><button class="chip on" data-v="核心部件">核心部件</button><button class="chip on" data-v="具身模型">具身模型</button><button class="chip on" data-v="数据">数据</button>
     </div>
     <span class="lb">状态</span>
     <div class="grp" data-dim="o">
@@ -919,7 +1060,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="ins">
       <h3>按品类看：录音硬件最成熟，自动化操作硬件是最新变量</h3>
       <ul>
-        <li><b>AI Pin / 挂件录音：</b>目前唯一跑通商业模式的子品类，且仍在持续涌入新玩家。Plaud 以"满足录音刚需"为切口做到数亿美元营收并保持盈利；Genspark 用更轻薄的卡片形态 SecondBrain Note 正面对标 Plaud；Limitless、Bee 先后被 Meta、Amazon 收购整合进大厂生态；Friend、Omi、Nirva、Wispr AI（前 OpenAI 员工创立）等仍在探索"陪伴 / 情绪记录 / 主动式对话伴侣 vs 隐私"的产品定位分野。</li>
+        <li><b>AI Pin / 挂件录音：</b>目前唯一跑通商业模式的子品类，且仍在持续涌入新玩家。Plaud 以"满足录音刚需"为切口做到数亿美元营收并保持盈利；Genspark 用更轻薄的卡片形态 SecondBrain Note 正面对标 Plaud；Limitless、Bee 先后被 Meta、Amazon 收购整合进大厂生态；Friend、Omi、Nirva 等仍在探索"陪伴 / 情绪记录 vs 隐私"的产品定位分野。</li>
         <li><b>无屏 AI 助理：</b>最具想象力也最难落地的一类。Humane AI Pin 因体验不及预期被 HP 收购資產、硬件停售；Rabbit r1 靠持续软件迭代维持运营但尚未证明"手机之外"的独特价值；OpenAI（联合 Jony Ive 的 io 团队）、Motorola 与国产新秀 Violoop（BVIO Tech）正押注"无屏智能音箱 / 挂件 / 硬件级自动化操作"作为下一轮尝试。</li>
         <li><b>AI 陪伴玩具：</b>中国增长最快的消费级细分，跃然创新 BubblePal/CocoMate、萌友智能 Ropet 均已批量出货并持续融资；印度 Miko、新加坡 Lingverse iKairos（可拆卸模块、居家变桌面机器人）与日本 Sony aibo / Casio Moflin / Groove X Lovot（以"被需要"为设计理念的情感陪伴机器人）代表儿童教育与情感陪伴多条不同路线；美国 Embodied（Moxie）则是本细分淘汰案例的最新一例——2024 年底资金耗尽一度停运，云端服务中断引发家长不满。</li>
         <li><b>AI 翻译硬件：</b>最早商业化、格局最稳定的细分。科大讯飞、时空壶、日本 Pocketalk（原 Source Next）与波兰 Vasco 分占中日欧市场，核心竞争力是离线转写准确率与多语种覆盖，而非算力堆叠。</li>
@@ -930,7 +1071,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <h3>按国家看：三种打法</h3>
       <ul>
         <li><b>中国大陆：</b>供应链与制造成本优势最明显，AI 玩具与录音硬件两条线均已跑出盈利或规模化出货的公司（跃然创新、萌友智能、科大讯飞、时空壶、出门问问）；开发套件层更是本页中国玩家最密集的一块——嘉楠、乐鑫、矽递、瑞莎、华为昇腾、M5Stack、Sipeed矽速科技与开源项目小智 AI 共同构成一条从芯片、模组到参考设计的完整本土供给链，这也是国内 AI 玩具能快速起量的根本原因。</li>
-        <li><b>美国：</b>资本与媒体关注度最高、但淘汰率也最高——Humane 停产、Limitless 被收购、Rabbit 长期"叫好不叫座"；Plaud、Genspark、Nirva、Wispr AI 是少数例外，反而是"轻量刚需切口 + 自负盈亏"的打法跑通；OpenAI 用 65 亿美元收购 io 押注下一代无屏助理。真正稳定获利的其实是卖"铲子"的 NVIDIA 与 Google（Coral）——Jetson、Coral 模组同时支撑着松果派、矽递 reComputer 等中外产品。</li>
+        <li><b>美国：</b>资本与媒体关注度最高、但淘汰率也最高——Humane 停产、Limitless 被收购、Rabbit 长期"叫好不叫座"；Plaud、Genspark、Nirva 是少数例外，反而是"轻量刚需切口 + 自负盈亏"的打法跑通；OpenAI 用 65 亿美元收购 io 押注下一代无屏助理。真正稳定获利的其实是卖"铲子"的 NVIDIA 与 Google（Coral）——Jetson、Coral 模组同时支撑着松果派、矽递 reComputer 等中外产品。</li>
         <li><b>欧洲：</b>消费级几乎空白（仅波兰 Vasco 翻译硬件），但在开发套件层反而有两张王牌：英国树莓派（2024 年伦交所上市，AI HAT+ 系列）与意大利 Arduino（2025 年 10 月被高通收购），是欧洲少有的具备全球影响力的硬件品牌。</li>
         <li><b>其他：</b>日本（Pocketalk 翻译机、Sony aibo / Casio Moflin / Groove X Lovot 陪伴机器人）以存量成熟品类为主，AI 陪伴玩具是本页"其他"地区条目最密集的品类；印度 Miko、Aiden Hardware 与新加坡 Lingverse 则代表新兴市场在儿童陪伴、自动化硬件等细分上的新尝试，鲜有新兴 AI Pin 类创业公司。</li>
       </ul>
@@ -1210,6 +1351,17 @@ function show(id){
 }
 document.querySelectorAll("[data-view]").forEach(el => el.addEventListener("click", () => show(el.dataset.view)));
 
+/* ---------- 子页签切换（用 data-sub，避免与 data-view 的委托冲突） ---------- */
+function showSub(id){
+  const bar = document.querySelector(`[data-sub="${id}"]`); if (!bar) return;
+  const view = bar.closest(".view");
+  view.querySelectorAll(".subview").forEach(v => v.classList.toggle("active", v.id === "sub-" + id));
+  view.querySelectorAll(".subtab").forEach(t => t.classList.toggle("active", t.dataset.sub === id));
+  window.scrollTo(0, 0);
+  measure(); relayout();          /* 从 display:none 切回时 ResizeObserver 不触发 */
+}
+document.querySelectorAll("[data-sub]").forEach(el => el.addEventListener("click", () => showSub(el.dataset.sub)));
+
 /* ===================== L1 芯片厂商玩家数据 =====================
    r 地区 CN/US/EU/OT   c 品类 ip/gensoc/edgeai/visioniot/mcu   o 属性 1已上市 2未上市 3子公司/已被收购/已停运
    m 代表产品   d 定位   t 场景标签   f 体量（市值/营收/融资）  tw 中国台湾企业
@@ -1384,7 +1536,7 @@ const CATS4 = [
 */
 const ROBOT_PLAYERS = [
   /* ---------- 中国 · 人形机器人 ---------- */
-  {n:"宇树", e:"Unitree", r:"CN", c:"humanoid", o:2, m:"G1 / H1 / R1 人形 · Go2 / B2 四足", d:"从四足到人形、从整机到核心零部件的“技术流”代表，公开定价大幅拉低人形入场门槛，出货与场景落地领先", f:"<span class='fv'>累计融资 >18 亿元</span><span class='fk'>· 2024 年 B 轮 10 亿元，美团、红杉、源码等；估值 ~150 亿元</span><span class='fk'>· G1 公开价 9.9 万元起，是门槛级定价</span>", t:["人形","工业"]},
+  {n:"宇树", e:"Unitree", r:"CN", c:"humanoid", o:2, m:"G1 / H1 / R1 人形 · Go2 / B2 四足", d:"从四足到人形、从整机到核心零部件的“技术流”代表，公开定价大幅拉低人形入场门槛，出货与场景落地领先", f:"<span class='fv'>累计融资 >18 亿元</span><span class='fk'>· 2024 年 B 轮 10 亿元，美团、红杉、源码等；估值 ~150 亿元</span><span class='fk'>· G1 公开价 8.5 万元起，是门槛级定价</span>", t:["人形","工业"]},
   {n:"智元机器人", e:"AgiBot", r:"CN", c:"humanoid", o:2, m:"远征 A2 / A2 Pro · 灵犀 X1", d:"“本体 + 模型”双轮，与上海人工智能实验室“书生”体系深度绑定，聚焦制造与商用场景；股东含多家产业资本", f:"<span class='fv'>累计融资 ~60 亿元</span><span class='fk'>· 2025-03 A 轮超 30 亿元，比亚迪、上汽、北汽、蓝驰等产业方</span><span class='fk'>· 估值 ~170 亿元；灵犀 X1 低价开源硬件</span>", t:["人形","工业"]},
   {n:"优必选", e:"UBTech", r:"CN", c:"humanoid", o:1, m:"Walker S / S1 · Walker 系列", d:"港股的“人形机器人第一股”，主打教育与商用展示导入，延伸至汽车工厂与养老场景", f:"<span class='fx'>已上市 · 港交所 09880</span><span class='fv'>市值 ≈700 亿港元（2026-09）</span><span class='fk'>· 2025 营收 20+ 亿元（+40%），主要来自教育与商用服务机器人</span>", t:["人形","服务"]},
   {n:"傅利叶智能", e:"Fourier Intelligence", r:"CN", c:"humanoid", o:2, m:"GR-1 / GR-2 人形 · 康复外骨骼", d:"从康复 / 医疗外骨骼切入通用人形，强调力控与柔性执行器自研", f:"<span class='fv'>累计融资 ~10 亿元</span><span class='fk'>· 2025-10 战略轮，国家制造业转型基金 + 产业方</span><span class='fk'>· GR-1 多家医院 / 养老 POC</span>", t:["人形","医疗"]},
@@ -1515,6 +1667,23 @@ const ROBOT_PLAYERS = [
   {n:"三星电子", e:"Samsung · 韩国", r:"OT", c:"consumer", o:1, m:"JetBot / Ballie 家庭机器人", d:"家电巨头的家庭 AI 机器人布局，拟把 Rainbow Robotics 纳入合并强化人形", f:"<span class='fx'>已上市 · KRX 005930</span><span class='fv'>市值 ≈$430B（2026-09）</span><span class='fk'>· 2025 收购 / 增持 Rainbow 股权</span>", t:["服务","清洁"]},
   {n:"LG Electronics", e:"韩国", r:"OT", c:"consumer", o:1, m:"CLOi 服务 / 家庭机器人", d:"家电 + 服务机器人，获 LG 集团“物理 AI”基础设施相关订单", f:"<span class='fx'>已上市 · KRX 066570</span><span class='fv'>市值 ≈$21.7B（2026-09）</span><span class='fk'>· 布局家庭 / 商用服务机器人</span>", t:["服务"]},
   {n:"Sanctuary AI", e:"加拿大", r:"OT", c:"humanoid", o:2, m:"Phoenix 人形 · 碳纤维机械手", d:"加拿大通用人形，以 20+ 自由度碳纤维灵巧手为差异化，主打工业与危险作业", f:"<span class='fv'>累计融资 >$100M</span><span class='fk'>· 2024-12 战略轮</span><span class='fk'>· 加拿大 / 北美工业客户</span>", t:["人形","工业"]},
+
+  /* ---------- 中国 · 数据层 / 数据服务 ---------- */
+  {n:"光轮智能", e:"Lightwheel", r:"CN", c:"data", o:2, m:"具身仿真数据合成 + 模型评测基础设施", d:"全球估值最高的独立具身数据服务商之一，聚焦物理仿真、大规模数据生成处理与模型评测一体化，被称“全球首个具身数据独角兽”", f:"<span class='fv'>累计融资 ≈31 亿元（2025-2026 六轮）</span><span class='fk'>· 2026-06 两周内连获两轮共 20 亿元，估值一说达 $2B</span><span class='fk'>· 巨人网络等参投，占行业融资约 7 成</span>", t:["数据"]},
+  {n:"戴盟机器人", e:"Daimon Robotics", r:"CN", c:"data", o:2, m:"触觉多模态数据 + Daimon-TWM 触觉锚定世界模型", d:"以触觉传感为核心差异化的具身数据公司，联合 Google DeepMind 等发布含触觉的全模态物理世界数据集", f:"<span class='fv'>2026-08 蚂蚁集团领投数亿元战略轮</span><span class='fk'>· 老股东超额跟投</span><span class='fk'>· 开源万小时级触觉数据集</span>", t:["数据"]},
+  {n:"觅蜂科技", e:"Maniformer", r:"CN", c:"data", o:2, m:"MEgo 无本体数据采集硬件 + 具身数据平台", d:"智元机器人孵化的具身数据平台公司（智元持股约 75%），主打“随行即采”的无本体数据采集模式", f:"<span class='fv'>2026-02 成立同月获数亿元种子 + 天使轮</span><span class='fk'>· 红杉中国领投</span><span class='fk'>· 2026-06 数亿元天使+轮，国方创投领投</span>", t:["数据"]},
+  {n:"诺亦腾机器人", e:"Noitom Robotics", r:"CN", c:"data", o:2, m:"HiPHI 人体运动数据集 + ModalityNet 数据平台", d:"全球动作捕捉设备厂商（《权力的游戏》《金刚狼》特效供应商）分拆的机器人数据业务，定位“不造机器人的机器人数据公司”", f:"<span class='fv'>2025-09 天使轮数千万元</span><span class='fk'>· 2026-06 Pre-A++ 轮数亿元，北京/上海人工智能产业投资基金等</span><span class='fk'>· 开源 617.5 小时人体运动数据集</span>", t:["数据"]},
+  {n:"帕西尼", e:"Paxini", r:"CN", c:"data", o:2, m:"具身数据采集工厂集群 + 数据云商城", d:"以规模化“数据工厂”路线切入，2026 年新增苏迁 / 武汉 / 自贡 / 赣州多座采集工厂，推出具身数据交易平台", f:"<span class='fv'>融资金额未披露</span><span class='fk'>· 触觉传感器起家，向数据服务延伸</span>", t:["数据"]},
+
+  /* ---------- 国际 · 数据层 / 数据服务 ---------- */
+  {n:"Scale AI", e:"美国", r:"US", c:"data", o:1, m:"Physical AI 数据引擎 + 力反馈数据", d:"从数据标注切入 AI 全链路的巨头，为具身模型公司提供大规模物理世界数据交付服务，客户含 Physical Intelligence 等头部具身模型公司", f:"<span class='fv'>2025 年 Meta 以 $14.3B 收购 49% 股权</span><span class='fk'>· 单年交付物理 AI 数据超 15 万小时</span>", t:["数据"]},
+  {n:"XDOF", e:"美国 / 英国", r:"US", c:"data", o:2, m:"GELLO 遥操作臂 + 机器人遥操作数据管线", d:"出身伯克利，成立仅数月即传出高估值融资洽谈的机器人数据新贵，开源大规模遥操作片段数据集，客户含多家前沿 AI 实验室", f:"<span class='fv'>2026-06 融资 $70M</span><span class='fk'>· 2026-09 传 Series B 洽谈估值 $1.2B</span><span class='fk'>· 开源 13 万+ 遥操作片段</span>", t:["数据"]},
+  {n:"Micro1", e:"美国", r:"US", c:"data", o:2, m:"众包第一视角家务任务视频数据", d:"依托全球 50+ 国家众包网络采集家务 / 日常任务第一视角视频，服务未披露的前沿 AI 实验室", f:"<span class='fv'>融资 $35M（Series A）</span><span class='fk'>· 月提交超 16 万小时视频</span>", t:["数据"]},
+  {n:"Tacta Systems", e:"美国", r:"US", c:"data", o:2, m:"传感手套 + 产线工人具身数据采集", d:"为在产工人配备力 / 动作 / 温度传感手套，在真实产线原位采集技能数据，同时研发机器人灵巧手方案", f:"<span class='fv'>融资 $75M</span>", t:["数据"]},
+  {n:"Build AI", e:"美国", r:"US", c:"data", o:2, m:"工厂工人第一视角摄像眼镜数据 + 开源数据集", d:"以摄像眼镜采集工厂工人第一视角视频，并以 Apache 2.0 协议开源大规模数据集，是行业少见的开源路线代表", f:"<span class='fv'>融资 ≈$15M</span><span class='fk'>· 开源 10 万小时 Egocentric-100K 数据集</span>", t:["数据"]},
+  {n:"Hub.xyz", e:"美国", r:"US", c:"data", o:2, m:"全球众包第一视角视频数据网络", d:"YC 孵化的众包第一视角数据平台，覆盖约 150 个国家，在巴西等地设有实地运营团队", f:"<span class='fv'>种子轮 $1.7M（YC）</span><span class='fk'>· 覆盖超 54 万小时视频</span>", t:["数据"]},
+  {n:"Mecka AI", e:"加拿大 / 美国", r:"OT", c:"data", o:2, m:"体感传感器 + 手机采集人类动作数据", d:"多伦多 / 纽约双总部团队，用体感传感器与手机采集人类动作数据训练机器人，已并购加拿大数据处理公司 Docula", f:"<span class='fv'>融资 $60M（Series A，Framework Ventures 领投）</span><span class='fk'>· 客户含 1X Technologies</span><span class='fk'>· 自报年化签约收入约 $100M</span>", t:["数据"]},
+  {n:"Encord", e:"英国", r:"EU", c:"data", o:2, m:"数据标注、治理与质检基础设施（含物理 AI 数据）", d:"英国团队的数据基础设施与标注平台，业务范围从计算机视觉扩展到物理 AI / 机器人数据管理", f:"<span class='fv'>融资 $110M</span>", t:["数据"]},
 ];
 
 const CATS_ROBOT = [
@@ -1522,9 +1691,10 @@ const CATS_ROBOT = [
   {k:"industrial", n:"工业机器人 / AGV·AMR", s:"Industrial & Logistics · 工业臂、协作臂、仓储机器人", def:"已高度成熟的存量市场：工业机器人四大家族主导，中国以埃斯顿、汇川等做国产替代；AGV / AMR 是最快增长细分", biz:"竞争逻辑：规模 + 客户绑定 + 核心部件自制；国产替代是主线"},
   {k:"service", n:"服务 / 商用机器人", s:"Service & Commercial · 送餐、酒店、清洁", def:"以场景 + 商业模式驱动：送餐、酒店、商用清洁、院内物流，中国玩家密度与出货量全球第一", biz:"竞争逻辑：场景密度 + 出海渠道 + 售后网络"},
   {k:"consumer", n:"消费机器人 / 无人机", s:"Consumer & Drones · 扫地机、无人机、家庭机器人", def:"规模最大、最成熟的一类：扫地机、无人机、洗地机、家庭机器人，中国品牌全球主导", biz:"竞争逻辑：品牌 + 供应链成本 + 算法体验；iRobot 掉队是“中国替代发明者”的缩影"},
-  {k:"embodied", n:"具身智能模型 / 核心部件", s:"Embodied AI & Components · 具身模型、灵巧部件", def:"具身智能的“软件 + 供应链”：VLA 具身基础模型，以及人形核心部件（谐波减速器 / 丝杠 / 灵巧手 / 力传感器）", biz:"竞争逻辑：模型公司赌“一个模型、千机千面”，部件公司赌“人形量产国产替代”"}
+  {k:"embodied", n:"具身智能模型 / 核心部件", s:"Embodied AI & Components · 具身模型、灵巧部件", def:"具身智能的“软件 + 供应链”：VLA 具身基础模型，以及人形核心部件（谐波减速器 / 丝杠 / 灵巧手 / 力传感器）", biz:"竞争逻辑：模型公司赌“一个模型、千机千面”，部件公司赌“人形量产国产替代”"},
+  {k:"data", n:"数据层 / 数据服务", s:"Embodied Data · 采集、标注、合成与交易", def:"具身智能的“新油田”：真机遥操作、可穿戴 / 传感器捕捉、众包第一视角视频、仿真合成数据，以及围绕这些数据的标注、清洗、交易基础设施", biz:"竞争逻辑：独立数据商赌“军火商”地位（不下场造机器人）；机器人厂自建数据生态赌“数据飞轮”反哺自家模型"}
 ];
-const ROBOT_TAGS = ["人形","工业","协作臂","物流","服务","清洁","无人机","医疗","核心部件","具身模型"];
+const ROBOT_TAGS = ["人形","工业","协作臂","物流","服务","清洁","无人机","医疗","核心部件","具身模型","数据"];
 
 /* ===================== L5 可穿戴 / XR 玩家数据 =====================
    r: 地区 CN/US/EU/OT   c: 品类 xrheadset/glasses/watch/earable/health
@@ -1648,7 +1818,6 @@ const NATIVEHW_PLAYERS = [
   {n:"Omi", e:"Based Hardware", r:"US", c:"pendant", o:2, m:"Omi AI 挂件 / 戒指", d:"开源软硬件路线的常时收音 AI 硬件，主打开发者生态与个性化记忆检索，形态覆盖挂件与戒指", f:"<span class='fv'>Y Combinator 孵化，早期种子轮融资</span><span class='fk'>· 具体金额未公开披露</span>", t:["录音","语音助理"]},
   {n:"Genspark", e:"SecondBrain Note", r:"US", c:"pendant", o:2, m:"SecondBrain Note 卡片式 AI 录音硬件", d:"厚度仅 2.95mm、26g 的卡片形态录音硬件，四麦克风阵列 + 骨传导感应，2026 年 7 月上市直接对标 Plaud Note", f:"<span class='fv'>Genspark 为已获多轮融资的生产力独角兽</span><span class='fk'>· SecondBrain Note 2026-07-21 正式发售，定价 $179–199</span>", t:["录音","会议纪要"]},
   {n:"Nirva", e:"Nirva AI Jewelry", r:"US", c:"pendant", o:2, m:"Nirva AI 项链 / 手链情绪记录硬件", d:"前 Meta Reality Labs 团队创立，钛金属项链 / 手链内置麦克风与运动传感器，不采集生物特征，主打自动情绪日记而非效率工具", f:"<span class='fv'>种子轮融资 $800 万</span><span class='fk'>· Lightspeed 等参与，2026 年 CES 发布并开放预订</span>", t:["情绪记录","陪伴"]},
-  {n:"Wispr AI", e:"Wispr", r:"US", c:"pendant", o:2, m:"Wispr AI 挂件", d:"前 OpenAI 员工创立的 AI 挂件公司，产品定位“始终在线的 AI 对话伴侣”，是 Plaud（效率工具）和 Friend（陪伴）之外的第三条路线——“主动式 AI 助理”", f:"<span class='fv'>2025 年完成大额融资，估值数亿美元</span><span class='fk'>· 具体轮次与投资方未完全公开披露</span>", t:["语音助理"]},
 
   /* ---------- 中国 · 无屏 AI 助理 ---------- */
   {n:"联想 · Motorola", e:"Lenovo Project Maxwell", r:"CN", c:"assistant", o:2, m:"Motorola Project Maxwell AI 挂件原型", d:"联想旗下 Motorola 品牌展示的无屏 AI 挂件概念机，主打常时语音助理与情境感知，尚处原型 / 概念阶段未量产", f:"<span class='fv'>联想集团内部孵化项目</span><span class='fk'>· 未独立对外融资，未公布量产计划</span>", t:["语音助理"]},
@@ -1944,6 +2113,390 @@ const DZ = (() => {
 </script>
 
 <script>
+/* ===================== L3 子页：技术路线与指标对比 ===================== */
+(function(){
+const SPEC=[
+{n:"Qwen3.5-0.8B",v:"阿里巴巴",r:"CN",rel:"2026-03",p:0.8,pd:"0.8B（含视觉塔 0.9B）",a:"lin",ctx:262144,ctxd:"262K 原生",q:"Q4_K_M 533MB（不含视觉塔）",perf:"Qualcomm 口径 · decode · q4_0 · llama.cpp CPU/GPU（非 NPU）：骁龙8 Elite Gen5 29.3–75.0 tok/s；TTFT@4096ctx 11.88–380.02s",d:3,dev:"手机",lic:"Apache-2.0",o:1,mo:"文+图+视频",nt:"家族宣传语称 MoE，但端侧四款 FFN 是 dense，无 experts"},
+{n:"Qwen3.5-2B",v:"阿里巴巴",r:"CN",rel:"2026-03",p:2,pd:"2B",a:"lin",ctx:262144,ctxd:"262K 原生",q:"Q4_K_M 1.28GB",perf:"Qualcomm 口径 · decode · q4_0 CPU/GPU：骁龙8 Elite Gen5 26.6–39.7 tok/s；TTFT@4096ctx 4.97–723.59s",d:3,dev:"手机",lic:"Apache-2.0",o:1,mo:"文+图+视频",nt:"TTFT 区间跨三个数量级，引用必须带 prompt 长度"},
+{n:"Qwen3.5-4B",v:"阿里巴巴",r:"CN",rel:"2026-03",p:4,pd:"4B（含视觉塔 5B）",a:"lin",ctx:262144,ctxd:"262K 原生 → YaRN 1.01M",q:"Q4_K_M 2.74GB",perf:"未披露（Qualcomm AI Hub 未收录，阿里官方从未发过任何手机 tokens/s）",d:0,dev:"手机",lic:"Apache-2.0",o:1,mo:"文+图+视频",nt:"ScreenSpot Pro 60.3 / AndroidWorld 58.6，端侧 GUI agent 能力最强的一档"},
+{n:"Qwen3.5-9B",v:"阿里巴巴",r:"CN",rel:"2026-03",p:9,pd:"9B（含视觉塔 10B）",a:"lin",ctx:262144,ctxd:"262K 原生 → YaRN 1.01M",q:"Q4_K_M 5.68GB",perf:"未披露",d:0,dev:"PC/高端手机",lic:"Apache-2.0",o:1,mo:"文+图+视频",nt:""},
+{n:"Qwen3-4B-Instruct-2507",v:"阿里巴巴",r:"CN",rel:"2025-08",p:4,pd:"4B，36 层 GQA 32Q/8KV",a:"dense",ctx:262144,ctxd:"262K 原生",q:"Qualcomm 分发 w4a16（NPU）与 q4_0（llama.cpp）两套",perf:"全表最重要的后端对照组，同芯片同 4096ctx：GENIE w4a16 NPU 29.24 tok/s（TTFT 0.052–1.657s）vs GENIEX_LLAMACPP q4_0 CPU/GPU 仅 7.58–12.11 tok/s（TTFT 最高 108s）→ NPU 是 CPU 路径 2–3 倍，TTFT 差 50–70 倍",d:3,dev:"手机",lic:"Apache-2.0",o:1,mo:"语言",nt:"跨后端比较完全无效的活证据"},
+{n:"DeepSeek-R1-Distill-Qwen-1.5B",v:"DeepSeek",r:"CN",rel:"2025-01",p:1.5,pd:"1.5B",a:"dense",ctx:32768,ctxd:"官方示例 32K（底座 Qwen2.5-Math 原生仅 4K）",q:"官方不发量化版；Ollama Q4_K_M 1.1GB（第三方）",perf:"DeepSeek 官方零端侧数据。第三方 Google LiteRT，三星 S24 Ultra，dynamic_int8（非 INT4）：CPU decode 26.35 tok/s / TTFT 6.41s / 峰值 RSS 2221MB",d:2,dev:"手机",lic:"MIT（底座 Apache-2.0）",o:1,mo:"语言",nt:"底座是 Qwen2.5-Math 数学专用基座，非通用版"},
+{n:"DeepSeek-R1-0528-Qwen3-8B",v:"DeepSeek",r:"CN",rel:"2025-05",p:8,pd:"8B",a:"dense",ctx:131072,ctxd:"131K",q:"Ollama Q4_K_M 5.2GB（第三方）",perf:"未披露。LM Studio 称最低 4GB RAM 可跑",d:0,dev:"PC/高端手机",lic:"MIT（底座 Apache-2.0）",o:1,mo:"语言",nt:"Ollama 的 deepseek-r1:8b 指向的是这个，不是 Llama-8B 蒸馏版"},
+{n:"MiniCPM5-1B",v:"面壁智能",r:"CN",rel:"2026-05",p:1.08,pd:"1,080,632,832（非 emb 6.80 亿）",a:"dense",ctx:131072,ctxd:"131K",q:"官方称 INT4 后权重仅 0.5GB",perf:"无任何 tokens/s。官方仅定性称能跑在手机上、跑在浏览器里",d:0,dev:"手机",lic:"Apache-2.0",o:1,mo:"语言",nt:"AA-Index 17.9，小尺寸榜首"},
+{n:"MiniCPM5-2B",v:"面壁智能",r:"CN",rel:"2026-09",p:2.52,pd:"2,516,756,480（非 emb 19.82 亿）",a:"dense",ctx:131072,ctxd:"131K（model card）；WAIC 宣传称 512K，冲突",q:"GGUF Q4_K_M 1.56GB；配 DSpark 投机解码草稿模型",perf:"无绝对 tokens/s、时延、内存。唯一工程口径是 9 款芯片 Day-0 适配",d:0,dev:"手机",lic:"Apache-2.0",o:1,mo:"语言",nt:"放弃了 MiniCPM4 的 InfLLM v2 稀疏注意力，回归标准 Dense LlamaForCausalLM"},
+{n:"MiniCPM-V 4.6",v:"面壁智能",r:"CN",rel:"2026-05",p:1.3,pd:"1.3B（中文稿）/ 1B（HF metadata），口径冲突",a:"dense",ctx:0,ctxd:"未披露；端侧 llama.cpp 默认 4K 窗口",q:"LLM Q4_K_M 0.53GB + 视觉塔 f16 mmproj 1.11GB = 约 1.64GB（视觉塔故意不量化，占 69%）",perf:"官方点名 iPhone 17 Pro Max / Redmi K70 / nova 14，约 6GB 内存离线运行；3136² 图 TTFT 75.7ms。官方另称 7013 token/s 是服务器单卡高并发吞吐，不是手机端 decode",d:2,dev:"手机",lic:"Apache-2.0",o:1,mo:"图/多图/视频→文",nt:"语言基座是 Qwen3.5-0.8B，视觉塔是 SigLIP2-400M，非自研基座"},
+{n:"GLM-Edge-1.5B-Chat",v:"智谱",r:"CN",rel:"2024-11",p:1.5,pd:"1.5B",a:"unk",ctx:0,ctxd:"完全未披露",q:"高通平台混合量化 / GGUF / OpenVINO INT4；体积未给",perf:"全表唯一完整三元组：骁龙8 Elite 全层 NPU，INT4+QNN，512in/128out — TTFT 260ms、decode 65 tok/s、峰值内存 1.2GB；Intel LNL 288V INT4+OpenVINO 1024/128 — 228.2ms / 63 tok/s / 2.3GB。投机采样后 token rate 最高 +50%",d:3,dev:"手机/PC",lic:"代码 Apache-2.0，权重另有 MODEL_LICENSE",o:2,mo:"语言",nt:"数据质量最高但可复现性最差：高通推理方案开源仓库不提供"},
+{n:"GLM-Edge-4B-Chat",v:"智谱",r:"CN",rel:"2024-11",p:4,pd:"4B",a:"unk",ctx:0,ctxd:"完全未披露",q:"同 1.5B",perf:"骁龙8 Elite NPU INT4，512/128：TTFT 660ms、24 tok/s、2.9GB；Intel LNL 1024/128：541.2ms、27 tok/s、3.9GB。视觉版每图额外 +890ms/+660MB（高通）",d:3,dev:"手机/PC",lic:"代码 Apache-2.0，权重另有 MODEL_LICENSE",o:2,mo:"语言",nt:"repo 内无任何精度 benchmark"},
+{n:"Hunyuan-1.8B-Instruct",v:"腾讯",r:"CN",rel:"2025-07",p:1.8,pd:"1.8B（HF 显示 2B 含 emb）",a:"dense",ctx:262144,ctxd:"256K 原生",q:"AngelSlim FP8-static / INT4 GPTQ 或 AWQ (W4A16)；GGUF q4_0 实测 1.08GB",perf:"模型卡无任何端侧数据。唯一官方端侧口径来自 2024-10 高通合作：骁龙8 至尊版硬件 INT4，首 token 150ms、decode >30 tok/s — 但该数据早于本系列开源且未指明尺寸",d:2,dev:"手机",lic:"腾讯混元社区协议（非 OSI，排除欧盟/英国/韩国）",o:2,mo:"语言",nt:"全表唯一量化掉点实测链：BF16 76.7 → FP8 75.1 → INT4-GPTQ 73.0 → INT4-AWQ 71.7"},
+{n:"HY-1.8B-2Bit",v:"腾讯 AngelSlim",r:"CN",rel:"2026-02",p:1.8,pd:"母模型 1.8B，2-bit 后等效约 0.3B",a:"dense",ctx:0,ctxd:"未披露",q:"601MB（q2_0c int2 per-channel GGUF）；2-bit QAT + 弹性拉伸量化 SEQ",perf:"全部为相对倍数，无绝对 tokens/s：真实端侧生成速度 +2–3×；MacBook M4 双线程 1024 token 内 TTFT 加速 3–8×；天玑 9500 对比 Q4 版 TTFT 快 1.5–2×",d:1,dev:"手机/PC（仅 Arm SME2）",lic:"AngelSlim 自有协议",o:2,mo:"语言",nt:"硬件门槛极窄：仅 Arm SME2 设备（Apple M4、vivo X300），需 llama.cpp PR 分支 + KleidiAI"},
+{n:"openPangu-Embedded-1B",v:"华为",r:"CN",rel:"2025-08",p:1,pd:"1B（不含 embedding），26 层 GQA 12Q/6KV",a:"dense",ctx:32768,ctxd:"32K 原生",q:"未披露（仓库无量化权重）",perf:"模型卡无任何 tokens/s、TTFT、内存。仅列部署目标：昇腾 Atlas 200I A2 / OrangePi AIpro",d:0,dev:"单板/边缘盒",lic:"OPENPANGU MODEL LICENSE v1.0",o:2,mo:"语言",nt:"命名即端侧、评测硬件却是 Atlas 800T A2 服务器卡"},
+{n:"盘古端侧 30B-A2B",v:"华为",r:"CN",rel:"2026-09",p:30,pd:"30B 总参 / 2B 激活",a:"moe",ctx:0,ctxd:"未披露",q:"未披露（媒体口径：亲和量化剪枝 + 分层权重管理）",perf:"仅有余承东 HDC 2026 口径「模型吞吐率 5 倍以上提升」，基准对象未说明。绝对 tokens/s、TTFT、内存全部未披露",d:1,dev:"手机（麒麟 9050 Pro）",lic:"闭源，仅随设备分发",o:3,mo:"全模态",nt:"2026-09-07 随 Mate XT 2 落地，连正式产品名官方都未统一"},
+{n:"BlueLM-V-3B",v:"vivo",r:"CN",rel:"2024-11",p:3,pd:"3B",a:"dense",ctx:0,ctxd:"未披露",q:"论文明确配置：SigLIP/MLP 权重 INT8、LLM 权重 INT4、LLM 激活 INT16、KV cache INT8",perf:"论文口径，天玑 9300 NPU：图像处理 2.53s、LLM prefill 2.7s、decode 24.4 tok/s、峰值内存 2.2GB。全表唯一明确分列 prefill 与 decode 的中国型号",d:3,dev:"手机",lic:"论文 CC BY 4.0，权重未开源",o:3,mo:"图文",nt:"OpenCompass 平均 66.1，≤4B 参数第一"},
+{n:"AndesVL-4B",v:"OPPO",r:"CN",rel:"2025-10",p:4.36,pd:"4.360B",a:"dense",ctx:32768,ctxd:"预训练 8K → 32K；OKV eviction 支持到 128K",q:"QAT + QALFT（量化感知 LoRA 微调），权重 2/3/4/8bit + 激活 8/16bit 混合；实测 1.8 bits-per-weight",perf:"全部相对倍数，无绝对 tokens/s / TTFT / GB：天玑 9500 上峰值 decode 加速 6.7×、内存降低最高 30.9%、量化后效果仅降 3%",d:1,dev:"手机",lic:"HF 权重 Apache-2.0",o:1,mo:"图文",nt:"全表唯一披露 bits-per-weight 的型号；语言基座是 Qwen3-4B"},
+{n:"MagicVL-2B",v:"荣耀",r:"CN",rel:"2025-08",p:2,pd:"总参未披露（名称含 2B）",a:"dense",ctx:16384,ctxd:"训练最大 16K；部署窗口未说明",q:"未披露（MagicVL-Nano 宣称行业首发端侧 2bit 量化）",perf:"论文口径，骁龙8 Elite，未注明量化位宽：模型加载 1.01s、ViT 延迟 0.09s、LLM 延迟 1.7s、decode 23.9 tok/s、推理功耗降低 41.1%",d:2,dev:"手机",lic:"权重开源状态未说明",o:3,mo:"图文",nt:"语言基座是 Qwen3-1.7B；荣耀另引用的 +15%/−20%/−30% 是高通芯片侧数据，别重复计算"},
+{n:"Spark-X2.5-4B",v:"词元星火 XHToken",r:"CN",rel:"2026-09",p:4.11,pd:"4,112,079,360",a:"swa",ctx:1048576,ctxd:"1,048,576（1M）原生 — 全表最长",q:"Q4_K_M 2.6GB（Q8_0 4.38GB，FP16 8.23GB）；另有官方 FP8/INT8",perf:"官方零 tokens/s、零 TTFT、零内存，仅定性称多硬件平台上 TTFT、TOPT 优于同尺寸模型",d:0,dev:"手机/PC",lic:"Apache-2.0",o:1,mo:"语言（200+ 语种）",nt:"1 层全注意力 + 3 层滑窗循环堆叠；论文标题直接定位 On-Device"},
+{n:"Spark-X2.5-1.7B",v:"词元星火 XHToken",r:"CN",rel:"2026-09",p:1.7,pd:"约 1.7B（HF 显示 2B，精确值未披露）",a:"swa",ctx:1048576,ctxd:"1M 原生",q:"Q4_K_M 1.11GB",perf:"唯一带数字的官方端侧口径：Domux 智能家居测试集控制指令端到端正确率 90.3%、平均响应时间 0.85 秒（端到端，非 tokens/s，未注明硬件与量化位宽）",d:1,dev:"手机/IoT",lic:"Apache-2.0",o:1,mo:"语言",nt:""},
+{n:"RWKV7-G1-1.5B",v:"元始智能",r:"CN",rel:"2025-04",p:1.5,pd:"1.5B（L24-D2048）",a:"rnn",ctx:16384,ctxd:"RNN 无固定窗口；训练 ctx 16384",q:"官方只发 FP16 .pth（3.06GB），GGUF 由社区维护。官方明确建议 0.1B/0.4B 不要用低比特量化",perf:"官方口径：高通 8Gen3 NPU 优化后 1.5B = 62 tok/s、G1-0.1B = 170 tok/s。未说明量化位宽、内存占用，未区分 prefill/decode",d:2,dev:"手机",lic:"Apache-2.0",o:1,mo:"语言（100+ 语种）",nt:"全表唯一 100% 纯 RNN 路线，无 KV cache，恒定推理速度与显存；最大短板是 transformers 至今不能原生加载"},
+{n:"Gemma 4 E2B",v:"Google DeepMind",r:"US",rel:"2026-03",p:2.3,pd:"有效 2.3B / 总计 5.1B，35 层",a:"ple",ctx:131072,ctxd:"128K（LiteRT-LM 端侧构建为 32K）",q:"官方 QAT wNa8o8（int2+int4 混合权重 + int8 激活）；bf16 11.4GB → Q4_0 2.9GB → 移动端 1.1GB；LiteRT-LM 实测磁盘 2583MB",perf:"LiteRT-LM 官方表，1024 prefill/256 decode，ctx 2048：S26 Ultra GPU prefill 3808 / decode 52.1 / TTFT 0.3s / 676MB；iPhone 17 Pro GPU 2878 / 56.5；Dragonwing IQ8 NPU 3747 / 31.7；树莓派5 CPU 133 / 7.6 / TTFT 7.8s。MTP 投机解码把 S26 GPU decode 从 51.5 拉到 66.5–91.7",d:3,dev:"手机/PC/单板",lic:"Apache 2.0",o:1,mo:"文+图+音频→文",nt:"同机同模型 prefill 3808 vs decode 52.1，相差 73 倍；E 是 effective，差额来自 PLE 而非 MatFormer"},
+{n:"Gemma 4 E4B",v:"Google DeepMind",r:"US",rel:"2026-03",p:4.5,pd:"有效 4.5B / 总计 8B，42 层",a:"ple",ctx:131072,ctxd:"128K",q:"bf16 17.9GB → Q4_0 4.5GB → 移动端 2.5GB；LiteRT-LM 磁盘 3654MB",perf:"S26 Ultra GPU prefill 1293 / decode 22.1 / TTFT 0.8s；M4 Max GPU 2560 / 101.1；树莓派5 CPU 51 / 3.2 / TTFT 20.5s。MTP 后 S26 GPU decode 21.9→36.7–49.4",d:3,dev:"手机/PC/单板",lic:"Apache 2.0",o:1,mo:"文+图+音频→文",nt:"E2B（35 层）与 E4B（42 层）分别独立训练，不是嵌套子模型 — Gemma 4 报告全文无 MatFormer 字样"},
+{n:"Gemma 3n E4B",v:"Google DeepMind",r:"US",rel:"2025-06",p:4,pd:"有效约 4B / 原始 8B",a:"matformer",ctx:32768,ctxd:"32K",q:"LiteRT dynamic_int4：.tflite 4201MB；官方称最低 3GB 内存可运行",perf:"S25 Ultra，4096 KV，1024/256，dynamic_int4：CPU prefill 118 / decode 12.8 / TTFT 9.2s；GPU 446 / 16.1 / TTFT 15.1s、Peak RSS 5504MB",d:3,dev:"手机",lic:"Gemma Terms of Use",o:2,mo:"文+图+音频+视频→文",nt:"MatFormer 嵌套只适用于 Gemma 3n：E2B 是训练时同步优化、可直接抽取的子模型"},
+{n:"Gemma 3 1B",v:"Google DeepMind",r:"US",rel:"2025-03",p:1,pd:"约 1.0B = emb 302M + non-emb 698M",a:"swa",ctx:32768,ctxd:"32K",q:"官方 QAT int4：bf16 2.0GB → int4 0.5GB（+32K KV 则 2.9 → 1.4GB）",perf:"S25 Ultra NPU a16w4 QAT ctx1280：prefill 5836 / decode 85 tok/s / 内存 626MB；同机 CPU dyn_int4 QAT 仅 prefill 322 / decode 47",d:3,dev:"手机/PC/单板",lic:"Gemma Terms of Use",o:2,mo:"纯文本",nt:"官方 QAT 博客的显存下降只算权重，不含 KV cache — 27B int4 权重 14.1GB 但 +32K KV 是 32.8GB"},
+{n:"Gemma 3 270M",v:"Google DeepMind",r:"US",rel:"2025-08",p:0.27,pd:"270M = embedding 170M + blocks 100M",a:"dense",ctx:32768,ctxd:"32K",q:"官方 INT4 QAT checkpoint",perf:"Pixel 9 Pro SoC 内部测试：INT4 版跑 25 轮对话仅消耗 0.75% 电量。无 tok/s、无 TTFT",d:1,dev:"手机/单板",lic:"Gemma Terms of Use",o:2,mo:"纯文本",nt:"词表 256k 导致 embedding 占 63%"},
+{n:"FunctionGemma 270M",v:"Google DeepMind",r:"US",rel:"2025-12",p:0.27,pd:"270M（基于 Gemma 3 270M）",a:"dense",ctx:32768,ctxd:"32K",q:"dynamic_int8，模型 288MB",perf:"S25 Ultra CPU，XNNPACK 4 线程，512 prefill/32 decode，ctx1024：prefill 1718 tok/s、decode 125.9 tok/s、TTFT 0.3s、Peak RSS 551MB",d:3,dev:"手机",lic:"Gemma Terms of Use",o:2,mo:"纯文本（function calling）",nt:"端侧 agent 专用；Mobile Actions 微调后 58%→85%"},
+{n:"Gemini Nano（nano-v3/v4）",v:"Google",r:"US",rel:"2023-12",p:0,pd:"未披露（仅 Gemini 1.0 时代披露过 Nano-1 1.8B / Nano-2 3.25B）",a:"unk",ctx:0,ctxd:"未披露",q:"未披露（初代官方原文称 4-bit quantized for deployment）",perf:"参数量、上下文、量化方案、tok/s、内存全部未披露。官方只有定性表述。Gemini Nano 4 称比前代快 4×、省电 60%，未说明 prefill 还是 decode",d:1,dev:"手机（随 AICore 分发）",lic:"闭源，随 OS 分发",o:3,mo:"文+图+音频",nt:"覆盖超过 1.4 亿台设备（2026-04）。nano-v2/v3/v4 是版本代际，不是 Nano-1/Nano-2 尺寸档 — 二手资料常把 3.25B 错套到 nano-v3"},
+{n:"Llama 3.2 1B SpinQuant",v:"Meta",r:"US",rel:"2024-10",p:1.23,pd:"1.23B",a:"dense",ctx:8192,ctxd:"8K（从原版 128K 砍下）",q:"INT4_EO8：block 内 linear 4bit groupwise g32 + 激活 8bit per-token；embedding 8bit per-channel。.pte 1083MB（−54.1%）",perf:"OnePlus 12，ExecuTorch + ARM CPU（非 NPU）：decode 50.2 tok/s（2.6×）、prefill 260.5 tok/s（4.3×）、TTFT 0.3s（prompt len=64）、RSS 1921MB（−39.7%）",d:3,dev:"手机",lic:"Llama 3.2 Community License",o:2,mo:"纯文本",nt:"隐藏代价：上下文 128K→8K，BFCL V2 工具调用 25.7→15.9"},
+{n:"Llama 3.2 3B SpinQuant",v:"Meta",r:"US",rel:"2024-10",p:3.21,pd:"3.21B",a:"dense",ctx:8192,ctxd:"8K（原版 128K）",q:"同 INT4_EO8；BF16 6129MB → 2435MB（−60.3%）",perf:"OnePlus 12 ARM CPU：decode 19.7 tok/s（2.6×）、prefill 89.7 tok/s（4.2×）、TTFT 0.7s、RSS 3726MB（−49.8%）",d:3,dev:"手机",lic:"Llama 3.2 Community License",o:2,mo:"纯文本",nt:"Meta 的「2–4×」是聚合说法，实为 decode 2.5× / prefill 4.2×"},
+{n:"MobileLLM-R1-950M",v:"Meta FAIR",r:"US",rel:"2025-09",p:0.95,pd:"949M，22 层 GQA 24Q/6KV",a:"dense",ctx:32768,ctxd:"base 4K / post-trained 32K",q:"官方未披露量化 checkpoint",perf:"未披露。官方只强调数据效率：<5T total training tokens（约 Qwen3-0.6B 的 1/9）",d:0,dev:"手机",lic:"FAIR Noncommercial Research License v1",o:3,mo:"纯文本（数学/代码/科学）",nt:"mid-training 阶段蒸馏自 Llama-3.1-8B-Instruct；MATH500 74.0 超 Qwen3-0.6B"},
+{n:"Muse Glimmer 30B",v:"Meta Superintelligence Labs",r:"US",rel:"2026-08",p:30,pd:"30B（官方未明确 dense 还是 MoE）",a:"unk",ctx:0,ctxd:"Meta 官方未披露（第三方报 128K，需谨慎）",q:"全精度需 >55GB；约 4-bit 后语言模型 <20GB，可塞进 24GB/32GB 显存包络。官方 benchmark 有 K-Quant-17GB 变体",perf:"投机解码加速 RTX 5090 3.1× / M5 Max 1.8× / M4 Max 1.5×。绝对 tok/s 未披露",d:1,dev:"PC（手机不可行）",lic:"Apache 2.0",o:1,mo:"文+图输入→文输出",nt:"Meta 首个用 OSI 标准许可发布的前沿模型，无 7 亿 MAU 限制"},
+{n:"Phi-4-mini-instruct",v:"Microsoft",r:"US",rel:"2025-02",p:3.8,pd:"3.8B",a:"dense",ctx:131072,ctxd:"128K",q:"官方 ONNX INT4 RTN block-32（CPU/mobile 与 CUDA/DirectML 两套）；无 NPU/QNN target，无 AWQ；文件体积未列",perf:"ONNX INT4 vs PyTorch：RTX 4090 260.0 tok/s（5×）；Intel Core Ultra 7 165H 笔记本 CPU 仅 4.863 tok/s（2.8×）。TTFT 与内存占用未披露",d:3,dev:"PC",lic:"MIT",o:1,mo:"纯文本（function calling）",nt:"200K vocab + GQA + shared input/output embedding"},
+{n:"Phi-4-mini-flash-reasoning",v:"Microsoft",r:"US",rel:"2025-06",p:3.8,pd:"3.8B",a:"ssm",ctx:65536,ctxd:"64K",q:"官方未披露",perf:"数据中心口径，不是端侧：解码吞吐最高 10× 于 Phi-4-mini-reasoning，条件为 2K prompt / 32K 生成、vLLM、单张 A100-80GB、TP=1。无任何手机/NPU/Copilot+ PC 官方 tok/s",d:1,dev:"PC/工作站",lic:"MIT",o:1,mo:"纯文本",nt:"SambaY 架构：self-decoder 是 Mamba+滑窗注意力，cross-decoder 用 GMU 门控记忆单元替换约一半 cross-attention，prefill 复杂度线性"},
+{n:"Phi Silica",v:"Microsoft",r:"US",rel:"2024-05",p:0,pd:"未披露（流传的 3.3B 来自媒体报道；官方只说是 Phi-3.5-mini 的 Cyber-EO 合规衍生版）",a:"dense",ctx:2048,ctxd:"实际发运版 2K（原浮点模型 4K）",q:"QuaRot + GPTQ 4-bit 权重 + 16-bit 无符号激活；128 个权重矩阵中约 4–8 个用 8-bit。综合内存降低约 60%，GB 数未披露",perf:"Copilot+ PC 骁龙 X 系列 NPU 40+ TOPS：decode up to 20 tok/s、TTFT 230ms（短 prompt）。上下文处理能耗仅 4.8 mWh",d:3,dev:"PC（Copilot+）",lic:"闭源，随 OS 分发",o:3,mo:"纯文本",nt:"并非纯 NPU：transformer block 在 NPU，tokenizer/embedding/LM head/GQA 在 CPU。流传的「650 tokens per second first token latency」单位自相矛盾，实为 prompt 处理吞吐。2026-11-24 起被 Aion 取代并移除"},
+{n:"Mu",v:"Microsoft",r:"US",rel:"2025-06",p:0.33,pd:"330M",a:"encdec",ctx:0,ctxd:"未披露；官方只说 encoder-decoder 优势在 512–8192 token 区间成立",q:"PTQ，主要 8-bit 与 16-bit，无需重训练。体积未披露",perf:">100 tok/s（Copilot+ NPU，模型完全 offload 到 NPU）、>200 tok/s（Surface Laptop 7）、端到端响应 <500ms。Hexagon NPU 上比同尺寸 decoder-only 首 token 延迟低 47%、解码快 4.7×（基线未命名）",d:3,dev:"PC（Copilot+）",lic:"闭源，随 Windows 分发",o:3,mo:"纯文本（自然语言→Windows 设置）",nt:"约 2/3 encoder : 1/3 decoder 层配比；各层维度刻意对齐 NPU tensor size。加速本质来自输入只编码一次"},
+{n:"Aion 1.0 Instruct",v:"Microsoft",r:"US",rel:"2026-06",p:0,pd:"未披露（官方仅称比现行 Windows OS SLM 更小更快）",a:"unk",ctx:0,ctxd:"未披露",q:"未披露位宽；仅透露首次启动会为目标 EP 编译 QDQ ONNX 模型",perf:"未披露具体数字，sample repo 明确说显示的 first-token latency 与 tok/s 是 preliminary。唯一确定数据：首次启动为 NPU 编译模型需约 3–5 分钟（每设备一次）",d:2,dev:"PC（Copilot+ ARM64 优先）",lic:"未披露（ESRP 签名 MSIX 分发）",o:3,mo:"纯文本",nt:"2026-11 零售铺开时 Phi Silica 被移除；要求认证 NPU EP，无 CPU fallback"},
+{n:"AFM-on-device（2024）",v:"Apple",r:"US",rel:"2024-06",p:2.73,pd:"2.73B",a:"dense",ctx:4096,ctxd:"4096（框架暴露值）",q:"混合 2/4-bit palettization，平均 3.7 bpw；Apple 从未公布过 GB 数",perf:"iPhone 15 Pro：0.6 ms/prompt token（prefill 摊薄）+ 30 tok/s（decode）。仅限 2024 年、仅限该机型、且是投机解码之前的数字",d:3,dev:"手机（随 OS）",lic:"闭源，随 OS 分发",o:3,mo:"纯文本",nt:"这两个数是两个阶段的两个指标，2025/2026 两代都不再给绝对吞吐"},
+{n:"AFM on-device（2025）",v:"Apple",r:"US",rel:"2025-06",p:3,pd:"约 3B",a:"dense",ctx:4096,ctxd:"4096（框架）；训练长度 65K",q:"2 bpw QAT + embedding 4-bit + KV cache 8-bit；GB 未披露",perf:"仅相对值：TTFT ↓约 37.5%，KV 显存 ↓37.5%。无任何绝对吞吐",d:1,dev:"手机（随 OS）",lic:"闭源，随 OS 分发",o:3,mo:"纯文本",nt:"5:3 块切分 + KV 共享 + interleaved/NoPE"},
+{n:"AFM 3 Core Advanced",v:"Apple",r:"US",rel:"2026-06",p:20,pd:"20B 总参 / 仅 1–4B 激活",a:"ifp",ctx:0,ctxd:"未披露",q:"QAT，bpw 未披露",perf:"未披露。技术报告承诺 later this summer，截至 2026-09-09 仍未发布",d:0,dev:"手机（随 OS）",lic:"闭源，随 OS 分发",o:3,mo:"未披露",nt:"Instruction-Following Pruning：全量权重常驻 NAND 闪存，在 prompt 开始时一次性选定专家集合而非逐 token 换入，因为 NAND→DRAM 带宽撑不住逐 token 换页。官方称与 Google 合作定制，但页面从未出现 Gemini 字样"},
+{n:"gpt-oss-20b",v:"OpenAI",r:"US",rel:"2025-08",p:20.91,pd:"20.91B 总 / 3.61B 激活，24 层 32 专家 top-4",a:"moe",ctx:131072,ctxd:"131K",q:"MXFP4，仅 MoE 投影层量化（4.25 bpw）；checkpoint 12.8 GiB，运行需 16GB；运行时若缺 mxfp4 kernel 回落 bf16 则需约 48GB",perf:"无 tok/s（官方从未披露）",d:0,dev:"PC/工作站",lic:"Apache 2.0",o:1,mo:"纯文本",nt:"12.8GiB 是文件大小、16GB 是运行内存，二者差一倍；OpenAI×Qualcomm 骁龙跑 gpt-oss-20b 的说法未证实"},
+{n:"Nemotron 3 Nano 4B",v:"NVIDIA",r:"US",rel:"2026-03",p:3.97,pd:"3.97B，仅 4 个注意力层",a:"ssm",ctx:262144,ctxd:"262K",q:"官方 GGUF Q4_K_M = 2.84GB；另有 BF16 / FP8",perf:"未披露。官方目标平台 Jetson Thor / RTX / DGX Spark",d:0,dev:"单板/PC",lic:"nvidia-nemotron-open-model",o:2,mo:"纯文本",nt:"Mamba2-Transformer 混合；NVIDIA 全线唯一给出官方 GGUF 体积的端侧型号"},
+{n:"Nemotron 3 Nano 30B-A3B",v:"NVIDIA",r:"US",rel:"2025-12",p:30,pd:"30B 总 / 3.5B 激活；52 层 = 23 MoE + 23 Mamba2 + 6 GQA",a:"ssm",ctx:1048576,ctxd:"1M（HF 默认 256K）",q:"BF16 / FP8 / NVFP4，GB 未披露",perf:"未披露；测试机含 Jetson Thor / DGX Spark",d:0,dev:"PC/边缘工作站",lic:"nvidia-nemotron-open-model",o:2,mo:"纯文本",nt:"Nano 已经和小尺寸脱钩 — 这一代 Nano 是 30B"},
+{n:"Cosmos 3 Edge",v:"NVIDIA",r:"US",rel:"2026-07",p:4,pd:"4B（含 2B Nemotron reasoner）",a:"dense",ctx:0,ctxd:"—",q:"BF16，约 9GB",perf:"全美数据集里唯一的真边缘硬件官方延迟：Jetson AGX Thor T5000 上 1.53 s / action chunk @640×540、15 Hz",d:3,dev:"机器人（Jetson）",lic:"OpenMDW 1.1",o:1,mo:"世界模型（视觉→动作）",nt:"NVIDIA 其余吞吐宣称几乎全在数据中心卡上测，如 Nano-9B-v2 的 6× 是单卡 A10G"},
+{n:"LFM2.5-1.2B",v:"Liquid AI",r:"US",rel:"2026-01",p:1.17,pd:"1.17B，16 层 = 10 门控短卷积 + 6 GQA",a:"conv",ctx:32768,ctxd:"32K",q:"llama.cpp Q4_0；另有 QAD 量化感知蒸馏版",perf:"官方口径，1K prefill + 100 decode，全套里最完整：Ryzen AI 9 HX 370 CPU prefill 2975 / decode 116 / 856MB；S25 Ultra CPU 335 / 70 / 719MB（同机 Qwen3-1.7B 基线 181 / 40 / 1306MB）；ROG Phone 9 Pro NPU（NexaML）4391 / 82；骁龙 X Elite NPU 2591 / 63",d:3,dev:"手机/PC/IoT",lic:"lfm1.0",o:2,mo:"纯文本",nt:"Liquid 一代营销称非 Transformer 架构，但从 LFM2 起自家层配置就是门控短卷积 + GQA，内含注意力；Liquid 指的是 LIV 算子设计空间，官网已悄悄去掉 beyond Transformers 表述"},
+{n:"LFM2.5-350M",v:"Liquid AI",r:"US",rel:"2026-08",p:0.35,pd:"350M，16 层 = 10 conv + 6 GQA",a:"conv",ctx:32768,ctxd:"32K",q:"未单列体积",perf:"未单列（同代 230M 版：树莓派5 prefill 523 / decode 42 / 293MB；S25 Ultra prefill 1158 / decode 213 / 375MB，4bit 2K 输入）",d:1,dev:"手机/单板",lic:"lfm1.0",o:2,mo:"纯文本",nt:"训练 28T tokens"},
+{n:"LFM2.5-2.6B",v:"Liquid AI",r:"US",rel:"2026-08",p:2.69,pd:"2.69B，30 层 = 22 双门控短卷积 + 8 GQA",a:"conv",ctx:131072,ctxd:"131K",q:"内存 <2.5GB（体积未单列）",perf:"CPU decode：Apple M5 Max 220 tok/s、Ryzen AI Max+ 395 113 tok/s、手机约 30 tok/s。TTFT 官方未给数字",d:2,dev:"手机/PC",lic:"lfm1.0",o:2,mo:"纯文本",nt:"配套 LFM2.5-DSpark 草稿模型，M4 Max 上投机解码 2.27–2.54×，贪心解码下输出与基线逐字相同"},
+{n:"SmolLM3-3B",v:"Hugging Face",r:"EU",rel:"2025-07",p:3.1,pd:"3B（3.1B）",a:"dense",ctx:65536,ctxd:"训练 64K，推理 YaRN 外推到 128K",q:"有官方 GGUF 与 ONNX，但未给数值",perf:"官方无 tokens/s、TTFT、内存数字",d:0,dev:"手机/PC",lic:"Apache-2.0",o:1,mo:"纯文本（6 语）+ 原生 tool calling",nt:"NoPE：每第 4 层去掉 RoPE；非蒸馏，从零预训练 11.2T tokens。SmolLM4 / SmolVLM3 不存在（博客 404）"},
+{n:"Moondream 3.1",v:"M87 Labs",r:"US",rel:"2026-07",p:9,pd:"9B 总 / 2B 激活",a:"moe",ctx:0,ctxd:"3.1 未重申（MD3 Preview 为 32K，不建议直接沿用）",q:"未披露；新许可允许自行量化再分发",perf:"官方一律用 req/s 而非 tokens/s。Photon 1.2.0 实测 ChartQA batch4：MacBook Pro M5 Max 48GB 4.58 req/s、Mac mini M2 24GB 0.55、Jetson AGX Thor 64GB 单请求约 147ms。内存占用官方从未给出",d:2,dev:"PC/Jetson",lic:"Moondream Model License v1.0（source-available，非 OSI）",o:2,mo:"图文（query/caption/detect/point/segment）",nt:"许可跨五个版本翻转过四次：research-only → Apache-2.0 → BSL 1.1 → 自有许可"},
+{n:"AFM-4.5B",v:"Arcee AI",r:"US",rel:"2025-07",p:4.5,pd:"4.5B",a:"dense",ctx:65536,ctxd:"预训练 4K → 扩到 64K",q:"官方 GGUF：BF16 9.25GB / Q8_0 4.92 / Q4_K_M 2.92（推荐）/ Q2_K 1.89；另有 OpenVINO int4/int8",perf:"官方 140 组 llama.cpp 评测：Intel Xeon Sapphire Rapids Q4_0 batch4 136.77 TPS；AWS Graviton4 Q4_0 batch4 >280 TPS。⚠️ 高通 X1E-80-100 笔记本 prefill 是短板：Q4_0 从 0.94s(128tok) 涨到 10.94s(1024tok)，Q8_0 涨到 27.83s — 官方建议该芯片不适合 RAG。内存占用未披露",d:3,dev:"PC",lic:"Apache-2.0",o:1,mo:"纯文本 + function calling",nt:"ReLU² 激活替代 SwiGLU（为便于后续稀疏化）；许可历经 CC-BY-NC（未落地）→ Arcee Model License → Apache-2.0"},
+{n:"Whisper large-v3-turbo",v:"OpenAI",r:"US",rel:"2024-09",p:0.809,pd:"809M（decoder 层从 32 剪到 4）",a:"encdec",ctx:0,ctxd:"固定 30 秒感受野",q:"whisper.cpp q5_0 = 574MB（接近 large 精度 + 端侧可行的甜点）；whisper.cpp README 的 Disk 与 Mem 是两列，运行内存是文件的 1.3–3.5 倍",perf:"官方 README 的相对速度 turbo ~8× 是在 A100 上转写英文测得，是数据中心 GPU 数字不是端侧数字",d:1,dev:"手机/PC/单板",lic:"MIT（HF 卡的 apache-2.0 字段与 repo 冲突）",o:1,mo:"语音→文本",nt:"是对 large-v3 剪枝后微调，不是蒸馏；turbo 不支持翻译任务"},
+{n:"Whisper tiny",v:"OpenAI",r:"US",rel:"2022-09",p:0.039,pd:"39M",a:"encdec",ctx:0,ctxd:"固定 30 秒感受野",q:"whisper.cpp 量化后 32–190MB 档",perf:"官方相对速度 ~10×（A100 口径）。真端侧证据来自 Moonshine 论文：低成本 ARM 处理器上 whisper tiny.en 存在与音频长度无关的 500 ms 延迟硬下限",d:1,dev:"手机/单板/MCU 边缘",lic:"MIT",o:1,mo:"语音→文本",nt:"30 秒固定窗是硬约束：位置嵌入错位可让 LibriSpeech test-clean WER 从 5.21% 崩到 107.38%"},
+{n:"Moonshine v2 Tiny",v:"Moonshine AI",r:"US",rel:"2026-02",p:0.0336,pd:"33.57M",a:"encdec",ctx:0,ctxd:"无 30 秒窗，滑动窗流式，算法前瞻仅 80ms",q:"默认全量 8-bit 权重 + 重算子 8-bit 计算（纯 PTQ）；per-output-channel scale 使 LibriSpeech WER 从 7.57% 降到 4.83%。逐模型 MB 体积未披露",perf:"全语音集里罕见的真消费级硬件口径 — Apple M3 MacBook CPU，response latency：v2 Tiny 50ms（compute load 8.03%）vs Whisper Tiny 289ms、Whisper Small 1940ms、Whisper Large v3 11286ms（330.65%，即慢于实时）",d:3,dev:"手机/PC/单板",lic:"MIT",o:1,mo:"语音→文本（8 语）+ TTS",nt:"Moonshine Micro 目标平台是零售 80 美分的 RP2350，整链路可在约 470KB RAM 内运行"},
+{n:"Parakeet-TDT-0.6B-v3",v:"NVIDIA",r:"US",rel:"2025",p:0.6,pd:"600M",a:"encdec",ctx:0,ctxd:"—",q:"未披露",perf:"Open ASR Leaderboard RTFx 3332.74 — 但该榜单跑在 1× H200（141GB）上，是数据中心数字不是端侧数字",d:1,dev:"PC/边缘 GPU",lic:"CC-BY-4.0",o:1,mo:"语音→文本",nt:"任何 NVIDIA ASR 的 RTFx 都必须标注 H200 + batch 口径"},
+{n:"Ministral-3-3B-Instruct",v:"Mistral AI",r:"EU",rel:"2025-12",p:3.4,pd:"3.4B LM + 0.4B 视觉",a:"dense",ctx:262144,ctxd:"256K",q:"FP8 官方分发；GB 体积未披露",perf:"无 tokens/s、无延迟、无端侧硬件。唯一数字是 FP8 下装入 8GB VRAM，且参照机是 1×H200",d:1,dev:"PC",lic:"Apache 2.0",o:1,mo:"多模态",nt:"Cascade Distillation（迭代剪枝 + 持续蒸馏），教师未点名。一代 Ministral 8B 是非商用 MRL，二代全系 Apache 2.0，许可完全反转"},
+{n:"Helium-1-2b",v:"Kyutai",r:"EU",rel:"2025-04",p:2,pd:"2B，28 层 dim2048",a:"dense",ctx:4096,ctxd:"4,096",q:"仅 BF16，无官方量化",perf:"完全未披露。唯一硬件是训练用 64×H100",d:0,dev:"手机/PC",lic:"CC-BY-SA-4.0 + Gemma ToU",o:2,mo:"文本（24 种欧盟语）",nt:"蒸馏自 Gemma 2，因此正式版额外受 Gemma ToU 约束（预览版则无）"},
+{n:"Kyutai Pocket TTS",v:"Kyutai",r:"EU",rel:"2026-01",p:0.1,pd:"100M",a:"unk",ctx:0,ctxd:"文本输入无限长",q:"官方明说不支持 int8 原生运算；CLI 有 CPU-only int8 dynamic 路径",perf:"全欧洲唯一给出具名消费级硬件的：MacBook Air M4，仅用 2 个 CPU 核，RTF ~6×，首块延迟 ~200ms。且诚实公布反例 — 云端 x86 4vCPU 上仅 2.3–2.5×，Apple Silicon 上观察不到 GPU 加速",d:3,dev:"手机/PC",lic:"权重 CC-BY-4.0 / 代码 MIT / 音色单独授权",o:2,mo:"TTS + 音色克隆",nt:"速度可信但一个 benchmark 都没有（无 MOS、无 WER）"},
+{n:"Voxtral-Mini-4B-Realtime",v:"Mistral AI",r:"EU",rel:"2026-02",p:3.4,pd:"3.4B LM + 0.97B 音频编码器",a:"swa",ctx:131072,ctxd:"131,072（约 3 小时音频）",q:"BF16；官方门槛 ≥16GB GPU；有 ExecuTorch 端侧构建但标注 untested",perf:"延迟可配 80ms–2400ms，推荐 480ms；吞吐称在极小硬件上 >12.5 tok/s — 但官方未点名该硬件是什么",d:1,dev:"PC",lic:"Apache 2.0",o:1,mo:"语音 ASR",nt:"sub-500ms 是可配置的算法延迟（文本流位移），不是端到端推理延迟；同族 TTS 版的 70ms / RTF 0.103 是单张 H200 + vLLM"},
+{n:"EXAONE-4.0-1.2B",v:"LG AI Research",r:"OT",rel:"2025-07",p:1.28,pd:"1.28B（非嵌入 1.07B），30 层 GQA 32:8",a:"dense",ctx:65536,ctxd:"65,536",q:"官方 GGUF 全档：IQ4_XS 754MB / Q4_K_M 812MB / Q6_K 1.05GB / Q8_0 1.36GB / BF16 2.56GB",perf:"未披露。官方仅定性 designed for on-device applications",d:0,dev:"手机",lic:"EXAONE License 1.2-NC（仅研究教育，商用禁止，可撤销）",o:3,mo:"文本 EN/KO/ES",nt:"纯 Global attention + QK-Reorder-LN；独立预训练 12T tokens"},
+{n:"Midm-2.0-Mini-Instruct",v:"KT",r:"OT",rel:"2025-07",p:2.3,pd:"2.3B，48 层 hidden 1792",a:"dense",ctx:32768,ctxd:"32,768",q:"无官方量化",perf:"未披露。反复称 optimized for on-device deployment 但零数字",d:0,dev:"手机",lic:"MIT",o:1,mo:"纯文本",nt:"全场压缩链路最清晰：Base 11.5B →宽度剪枝→ Base-half 约 5B →二次剪枝 + Base 与 Base-half 双教师顺序蒸馏→ Mini 2.3B。刻意只剪宽度不剪深度"},
+{n:"HyperCLOVAX-SEED-0.5B",v:"NAVER",r:"OT",rel:"2025-04",p:0.57,pd:"0.57B（非嵌入 0.45B，tied）",a:"dense",ctx:4096,ctxd:"4K",q:"无官方量化（流传的 4-bit 0.325GB 是媒体估算）",perf:"未披露。定位语称 suitable for edge devices，但示例代码是 .to(cuda)",d:0,dev:"手机",lic:"HyperCLOVA X SEED License（可商用但 MAU≤1000万 + 禁竞品 + 强制署名）",o:2,mo:"纯文本",nt:"该模型卡完全不报英文基准，只报 KMMLU / HAE-RAE / KoBEST"},
+{n:"Falcon-E-3B-Instruct",v:"TII",r:"OT",rel:"2025-05",p:3.05,pd:"约 3.05B，32 层 GQA 16:2",a:"bitnet",ctx:32768,ctxd:"32,768（仅见 config）",q:"三值权重 U8 打包 + lm_head/embedding 保持 BF16。官方两套数字打架：模型卡 955MB vs 博客 999MB（实测仓库 = 999MB）；另存 bfloat16 还原版 6.11GB",perf:"完全未披露。全套材料零 tokens/s、零延迟、零具名硬件，唯一量化指标就是内存 MB",d:0,dev:"手机/单板",lic:"Falcon-LLM License",o:2,mo:"纯文本",nt:"原生 1.58-bit 三值 BitNet，从零原生三值预训练 1.5T tokens。但实际按 2 bit/权重存，比纯 1.58-bit 理论值大 73%；官方对比基线全是 bf16/fp16，没有任何 int4 基线"},
+{n:"Falcon-H1-0.5B-Instruct",v:"TII",r:"OT",rel:"2025-05",p:0.5,pd:"0.5B，36 层 = 8 attn heads + 24 Mamba heads",a:"ssm",ctx:16384,ctxd:"config 实测 16,384（系列宣传 256K 是家族最大值）",q:"官方 GPTQ + GGUF（16 个版本），GB 未披露",perf:"未披露。唯一效率指标是长序列下 vs Qwen2.5-32B 输入吞吐 4× / 输出 8×，属服务器 vLLM 口径",d:1,dev:"手机/单板",lic:"Falcon-LLM License",o:2,mo:"纯文本（18 语）",nt:"并行混合：attention 与 Mamba-2 SSM 在同一 mixer block 内并行而非串行堆叠，两者 head 数可独立调节"},
+{n:"Falcon-H1-Tiny-R-0.6B",v:"TII",r:"OT",rel:"2026-01",p:0.6,pd:"600M，24 层 hidden 512",a:"ssm",ctx:0,ctxd:"未披露",q:"官方唯一数字：英文 DPO 版经 llama.cpp Q8_0 后内存约 90MB",perf:"tokens/s 未披露。仅 tool-calling 版在 MacBook 上做过 GGUF-BF16 体感测试。定位明写浏览器内推理、微控制器级硬件",d:2,dev:"手机/单板/MCU",lic:"Falcon-LLM License",o:2,mo:"纯文本（推理）",nt:"post-GRPO 后 AIME24 75.0 / Math500 94.0，大幅超过 Qwen3-1.7B；平均回复长度从 16k 降到 8k tokens"},
+{n:"tiny-aya-global",v:"Cohere Labs",r:"OT",rel:"2026-02",p:3.35,pd:"3.35B",a:"swa",ctx:8192,ctxd:"8K in / 8K out",q:"官方 GGUF 实测：Q4_0 2.03GB / Q4_K_M 2.14GB（推荐）/ Q8_0 3.57GB / F16 6.71GB",perf:"官方口径：4-bit 量化后 2.14GB，iPhone 13 上约 10 tokens/s，质量仅损失 1.4 分。首 token 延迟、峰值内存未披露",d:3,dev:"手机",lic:"CC-BY-NC-4.0 + AUP，gated，不可商用",o:3,mo:"文本（多语）",nt:"3 层滑窗(4096) + 1 层无位置编码全局注意力交替；多教师融合蒸馏 Fusion-of-N（Command A + Gemma3-27B-IT + DeepSeek-V3）+ SimMerge"},
+{n:"AI21-Jamba-Reasoning-3B",v:"AI21 Labs",r:"OT",rel:"2025-10",p:3,pd:"3B，28 层 = 26 Mamba + 2 Attention，MQA 20Q:1KV",a:"ssm",ctx:65536,ctxd:"宣传 256K，官方自承训练窗口仅 32K/64K",q:"官方 GGUF 仓库（含 Q4_K_M），尺寸未披露",perf:"本轮最完整的端侧口径：官方博客称 M3 MacBook Pro、32K 上下文下约 40 tokens/s；满 250K 上下文仍 >17 tokens/s。首 token 延迟、内存未披露",d:2,dev:"手机/PC",lic:"Apache 2.0",o:1,mo:"文本（9 语含阿语/希伯来语）",nt:"唯一主动披露训练窗口 ≠ 宣传窗口的厂商；KV cache 小 8×"},
+{n:"Llama-3-ELYZA-JP-8B",v:"ELYZA（KDDI）",r:"OT",rel:"2024-06",p:8,pd:"8B",a:"dense",ctx:0,ctxd:"未披露",q:"官方 GGUF Q4_K_M = 4.92GB + AWQ",perf:"全日本唯一的具体 on-device tokens/s：MacBook Pro (M1 Pro) 约 20 tokens/秒。首 token 延迟、内存未披露",d:3,dev:"PC",lic:"Meta Llama 3 Community",o:2,mo:"文本 JA/EN",nt:"罕见地公开量化衰减：ELYZA-tasks-100 无量化 3.655 / Q4_K_M 3.57 / AWQ 3.39。速度与「对应 Q4_K_M」在卡内不在同一句，极易被引成 8B 无损跑 20 tok/s"},
+{n:"TinySwallow-1.5B-Instruct",v:"Sakana AI",r:"OT",rel:"2025-01",p:1.5,pd:"1.5B（HF 侧栏计 2B）",a:"dense",ctx:0,ctxd:"未披露",q:"官方 GGUF Q5_K_M 1.13GB / Q8_0 1.65GB（无 Q4_K_M）+ MLC q4f32_1 浏览器版",perf:"有实机演示、无数字：iPhone 14 + LLMFarm 运行，浏览器 WebLLM 全本地可离线。tok/s、延迟、内存均未披露",d:0,dev:"手机/浏览器",lic:"Apache 2.0（卡内又要求遵守 Gemma ToU 且写仅供研究，三处自相矛盾）",o:2,mo:"纯文本",nt:"TAID 蒸馏：教师 Qwen2.5-32B-Instruct → 学生 Qwen2.5-1.5B-Instruct。benchmark 数值全部只在图片里"},
+{n:"RakutenAI-2.0-mini-instruct",v:"楽天",r:"OT",rel:"2025-02",p:1.53,pd:"1.53B，22 层 GQA 32:8，SWA 8192",a:"swa",ctx:131072,ctxd:"131,072",q:"无官方量化（BF16 3.07GB）",perf:"未披露。卡内写 designed for edge devices、on-device AI、mobile devices，零硬件零数字",d:0,dev:"手机",lic:"Apache 2.0",o:1,mo:"文本 JA/EN",nt:"from scratch 训练；Japanese MT-Bench 4.91 输给 3.7B 的 llm-jp-3（4.98）。同名基准跨厂商不可比 — 各家 judge 模型都不同"},
+{n:"plamo-2-1b",v:"Preferred Networks",r:"OT",rel:"2025-02",p:1,pd:"1B，16 层 hidden 2048",a:"ssm",ctx:32768,ctxd:"实训 2K → CPT 32K（config 名目值 10,485,760）",q:"无官方量化",perf:"未披露。技术报告点名的内存受限目标是 L40S / A40（数据中心卡）",d:0,dev:"手机/PC",lic:"Apache 2.0",o:1,mo:"纯文本（未指令微调）",nt:"Samba 型 Mamba-2 + 滑窗注意力混合 SSM。同族 8B 及 VL 全系是 PLaMo community license（须预先登记 + 年营收 ≤10 亿日元）"},
+{n:"NTT tsuzumi 超軽量版",v:"NTT",r:"OT",rel:"2023-11",p:0.6,pd:"0.6B",a:"dense",ctx:0,ctxd:"未披露（三代均无）",q:"官方按 16bit 测算需 2.4GB 显存；无权重下载",perf:"官方称 CPU 上可高速推理，测算硬件为 20 万日元/台的 CPU PC。tok/s、延迟未披露。成本口径：训练 1/300、推理 1/70（对比 GPT-3 175B）",d:1,dev:"PC（CPU）",lic:"闭源商用",o:3,mo:"文本 JA/EN",nt:"tsuzumi 2（30B）的「1GPU 環境、40GB 以下メモリ」实指 A100 40GB + 约 500 万日元服务器 — 同一个「軽量」标签跨越了两个数量级"},
+{n:"sarvam-1",v:"Sarvam AI",r:"OT",rel:"2024-10",p:2,pd:"2B，28 层 dim2048 GQA 16:8",a:"dense",ctx:8192,ctxd:"8,192",q:"无官方量化",perf:"零端侧宣称、零硬件、零 tok/s。唯一速度表述是相对的「比更大模型快 4–6×」；部署路径全是 vLLM/SGLang",d:1,dev:"PC",lic:"Sarvam 非商用许可",o:3,mo:"文本（10 印度语 + 英）",nt:"其 MMLU 44.44 是翻译版 MMLU 而非英文原版，字段名却与英文原版一模一样"}
+];
+
+const AL={
+ dense:["Dense Transformer","标准 GQA + SwiGLU 解码器，端侧仍是绝对主流路线","#2a78d6"],
+ moe:["MoE 稀疏激活","总参数大、每 token 只激活一小部分，用内存容量换等效算力","#eb6834"],
+ lin:["线性注意力混合","用门控 DeltaNet 等线性注意力替换大部分全注意力，KV 不随长度增长","#1baf7a"],
+ conv:["门控短卷积混合","双门控短卷积层与少量 GQA 交替；卷积层不产生 KV cache","#7c3aed"],
+ ssm:["Mamba / SSM 混合","状态空间模型与注意力混合，有串行堆叠与同 block 内并行两种拼法","#0891b2"],
+ swa:["局部-全局滑窗混合","多层滑动窗口注意力 + 少量全局层按固定比例交替","#d97706"],
+ ple:["Per-Layer Embeddings","每层一张只查表、不做矩阵乘的 embedding，可放系统内存不占加速器","#be185d"],
+ matformer:["MatFormer 嵌套","小模型训练时嵌在大模型内部同步优化，可直接抽取独立发布","#65a30d"],
+ rnn:["纯 RNN","完全没有 KV cache，推理速度与显存恒定，不随上下文增长","#dc2626"],
+ encdec:["Encoder-Decoder","输入只编码一次；短输入长输出场景首 token 延迟优势明显","#4f46e5"],
+ bitnet:["原生三值 BitNet","从零用 1.58-bit 三值权重预训练，而非训练完再量化","#0f766e"],
+ ifp:["NAND 常驻稀疏激活","全量权重留在闪存，在 prompt 开始时一次性选定专家集合","#9333ea"],
+ unk:["未披露","厂商从未说明架构细节","#9ca3af"]};
+const RL={CN:"中国大陆",US:"美国",EU:"欧洲",OT:"其他"};
+const RC={CN:"#eb6834",US:"#2a78d6",EU:"#1baf7a",OT:"#7c3aed"};
+/* 地区色块：厂商字块底色 + 整行极浅底色 */
+const RB={CN:"#fdf0e8",US:"#e9f1fc",EU:"#e6f6ef",OT:"#f1eafc"};
+const RW={CN:"#fffbf8",US:"#f9fbff",EU:"#f8fdfa",OT:"#fcfaff"};
+const OL={1:"OSI 可商用",2:"开源受限",3:"闭源 / 禁商用"};
+const DLB={3:"完整三元组",2:"缺一角",1:"仅相对",0:"未披露"};
+const AORDER=["dense","moe","lin","conv","ssm","swa","ple","matformer","rnn","encdec","bitnet","ifp","unk"];
+
+const esc = s => String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const nd  = s => !s ? '<span class="nd">—</span>' : (/^(未披露|完全未披露|—)/.test(s) ? '<span class="nd">'+esc(s)+'</span>' : esc(s));
+function devk(d){ const s=[];
+  if(/手机|浏览器/.test(d)) s.push("phone");
+  if(/PC|工作站/.test(d)) s.push("pc");
+  if(/单板|MCU/.test(d)) s.push("board");
+  if(/机器人|IoT|边缘盒|边缘 GPU|Jetson/.test(d)) s.push("other");
+  return s.length ? s : ["other"]; }
+const KL={phone:"手机",pc:"PC",board:"单板",other:"IoT / 机器人"};
+function mok(s){
+  if(!s || /^未披露/.test(s)) return [];
+  if(/全模态|多模态/.test(s)) return ["t","i","a","v"];
+  const t=[];
+  if(/文|语言|caption|query/.test(s)) t.push("t");
+  if(/图|视觉|detect|segment|point/.test(s)) t.push("i");
+  if(/音频|语音|TTS|ASR|音色/.test(s)) t.push("a");
+  if(/视频|世界模型/.test(s)) t.push("v");
+  return t.length ? t : ["t"]; }
+const ML={t:"文",i:"图",a:"音",v:"视"};
+
+/* ---- 厂商字块：子品牌并入母公司，同厂商型号共用一个 rowspan 字块 ---- */
+const VMAP={"Google DeepMind":"Google","Meta FAIR":"Meta","Meta Superintelligence Labs":"Meta","腾讯 AngelSlim":"腾讯"};
+/* [显示名, favicon 域名 / 完整 URL / data URI（留空=不取远程图标）, 字符标, 品牌色, 「其他」地区专用的国家标注]
+   远程 favicon 只是增强：取不到（离线、网络受限、图标本身是空白）时
+   回落到品牌色字符标，所以每家都必须有自己的颜色，否则同地区厂商长得一模一样 */
+/* 通义千问 logo：阿里系各域名的 favicon 全是空白图，改取 chat.qwen.ai 上的官方千问标
+   （阿里自有域名，国内可直连）；取不到时照常回落到品牌色字符标 */
+const QWEN="https://chat.qwen.ai/static/favicon.png";
+const VEND={
+ "阿里巴巴":["阿里巴巴 · 通义",QWEN,"阿","#605bec"], "DeepSeek":["DeepSeek","deepseek.com","DS","#4d6bfe"],
+ "面壁智能":["面壁智能 MiniCPM","modelbest.cn","面","#1f4fd8"], "智谱":["智谱 GLM","chatglm.cn","智","#2e5bff"],
+ "腾讯":["腾讯 混元","www.tencent.com","腾","#0052d9"], "华为":["华为 盘古","huawei.com","华","#cf0a2c"],
+ "vivo":["vivo 蓝心","vivo.com","vi","#415fff"], "OPPO":["OPPO 安第斯","oppo.com","O","#046a38"],
+ "荣耀":["荣耀 MagicVL","developer.hihonor.com","荣","#0a5fd8"], "词元星火 XHToken":["词元星火 XHToken","","词","#6a1b9a"],
+ "元始智能":["元始智能 RWKV","rwkv.com","元","#17a398"],
+ "Google":["Google / DeepMind","google.com","G","#4285f4"], "Meta":["Meta","","M","#0064e0"],
+ "Microsoft":["Microsoft","microsoft.com","MS","#0078d4"], "Apple":["Apple","apple.com","A","#111214"],
+ "OpenAI":["OpenAI","openai.com","AI","#10a37f"], "NVIDIA":["NVIDIA","nvidia.com","N","#5c8f00"],
+ "Liquid AI":["Liquid AI","liquid.ai","LF","#1a1a1a"], "M87 Labs":["M87 Labs · Moondream","moondream.ai","md","#c98218"],
+ "Arcee AI":["Arcee AI","arcee.ai","Ar","#6e56cf"], "Moonshine AI":["Moonshine AI","","Mo","#2a78d6"],
+ "Hugging Face":["Hugging Face","huggingface.co","HF","#e08600"], "Mistral AI":["Mistral AI","","Mi","#fa520f"],
+ "Kyutai":["Kyutai","kyutai.org","Ky","#2d3a8c"],
+ "LG AI Research":["LG AI Research","","LG","#a50034","韩国"], "KT":["KT","kt.com","KT","#e60012","韩国"],
+ "NAVER":["NAVER","naver.com","NV","#02a94b","韩国"], "TII":["TII Falcon","falconllm.tii.ae","TII","#3b4b9e","阿联酋"],
+ "Cohere Labs":["Cohere Labs","cohere.com","Co","#39594d","加拿大"], "AI21 Labs":["AI21 Labs","","21","#e0304b","以色列"],
+ "ELYZA（KDDI）":["ELYZA（KDDI）","elyza.ai","EL","#ee7800","日本"], "Sakana AI":["Sakana AI","sakana.ai","Sa","#d64545","日本"],
+ "楽天":["楽天 Rakuten","rakuten.co.jp","楽","#bf0000","日本"], "Preferred Networks":["Preferred Networks","preferred.jp","PFN","#0b5fa5","日本"],
+ "NTT":["NTT tsuzumi","www.ntt.com","NTT","#0033a0","日本"], "Sarvam AI":["Sarvam AI","sarvam.ai","Sv","#7c3aed","印度"]};
+
+SPEC.forEach(m => { m._k = devk(m.dev); m._m = mok(m.mo); m._g = VMAP[m.v] || m.v;
+  m._q = [m.n,m.v,m._g,RL[m.r],m.pd,AL[m.a][0],m.ctxd,m.q,m.perf,m.dev,m.lic,m.mo,m.nt].join(" ").toLowerCase(); });
+
+const COLS=[
+ {k:"v",   t:"厂商"},
+ {k:"n",   t:"型号"},
+ {k:"dev", t:"终端"},
+ {k:"mo",  t:"模态"},
+ {k:"rel", t:"首发"},
+ {k:"p",   t:"参数量", num:true},
+ {k:"a",   t:"架构路线"},
+ {k:"ctx", t:"上下文（端侧实际）", num:true},
+ {k:"q",   t:"官方量化方案与体积", cls:"wq"},
+ {k:"perf",t:"官方声称端侧性能（口径 · 硬件）", cls:"wp"},
+ {k:"d",   t:"披露档", num:true},
+ {k:"lic", t:"许可", cls:"wl"}];
+const NCOL=COLS.length-1;
+
+let sortK="", sortDir=1;
+const expanded=new Set();
+const tb=document.getElementById("spec-toolbar"), q=document.getElementById("spec-q"),
+      cntEl=document.getElementById("spec-cnt"), body=document.getElementById("spec-body"),
+      head=document.getElementById("spec-head");
+const active = dim => [...tb.querySelectorAll('.grp[data-dim="'+dim+'"] .chip.on')].map(b=>b.dataset.v);
+
+function renderHead(){
+  head.innerHTML = "<tr><th></th>" + COLS.map((c,i)=>{
+    const on = sortK===c.k;
+    return '<th data-i="'+i+'"'+(on?' class="srt"':'')+'>'+c.t+'<span class="ar">'+(on?(sortDir>0?"▲":"▼"):"↕")+'</span></th>';
+  }).join("") + "</tr>";
+}
+function cell(m,c){
+  const cl='c-'+c.k+(c.cls?" "+c.cls:"");
+  let inner, tip;
+  switch(c.k){
+    case "n":   inner='<span class="mn">'+esc(m.n)+'</span>'+(m.nt?'<span class="caret">▸</span>':'')
+                    + (m.v!==m._g ? '<div class="sml">'+esc(m.v)+'</div>' : '');
+                tip=m.n+(m.v!==m._g?" · "+m.v:""); break;
+    case "dev": inner=m._k.map(k=>'<span class="kc k-'+k+'">'+KL[k]+'</span>').join(""); tip=m.dev; break;
+    case "mo":  inner=m._m.length ? m._m.map(k=>'<span class="kc m-'+k+'">'+ML[k]+'</span>').join("") : '<span class="nd">—</span>';
+                tip=m.mo; break;
+    case "p":   inner=esc(m.pd); tip=m.pd; break;
+    case "a":   inner='<span class="arc" style="background:'+AL[m.a][2]+'">'+AL[m.a][0]+'</span>'; tip=AL[m.a][0]+"："+AL[m.a][1]; break;
+    case "ctx": inner=nd(m.ctxd); tip=m.ctxd; break;
+    case "d":   inner='<span class="d'+m.d+'">'+DLB[m.d]+'</span>'; tip=DLB[m.d]; break;
+    case "lic": inner=esc(m.lic)+'<div class="o'+m.o+'">'+OL[m.o]+'</div>'; tip=m.lic+" · "+OL[m.o]; break;
+    default:    inner=nd(m[c.k]); tip=m[c.k]; break;
+  }
+  return '<td class="'+cl+'" title="'+esc(tip||"未披露")+'"><div class="cl">'+inner+'</div></td>';
+}
+function vcell(g,rg,n,span){
+  const V=VEND[g]||[g,"",String(g).slice(0,2),RC[rg]];
+  const src = V[1] ? (/^(data:|https?:)/.test(V[1]) ? V[1] : "https://"+V[1]+"/favicon.ico") : "";
+  /* 地区已由最左侧竖条标出，字块里不再重复；只有「其他」需要点名具体国家 */
+  const cy = (rg==="OT" && V[4]) ? '<span class="vr">'+esc(V[4])+'</span>' : "";
+  return '<td class="vg" rowspan="'+span+'" style="--vc:'+RC[rg]+';--vbg:'+RB[rg]+'">'
+    + '<div class="vh"><span class="lg'+(V[2].length>2?" l3":"")+'" style="background:'+(V[3]||RC[rg])+'">'+esc(V[2])
+    + (src ? '<img src="'+src+'" alt="" onerror="this.remove()"'
+           + ' onload="if(this.naturalWidth<8)this.remove()">' : "")
+    + '</span><span class="vt"><span class="vn" title="'+esc(V[0])+'">'+esc(V[0])+'</span>'
+    + '<span class="vm">'+cy+n+' 款</span></span></div></td>';
+}
+function apply(){
+  const r=active("r"), a=active("a"), k=active("k"), d=active("d"), o=active("o");
+  const kw=q.value.trim().toLowerCase();
+  const rows=SPEC.filter(m => r.includes(m.r) && a.includes(m.a) && d.includes(String(m.d)) && o.includes(String(m.o))
+    && m._k.some(x=>k.includes(x)) && (!kw || m._q.indexOf(kw)>=0));
+  const map=new Map();
+  rows.forEach(m=>{ if(!map.has(m._g)) map.set(m._g,[]); map.get(m._g).push(m); });
+  let groups=[...map.entries()].map(e=>({g:e[0],ms:e[1]}));
+  const RORD={CN:0,US:1,EU:2,OT:3};
+  if(sortK==="v"){
+    groups.sort((A,B)=>String(A.g).localeCompare(String(B.g),"zh")*sortDir);
+  } else if(sortK){
+    const c=COLS.find(x=>x.k===sortK);
+    const cmp = c.num ? (x,y)=>((+x[sortK]||0)-(+y[sortK]||0))*sortDir
+                      : (x,y)=>String(x[sortK]||"").localeCompare(String(y[sortK]||""),"zh")*sortDir;
+    groups.forEach(G=>G.ms.sort(cmp));
+    groups.sort((A,B)=>cmp(A.ms[0],B.ms[0]));
+  }
+  /* 地区永远是最外层分块（对应最左侧竖条），排序只在地区内部生效；
+     Array.sort 稳定，所以上面排好的顺序会原样保留在各地区内部 */
+  groups.sort((A,B)=>RORD[A.ms[0].r]-RORD[B.ms[0].r]);
+  const bands=[];
+  groups.forEach(G=>{ const r=G.ms[0].r, last=bands[bands.length-1];
+    if(last && last.r===r) last.gs.push(G); else bands.push({r:r,gs:[G]}); });
+  const nrow = G => G.ms.length + G.ms.filter(m=>m.nt&&expanded.has(m.n)).length;
+  body.innerHTML = bands.map(B=>{
+    const bspan=B.gs.reduce((s,G)=>s+nrow(G),0);
+    let head1=true;
+    return B.gs.map(G=>{
+      const rg=G.ms[0].r;
+      return G.ms.map((m,i)=>{
+        let h='<tr class="mr'+(i===0?" g0":"")+(head1?" r0":"")+'" data-n="'+esc(m.n)+'" style="--rw:'+RW[m.r]+'">';
+        if(head1){ h+='<td class="rail" rowspan="'+bspan+'" style="--vc:'+RC[rg]+'"><span class="rl">'+RL[rg]+'</span></td>'; head1=false; }
+        if(i===0) h+=vcell(G.g,rg,G.ms.length,nrow(G));
+        h+=COLS.slice(1).map(c=>cell(m,c)).join("")+"</tr>";
+        if(m.nt && expanded.has(m.n))
+          h+='<tr class="det"><td colspan="'+NCOL+'"><b>口径提示 · '+esc(m.n)+'</b> &nbsp;'+esc(m.nt)+'</td></tr>';
+        return h;
+      }).join("");
+    }).join("");
+  }).join("");
+  /* 标记被截断的单元格：光标变问号，提示可悬停看全文 */
+  markOvf();
+  cntEl.textContent = rows.length + " / " + SPEC.length + " 款型号 · " + groups.length + " 家厂商";
+}
+/* 子页初次渲染时整块还是 display:none，scrollHeight 恒为 0，
+   所以挂进 LAYOUTS，由 showSub() 的 relayout() 在可见后补测一次 */
+function markOvf(){
+  body.querySelectorAll("td .cl").forEach(el=>{
+    el.parentElement.classList.toggle("ovf", el.scrollHeight > el.clientHeight + 1); });
+}
+LAYOUTS.push(markOvf);
+head.addEventListener("click", e=>{ const th=e.target.closest("th[data-i]"); if(!th) return;
+  const c=COLS[+th.dataset.i];
+  if(sortK===c.k){ if(sortDir===1) sortDir=-1; else { sortK=""; sortDir=1; } } else { sortK=c.k; sortDir=1; }
+  renderHead(); apply(); });
+body.addEventListener("click", e=>{ const tr=e.target.closest("tr.mr"); if(!tr) return;
+  const n=tr.dataset.n; if(expanded.has(n)) expanded.delete(n); else expanded.add(n); apply(); });
+tb.addEventListener("click", e=>{ const b=e.target.closest(".chip"); if(!b) return; b.classList.toggle("on"); apply(); });
+q.addEventListener("input", apply);
+document.getElementById("spec-reset").addEventListener("click", ()=>{
+  tb.querySelectorAll(".chip").forEach(b=>b.classList.add("on"));
+  q.value=""; sortK=""; sortDir=1; expanded.clear(); renderHead(); apply(); });
+renderHead(); apply();
+
+/* ---- 顶部统计 ---- */
+const nR = k => SPEC.filter(m=>m.r===k).length;
+document.getElementById("spec-stats").innerHTML =
+  '<div class="stat"><div class="v">' + SPEC.length + '</div><div class="k">型号总数</div></div>' +
+  '<div class="stat"><div class="v">' + new Set(SPEC.map(m=>m._g)).size + '</div><div class="k">厂商字块</div></div>' +
+  ["CN","US","EU","OT"].map(r=>'<div class="stat"><div class="v" style="color:'+RC[r]+'">'+nR(r)+'</div><div class="k">'+RL[r]+'</div></div>').join("") +
+  '<div class="stat"><div class="v" style="color:#1baf7a">' + SPEC.filter(m=>m.d===3).length + '</div><div class="k">性能口径完整</div></div>';
+
+document.getElementById("spec-foot").innerHTML =
+  "口径说明：① 全部性能数字为<b>厂商官方自报</b>，不含第三方跑分与本项目实测；同一栏内必须同时出现「prefill / decode / TTFT 哪一种」「具名硬件」「量化位宽」，缺任何一项都在「披露档」列降级。② 参数量以 config.json 或技术报告为准，不采用 Hugging Face 侧栏数字——后者会把 U8 打包的字节数当成参数，Falcon-E-1B 因此显示为 0.5B。③ 上下文取<b>端侧实际可用值</b>而非宣传值：Llama 3.2 量化版从 128K 降到 8K、Phi Silica 发运 2K、Jamba 官方自承训练窗口只有 32K/64K。④ 表格<b>以地区为最外层分块</b>，最左侧竖条即地区（中国大陆 / 美国 / 欧洲 / 其他）——只有「其他」块内才在厂商名前标出具体国家（韩国、日本、以色列、加拿大、阿联酋、印度）。地区内再<b>按厂商合并成字块</b>，同一母公司的子品牌并入一块（Google DeepMind → Google，Meta FAIR / Meta Superintelligence Labs → Meta，腾讯 AngelSlim → 腾讯），子品牌名保留在型号下方的小字。⑤ 点击表头排序时<b>地区分块与厂商字块都不拆散</b>：先在每个字块内部排序，再按各字块首位值在<b>本地区内部</b>排列字块，跨地区不重排；第三次点击取消排序。参数量、上下文按数值排，未披露者按 0 处理。⑥ 每行统一压到<b>两行高</b>，超出部分省略为「…」，<b>鼠标悬停任意单元格可看完整原文</b>（光标变成问号的格子即被截断）；终端与模态列为标签化摘要，悬停可看官方完整表述。⑦ 厂商图标优先取官网 favicon，取不到（离线打开、网络受限）时自动回落到该厂商的品牌色字符标。⑧ 点击任意行展开该型号的口径提示。数据检索日期 2026-09-09。";
+
+/* ---- 架构路线族谱 ---- */
+document.getElementById("spec-archmap").innerHTML = AORDER.map(k=>{
+  const A=AL[k], ms=SPEC.filter(m=>m.a===k);
+  return '<div class="archc" style="border-left-color:'+A[2]+'"><h4>'+A[0]+'</h4>'
+    + '<div class="kn">'+ms.length+' 款型号</div><div class="mech">'+A[1]+'</div>'
+    + '<div class="ms">'+ms.map(m=>"<b>"+esc(m.n)+"</b>").join(" · ")+'</div></div>';
+}).join("");
+
+/* ---- 图表 ---- */
+(function(){
+  const D=DZ, C=D.C;
+  const cD = v => SPEC.filter(m=>m.d===v).length;
+  const cA = k => SPEC.filter(m=>m.a===k).length;
+  const pB = [["<1B",m=>m.p>0&&m.p<1],["1–3B",m=>m.p>=1&&m.p<3],["3–5B",m=>m.p>=3&&m.p<5],["5–10B",m=>m.p>=5&&m.p<10],["≥10B",m=>m.p>=10],["未披露",m=>m.p===0]];
+  const xB = [["未披露",m=>m.ctx===0],["≤8K",m=>m.ctx>0&&m.ctx<=8192],["16K–32K",m=>m.ctx>8192&&m.ctx<=32768],["64K–131K",m=>m.ctx>32768&&m.ctx<=131072],["256K",m=>m.ctx>131072&&m.ctx<1000000],["≥1M",m=>m.ctx>=1000000]];
+  const heatV = ["CN","US","EU","OT"].map(r=>[1,2,3].map(o=>SPEC.filter(m=>m.r===r&&m.o===o).length));
+
+  const cards = [
+    D.card({ title:"最硬的一个发现：三分之二的端侧模型没有可验证的性能口径", sub:"73 款型号按官方披露完整度分档，款。完整 = tokens/s + 具名端侧硬件 + 量化位宽三者齐全",
+      body:D.hbar({ unit:" 款", labelW:132, items:[
+        {l:"完整三元组", v:cD(3), color:C.s3, tip:"三者齐全，可直接横向引用。代表：GLM-Edge、Gemma 4、Qwen3.5、Llama 3.2 SpinQuant、LFM2.5-1.2B、BlueLM-V-3B、Moonshine v2、Cosmos 3 Edge"},
+        {l:"有数字但缺一角", v:cD(2), color:C.s1, tip:"给了绝对数字，但缺硬件、位宽或内存中的一项。代表：Jamba 3B 缺量化、MagicVL 缺位宽、Moondream 3.1 缺内存"},
+        {l:"仅相对倍数 / 数据中心", v:cD(1), color:C.s2, tip:"只有 N 倍提升，或数字其实测于 A100 / H200 / A10G。代表：AndesVL 6.7×、盘古 30B 五倍以上、Whisper ~8× 于 A100、Parakeet RTFx 于 H200"},
+        {l:"完全未披露", v:cD(0), color:C.mute, tip:"官方从未给出任何端侧性能数字，模型卡却反复写 on-device。代表：MiniCPM5、Spark-X2.5-4B、EXAONE-4.0、Falcon 全系、gpt-oss-20b、AFM 3、Nemotron 3 全系"} ]}),
+      legend:D.legend([{c:C.s3,l:"可直接引用"},{c:C.s1,l:"需补口径"},{c:C.s2,l:"不可当端侧数字用"},{c:C.mute,l:"无数据"}]),
+      table:D.table(["披露档","款数","占比"],[["完整三元组",cD(3),Math.round(cD(3)/73*100)+"%"],["缺一角",cD(2),Math.round(cD(2)/73*100)+"%"],["仅相对 / 数据中心",cD(1),Math.round(cD(1)/73*100)+"%"],["完全未披露",cD(0),Math.round(cD(0)/73*100)+"%"]]),
+      src:"来源：73 款型号的官方模型卡、技术报告与厂商博客逐条核对，检索日期 2026-09-09。结论：端侧模型目前不存在可横向比较的性能基准，任何跨厂商 tok/s 排行都不可信" }),
+
+    D.card({ title:"架构路线分布：Transformer 在端侧不再是唯一答案", sub:"73 款型号按架构路线，款。端侧瓶颈是内存带宽与 KV cache，而不是算力——这直接催生了线性注意力、SSM 与 RNN 的复活",
+      body:D.hbar({ unit:" 款", labelW:126, bh:11, gap:7, items:AORDER.map(k=>({
+        l:AL[k][0], v:cA(k), color:AL[k][2], tip:AL[k][0]+"："+cA(k)+" 款。"+AL[k][1] })).filter(i=>i.v>0) }),
+      table:D.table(["路线","款数","代表"],AORDER.filter(k=>cA(k)>0).map(k=>[AL[k][0],cA(k),SPEC.filter(m=>m.a===k).slice(0,3).map(m=>m.n).join("、")])),
+      src:"按官方技术报告 / config.json 判定。注意两处常见错标：Gemma 4 报告全文没有 MatFormer 字样，E2B 与 E4B 是层数不同的独立训练模型，差额只来自 PLE；Liquid 从 LFM2 起的层配置是门控短卷积 + GQA，内含注意力，官网已去掉 beyond Transformers 的表述" }),
+
+    D.card({ title:"参数量分布：端侧的重心在 1–5B", sub:"73 款型号按参数量分桶，款。注意 Nano 已经与小尺寸脱钩——NVIDIA Nemotron 3 Nano 是 30B",
+      body:D.column({ unit:" 款", h:168, items:pB.map(([l,f],i)=>({ l:l, v:SPEC.filter(f).length,
+        color:i===5?C.mute:(i<2?C.s3:(i<4?C.s1:C.s2)),
+        tip:l+"："+SPEC.filter(f).length+" 款。"+SPEC.filter(f).slice(0,4).map(m=>m.n).join("、") })) }),
+      table:D.table(["区间","款数","说明"],[["<1B",SPEC.filter(pB[0][1]).length,"多为语音模型与 270M 级 agent 模型"],["1–3B",SPEC.filter(pB[1][1]).length,"手机主力档"],["3–5B",SPEC.filter(pB[2][1]).length,"旗舰手机与 AI PC 交界"],["5–10B",SPEC.filter(pB[3][1]).length,"高端手机 / PC"],["≥10B",SPEC.filter(pB[4][1]).length,"PC 专属，MoE 为主"],["未披露",SPEC.filter(pB[5][1]).length,"Gemini Nano、Phi Silica、Aion 等闭源随 OS 分发型号"]]),
+      src:"参数量以 config.json 或技术报告为准。Gemma 4 的 E 是 effective 而非总参：E2B 有效 2.3B / 总计 5.1B，差额 2,340M 全部来自只查表不做矩阵乘的 PLE" }),
+
+    D.card({ title:"上下文：宣传值与端侧发运值是两个数", sub:"73 款型号按端侧实际可用上下文，款。凡量化版与浮点版窗口不同，一律以量化版为准",
+      body:D.hbar({ unit:" 款", labelW:96, items:xB.map(([l,f],i)=>({ l:l, v:SPEC.filter(f).length,
+        color:i===0?C.mute:(i<3?C.light:C.s1),
+        tip:l+"："+SPEC.filter(f).length+" 款。"+SPEC.filter(f).slice(0,4).map(m=>m.n).join("、") })) }),
+      table:D.table(["型号","宣传","端侧实际"],[["Llama 3.2 1B/3B","128K","量化版 8K"],["Phi Silica","浮点 4K","发运 2K"],["Falcon-H1-0.5B","系列 256K","config 16,384"],["AI21 Jamba 3B","256K","官方自承训练 32K/64K"],["MiniCPM5-2B","WAIC 512K","model card 131,072"],["Qwen3.5 / Spark-X2.5","262K / 1M","原生，未缩水"]]),
+      src:"AI21 是唯一主动披露「宣传窗口 ≠ 训练窗口」的厂商。Llama 3.2 量化的隐藏代价还包括 BFCL V2 工具调用从 25.7 掉到 15.9" }),
+
+    D.card({ title:"许可证：开源标签下有三档完全不同的东西", sub:"73 款型号，地区 × 许可档，款。悬停查看具体数量",
+      body:D.heat({ rows:["中国","美国","欧洲","其他"], cols:["OSI 可商用","开源受限","闭源 / 禁商用"], vals:heatV }),
+      legend:D.legend([{c:"#1baf7a",l:"OSI 可商用 "+SPEC.filter(m=>m.o===1).length+" 款"},{c:"#c2830a",l:"开源受限 "+SPEC.filter(m=>m.o===2).length+" 款"},{c:"#9ca3af",l:"闭源 / 禁商用 "+SPEC.filter(m=>m.o===3).length+" 款"}]),
+      table:D.table(["翻转案例","变化"],[["Gemma","1/2/3/3n 是 Gemma ToU，Gemma 4 改成 Apache 2.0，断代"],["Ministral","一代 8B 非商用 MRL，二代全系 Apache 2.0，完全反转"],["Moondream","research-only → Apache-2.0 → BSL 1.1 → 自有 Model License，翻转四次"],["Arcee AFM-4.5B","CC-BY-NC（未落地）→ Arcee License → Apache-2.0，改三次"],["Muse Glimmer","Meta 首个用 OSI 标准许可发布的前沿模型，无 7 亿 MAU 限制"]]),
+      src:"许可证会翻转且没有厂商回头修正旧文章。做开源度对比时不能把 Gemma 3 与 Gemma 4 归为同一档；tiny-aya、EXAONE-4.0、MobileLLM-R1 虽有权重下载但明确禁止商用" }),
+
+    D.card({ title:"量化位宽的下界竞赛：4-bit 已经不是终点", sub:"官方发布的最低位宽方案与代价",
+      body:D.tiles([
+        {v:"1.58 bit", k:"Falcon-E-3B 原生三值", d:"从零用三值权重预训练 1.5T tokens，而非事后量化。但实际按 2 bit/权重 U8 打包存储 + embedding 保持 BF16，比理论值大 73%，且官方零 tokens/s"},
+        {v:"1.8 bpw", k:"OPPO AndesVL-4B QALFT", d:"全表唯一披露 bits-per-weight 的型号。天玑 9500 上 decode 峰值加速 6.7×、内存降 30.9%，但没有一个绝对数字"},
+        {v:"int2", k:"腾讯 HY-1.8B-2Bit", d:"601MB，2-bit QAT + 弹性拉伸量化。硬件门槛极窄：仅 Arm SME2 设备（Apple M4、vivo X300），需 llama.cpp PR 分支"},
+        {v:"2 bpw", k:"Apple AFM 2025 QAT", d:"权重 2 bpw + embedding 4-bit + KV cache 8-bit。Apple 从未公布过任何 GB 数字，只给 TTFT 下降约 37.5% 这样的相对值"},
+        {v:"3.7 bpw", k:"AFM 2024 混合调色板", d:"混合 2/4-bit palettization。配套的 iPhone 15 Pro 30 tok/s 是 Apple 迄今唯一一次公布绝对吞吐"},
+        {v:"wNa8o8", k:"Gemma 4 官方 QAT", d:"int2 + int4 混合权重 + int8 激活，含定向 2-bit 解码层。E2B 从 bf16 11.4GB 压到移动端 1.1GB"} ]),
+      src:"量化掉点几乎无人公开，全表只有三家给过实测链：腾讯 Hunyuan-1.8B（BF16 76.7 → FP8 75.1 → INT4-GPTQ 73.0 → INT4-AWQ 71.7）、ELYZA-JP-8B（3.655 → Q4_K_M 3.57 → AWQ 3.39）、LLM-jp-4-8B（BF16 7.54 → Q4_K_M 7.57，日语近乎无损）" })
+  ];
+  document.getElementById("dz-spec").innerHTML =
+    '<div class="dz-head"><h2>型号级横向观察</h2><span class="n">全部基于左表 73 款型号的官方数据聚合，随筛选无关、始终为全量口径。悬停查看明细，展开「数据表」查看数值</span></div>'
+    + '<div class="dz-grid c3">' + cards.join("") + '</div>';
+  DZ.tip();
+})();
+
+/* ---- 结论 ---- */
+document.getElementById("spec-ins").innerHTML =
+'<div class="ins"><h3>六条会让横向对比彻底失效的口径陷阱</h3><ul>'
++ '<li><b>后端不同差 50–70 倍：</b>Qwen3-4B-Instruct-2507 是全表最好的对照组——同一颗骁龙、同一个 4096 上下文，GENIE NPU w4a16 跑出 29.24 tok/s、TTFT 0.052–1.657s，而 llama.cpp q4_0 CPU/GPU 路径只有 7.58–12.11 tok/s、TTFT 最高 108s。吞吐差 2–3 倍，<b>首 token 延迟差 50–70 倍</b>。同理 Gemma 3 1B 在 S25 Ultra 上 NPU prefill 5836 vs CPU 322。</li>'
++ '<li><b>prefill 还是 decode，差 73 倍：</b>同一台 Galaxy S26 Ultra、同一个 Gemma 4 E2B、同一次测试，GPU prefill 3,808 tok/s vs GPU decode 52.1 tok/s。用户体感的打字速度是 decode，等待响应是 prefill / TTFT。</li>'
++ '<li><b>数据中心数字冒充端侧：</b>Whisper README 的 ~8× 测于 A100；Phi-4-mini-flash 的 10× 测于单张 A100-80GB + vLLM；Nemotron-Nano-9B-v2 的 6× 测于单张 A10G；所有 NVIDIA ASR 的 RTFx 来自跑在 1×H200 的 Open ASR Leaderboard；MiniCPM-V 4.6 的 7013 token/s 是服务器高并发吞吐。<b>能装进 X GB 显存 ≠ 端侧可用，更 ≠ 端侧性能。</b></li>'
++ '<li><b>体积不含视觉塔、不含 KV cache：</b>MiniCPM-V 4.6 的 LLM Q4_K_M 只有 0.53GB，但 f16 视觉塔是 1.11GB，占总体积 69% 且故意不量化；Gemma 3 QAT 官方原文限定只算权重，27B int4 权重 14.1GB，加 32K KV 后是 32.8GB，官方点名的 RTX 3090 其实装不下；gpt-oss-20b 文件 12.8GiB 但运行需 16GB，缺 mxfp4 kernel 时约 48GB。</li>'
++ '<li><b>单位根本不是 tokens/s：</b>vivo 的 80 字/s 与商汤的 90.2 字/s 是<b>中文字不是 token</b>；Moondream 一律用 req/s；Kyutai 与 Voxtral 用 RTF；语音模型用 RTFx；Gemma 3 270M 唯一的数字是 25 轮对话耗电 0.75%，那是能耗不是速度。</li>'
++ '<li><b>参数量与 benchmark 的字段陷阱：</b>Hugging Face 侧栏参数量系统性不可靠（Falcon-E-1B 显示 0.5B，因为 U8 打包字节被当成参数数）；sarvam-1 的 MMLU 44.44 是翻译版 MMLU 但字段名与英文原版完全相同；kanana-nano 的 HAE-RAE 从 Base 的 77.09 崩到 Instruct 的 33.52，Base 与 Instruct 不可混用。</li>'
++ '</ul></div>'
++ '<div class="ins"><h3>三条结构性判断</h3><ul>'
++ '<li><b>端侧模型玩家与端侧基座提供者是两个市场：</b>MiniCPM-V 4.6 的语言基座是 Qwen3.5-0.8B，AndesVL-4B 用 Qwen3-4B，MagicVL-2B 用 Qwen3-1.7B，InternVL3.5-2B 用 Qwen3，DeepSeek-R1-Distill 全系底座是 Qwen 与 Llama，连 NVIDIA Canary-Qwen-2.5B 的 LLM 半边也是 Qwen3-1.7B。<b>Qwen 已成为中国乃至部分海外端侧模型的事实公共底座</b>，前一个名单远长于后一个。</li>'
++ '<li><b>架构分叉是真的，而且分叉点在内存不在算力：</b>端侧真正的瓶颈是内存带宽与随上下文线性增长的 KV cache，所以这一轮创新几乎全指向去 KV——Qwen3.5 的 75% 线性注意力、Liquid 的门控短卷积、Jamba 的 26 Mamba : 2 Attention、RWKV 的纯 RNN、Gemma 4 把近一半参数挪进只查表的 PLE、Apple 把全量权重留在 NAND 只在 prompt 开始时选一次专家。<b>云端还没有一个模型需要做这些事。</b></li>'
++ '<li><b>能力已经不是瓶颈，可验证性才是：</b>4B 级模型的 AIME、GPQA 分数在两年内追平了去年的 27B，Falcon-H1-Tiny-R-0.6B 的 AIME24 甚至到 75.0。但同期<b>官方性能披露不升反降</b>：Apple 从 2024 年给绝对 tok/s 退化到只给相对百分比，华为盘古端侧 30B 连模型名都没统一，NVIDIA 与面壁的新一代全部零 tokens/s。行业正在从「比谁跑得快」滑向「比谁话说得圆」。</li>'
++ '</ul></div>'
++ '<div class="ins wide"><h3>口径与选型说明</h3><ul>'
++ '<li><b>收录范围：</b>73 款<b>具体型号</b>而非模型家族，覆盖中国大陆 22、美国 32、欧洲 5、其他 14。纳入标准是官方明确面向端侧 / 边缘部署，或已有官方量化版与端侧运行时支持；纯云端模型、仅有 API 的模型、以及只在论文里出现过没有可用权重或产品的模型不收录。语音模型只收 ASR / TTS 里有端侧口径的代表款。</li>'
++ '<li><b>指标深度：</b>只采<b>公开硬参数 + 官方声称性能</b>两类——参数量、架构、上下文、量化方案与体积、许可、模态属前者；tokens/s、TTFT、峰值内存、RTF 属后者。<b>不含第三方 benchmark、不含本项目实测</b>，因为跨厂商的第三方端侧跑分目前不存在统一硬件基线。</li>'
++ '<li><b>已剔除的未证实说法：</b>OpenAI × Qualcomm 骁龙运行 gpt-oss-20b；Nexa AI 被收购的具体条款（其 NexaSDK 已迁至 github.com/qualcomm/geniex）；Moondream 融资额；Cohere 收购 Aleph Alpha——2026 年 9 月直接抓取 aleph-alpha.com 显示其仍为独立德国 GmbH、双 CEO、全站无 Cohere 字样。<b>另有三个根本不存在的型号务必避开：SmolLM4、SmolVLM3、LFM3</b>（Liquid 的产品线是 LFM2.5）。</li>'
++ '<li><b>待复核：</b>Gemma 4、Qwen3.5、AFM 3、Nemotron 3、LFM2.5、Moondream 3.1、Spark-X2.5、盘古端侧 30B-A2B、Falcon-H1-Tiny、tiny-aya-global 均晚于本轮资料的模型知识截止，引用前建议复核一手页面。Apple AFM 3 的技术报告官方承诺 later this summer 发布，截至 2026-09-09 仍未出现。</li>'
++ '</ul></div>';
+})();
+
+</script>
+
+<script>
 (function(){
   const D=DZ, C=D.C, a=D.a;
   const U = {
@@ -2033,16 +2586,17 @@ const DZ = (() => {
         {v:"57<small>%</small>", k:"中国国产品牌本土市占率", d:"此前十年约 28%，2024 年首次过半（IFR）"},
         {v:"132<small>台/万人</small>", k:"全球机器人密度均值", d:"韩国最高 1220，中国 166（制造业口径，全球第 22）（IFR 2025-09）"} ]),
       src:"来源："+a("IFR World Robotics 2025",U.ifr)+" · "+a("IFR 机器人密度 2025-09-25",U.ifrDensity)+"。IFR 只发布台数，未发布美元市场规模" }),
-    D.card({ title:"101 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+    D.card({ title:"114 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
       body:D.hbar({ unit:" 家", labelW:118, items:[
         {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3（新增星动纪元、乐聚机器人）"},
         {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4（新增非夕科技）"},
         {l:"具身模型 / 部件", v:19, tip:"具身智能模型 / 核心部件：19 家，中国大陆 13 / 美国 6 / 欧洲 0 / 其他 0（新增梅卡曼德、思岚科技）"},
         {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国大陆 7 / 美国 4 / 欧洲 0 / 其他 1"},
-        {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2（新增极飞科技）"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[17,7,4,3],[13,4,5,4],[13,6,0,0],[7,4,0,1],[8,2,1,2]] }) + '</div>',
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","13","6","0","0","19"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"]]),
+        {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2（新增极飞科技）"},
+        {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（新增品类，含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费","数据"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[17,7,4,3],[13,4,5,4],[13,6,0,0],[7,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","13","6","0","0","19"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
       src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-09 核实" }),
     D.card({ title:"资本：全球与中国机器人融资升温", sub:"十亿美元 / 亿元，一级市场 VC 口径；2026 年数据均为检索时点的年内累计值，非全年终值",
       body:D.column({ unit:" 十亿美元", h:160, items:[
@@ -2050,20 +2604,21 @@ const DZ = (() => {
         {l:"2026 年内", v:18.8, vl:"$18.8B", color:C.light, tip:"2026 年至检索时点已达 $18.8B，已超 2025 全年（Crunchbase）"} ]}),
       table:D.table(["指标","数值","说明"],[["全球机器人融资 2025","$14B","+70%，超越 2021 年峰值"],["全球机器人融资 2026 年内","$18.8B","已超 2025 全年"],["中国具身智能融资 2025 年前 11 月","334.73 亿元","2024 同期 4 倍"],["全球机器人基础模型融资 2025","$2.2B","“机器人大脑”细分"]]),
       src:"来源："+a("Crunchbase News",U.cb)+" · "+a("36氪·具身万象 2025-12",U.itjz)+"。不同统计窗口（前8月/前11月/滚动12月）不可简单相加" }),
-    D.card({ title:"自有口径：51 家创业公司融资 Top5 与地区结构", sub:"101 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+    D.card({ title:"自有口径：59 家创业公司融资 Top6 与地区结构", sub:"114 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:140, items:[
         {l:"Figure AI", v:1900, vl:"$1.9B", tip:"Figure AI：累计融资 $1.9B，2025-09 Series C 估值 $39B"},
         {l:"智元机器人", v:845, tip:"智元机器人：累计融资约 $845M（≈60 亿元）"},
         {l:"Physical Intelligence", v:800, tip:"Physical Intelligence：累计融资约 $800M"},
         {l:"海柔创新", v:563, tip:"海柔创新 HAI ROBOTICS：累计融资约 $563M"},
+        {l:"光轮智能", v:437, tip:"光轮智能：累计融资约 31 亿元 ≈$437M（2025-2026 六轮），数据层新增"},
         {l:"银河通用", v:423, tip:"银河通用：最新一轮融资超 $300M，累计约 $423M，投后估值 $3B"} ]})
         + '<div style="margin-top:10px">' + D.stacked({ segs:[
-        {l:"中国大陆", v:47.7, color:C.s1, tip:"中国大陆 32 家创业公司合计 ≈$5.41B，占 47.7%"},
-        {l:"美国", v:50.2, color:C.s2, tip:"美国 16 家创业公司合计 ≈$5.70B，占 50.2%（较上版新增 Field AI $405M，美国由此反超中国）"},
-        {l:"欧洲+其他", v:2.1, color:C.mute, tip:"欧洲 2 家 + 其他 1 家合计 ≈$0.24B，占 2.1%"} ]}) + '</div>',
-      legend:D.legend([{c:C.s1,l:"中国大陆 47.7%"},{c:C.s2,l:"美国 50.2%"},{c:C.mute,l:"欧洲 + 其他 2.1%"}]),
-      table:D.table(["指标","数值"],[["已披露融资创业公司数","51 家"],["合计已披露融资","≈$11.3B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","10 家"]]),
-      src:"来源：自有口径（机器人层数据支撑清单 E2 节），2026-09-08 计算" }),
+        {l:"中国大陆", v:48.1, color:C.s1, tip:"中国大陆 33 家创业公司合计 ≈$5.85B，占 48.1%（新增光轮智能 $437M）"},
+        {l:"美国", v:48.5, color:C.s2, tip:"美国 21 家创业公司合计 ≈$5.90B，占 48.5%（新增 XDOF/Micro1/Tacta/Build AI/Hub.xyz 共 $196.7M）"},
+        {l:"欧洲+其他", v:3.4, color:C.mute, tip:"欧洲 3 家 + 其他 2 家合计 ≈$0.41B，占 3.4%（新增 Encord $110M、Mecka AI $60M）"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"中国大陆 48.1%"},{c:C.s2,l:"美国 48.5%"},{c:C.mute,l:"欧洲 + 其他 3.4%"}]),
+      table:D.table(["指标","数值"],[["已披露融资创业公司数","59 家"],["合计已披露融资","≈$12.15B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","11 家"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E2 节），2026-09-09 计算，含数据层新增玩家" }),
     D.card({ title:"估值与并购里程碑", sub:"人形机器人第一梯队公司估值与年内最大并购交易",
       body:D.tiles([
         {v:"$39<small>B</small>", k:"Figure AI 最新估值", d:"2025-09 Series C，融资超 $1B（Figure AI 官方）"},
@@ -2079,7 +2634,7 @@ const DZ = (() => {
         {v:"2-3<small>个数量级</small>", k:"仿真训练吞吐量提升", d:"Isaac Gym/Lab 较 CPU 方案；单 RTX 4090 可达 8.5-9.5 万 FPS（NVIDIA）"} ]),
       src:"来源："+a("IDTechEx",U.idtechex)+" · "+a("NVIDIA GR00T N1.7",U.groot)+"。“成本”存在制造成本 / BOM 成本 / 平均售价三种口径，不可互换" })
   ];
-  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（101 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（114 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
   DZ.tip();
 })();
 </script>
@@ -2253,22 +2808,22 @@ const DZ = (() => {
       legend:D.legend([{c:C.s1,l:"全球市场规模 2025 年基数（不同机构口径，不可比较）"}]),
       table:D.table(["机构","2025 基数","预测","CAGR","口径"],[["Fortune Business Insights","$22.43B","2034 $76.44B","14.6%","Smart Toys 广义"],["WiseGuy Reports","$8.55B","2035 $25.0B","11.3%","中间"],["QY Research","$3.14B","2032 $26.21B","35.0%","AI Smart Toys 窄义"],["中商产业研究院","290 亿元","2030 850 亿元","—","中国"]]),
       src:"来源："+a("Fortune Business Insights",U.fortune)+" · "+a("QY Research",U.qyr)+" · "+a("中商产业研究院",U.zhongshang)+" · "+a("BubblePal",U.bubble)+" · "+a("Ropet",U.ropet)+" · "+a("芙崽",U.fuzozo)+"。**出货数字全部出自公司自述或融资稿，无第三方监测**（洛图只公开词典笔与电子纸单词卡）。主体易混淆：BubblePal 属跃然创新，芙崽属珞博智能，是两家不同公司" }),
-    D.card({ title:"46 家玩家：品类与地区结构（自有口径）", sub:"本页 NATIVEHW_PLAYERS 数据集，按品类、地区交叉统计条目数。条目数 ≠ 公司数（科大讯飞出现两次），去重后 45 家",
+    D.card({ title:"45 家玩家：品类与地区结构（自有口径）", sub:"本页 NATIVEHW_PLAYERS 数据集，按品类、地区交叉统计条目数。条目数 ≠ 公司数（科大讯飞出现两次），去重后 44 家",
       body:D.hbar({ unit:" 家", labelW:132, items:[
         {l:"开发套件 / 极客硬件", v:14, tip:"开发套件：14 家，中国大陆 9 / 美国 3 / 欧洲 2 / 其他 0——本层中国玩家最密集的一块（新增 Sipeed矽速科技、Google Coral）"},
-        {l:"AI Pin / 挂件录音", v:10, tip:"AI Pin：10 家，中国大陆 2 / 美国 8 / 欧洲 0 / 其他 0——高度美国化（80%，新增 Wispr AI）"},
+        {l:"AI Pin / 挂件录音", v:9, tip:"AI Pin：9 家，中国大陆 2 / 美国 7 / 欧洲 0 / 其他 0——高度美国化（77.8%）"},
         {l:"AI 陪伴玩具", v:11, tip:"AI 玩具：11 家，中国大陆 4 / 美国 2 / 欧洲 0 / 其他 5——地区最分散（新增 Embodied、Groove X）"},
         {l:"无屏 AI 助理", v:6, tip:"无屏助理：6 家，中国大陆 2 / 美国 3 / 欧洲 0 / 其他 1"},
         {l:"AI 翻译硬件", v:5, tip:"翻译硬件：5 家，中国大陆 3 / 美国 0 / 欧洲 1 / 其他 1——唯一美国完全缺席的品类"} ]})
         + '<div style="margin-top:10px">' + D.heat({ rows:["开发套件","AI Pin","AI玩具","无屏助理","翻译硬件"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[9,3,2,0],[2,8,0,0],[4,2,0,5],[2,3,0,1],[3,0,1,1]] }) + '</div>'
+        vals:[[9,3,2,0],[2,7,0,0],[4,2,0,5],[2,3,0,1],[3,0,1,1]] }) + '</div>'
         + '<div style="margin-top:10px">' + D.stacked({ segs:[
-        {l:"未上市", v:67.4, color:C.s1, tip:"未上市 31 家"},
-        {l:"已上市", v:23.9, color:C.s2, tip:"已上市 11 家：出门问问、科大讯飞（×2）、网易有道、嘉楠、乐鑫、NVIDIA、树莓派、索尼、卡西欧"},
-        {l:"已被收购", v:8.7, color:C.mute, tip:"子公司 / 已被收购 4 家：Limitless（Meta）、Bee（Amazon）、Humane（HP）、Arduino（高通）"} ]}) + '</div>',
-      legend:D.legend([{c:C.s1,l:"未上市 67.4%"},{c:C.s2,l:"已上市 23.9%"},{c:C.mute,l:"已被收购 8.7%"}]),
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["开发套件","9","3","2","0","14"],["AI Pin","2","8","0","0","10"],["AI 玩具","4","2","0","5","11"],["无屏助理","2","3","0","1","6"],["翻译硬件","3","0","1","1","5"],["合计","20","16","3","7","46"]]),
-      src:"来源：自有口径（AI原生新硬件层数据支撑清单 E 节），数据来自本页 NATIVEHW_PLAYERS 数组，2026-09-09 核实。地区占比：中国大陆 43.5% / 美国 34.8% / 其他 15.2% / 欧洲 6.5%。**欧洲全层仅 3 家**（波兰 Vasco、英国树莓派、意大利 Arduino），且 2 家在开发套件品类——消费级几乎空白" }),
+        {l:"未上市", v:66.7, color:C.s1, tip:"未上市 30 家"},
+        {l:"已上市", v:24.4, color:C.s2, tip:"已上市 11 家：出门问问、科大讯飞（×2）、网易有道、嘉楠、乐鑫、NVIDIA、树莓派、索尼、卡西欧"},
+        {l:"已被收购", v:8.9, color:C.mute, tip:"子公司 / 已被收购 4 家：Limitless（Meta）、Bee（Amazon）、Humane（HP）、Arduino（高通）"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"未上市 66.7%"},{c:C.s2,l:"已上市 24.4%"},{c:C.mute,l:"已被收购 8.9%"}]),
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["开发套件","9","3","2","0","14"],["AI Pin","2","7","0","0","9"],["AI 玩具","4","2","0","5","11"],["无屏助理","2","3","0","1","6"],["翻译硬件","3","0","1","1","5"],["合计","20","15","3","7","45"]]),
+      src:"来源：自有口径（AI原生新硬件层数据支撑清单 E 节），数据来自本页 NATIVEHW_PLAYERS 数组，2026-09-09 核实。地区占比：中国大陆 44.4% / 美国 33.3% / 其他 15.6% / 欧洲 6.7%。**欧洲全层仅 3 家**（波兰 Vasco、英国树莓派、意大利 Arduino），且 2 家在开发套件品类——消费级几乎空白" }),
     D.card({ title:"开发套件：树莓派财报与「算力/美元」曲线", sub:"本层条目最多的品类（12 家），也是唯一有上市公司逐年披露出货量的品类——为端侧 AI 从消费终端下沉到开发者硬件提供量化坐标",
       body:D.column({ h:172, unit:" 百万台", title:"树莓派出货量：MCU 芯片首次超过板卡（2025 为 the cross-over year）", items:[
         {l:"板卡24", v:7.0, color:C.s1, tip:"FY2024 板卡及模组出货 700 万台"},
@@ -2284,7 +2839,7 @@ const DZ = (() => {
       table:D.table(["开发板","AI 算力（含精度口径）","官方价格"],[["Jetson Orin Nano Super","67 TOPS 稀疏 INT8 / 33 稠密","$249"],["Jetson AGX Thor","2,070 TFLOPS FP4 稀疏 @130W","$3,499"],["Pi 5 + AI HAT+ 2","40 TOPS（INT4）","$130"],["Pi 5 + AI HAT+（26T）","26 TOPS，官方未标精度","$110"],["Arduino UNO Q 2GB","官方未给出 TOPS","$59（2026-09，发布价 $44）"],["华为 Atlas 200I DK A2","8 TOPS","1,999 元（2023 发布价）"],["CanMV-K230","官方未给 TOPS，仅给帧率","未公开"]]),
       src:"来源："+a("树莓派 FY2025 业绩公告",U.rpiFY)+" · "+a("Jetson Orin Nano Super",U.jetson)+" · "+a("高通收购 Arduino",U.arduino)+"。**TOPS 数字不可横向相加或直接比较**：NVIDIA 标的是稀疏 INT8（稠密值仅一半），Hailo-10H 标 INT4，Cix P1 的 45 TOPS 是 NPU+CPU+GPU 合计，乐鑫 ESP32-P4 与嘉楠 K230 官方根本不公布 TOPS。开发套件品类无独立市场规模数据，机构口径的「边缘 AI 硬件」2025 年在 118 亿–262 亿美元之间（2.2 倍分歧），因是否计入手机/PC 内的 SoC 而异" })
   ];
-  document.getElementById("dz-nativehw").innerHTML = `<div class="dz-head"><h2>L5 AI 原生新硬件数据</h2><span class="n">财报口径、资本口径与自有口径三类，含 46 家玩家结构统计。悬停查看口径，展开「数据表」查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-nativehw").innerHTML = `<div class="dz-head"><h2>L5 AI 原生新硬件数据</h2><span class="n">财报口径、资本口径与自有口径三类，含 45 家玩家结构统计。悬停查看口径，展开「数据表」查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
   DZ.tip();
 })();
 </script>
