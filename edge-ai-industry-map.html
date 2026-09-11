@@ -302,8 +302,10 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .dz-head .n { font-size: 11px; color: #6b7280; }
 .dz-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .dz-grid.c3 { grid-template-columns: repeat(3, 1fr); }
-.dz-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px 8px; display: flex; flex-direction: column; min-width: 0; }
-.dz-t { font-size: 12.5px; font-weight: 700; color: #111827; }
+.dz-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px 8px; display: flex; flex-direction: column; min-width: 0; position: relative; }
+.dz-move { position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; line-height: 16px; text-align: center; padding: 0; border: 1px solid #e5e7eb; border-radius: 4px; background: #f8fafc; color: #898781; font-size: 11px; cursor: pointer; }
+.dz-move:hover { background: #eef2f6; color: #111827; }
+.dz-t { font-size: 12.5px; font-weight: 700; color: #111827; padding-right: 20px; }
 .dz-s { font-size: 10.5px; color: #6b7280; line-height: 1.4; margin-top: 2px; }
 .dz-body { margin: 8px 0 4px; flex: 1; }
 .dz-body svg { display: block; overflow: visible; font-family: inherit; }
@@ -623,6 +625,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <div class="stats" id="l1c-stats"></div>
     </div>
 
+    <div class="dz" id="dz-chip-top"></div>
+
     <div class="insights">
       <div class="ins">
         <h3>按品类看：四类玩家的竞争逻辑不同</h3>
@@ -704,6 +708,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       </div>
       <div class="stats" id="l3-stats"></div>
     </div>
+
+    <div class="dz" id="dz-model-top"></div>
 
     <div class="insights">
       <div class="ins">
@@ -820,6 +826,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <div class="stats" id="l4-stats"></div>
     </div>
 
+    <div class="dz" id="dz-solution-top"></div>
+
     <div class="insights" id="l4-insights">
       <div class="ins">
         <h3>按环节看：四类玩家的分工与差异</h3>
@@ -896,6 +904,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     </div>
     <div class="stats" id="l5-stats"></div>
   </div>
+
+  <div class="dz" id="dz-robot-top"></div>
 
   <div class="insights">
     <div class="ins">
@@ -974,6 +984,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <div class="stats" id="l5w-stats"></div>
   </div>
 
+  <div class="dz" id="dz-wearable-top"></div>
+
   <div class="insights">
     <div class="ins">
       <h3>按品类看：AI 眼镜是最活跃的新变量</h3>
@@ -1050,6 +1062,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     </div>
     <div class="stats" id="l5n-stats"></div>
   </div>
+
+  <div class="dz" id="dz-nativehw-top"></div>
 
   <div class="insights">
     <div class="ins">
@@ -1129,6 +1143,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <div class="stats" id="ea-stats"></div>
     </div>
 
+    <div class="dz" id="dz-edgeai"></div>
+
     <div class="insights" id="ea-ins"></div>
 
     <div class="toolbar" id="ea-toolbar">
@@ -1165,8 +1181,6 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       <table class="spec ea" id="ea-table"><thead id="ea-head"></thead><tbody id="ea-body"></tbody></table>
     </div>
     <p class="spec-note" id="ea-foot"></p>
-
-    <div class="dz" id="dz-edgeai"></div>
   </div>
 
 </div>
@@ -2061,7 +2075,40 @@ const DZ = (() => {
   const legend = items => items.map(i=>`<span><i style="background:${i.c}"></i>${i.l}</span>`).join("");
   const table = (head, rows) => `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
   const a = (t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
-  return {C,hbar,column,line,stacked,heat,tiles,card,legend,table,a,tip};
+  function enableMove(topId, botId){
+    const topEl = document.getElementById(topId), botEl = document.getElementById(botId);
+    const topGrid = topEl && topEl.querySelector(".dz-grid"), botGrid = botEl && botEl.querySelector(".dz-grid");
+    if(!topGrid || !botGrid) return;
+    const key = "dzmove:"+topId;
+    const titleOf = c => c.querySelector(".dz-t").textContent;
+    function render(){
+      [[topGrid,true],[botGrid,false]].forEach(([grid,isTop])=>{
+        Array.from(grid.children).forEach(c=>{
+          let btn = c.querySelector(".dz-move");
+          if(!btn){ btn = document.createElement("button"); btn.type="button"; btn.className="dz-move"; c.appendChild(btn); }
+          btn.textContent = isTop ? "↓" : "↑";
+          btn.title = isTop ? "移到下方" : "移到上方";
+          btn.onclick = () => {
+            (isTop ? botGrid : topGrid).insertBefore(c, isTop ? botGrid.firstChild : null);
+            localStorage.setItem(key, JSON.stringify(Array.from(topGrid.children).map(titleOf)));
+            render();
+          };
+        });
+      });
+    }
+    try{
+      const saved = JSON.parse(localStorage.getItem(key));
+      if(Array.isArray(saved)){
+        saved.forEach(title=>{
+          const c = Array.from(botGrid.children).find(c=>titleOf(c)===title) || Array.from(topGrid.children).find(c=>titleOf(c)===title);
+          if(c) topGrid.appendChild(c);
+        });
+        Array.from(topGrid.children).forEach(c=>{ if(!saved.includes(titleOf(c))) botGrid.insertBefore(c, botGrid.firstChild); });
+      }
+    }catch(e){}
+    render();
+  }
+  return {C,hbar,column,line,stacked,heat,tiles,card,legend,table,a,tip,enableMove};
 })();
 
 /* ===================== 第一页：整机与全栈口径 ===================== */
@@ -2137,7 +2184,7 @@ const DZ = (() => {
     gemma:"https://blog.google/innovation-and-ai/technology/developers-tools/gemma-one-billion-downloads/",
     toubao:"https://pdf.dfcfw.com/pdf/H3_AP202408161639317641_1.pdf"
   };
-  const cards = [
+  const cardsTop = [
     D.card({ title:"小模型为什么能上端：四个拐点", sub:"能力密度、推理成本与使用分布三条曲线同时指向“小”",
       body:D.tiles([
         {v:"142<small>×</small>", k:"达到 MMLU 60% 的最小模型参数缩小倍数", d:"2022 PaLM 540B → 2024 Phi-3-mini 3.8B（Stanford AI Index 2025）"},
@@ -2158,7 +2205,9 @@ const DZ = (() => {
         {l:"2024E", v:21, vl:"21 亿元", color:C.light, tip:"2024 预测：21 亿元（头豹研究院 2024-08 发布时为预测值）"},
         {l:"2028E", v:79, vl:"79 亿元", color:C.light, tip:"2028 预测：79 亿元，2023–2028 CAGR 58%"} ]}),
       table:D.table(["年份","规模","说明"],[["2023","8 亿元","实际"],["2024E","21 亿元","预测"],["2028E","79 亿元","CAGR 58%"]]),
-      src:"来源："+a("头豹研究院 2024-08",U.toubao)+"。这是目前唯一公开的中国“端侧模型”而非“端侧硬件”口径，发布于 2024 年，未见后续更新" }),
+      src:"来源："+a("头豹研究院 2024-08",U.toubao)+"。这是目前唯一公开的中国“端侧模型”而非“端侧硬件”口径，发布于 2024 年，未见后续更新" })
+  ];
+  const cardsBottom = [
     D.card({ title:"基础模型公司融资：模型层资本的主流向", sub:"十亿美元，Crunchbase“Foundational AI”类别。浅色为 2026 年一季度单季值",
       body:D.column({ unit:" 十亿美元", h:160, items:[
         {l:"2022", v:1.4}, {l:"2023", v:23.2}, {l:"2024", v:31.4}, {l:"2025", v:88.9},
@@ -2186,7 +2235,9 @@ const DZ = (() => {
       table:D.table(["底座","衍生模型数","2026 年内下载"],[["Qwen","151,448","20.45 亿"],["Gemma","82,506","4.18 亿"],["Llama","≈58,000（推算）","2.27 亿"]]),
       src:"来源："+a("Hugging Face 2026-08-14",U.hf)+" · "+a("Fortune 2026-08-15",U.fortune)+" · "+a("Google 2026-08-20",U.gemma)+"。同一报告：模型仓库数 2026-01 → 08 由 243 万增至 296 万；1.5% 的仓库贡献 99.2% 的下载" })
   ];
-  document.getElementById("dz-model").innerHTML = `<div class="dz-head"><h2>模型层数据</h2><span class="n">模型能力、模型市场与模型层资本三类口径；整机 / 硬件口径见第一页。悬停查看口径，展开“数据表”查看数值</span></div><div class="dz-grid c3">${cards.join("")}</div>`;
+  document.getElementById("dz-model-top").innerHTML = `<div class="dz-grid c3">${cardsTop.join("")}</div>`;
+  document.getElementById("dz-model").innerHTML = `<div class="dz-head"><h2>模型层数据</h2><span class="n">模型能力、模型市场与模型层资本三类口径；整机 / 硬件口径见第一页。悬停查看口径，展开“数据表”查看数值</span></div><div class="dz-grid c3">${cardsBottom.join("")}</div>`;
+  DZ.enableMove("dz-model-top","dz-model");
 
   DZ.tip();
 })();
@@ -2589,7 +2640,23 @@ document.getElementById("spec-ins").innerHTML =
     jetson:"https://nvidianews.nvidia.com/news/nvidia-announces-jetson-orin-nano-2-robotics-computer-to-redefine-entry-level-edge-ai",
     qaby:"https://www.gelonghui.com/p/1852385"
   };
-  const cards = [
+  const cardsTop = [
+    D.card({ title:"边缘计算市场与中国算力投资", sub:"全球边缘支出与中国的边缘算力设备、AI 投资结构",
+      body:D.tiles([
+        {v:"$265<small>B → $450B</small>", k:"全球边缘支出 2025 → 2029E", d:"IDC 2026-03；到 2029 服务支出将超硬件"},
+        {v:"75.8<small>亿元</small>", k:"中国现场级边缘算力设备 2024", d:"台式/无风扇工控机、工业主板、HMI、边缘盒；2023 年 83.2 亿，2024 同比下滑（IDC 中国）"},
+        {v:"74.3<small>%</small>", k:"2026 中国 AI 支出中硬件占比", d:"IDC 中国；软件 + 服务合计仅约 25.7%"},
+        {v:"$8.4<small>亿</small>", k:"全球边缘 AI 盒子 2031E", d:"2024 年 $3.74 亿；中国台湾 + 大陆产量占 >95%（QYResearch）"} ]),
+      src:"来源："+a("IDC 2026-03-04",U.idc)+" · "+a("IDC 中国 2025-02",U.gk)+" · "+a("IDC 中国 2026-09",U.idcExp)+" · "+a("QYResearch",U.qaby) })
+  ];
+  const cardsBottom = [
+    D.card({ title:"AI 硬件方案与生态规模", sub:"面向 AI 眼镜 / AI 玩具 / 机器人的方案与集成分发渠道",
+      body:D.tiles([
+        {v:"1,452<small>万台</small>", k:"全球智能眼镜 2025 出货（IDC 预测）", d:"+42.5%；中国 291 万台（+121%）"},
+        {v:"292<small>亿元</small>", k:"中国 AI 玩具市场 2025", d:"+17.8%；2028E 超 700 亿元（洛图科技）"},
+        {v:"300<small>万</small>", k:"NVIDIA Jetson / 机器人栈开发者", d:"Jetson 200 万+、机器人栈 300 万+（NVIDIA 2026-08）"},
+        {v:"665<small>万</small>", k:"鲲鹏 + 昇腾开发者", d:"8,800+ 伙伴、23,900+ 认证解决方案（华为 KADC 2025）"} ]),
+      src:"来源："+a("IDC 2025-11-05",U.hm)+" · "+a("洛图科技 2026-03",U.hm)+" · "+a("NVIDIA 2026-08",U.jetson)+" · "+a("华为 KADC 2025",U.hw) }),
     D.card({ title:"蜂窝 IoT 模组：中国厂商主导", sub:"2025 年全球出货 +15%；移远以 36% 份额居首。收入口径前五合计占 73%",
       body:D.hbar({ unit:" %", labelW:88, items:[
         {l:"移远", v:36, tip:"移远通信：36%，+11%（Counterpoint 2025 全年出货份额）"},
@@ -2605,23 +2672,11 @@ document.getElementById("spec-ins").innerHTML =
         {v:"+7<small>% → -10%</small>", k:"ODM 出货增速 2025 上下半年", d:"H1 +7%，H2 -10%；低价机型（<$150）出货 -11%"},
         {v:"华勤 > 龙旗 > 天珑 > 立讯", k:"2025 全球手机 ODM 出货排名", d:"闻泰 ODM 自 2025 起并入立讯（第 4）"},
         {v:"1.28<small>亿台</small>", k:"台湾五大 ODM 2025 笔电出货合计", d:"广达 4,590 万 + 仁宝 2,800 万 + 纬创 2,410 万 + 英业达 2,130 万 + 和硕 900 万"} ]),
-      src:"来源："+a("Counterpoint 2026-04-16",U.cpOdm)+" · "+a("Counterpoint 2024 占比",U.cpOdmPct)+"。2026 年笔电出货预计 -9.4%（TrendForce）" }),
-    D.card({ title:"边缘计算市场与中国算力投资", sub:"全球边缘支出与中国的边缘算力设备、AI 投资结构",
-      body:D.tiles([
-        {v:"$265<small>B → $450B</small>", k:"全球边缘支出 2025 → 2029E", d:"IDC 2026-03；到 2029 服务支出将超硬件"},
-        {v:"75.8<small>亿元</small>", k:"中国现场级边缘算力设备 2024", d:"台式/无风扇工控机、工业主板、HMI、边缘盒；2023 年 83.2 亿，2024 同比下滑（IDC 中国）"},
-        {v:"74.3<small>%</small>", k:"2026 中国 AI 支出中硬件占比", d:"IDC 中国；软件 + 服务合计仅约 25.7%"},
-        {v:"$8.4<small>亿</small>", k:"全球边缘 AI 盒子 2031E", d:"2024 年 $3.74 亿；中国台湾 + 大陆产量占 >95%（QYResearch）"} ]),
-      src:"来源："+a("IDC 2026-03-04",U.idc)+" · "+a("IDC 中国 2025-02",U.gk)+" · "+a("IDC 中国 2026-09",U.idcExp)+" · "+a("QYResearch",U.qaby) }),
-    D.card({ title:"AI 硬件方案与生态规模", sub:"面向 AI 眼镜 / AI 玩具 / 机器人的方案与集成分发渠道",
-      body:D.tiles([
-        {v:"1,452<small>万台</small>", k:"全球智能眼镜 2025 出货（IDC 预测）", d:"+42.5%；中国 291 万台（+121%）"},
-        {v:"292<small>亿元</small>", k:"中国 AI 玩具市场 2025", d:"+17.8%；2028E 超 700 亿元（洛图科技）"},
-        {v:"300<small>万</small>", k:"NVIDIA Jetson / 机器人栈开发者", d:"Jetson 200 万+、机器人栈 300 万+（NVIDIA 2026-08）"},
-        {v:"665<small>万</small>", k:"鲲鹏 + 昇腾开发者", d:"8,800+ 伙伴、23,900+ 认证解决方案（华为 KADC 2025）"} ]),
-      src:"来源："+a("IDC 2025-11-05",U.hm)+" · "+a("洛图科技 2026-03",U.hm)+" · "+a("NVIDIA 2026-08",U.jetson)+" · "+a("华为 KADC 2025",U.hw) })
+      src:"来源："+a("Counterpoint 2026-04-16",U.cpOdm)+" · "+a("Counterpoint 2024 占比",U.cpOdmPct)+"。2026 年笔电出货预计 -9.4%（TrendForce）" })
   ];
-  document.getElementById("dz-solution").innerHTML = `<div class="dz-head"><h2>方案与集成层数据</h2><span class="n">ODM / 模组 / 边缘 / 集成四类口径；整机与硬件市场见全景图，模型能力见模型层页面。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-solution-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
+  document.getElementById("dz-solution").innerHTML = `<div class="dz-head"><h2>方案与集成层数据</h2><span class="n">ODM / 模组 / 边缘 / 集成四类口径；整机与硬件市场见全景图，模型能力见模型层页面。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  DZ.enableMove("dz-solution-top","dz-solution");
   DZ.tip();
 })();
 </script>
@@ -2644,7 +2699,28 @@ document.getElementById("spec-ins").innerHTML =
     idtechex:"https://www.dcvelocity.com/material-handling/robotics/humanoid-robot-costs-will-fall-rapidly-by-2030-but-roi-could-vary",
     groot:"https://forums.developer.nvidia.com/t/early-access-isaac-gr00t-n1-7-open-reasoning-vla-model-for-humanoid-robotics/366916"
   };
-  const cards = [
+  const cardsTop = [
+    D.card({ title:"114 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+      body:D.hbar({ unit:" 家", labelW:118, items:[
+        {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3（新增星动纪元、乐聚机器人）"},
+        {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4（新增非夕科技）"},
+        {l:"具身模型 / 部件", v:19, tip:"具身智能模型 / 核心部件：19 家，中国大陆 13 / 美国 6 / 欧洲 0 / 其他 0（新增梅卡曼德、思岚科技）"},
+        {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国大陆 7 / 美国 4 / 欧洲 0 / 其他 1"},
+        {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2（新增极飞科技）"},
+        {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（新增品类，含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费","数据"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[17,7,4,3],[13,4,5,4],[13,6,0,0],[7,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","13","6","0","0","19"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-09 核实" }),
+    D.card({ title:"技术拐点：整机成本曲线与 VLA 模型迭代", sub:"人形机器人平均售价预计 6 年内降至三分之一；VLA 具身模型两年内四次迭代",
+      body:D.tiles([
+        {v:"$114,700 → $37,000", k:"人形机器人平均售价 2024→2030", d:"IDTechEx 预测，降幅约 68%"},
+        {v:"5万 → <1万<small>元</small>", k:"中国灵巧手均价两年降幅", d:"部分六自由度产品报价低至 6,000-8,000 元（厂商自述，非第三方审计）"},
+        {v:"RT-2 → π0 → GR00T N1 → N1.7", k:"VLA 模型里程碑（2023-07→2026-04）", d:"N1.7 首个“灵巧性 scaling law”：训练数据 1000 小时→2 万小时，任务完成率提升超 1 倍"},
+        {v:"2-3<small>个数量级</small>", k:"仿真训练吞吐量提升", d:"Isaac Gym/Lab 较 CPU 方案；单 RTX 4090 可达 8.5-9.5 万 FPS（NVIDIA）"} ]),
+      src:"来源："+a("IDTechEx",U.idtechex)+" · "+a("NVIDIA GR00T N1.7",U.groot)+"。“成本”存在制造成本 / BOM 成本 / 平均售价三种口径，不可互换" })
+  ];
+  const cardsBottom = [
     D.card({ title:"人形机器人：预测与现状的鸿沟", sub:"全球出货量预测普遍在 2035 年达百万台级，但当前实际保有量仅约万台级，跨 2-3 个数量级",
       body:D.tiles([
         {v:"650<small>万台</small>", k:"高盛 2035 年出货预测", d:"较 2024 年原始预测 $38B/2035 上调 6 倍，市场机会约 $138B（Goldman Sachs 2026）"},
@@ -2659,18 +2735,6 @@ document.getElementById("spec-ins").innerHTML =
         {v:"57<small>%</small>", k:"中国国产品牌本土市占率", d:"此前十年约 28%，2024 年首次过半（IFR）"},
         {v:"132<small>台/万人</small>", k:"全球机器人密度均值", d:"韩国最高 1220，中国 166（制造业口径，全球第 22）（IFR 2025-09）"} ]),
       src:"来源："+a("IFR World Robotics 2025",U.ifr)+" · "+a("IFR 机器人密度 2025-09-25",U.ifrDensity)+"。IFR 只发布台数，未发布美元市场规模" }),
-    D.card({ title:"114 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
-      body:D.hbar({ unit:" 家", labelW:118, items:[
-        {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3（新增星动纪元、乐聚机器人）"},
-        {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4（新增非夕科技）"},
-        {l:"具身模型 / 部件", v:19, tip:"具身智能模型 / 核心部件：19 家，中国大陆 13 / 美国 6 / 欧洲 0 / 其他 0（新增梅卡曼德、思岚科技）"},
-        {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国大陆 7 / 美国 4 / 欧洲 0 / 其他 1"},
-        {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2（新增极飞科技）"},
-        {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（新增品类，含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费","数据"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[17,7,4,3],[13,4,5,4],[13,6,0,0],[7,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","13","6","0","0","19"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
-      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-09 核实" }),
     D.card({ title:"资本：全球与中国机器人融资升温", sub:"十亿美元 / 亿元，一级市场 VC 口径；2026 年数据均为检索时点的年内累计值，非全年终值",
       body:D.column({ unit:" 十亿美元", h:160, items:[
         {l:"2025", v:14, vl:"$14B"},
@@ -2698,16 +2762,11 @@ document.getElementById("spec-ins").innerHTML =
         {v:"$3<small>B</small>", k:"银河通用最新估值", d:"2025-12 融资超 $300M，刷新中国具身智能单轮及累计融资纪录"},
         {v:"$5.375<small>B</small>", k:"SoftBank 收购 ABB 机器人业务", d:"2025-10-08 宣布，预计 2026 年中-末交割，近两年机器人领域最大并购"},
         {v:"150<small>亿元</small>", k:"智元机器人一级市场估值", d:"另拟 2026 年赴港 IPO，目标估值 400-500 亿港元（两者口径不同不可相加）"} ]),
-      src:"来源："+a("Figure AI",U.figure)+" · "+a("银河通用",U.yinhe)+" · "+a("SoftBank Group",U.softbank)+" · "+a("智元机器人",U.zhiyuan) }),
-    D.card({ title:"技术拐点：整机成本曲线与 VLA 模型迭代", sub:"人形机器人平均售价预计 6 年内降至三分之一；VLA 具身模型两年内四次迭代",
-      body:D.tiles([
-        {v:"$114,700 → $37,000", k:"人形机器人平均售价 2024→2030", d:"IDTechEx 预测，降幅约 68%"},
-        {v:"5万 → <1万<small>元</small>", k:"中国灵巧手均价两年降幅", d:"部分六自由度产品报价低至 6,000-8,000 元（厂商自述，非第三方审计）"},
-        {v:"RT-2 → π0 → GR00T N1 → N1.7", k:"VLA 模型里程碑（2023-07→2026-04）", d:"N1.7 首个“灵巧性 scaling law”：训练数据 1000 小时→2 万小时，任务完成率提升超 1 倍"},
-        {v:"2-3<small>个数量级</small>", k:"仿真训练吞吐量提升", d:"Isaac Gym/Lab 较 CPU 方案；单 RTX 4090 可达 8.5-9.5 万 FPS（NVIDIA）"} ]),
-      src:"来源："+a("IDTechEx",U.idtechex)+" · "+a("NVIDIA GR00T N1.7",U.groot)+"。“成本”存在制造成本 / BOM 成本 / 平均售价三种口径，不可互换" })
+      src:"来源："+a("Figure AI",U.figure)+" · "+a("银河通用",U.yinhe)+" · "+a("SoftBank Group",U.softbank)+" · "+a("智元机器人",U.zhiyuan) })
   ];
-  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（114 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-robot-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（114 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  DZ.enableMove("dz-robot-top","dz-robot");
   DZ.tip();
 })();
 </script>
@@ -2729,7 +2788,27 @@ document.getElementById("spec-ins").innerHTML =
     fitbit:"https://www.cnbc.com/2019/11/01/google-to-acquire-fitbit-valuing-the-smartwatch-maker-at-about-2point1-billion.html",
     ar1:"https://9to5google.com/2025/06/10/snapdragon-ar1-gen-1/"
   };
-  const cards = [
+  const cardsTop = [
+    D.card({ title:"59 家玩家：品类与地区结构（自有口径）", sub:"本页 WEARABLE_PLAYERS 数据集，按品类、地区交叉统计条目数（含跨品类重复登场的大厂）",
+      body:D.hbar({ unit:" 家", labelW:118, items:[
+        {l:"AI 眼镜", v:18, tip:"AI 眼镜：18 家，中国大陆 13 / 美国 3 / 欧洲 0 / 其他 2（新增 Viture）"},
+        {l:"智能手表", v:13, tip:"智能手表：13 家，中国大陆 7 / 美国 2 / 欧洲 3 / 其他 1（新增 Coros高驰、Suunto颂拓）"},
+        {l:"XR 头显", v:11, tip:"XR 头显：11 家，中国大陆 3 / 美国 4 / 欧洲 1 / 其他 3（新增 Magic Leap）"},
+        {l:"智能耳机", v:11, tip:"智能耳机：11 家，中国大陆 7 / 美国 2 / 欧洲 0 / 其他 2（新增漫步者）"},
+        {l:"健康可穿戴", v:6, tip:"健康可穿戴：6 家，中国大陆 2 / 美国 1 / 欧洲 2 / 其他 1（新增 Ultrahuman，本品类首次出现“其他”地区条目）"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["AI眼镜","手表","XR头显","耳机","健康"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[13,3,0,2],[7,2,3,1],[3,4,1,3],[7,2,0,2],[2,1,2,1]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["AI 眼镜","13","3","0","2","18"],["智能手表","7","2","3","1","13"],["XR 头显","3","4","1","3","11"],["智能耳机","7","2","0","2","11"],["健康可穿戴","2","1","2","1","6"]]),
+      src:"来源：自有口径（可穿戴XR层数据支撑清单 E1 节），数据来自本页 WEARABLE_PLAYERS 数组，2026-09-09 核实" }),
+    D.card({ title:"技术拐点：芯片与显示的轻量化竞赛", sub:"AI 眼镜端侧算力持续提升，显示模组同步小型化，电池容量仍是核心工程约束",
+      body:D.tiles([
+        {v:"1.2<small>秒</small>", k:"Qualcomm AR1+ 首 Token 时间", d:"支持 Llama 1B 参数模型端侧运行（128K 上下文），封装体积缩小 26%（2025-06）"},
+        {v:"250<small>mAh</small>", k:"智能眼镜电池容量上限", d:"对比手机约 5000mAh，是眼镜形态最核心的工程约束（Qualcomm XR 总经理访谈）"},
+        {v:"0.3cc → 0.15cc", k:"Micro-LED 模组体积缩小（2021→2024）", d:"JBD Hummingbird Mini，亮度突破 6,000 尼特（传统波导上限约 1,500 尼特）"},
+        {v:"12<small>天</small>", k:"智能戒指最长续航（RingConn Gen2）", d:"Oura Ring 4 / Galaxy Ring 约 7-8 天；Ring 5 号称 9 天但支持 80 分钟快充" }]),
+      src:"来源："+a("Qualcomm AR1 Gen1",U.ar1)+"。含显示屏眼镜受光学模组功耗限制，续航与无显示纯音频眼镜不在同一技术曲线，不可直接比较" })
+  ];
+  const cardsBottom = [
     D.card({ title:"AI 眼镜：本层增速最快的细分", sub:"2025 年出货同比三位数增长，2029 年出货量预计超 4,000 万台",
       body:D.tiles([
         {v:"+322<small>%</small>", k:"全球 AI 眼镜 2025 年出货同比", d:"8.7M 台，Meta 占 85.2% 份额（Omdia 2026-03）"},
@@ -2744,17 +2823,6 @@ document.getElementById("spec-ins").innerHTML =
         {v:"39万台 → 4.5<small>万台/季</small>", k:"Apple Vision Pro 出货：2024 全年 → 2025 Q4", d:"高端 MR 走量困难，与 AI 眼镜爆发式增长形成对比（IDC）"},
         {v:"74.6<small>%</small>", k:"Meta Quest 2024 全年 VR 头显市场份额", d:"传统 VR 头显仍由 Meta 主导（IDC / 聚合数据）"} ]),
       src:"来源："+a("IDC 2025",U.idcShift)+" · "+a("Apple Vision Pro 出货",U.visionPro) }),
-    D.card({ title:"59 家玩家：品类与地区结构（自有口径）", sub:"本页 WEARABLE_PLAYERS 数据集，按品类、地区交叉统计条目数（含跨品类重复登场的大厂）",
-      body:D.hbar({ unit:" 家", labelW:118, items:[
-        {l:"AI 眼镜", v:18, tip:"AI 眼镜：18 家，中国大陆 13 / 美国 3 / 欧洲 0 / 其他 2（新增 Viture）"},
-        {l:"智能手表", v:13, tip:"智能手表：13 家，中国大陆 7 / 美国 2 / 欧洲 3 / 其他 1（新增 Coros高驰、Suunto颂拓）"},
-        {l:"XR 头显", v:11, tip:"XR 头显：11 家，中国大陆 3 / 美国 4 / 欧洲 1 / 其他 3（新增 Magic Leap）"},
-        {l:"智能耳机", v:11, tip:"智能耳机：11 家，中国大陆 7 / 美国 2 / 欧洲 0 / 其他 2（新增漫步者）"},
-        {l:"健康可穿戴", v:6, tip:"健康可穿戴：6 家，中国大陆 2 / 美国 1 / 欧洲 2 / 其他 1（新增 Ultrahuman，本品类首次出现“其他”地区条目）"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["AI眼镜","手表","XR头显","耳机","健康"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[13,3,0,2],[7,2,3,1],[3,4,1,3],[7,2,0,2],[2,1,2,1]] }) + '</div>',
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["AI 眼镜","13","3","0","2","18"],["智能手表","7","2","3","1","13"],["XR 头显","3","4","1","3","11"],["智能耳机","7","2","0","2","11"],["健康可穿戴","2","1","2","1","6"]]),
-      src:"来源：自有口径（可穿戴XR层数据支撑清单 E1 节），数据来自本页 WEARABLE_PLAYERS 数组，2026-09-09 核实" }),
     D.card({ title:"自有口径：15 家创业公司融资 Top5 与地区结构", sub:"59 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:130, items:[
         {l:"Oura", v:500, tip:"Oura：本页卡片累计融资 >$5 亿（2024-12 口径），2025-10 最新一轮已至 $900M+/估值 $11B（见清单 C2）"},
@@ -2776,16 +2844,11 @@ document.getElementById("spec-ins").innerHTML =
         {v:"$10.1<small>B</small>", k:"Whoop 最新估值", d:"2025 Series G 融资 $575M，营收年化跑赢率 $1.1B（Crunchbase）"},
         {v:"€4.33<small>B</small>", k:"Meta 持有 EssilorLuxottica 股权价值", d:"分两轮增持至约 5%，性质为战略投资而非并购（2025 年内）"},
         {v:"$2.1<small>B</small>", k:"Google 收购 Fitbit（历史参照）", d:"2019 宣布、2021 完成，是本层近年少见的整体并购案例"} ]),
-      src:"来源："+a("Oura",U.oura)+" · "+a("Whoop",U.whoop)+" · "+a("Meta-EssilorLuxottica",U.meta)+" · "+a("Google-Fitbit",U.fitbit) }),
-    D.card({ title:"技术拐点：芯片与显示的轻量化竞赛", sub:"AI 眼镜端侧算力持续提升，显示模组同步小型化，电池容量仍是核心工程约束",
-      body:D.tiles([
-        {v:"1.2<small>秒</small>", k:"Qualcomm AR1+ 首 Token 时间", d:"支持 Llama 1B 参数模型端侧运行（128K 上下文），封装体积缩小 26%（2025-06）"},
-        {v:"250<small>mAh</small>", k:"智能眼镜电池容量上限", d:"对比手机约 5000mAh，是眼镜形态最核心的工程约束（Qualcomm XR 总经理访谈）"},
-        {v:"0.3cc → 0.15cc", k:"Micro-LED 模组体积缩小（2021→2024）", d:"JBD Hummingbird Mini，亮度突破 6,000 尼特（传统波导上限约 1,500 尼特）"},
-        {v:"12<small>天</small>", k:"智能戒指最长续航（RingConn Gen2）", d:"Oura Ring 4 / Galaxy Ring 约 7-8 天；Ring 5 号称 9 天但支持 80 分钟快充" }]),
-      src:"来源："+a("Qualcomm AR1 Gen1",U.ar1)+"。含显示屏眼镜受光学模组功耗限制，续航与无显示纯音频眼镜不在同一技术曲线，不可直接比较" })
+      src:"来源："+a("Oura",U.oura)+" · "+a("Whoop",U.whoop)+" · "+a("Meta-EssilorLuxottica",U.meta)+" · "+a("Google-Fitbit",U.fitbit) })
   ];
-  document.getElementById("dz-wearable").innerHTML = `<div class="dz-head"><h2>L5 可穿戴 / XR 数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（59 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-wearable-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
+  document.getElementById("dz-wearable").innerHTML = `<div class="dz-head"><h2>L5 可穿戴 / XR 数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（59 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  DZ.enableMove("dz-wearable-top","dz-wearable");
   DZ.tip();
 })();
 </script>
@@ -2823,7 +2886,25 @@ document.getElementById("spec-ins").innerHTML =
     arduino:"https://www.qualcomm.com/news/releases/2025/10/qualcomm-to-acquire-arduino-accelerating-developers--access-to-i",
     google:"https://9to5google.com/2025/12/12/google-translate-gemini-headphones/"
   };
-  const cards = [
+  const cardsTop = [
+    D.card({ title:"45 家玩家：品类与地区结构（自有口径）", sub:"本页 NATIVEHW_PLAYERS 数据集，按品类、地区交叉统计条目数。条目数 ≠ 公司数（科大讯飞出现两次），去重后 44 家",
+      body:D.hbar({ unit:" 家", labelW:132, items:[
+        {l:"开发套件 / 极客硬件", v:14, tip:"开发套件：14 家，中国大陆 9 / 美国 3 / 欧洲 2 / 其他 0——本层中国玩家最密集的一块（新增 Sipeed矽速科技、Google Coral）"},
+        {l:"AI Pin / 挂件录音", v:9, tip:"AI Pin：9 家，中国大陆 2 / 美国 7 / 欧洲 0 / 其他 0——高度美国化（77.8%）"},
+        {l:"AI 陪伴玩具", v:11, tip:"AI 玩具：11 家，中国大陆 4 / 美国 2 / 欧洲 0 / 其他 5——地区最分散（新增 Embodied、Groove X）"},
+        {l:"无屏 AI 助理", v:6, tip:"无屏助理：6 家，中国大陆 2 / 美国 3 / 欧洲 0 / 其他 1"},
+        {l:"AI 翻译硬件", v:5, tip:"翻译硬件：5 家，中国大陆 3 / 美国 0 / 欧洲 1 / 其他 1——唯一美国完全缺席的品类"} ]})
+        + '<div style="margin-top:10px">' + D.heat({ rows:["开发套件","AI Pin","AI玩具","无屏助理","翻译硬件"], cols:["中国大陆","美国","欧洲","其他"],
+        vals:[[9,3,2,0],[2,7,0,0],[4,2,0,5],[2,3,0,1],[3,0,1,1]] }) + '</div>'
+        + '<div style="margin-top:10px">' + D.stacked({ segs:[
+        {l:"未上市", v:66.7, color:C.s1, tip:"未上市 30 家"},
+        {l:"已上市", v:24.4, color:C.s2, tip:"已上市 11 家：出门问问、科大讯飞（×2）、网易有道、嘉楠、乐鑫、NVIDIA、树莓派、索尼、卡西欧"},
+        {l:"已被收购", v:8.9, color:C.mute, tip:"子公司 / 已被收购 4 家：Limitless（Meta）、Bee（Amazon）、Humane（HP）、Arduino（高通）"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"未上市 66.7%"},{c:C.s2,l:"已上市 24.4%"},{c:C.mute,l:"已被收购 8.9%"}]),
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["开发套件","9","3","2","0","14"],["AI Pin","2","7","0","0","9"],["AI 玩具","4","2","0","5","11"],["无屏助理","2","3","0","1","6"],["翻译硬件","3","0","1","1","5"],["合计","20","15","3","7","45"]]),
+      src:"来源：自有口径（AI原生新硬件层数据支撑清单 E 节），数据来自本页 NATIVEHW_PLAYERS 数组，2026-09-09 核实。地区占比：中国大陆 44.4% / 美国 33.3% / 其他 15.6% / 欧洲 6.7%。**欧洲全层仅 3 家**（波兰 Vasco、英国树莓派、意大利 Arduino），且 2 家在开发套件品类——消费级几乎空白" })
+  ];
+  const cardsBottom = [
     D.card({ title:"网易有道：智能设备连续 5 个季度同比下滑", sub:"本层唯一按季度公开披露翻译 / 学习硬件收入的上市公司，为端侧硬件被手机端 AI 侵蚀提供财报级证据",
       body:D.line({ h:186, unit:"", xs:["24Q1","24Q2","24Q3","24Q4","25Q1","25Q2","25Q3","25Q4","26Q1","26Q2"],
         series:[{ name:"", color:C.s2, ys:[181.2,166.7,315.3,240.4,190.5,126.8,245.8,176.5,109.4,86.8],
@@ -2881,22 +2962,6 @@ document.getElementById("spec-ins").innerHTML =
       legend:D.legend([{c:C.s1,l:"全球市场规模 2025 年基数（不同机构口径，不可比较）"}]),
       table:D.table(["机构","2025 基数","预测","CAGR","口径"],[["Fortune Business Insights","$22.43B","2034 $76.44B","14.6%","Smart Toys 广义"],["WiseGuy Reports","$8.55B","2035 $25.0B","11.3%","中间"],["QY Research","$3.14B","2032 $26.21B","35.0%","AI Smart Toys 窄义"],["中商产业研究院","290 亿元","2030 850 亿元","—","中国"]]),
       src:"来源："+a("Fortune Business Insights",U.fortune)+" · "+a("QY Research",U.qyr)+" · "+a("中商产业研究院",U.zhongshang)+" · "+a("BubblePal",U.bubble)+" · "+a("Ropet",U.ropet)+" · "+a("芙崽",U.fuzozo)+"。**出货数字全部出自公司自述或融资稿，无第三方监测**（洛图只公开词典笔与电子纸单词卡）。主体易混淆：BubblePal 属跃然创新，芙崽属珞博智能，是两家不同公司" }),
-    D.card({ title:"45 家玩家：品类与地区结构（自有口径）", sub:"本页 NATIVEHW_PLAYERS 数据集，按品类、地区交叉统计条目数。条目数 ≠ 公司数（科大讯飞出现两次），去重后 44 家",
-      body:D.hbar({ unit:" 家", labelW:132, items:[
-        {l:"开发套件 / 极客硬件", v:14, tip:"开发套件：14 家，中国大陆 9 / 美国 3 / 欧洲 2 / 其他 0——本层中国玩家最密集的一块（新增 Sipeed矽速科技、Google Coral）"},
-        {l:"AI Pin / 挂件录音", v:9, tip:"AI Pin：9 家，中国大陆 2 / 美国 7 / 欧洲 0 / 其他 0——高度美国化（77.8%）"},
-        {l:"AI 陪伴玩具", v:11, tip:"AI 玩具：11 家，中国大陆 4 / 美国 2 / 欧洲 0 / 其他 5——地区最分散（新增 Embodied、Groove X）"},
-        {l:"无屏 AI 助理", v:6, tip:"无屏助理：6 家，中国大陆 2 / 美国 3 / 欧洲 0 / 其他 1"},
-        {l:"AI 翻译硬件", v:5, tip:"翻译硬件：5 家，中国大陆 3 / 美国 0 / 欧洲 1 / 其他 1——唯一美国完全缺席的品类"} ]})
-        + '<div style="margin-top:10px">' + D.heat({ rows:["开发套件","AI Pin","AI玩具","无屏助理","翻译硬件"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[9,3,2,0],[2,7,0,0],[4,2,0,5],[2,3,0,1],[3,0,1,1]] }) + '</div>'
-        + '<div style="margin-top:10px">' + D.stacked({ segs:[
-        {l:"未上市", v:66.7, color:C.s1, tip:"未上市 30 家"},
-        {l:"已上市", v:24.4, color:C.s2, tip:"已上市 11 家：出门问问、科大讯飞（×2）、网易有道、嘉楠、乐鑫、NVIDIA、树莓派、索尼、卡西欧"},
-        {l:"已被收购", v:8.9, color:C.mute, tip:"子公司 / 已被收购 4 家：Limitless（Meta）、Bee（Amazon）、Humane（HP）、Arduino（高通）"} ]}) + '</div>',
-      legend:D.legend([{c:C.s1,l:"未上市 66.7%"},{c:C.s2,l:"已上市 24.4%"},{c:C.mute,l:"已被收购 8.9%"}]),
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["开发套件","9","3","2","0","14"],["AI Pin","2","7","0","0","9"],["AI 玩具","4","2","0","5","11"],["无屏助理","2","3","0","1","6"],["翻译硬件","3","0","1","1","5"],["合计","20","15","3","7","45"]]),
-      src:"来源：自有口径（AI原生新硬件层数据支撑清单 E 节），数据来自本页 NATIVEHW_PLAYERS 数组，2026-09-09 核实。地区占比：中国大陆 44.4% / 美国 33.3% / 其他 15.6% / 欧洲 6.7%。**欧洲全层仅 3 家**（波兰 Vasco、英国树莓派、意大利 Arduino），且 2 家在开发套件品类——消费级几乎空白" }),
     D.card({ title:"开发套件：树莓派财报与「算力/美元」曲线", sub:"本层条目最多的品类（12 家），也是唯一有上市公司逐年披露出货量的品类——为端侧 AI 从消费终端下沉到开发者硬件提供量化坐标",
       body:D.column({ h:172, unit:" 百万台", title:"树莓派出货量：MCU 芯片首次超过板卡（2025 为 the cross-over year）", items:[
         {l:"板卡24", v:7.0, color:C.s1, tip:"FY2024 板卡及模组出货 700 万台"},
@@ -2912,7 +2977,9 @@ document.getElementById("spec-ins").innerHTML =
       table:D.table(["开发板","AI 算力（含精度口径）","官方价格"],[["Jetson Orin Nano Super","67 TOPS 稀疏 INT8 / 33 稠密","$249"],["Jetson AGX Thor","2,070 TFLOPS FP4 稀疏 @130W","$3,499"],["Pi 5 + AI HAT+ 2","40 TOPS（INT4）","$130"],["Pi 5 + AI HAT+（26T）","26 TOPS，官方未标精度","$110"],["Arduino UNO Q 2GB","官方未给出 TOPS","$59（2026-09，发布价 $44）"],["华为 Atlas 200I DK A2","8 TOPS","1,999 元（2023 发布价）"],["CanMV-K230","官方未给 TOPS，仅给帧率","未公开"]]),
       src:"来源："+a("树莓派 FY2025 业绩公告",U.rpiFY)+" · "+a("Jetson Orin Nano Super",U.jetson)+" · "+a("高通收购 Arduino",U.arduino)+"。**TOPS 数字不可横向相加或直接比较**：NVIDIA 标的是稀疏 INT8（稠密值仅一半），Hailo-10H 标 INT4，Cix P1 的 45 TOPS 是 NPU+CPU+GPU 合计，乐鑫 ESP32-P4 与嘉楠 K230 官方根本不公布 TOPS。开发套件品类无独立市场规模数据，机构口径的「边缘 AI 硬件」2025 年在 118 亿–262 亿美元之间（2.2 倍分歧），因是否计入手机/PC 内的 SoC 而异" })
   ];
-  document.getElementById("dz-nativehw").innerHTML = `<div class="dz-head"><h2>L5 AI 原生新硬件数据</h2><span class="n">财报口径、资本口径与自有口径三类，含 45 家玩家结构统计。悬停查看口径，展开「数据表」查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-nativehw-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
+  document.getElementById("dz-nativehw").innerHTML = `<div class="dz-head"><h2>L5 AI 原生新硬件数据</h2><span class="n">财报口径、资本口径与自有口径三类，含 45 家玩家结构统计。悬停查看口径，展开「数据表」查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  DZ.enableMove("dz-nativehw-top","dz-nativehw");
   DZ.tip();
 })();
 </script>
@@ -2938,7 +3005,7 @@ document.getElementById("spec-ins").innerHTML =
     cim:"https://www.36kr.com/p/3756584323875591",
     riscv:"https://www.aestechno.com/en/risc-v-2026-arm-x86-market/"
   };
-  const cards = [
+  const cardsTop = [
     D.card({ title:"市场规模：机构口径分歧极大，需选定单一信源", sub:"同一“边缘AI芯片市场”2025年估值从 $3.67B 到 $27.3B 不等，7 倍以上差异源于“芯片 / 硬件 / 大市场含服务”口径混用",
       body:D.tiles([
         {v:"$3.67<small>B</small>", k:"Mordor Intelligence 2025年估值（窄口径）", d:"2031年预测 $11.54B，可能仅统计核心加速芯片"},
@@ -2946,13 +3013,6 @@ document.getElementById("spec-ins").innerHTML =
         {v:"$27.3<small>B</small>", k:"Grand View Research 2025年估值（宽口径）", d:"2033年预测 $291.8B，CAGR 34.7%，口径明显偏宽"},
         {v:"$80<small>B+</small>", k:"IDTechEx 2036年前累计预测", d:"汽车与AI手机是最大应用板块" } ]),
       src:"来源："+a("Mordor",U.mordor)+" · "+a("MarketsandMarkets",U.mnm)+" · "+a("Grand View Research",U.gvr)+" · "+a("IDTechEx",U.idtechex)+"。做图表 / 对外材料前务必选定单一信源并标注口径，不要跨源拼接或平均" }),
-    D.card({ title:"AI PC 与 AI 手机：渗透率提速，但供给端承压", sub:"通用终端SoC品类的核心需求信号，2026年渗透率跃升的同时叠加内存涨价对总出货量的下行压力",
-      body:D.tiles([
-        {v:"7,780<small>万台 / 31%</small>", k:"全球AI PC 2025年出货 / 渗透率", d:"Gartner，2026年预测跃升至1.43亿台 / 55%"},
-        {v:"3.7<small>亿台+ / 30%</small>", k:"全球GenAI手机 2025年出货 / 渗透率", d:"IDC，2026年Counterpoint预测渗透率达45%"},
-        {v:"-11.3<small>%</small>", k:"IDC对2026年全球PC总出货的下修预测", d:"内存短缺推高成本所致，供给瓶颈而非需求转弱"},
-        {v:"-0.9<small>%</small>", k:"IDC对2026年全球手机总出货的预测", d:"2026 Q1实际出货已同比-2.9%，打破连续10个季度增长纪录" } ]),
-      src:"来源："+a("Gartner AI PC",U.gartner)+" · "+a("IDC PC预测",U.idcPc)+" · "+a("IDC AI手机",U.idcPhone)+" · "+a("Counterpoint",U.cpPhone) }),
     D.card({ title:"58 家玩家：品类与地区结构（自有口径）", sub:"本页 CHIP_PLAYERS 数据集，按品类、地区交叉统计条目数（中国台湾企业计入“其他”列）",
       body:D.hbar({ unit:" 家", labelW:130, items:[
         {l:"专用边缘AI加速芯片", v:29, tip:"专用边缘AI加速芯片：29 家，中国大陆10 / 美国13 / 欧洲3 / 其他3"},
@@ -2963,6 +3023,22 @@ document.getElementById("spec-ins").innerHTML =
         vals:[[10,13,3,3],[3,4,3,1],[2,5,0,2],[7,0,0,2]] }) + '</div>',
       table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["专用边缘AI加速芯片","10","13","3","3","29"],["MCU / TinyML芯片","3","4","3","1","11"],["通用终端SoC","2","5","0","2","9"],["视觉 / IoT SoC","7","0","0","2","9"]]),
       src:"来源：自有口径（芯片层数据支撑清单 E节），数据来自本页 CHIP_PLAYERS 数组，2026-09-08 核实" }),
+    D.card({ title:"技术拐点：制程下沉、存算一体量产、RISC-V份额提升", sub:"三条并行的边缘芯片技术曲线，2025-2026是多个拐点同时发生的窗口期",
+      body:D.tiles([
+        {v:"24<small>%</small>", k:"TSMC 3nm占其2025年晶圆收入比例", d:"2026年将有约1/3智能手机SoC采用3nm/2nm，苹果/高通/联发科旗舰计划年内转向2nm"},
+        {v:"256<small>TOPS/35W</small>", k:"后摩智能鸿途H30车规存算一体芯片", d:"2025年量产，通过车规认证，中文行业界称2025-2026为“存算一体量产元年”"},
+        {v:"25<small>%</small>", k:"RISC-V全球处理器市场份额（2026-01）", d:"CAGR超30%，边缘AI推理是主要驱动场景之一，Qualcomm/Meta近期均收购RISC-V团队强化布局"},
+        {v:">1,000<small>万颗</small>", k:"知存科技WTM2101存算一体芯片累计出货", d:"华为、小米可穿戴设备已搭载，是存算一体芯片规模化的早期验证案例" } ]),
+      src:"来源："+a("Counterpoint 制程",U.tsmc3nm)+" · "+a("36氪 存算一体",U.cim)+" · "+a("RISC-V份额",U.riscv) })
+  ];
+  const cardsBottom = [
+    D.card({ title:"AI PC 与 AI 手机：渗透率提速，但供给端承压", sub:"通用终端SoC品类的核心需求信号，2026年渗透率跃升的同时叠加内存涨价对总出货量的下行压力",
+      body:D.tiles([
+        {v:"7,780<small>万台 / 31%</small>", k:"全球AI PC 2025年出货 / 渗透率", d:"Gartner，2026年预测跃升至1.43亿台 / 55%"},
+        {v:"3.7<small>亿台+ / 30%</small>", k:"全球GenAI手机 2025年出货 / 渗透率", d:"IDC，2026年Counterpoint预测渗透率达45%"},
+        {v:"-11.3<small>%</small>", k:"IDC对2026年全球PC总出货的下修预测", d:"内存短缺推高成本所致，供给瓶颈而非需求转弱"},
+        {v:"-0.9<small>%</small>", k:"IDC对2026年全球手机总出货的预测", d:"2026 Q1实际出货已同比-2.9%，打破连续10个季度增长纪录" } ]),
+      src:"来源："+a("Gartner AI PC",U.gartner)+" · "+a("IDC PC预测",U.idcPc)+" · "+a("IDC AI手机",U.idcPhone)+" · "+a("Counterpoint",U.cpPhone) }),
     D.card({ title:"融资与并购：边缘AI芯片仍是资本活跃赛道", sub:"2025年8月-2026年7月边缘AI芯片/半导体细分融资约$1.4B（32笔），并购活动同步升温",
       body:D.tiles([
         {v:"$1.4<small>B</small>", k:"边缘AI芯片/半导体融资总额", d:"2025-08至2026-07，约32笔已披露交易（New Market Pitch口径，未交叉验证）"},
@@ -2976,16 +3052,11 @@ document.getElementById("spec-ins").innerHTML =
         {v:"≈1,052<small>亿港元</small>", k:"地平线机器人-W市值（09660.HK）", d:"2025年账面亏损104.7亿元（含优先股非经营性调整），券商预期2025年为其首个稳定盈利年份"},
         {v:"≈111.7<small>亿港元</small>", k:"黑芝麻智能市值（02533.HK）", d:"与地平线市值差距近10倍，武当C1200已量产但尚无正式商用车型"},
         {v:"≈¥781<small>亿元</small>", k:"瑞芯微市值（视觉/IoT SoC类，603893）", d:"H1 2026营收¥28.77亿元（+40.6%），中国AIoT SoC龙头" } ]),
-      src:"来源："+a("雪球 寒武纪",U.xueqiuCambricon)+" · "+a("雪球 地平线",U.xueqiuHorizon)+" · "+a("雪球 黑芝麻",U.xueqiuBlackSesame)+"。A股/港股芯片公司市值波动剧烈，本卡片数字为特定报道时点快照，不代表现状" }),
-    D.card({ title:"技术拐点：制程下沉、存算一体量产、RISC-V份额提升", sub:"三条并行的边缘芯片技术曲线，2025-2026是多个拐点同时发生的窗口期",
-      body:D.tiles([
-        {v:"24<small>%</small>", k:"TSMC 3nm占其2025年晶圆收入比例", d:"2026年将有约1/3智能手机SoC采用3nm/2nm，苹果/高通/联发科旗舰计划年内转向2nm"},
-        {v:"256<small>TOPS/35W</small>", k:"后摩智能鸿途H30车规存算一体芯片", d:"2025年量产，通过车规认证，中文行业界称2025-2026为“存算一体量产元年”"},
-        {v:"25<small>%</small>", k:"RISC-V全球处理器市场份额（2026-01）", d:"CAGR超30%，边缘AI推理是主要驱动场景之一，Qualcomm/Meta近期均收购RISC-V团队强化布局"},
-        {v:">1,000<small>万颗</small>", k:"知存科技WTM2101存算一体芯片累计出货", d:"华为、小米可穿戴设备已搭载，是存算一体芯片规模化的早期验证案例" } ]),
-      src:"来源："+a("Counterpoint 制程",U.tsmc3nm)+" · "+a("36氪 存算一体",U.cim)+" · "+a("RISC-V份额",U.riscv) })
+      src:"来源："+a("雪球 寒武纪",U.xueqiuCambricon)+" · "+a("雪球 地平线",U.xueqiuHorizon)+" · "+a("雪球 黑芝麻",U.xueqiuBlackSesame)+"。A股/港股芯片公司市值波动剧烈，本卡片数字为特定报道时点快照，不代表现状" })
   ];
-  document.getElementById("dz-chip").innerHTML = `<div class="dz-head"><h2>L1 芯片厂商数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（58 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-chip-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
+  document.getElementById("dz-chip").innerHTML = `<div class="dz-head"><h2>L1 芯片厂商数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（58 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  DZ.enableMove("dz-chip-top","dz-chip");
   DZ.tip();
 })();
 </script>
