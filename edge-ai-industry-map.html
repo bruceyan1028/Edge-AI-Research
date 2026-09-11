@@ -394,6 +394,8 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
   <h1>端侧AI产业链全景图</h1>
   <div class="sub">按价值链自下而上排列：底部为上游（IP / 芯片 / 制造），顶部为下游（终端 / 应用）。色块 = 层级，卡片 = 厂商类型，实线箭头 = 主要供给 / 依赖方向，两侧竖带 = 横切维度。</div>
 
+  <div class="dz" id="dz-map-top"></div>
+
   <div class="legend">
     <div class="it"><span class="sw" style="background:#e3f2fd;border-color:#1565c0"></span>L1 硬件与算力层</div>
     <div class="it"><span class="sw" style="background:#e0f2f1;border-color:#00695c"></span>L2 软件基础层</div>
@@ -2082,6 +2084,7 @@ const DZ = (() => {
     const key = "dzmove:"+topId;
     const titleOf = c => c.querySelector(".dz-t").textContent;
     function render(){
+      botEl.style.display = botGrid.children.length ? "" : "none";
       [[topGrid,true],[botGrid,false]].forEach(([grid,isTop])=>{
         Array.from(grid.children).forEach(c=>{
           let btn = c.querySelector(".dz-move");
@@ -2164,7 +2167,9 @@ const DZ = (() => {
         {v:"41<small>亿颗</small>", k:"TinyML 芯片 2031 出货", d:"不含手机 / PC，工业 IoT 为主，CAGR 37%（ABI Research 2026-06）"} ]),
       src:"来源："+a("头豹 2024-08",U.toubao)+" · "+a("IDC 中国 2025-12-08",U.idcCn)+" · "+a("IDC / PCWorld 2025-06",U.copilot)+" · "+a("ABI Research 2026-06-18",U.abi) })
   ];
-  document.getElementById("dz-map").innerHTML = `<div class="dz-head"><h2>端侧 AI 市场数据</h2><span class="n">整机与全栈口径，覆盖 L1–L6；模型层专属数据见模型层页面。数据截至 2026 年 9 月初，悬停查看口径，展开“数据表”查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-map-top").innerHTML = `<div class="dz-grid">${cards.join("")}</div>`;
+  document.getElementById("dz-map").innerHTML = `<div class="dz-head"><h2>端侧 AI 市场数据</h2><span class="n">整机与全栈口径，覆盖 L1–L6；模型层专属数据见模型层页面。数据截至 2026 年 9 月初，悬停查看口径，展开“数据表”查看数值</span></div><div class="dz-grid"></div>`;
+  DZ.enableMove("dz-map-top","dz-map");
 })();
 
 /* ===================== 模型层：模型与资本口径 ===================== */
