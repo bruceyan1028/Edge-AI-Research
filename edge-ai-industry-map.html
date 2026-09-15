@@ -357,9 +357,10 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .dz-grid + .dz-grid { margin-top: 10px; }
 .dz-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px 8px; display: flex; flex-direction: column; min-width: 0; position: relative; }
 .dz-card.wide { grid-column: 1 / -1; }
-.dz-move { position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; line-height: 16px; text-align: center; padding: 0; border: 1px solid #e5e7eb; border-radius: 4px; background: #f8fafc; color: #898781; font-size: 11px; cursor: pointer; }
+.dz-movebox { position: absolute; top: 6px; right: 6px; display: flex; gap: 2px; }
+.dz-move { width: 18px; height: 18px; line-height: 16px; text-align: center; padding: 0; border: 1px solid #e5e7eb; border-radius: 4px; background: #f8fafc; color: #898781; font-size: 11px; cursor: pointer; }
 .dz-move:hover { background: #eef2f6; color: #111827; }
-.dz-t { font-size: 12.5px; font-weight: 700; color: #111827; padding-right: 20px; }
+.dz-t { font-size: 12.5px; font-weight: 700; color: #111827; padding-right: 44px; }
 .dz-s { font-size: 10.5px; color: #6b7280; line-height: 1.4; margin-top: 2px; }
 .dz-body { margin: 8px 0 4px; flex: 1; }
 .dz-body svg { display: block; overflow: visible; font-family: inherit; }
@@ -2063,6 +2064,7 @@ const ROBOT_PLAYERS = [
   {n:"极飞科技", e:"XAG", r:"CN", c:"consumer", o:2, m:"P 系列农业无人机 + R150 农业无人车", d:"全球农业无人机龙头（与大疆并列），2024 年营收超 30 亿元，在精准农业场景渗透率极高", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 软银愿景、招银国际等参与</span><span class='fk'>· 2024 营收超 30 亿元</span>", t:["无人机"]},
 
   /* ---------- 中国 · 具身智能模型 / 核心部件 ---------- */
+  {n:"极佳视界", e:"GigaAI", r:"CN", c:"embodied", o:2, m:"世界模型平台 GigaWorld · 具身大脑 GigaBrain · 原生本体 Maker", d:"2023-01 成立，创始人黄冠曾任地平线视觉感知技术负责人；从视频生成模型起步，逐步转向“物理 AGI”，以世界模型驱动具身智能与自动驾驶双线落地；2026-04 GigaWorld-1 登顶 WorldArena 全球榜首（62.34 分），GigaBrain-0 在 RoboChallenge 真机评测中以 51.67% 任务成功率全球第一，领先 Physical Intelligence π0.5 近 10 个百分点；自动驾驶世界模型 DriveDreamer 系列服务海内外主机厂与自动驾驶公司超 30 家；联合一汽模具、阿里云落地工业场景，并规划三年内与隆盛科技在无锡部署千台通用机器人", f:"<span class='fv'>未上市 · 计划年内赴港 IPO</span><span class='fk'>· 2026-03/04/06 三个月内连完成 Pre-B/B1/B2 三轮，累计融资 35 亿元</span><span class='fk'>· 2026-06 估值约 30 亿美元（≈203 亿元），投资方含狮城资本、中比基金、复星锐正、国中资本、达晨财智等</span>", t:["具身模型"]},
   {n:"穹彻智能", e:"Noematrix", r:"CN", c:"embodied", o:2, m:"具身智能大模型 · 力控操作", d:"上海系具身智能基础模型公司，主打柔性、力控、非结构化场景的通用操作", f:"<span class='fv'>累计融资 ~10 亿元</span><span class='fk'>· 2025-06 战投轮，多家产业方</span>", t:["具身模型"]},
   {n:"星海图", e:"Star Infinity", r:"CN", c:"embodied", o:2, m:"具身智能基础模型 · 数据采集", d:"从真实数据采集与低成本数据引擎切入，自研 VLA 模型并落地制造 / 仓储", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 2025-05 战略轮，蚂蚁、高瓴等</span>", t:["具身模型"]},
   {n:"智平方", e:"Zhiping", r:"CN", c:"embodied", o:2, m:"具身智能大模型 · 通用具身代理", d:"面向人的具身智能大模型与具身代理，聚焦商业与家庭服务", f:"<span class='fv'>累计融资 ~8 亿元</span><span class='fk'>· 2025-03 A 轮，多家产业方</span>", t:["具身模型"]},
@@ -2460,41 +2462,67 @@ const DZ = (() => {
   const legend = items => items.map(i=>`<span><i style="background:${i.c}"></i>${i.l}</span>`).join("");
   const table = (head, rows) => `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
   const a = (t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+  const titleOf = c => { const t = c.querySelector(".dz-t"); return t ? t.textContent : ""; };
+  const mkBtn = (cls,label,title,fn) => { const b=document.createElement("button"); b.type="button"; b.className="dz-move "+cls; b.textContent=label; b.title=title; b.onclick=fn; return b; };
+  function wireLR(grid, onChange){
+    Array.from(grid.children).forEach((c,i)=>{
+      let box = c.querySelector(".dz-movebox");
+      if(!box){ box = document.createElement("div"); box.className="dz-movebox"; c.appendChild(box); }
+      box.querySelectorAll(".dz-l,.dz-r").forEach(b=>b.remove());
+      if(i>0) box.insertBefore(mkBtn("dz-l","←","左移",()=>{ grid.insertBefore(c, c.previousElementSibling); onChange(); }), box.firstChild);
+      if(i<grid.children.length-1) box.appendChild(mkBtn("dz-r","→","右移",()=>{ grid.insertBefore(c.nextElementSibling, c); onChange(); }));
+    });
+  }
+  function enableReorder(containerId){
+    const el = document.getElementById(containerId);
+    if(!el) return;
+    el.querySelectorAll(".dz-grid").forEach((grid, gi) => {
+      const key = "dzorder:"+containerId+":"+gi;
+      function save(){ try{ localStorage.setItem(key, JSON.stringify(Array.from(grid.children).map(titleOf))); }catch(e){} }
+      function render(){ wireLR(grid, ()=>{ save(); render(); }); }
+      try{
+        const saved = JSON.parse(localStorage.getItem(key));
+        if(Array.isArray(saved)) saved.forEach(title=>{ const c = Array.from(grid.children).find(c=>titleOf(c)===title); if(c) grid.appendChild(c); });
+      }catch(e){}
+      render();
+    });
+  }
   function enableMove(topId, botId){
     const topEl = document.getElementById(topId), botEl = document.getElementById(botId);
     const topGrid = topEl && topEl.querySelector(".dz-grid"), botGrid = botEl && botEl.querySelector(".dz-grid");
     if(!topGrid || !botGrid) return;
     const key = "dzmove:"+topId;
-    const titleOf = c => c.querySelector(".dz-t").textContent;
+    function save(){ localStorage.setItem(key, JSON.stringify({top:Array.from(topGrid.children).map(titleOf), bot:Array.from(botGrid.children).map(titleOf)})); }
     function render(){
       botEl.style.display = botGrid.children.length ? "" : "none";
       [[topGrid,true],[botGrid,false]].forEach(([grid,isTop])=>{
         Array.from(grid.children).forEach(c=>{
-          let btn = c.querySelector(".dz-move");
-          if(!btn){ btn = document.createElement("button"); btn.type="button"; btn.className="dz-move"; c.appendChild(btn); }
-          btn.textContent = isTop ? "↓" : "↑";
-          btn.title = isTop ? "移到下方" : "移到上方";
-          btn.onclick = () => {
+          let box = c.querySelector(".dz-movebox");
+          if(!box){ box = document.createElement("div"); box.className="dz-movebox"; c.appendChild(box); }
+          box.querySelectorAll(".dz-ud").forEach(b=>b.remove());
+          box.appendChild(mkBtn("dz-ud", isTop?"↓":"↑", isTop?"移到下方":"移到上方", () => {
             (isTop ? botGrid : topGrid).insertBefore(c, isTop ? botGrid.firstChild : null);
-            localStorage.setItem(key, JSON.stringify(Array.from(topGrid.children).map(titleOf)));
-            render();
-          };
+            save(); render();
+          }));
         });
       });
+      wireLR(topGrid, ()=>{ save(); render(); });
+      wireLR(botGrid, ()=>{ save(); render(); });
     }
     try{
       const saved = JSON.parse(localStorage.getItem(key));
-      if(Array.isArray(saved)){
-        saved.forEach(title=>{
-          const c = Array.from(botGrid.children).find(c=>titleOf(c)===title) || Array.from(topGrid.children).find(c=>titleOf(c)===title);
-          if(c) topGrid.appendChild(c);
-        });
-        Array.from(topGrid.children).forEach(c=>{ if(!saved.includes(titleOf(c))) botGrid.insertBefore(c, botGrid.firstChild); });
+      if(saved && Array.isArray(saved.top)){
+        const all = Array.from(topGrid.children).concat(Array.from(botGrid.children));
+        saved.top.forEach(title=>{ const c = all.find(c=>titleOf(c)===title); if(c) topGrid.appendChild(c); });
+        const rest = all.filter(c=>!saved.top.includes(titleOf(c)));
+        const botOrder = Array.isArray(saved.bot) ? saved.bot : [];
+        botOrder.forEach(title=>{ const c = rest.find(c=>titleOf(c)===title); if(c) botGrid.appendChild(c); });
+        rest.forEach(c=>{ if(!botOrder.includes(titleOf(c))) botGrid.appendChild(c); });
       }
     }catch(e){}
     render();
   }
-  return {C,hbar,column,line,stacked,heat,tiles,card,legend,table,a,tip,enableMove};
+  return {C,hbar,column,line,stacked,heat,tiles,card,legend,table,a,tip,enableMove,enableReorder};
 })();
 
 /* ===================== 第一页：整机与全栈口径 ===================== */
@@ -2987,6 +3015,7 @@ document.getElementById("spec-foot").innerHTML =
   document.getElementById("dz-spec").innerHTML =
     '<div class="dz-head"><h2>型号级横向观察</h2><span class="n">全部基于左表 73 款型号的官方数据聚合，随筛选无关、始终为全量口径。悬停查看明细，展开「数据表」查看数值</span></div>'
     + '<div class="dz-grid c3">' + cards.join("") + '</div>';
+  DZ.enableReorder("dz-spec");
   DZ.tip();
 })();
 
@@ -3095,17 +3124,17 @@ document.getElementById("spec-ins").innerHTML =
     groot:"https://forums.developer.nvidia.com/t/early-access-isaac-gr00t-n1-7-open-reasoning-vla-model-for-humanoid-robotics/366916"
   };
   const cardsTop = [
-    D.card({ title:"118 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+    D.card({ title:"119 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
       body:D.hbar({ unit:" 家", labelW:118, items:[
         {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3"},
         {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4"},
-        {l:"具身模型 / 部件", v:24, tip:"具身智能模型 / 核心部件：24 家，中国大陆 18 / 美国 6 / 欧洲 0 / 其他 0（新增阿里巴巴、腾讯、字节跳动、京东四家互联网大厂具身智能布局）"},
+        {l:"具身模型 / 部件", v:25, tip:"具身智能模型 / 核心部件：25 家，中国大陆 19 / 美国 6 / 欧洲 0 / 其他 0（新增极佳视界，以及阿里巴巴、腾讯、字节跳动、京东四家互联网大厂具身智能布局）"},
         {l:"服务 / 商用", v:11, tip:"服务 / 商用机器人：11 家，中国大陆 6 / 美国 4 / 欧洲 0 / 其他 1（移除达闼科技）"},
         {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2"},
         {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
         + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费","数据"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[17,7,4,3],[13,4,5,4],[18,6,0,0],[6,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","18","6","0","0","24"],["服务/商用","6","4","0","1","11"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
+        vals:[[17,7,4,3],[13,4,5,4],[19,6,0,0],[6,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","19","6","0","0","25"],["服务/商用","6","4","0","1","11"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
       src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-15 核实" }),
     D.card({ title:"技术拐点：整机成本曲线与 VLA 模型迭代", sub:"人形机器人平均售价预计 6 年内降至三分之一；VLA 具身模型两年内四次迭代",
       body:D.tiles([
@@ -3136,21 +3165,21 @@ document.getElementById("spec-ins").innerHTML =
         {l:"2026 年内", v:18.8, vl:"$18.8B", color:C.light, tip:"2026 年至检索时点已达 $18.8B，已超 2025 全年（Crunchbase）"} ]}),
       table:D.table(["指标","数值","说明"],[["全球机器人融资 2025","$14B","+70%，超越 2021 年峰值"],["全球机器人融资 2026 年内","$18.8B","已超 2025 全年"],["中国具身智能融资 2025 年前 11 月","334.73 亿元","2024 同期 4 倍"],["全球机器人基础模型融资 2025","$2.2B","“机器人大脑”细分"]]),
       src:"来源："+a("Crunchbase News",U.cb)+" · "+a("36氪·具身万象 2025-12",U.itjz)+"。不同统计窗口（前8月/前11月/滚动12月）不可简单相加" }),
-    D.card({ title:"自有口径：59 家创业公司融资 Top6 与地区结构", sub:"118 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+    D.card({ title:"自有口径：60 家创业公司融资 Top6 与地区结构", sub:"119 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:140, items:[
         {l:"Figure AI", v:1900, vl:"$1.9B", tip:"Figure AI：累计融资 $1.9B，2025-09 Series C 估值 $39B"},
         {l:"智元机器人", v:845, tip:"智元机器人：累计融资约 $845M（≈60 亿元）"},
         {l:"Physical Intelligence", v:800, tip:"Physical Intelligence：累计融资约 $800M"},
         {l:"海柔创新", v:563, tip:"海柔创新 HAI ROBOTICS：累计融资约 $563M"},
-        {l:"光轮智能", v:437, tip:"光轮智能：累计融资约 31 亿元 ≈$437M（2025-2026 六轮），数据层新增"},
-        {l:"银河通用", v:423, tip:"银河通用：最新一轮融资超 $300M，累计约 $423M，投后估值 $3B"} ]})
+        {l:"极佳视界", v:493, tip:"极佳视界 GigaAI：2026-03/04/06 三个月内三轮融资 35 亿元 ≈$493M，新增"},
+        {l:"光轮智能", v:437, tip:"光轮智能：累计融资约 31 亿元 ≈$437M（2025-2026 六轮），数据层新增"} ]})
         + '<div style="margin-top:10px">' + D.stacked({ segs:[
-        {l:"中国大陆", v:48.1, color:C.s1, tip:"中国大陆 33 家创业公司合计 ≈$5.85B，占 48.1%（新增光轮智能 $437M）"},
-        {l:"美国", v:48.5, color:C.s2, tip:"美国 21 家创业公司合计 ≈$5.90B，占 48.5%（新增 XDOF/Micro1/Tacta/Build AI/Hub.xyz 共 $196.7M）"},
-        {l:"欧洲+其他", v:3.4, color:C.mute, tip:"欧洲 3 家 + 其他 2 家合计 ≈$0.41B，占 3.4%（新增 Encord $110M、Mecka AI $60M）"} ]}) + '</div>',
-      legend:D.legend([{c:C.s1,l:"中国大陆 48.1%"},{c:C.s2,l:"美国 48.5%"},{c:C.mute,l:"欧洲 + 其他 3.4%"}]),
-      table:D.table(["指标","数值"],[["已披露融资创业公司数","59 家"],["合计已披露融资","≈$12.15B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","11 家"]]),
-      src:"来源：自有口径（机器人层数据支撑清单 E2 节），2026-09-09 计算，含数据层新增玩家" }),
+        {l:"中国大陆", v:50.1, color:C.s1, tip:"中国大陆 34 家创业公司合计 ≈$6.34B，占 50.1%（新增极佳视界 $493M）"},
+        {l:"美国", v:46.6, color:C.s2, tip:"美国 21 家创业公司合计 ≈$5.90B，占 46.6%（新增 XDOF/Micro1/Tacta/Build AI/Hub.xyz 共 $196.7M）"},
+        {l:"欧洲+其他", v:3.3, color:C.mute, tip:"欧洲 3 家 + 其他 2 家合计 ≈$0.41B，占 3.3%（新增 Encord $110M、Mecka AI $60M）"} ]}) + '</div>',
+      legend:D.legend([{c:C.s1,l:"中国大陆 50.1%"},{c:C.s2,l:"美国 46.6%"},{c:C.mute,l:"欧洲 + 其他 3.3%"}]),
+      table:D.table(["指标","数值"],[["已披露融资创业公司数","60 家"],["合计已披露融资","≈$12.64B"],["融资梯队 ≥$1B","1 家（Figure AI）"],["融资梯队 $300M-1B","12 家"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E2 节），2026-09-15 计算，含极佳视界新增" }),
     D.card({ title:"估值与并购里程碑", sub:"人形机器人第一梯队公司估值与年内最大并购交易",
       body:D.tiles([
         {v:"$39<small>B</small>", k:"Figure AI 最新估值", d:"2025-09 Series C，融资超 $1B（Figure AI 官方）"},
@@ -3160,7 +3189,7 @@ document.getElementById("spec-ins").innerHTML =
       src:"来源："+a("Figure AI",U.figure)+" · "+a("银河通用",U.yinhe)+" · "+a("SoftBank Group",U.softbank)+" · "+a("智元机器人",U.zhiyuan) })
   ];
   document.getElementById("dz-robot-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
-  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（118 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（119 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
   DZ.enableMove("dz-robot-top","dz-robot");
   DZ.tip();
 })();
@@ -3679,6 +3708,7 @@ document.getElementById("ea-foot").innerHTML = `来源：各厂商官方规格�
       src:"来源：同上，off 字段。“未披露”档中仍有部分设备标注可离线（多为传统嵌入式算法，无 AI 但功能不依赖网络）" }),
   ];
   document.getElementById("dz-edgeai").innerHTML = `<div class="dz-head"><h2>L5 端侧AI含量对比：图表</h2><span class="n">四张图交叉验证端云分工的核心结论。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cards.join("")}</div>`;
+  DZ.enableReorder("dz-edgeai");
   DZ.tip();
 })();
 
@@ -3724,6 +3754,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       src:"来源：端侧模型技术路线与指标对比·数据支撑清单 · 高通/华为/Apple/NVIDIA公开信息 · 爱范儿 2026" })
   ];
   document.getElementById("dz-open-param").innerHTML = `<div class="dz-grid c3">${cardsParam.join("")}</div>`;
+  DZ.enableReorder("dz-open-param");
 
   const cardsVertical = [
     D.card({ title:"OS 级模型 × 场景覆盖矩阵", sub:"四家 OS 级玩家共同聚焦消费电子系统级体验层，对车载/机器人/工业完全没有布局",
@@ -3757,6 +3788,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       src:"来源：36氪 · 综合公开报道 2026" })
   ];
   document.getElementById("dz-open-vertical").innerHTML = `<div class="dz-grid c3">${cardsVertical.join("")}</div>`;
+  DZ.enableReorder("dz-open-vertical");
 
   const cardsChipdown = [
     D.card({ title:"2023-2026 芯片厂收购模型/工具链/开发平台时间线", sub:"6 起案例经核实全部属实，含最容易被怀疑为传闻的两起",
@@ -3787,6 +3819,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       src:"来源：CNBC 2026-09 · TechRadar · 行业报道综合" })
   ];
   document.getElementById("dz-open-chipdown").innerHTML = `<div class="dz-grid c3">${cardsChipdown.join("")}</div>`;
+  DZ.enableReorder("dz-open-chipdown");
 
   const cardsGoglobal = [
     D.card({ title:"中国厂商在各层级的全球份额对比", sub:"越靠近底层供应链，中国厂商份额越高；越靠近通用平台层，份额越低",
@@ -3816,6 +3849,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       src:"来源：公司财报/AMZ123 · Counterpoint/IDC等 · 36Kr/CNBC 2025-2026" })
   ];
   document.getElementById("dz-open-goglobal").innerHTML = `<div class="dz-grid c3">${cardsGoglobal.join("")}</div>`;
+  DZ.enableReorder("dz-open-goglobal");
 
   const cardsGoglobalCar = [
     D.card({ title:"中国汽车出口：规模最大的出海案例", sub:"2026年有望成为全球首个汽车出口破千万辆的国家，新能源车是核心增量",
@@ -3866,6 +3900,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       src:"*奇瑞/长安/长城适用欧盟对“其他合作车企”的群体税率，因未被单独抽样调查，非公司专属核实数字；比亚迪/吉利/上汽为欧盟单独抽样后核定的公司税率。来源：欧盟委员会2024-10反补贴税终裁 · 中汽协/中国海关总署 · 各公司公开披露 · 盖世汽车，2025-2026 整理" })
   ];
   document.getElementById("dz-open-goglobal-car").innerHTML = `<div class="dz-grid c3">${cardsGoglobalCar.slice(0,4).join("")}</div><div class="dz-grid c1">${cardsGoglobalCar.slice(4).join("")}</div>`;
+  DZ.enableReorder("dz-open-goglobal-car");
 
   const cardsChipblock = [
     D.card({ title:"三大环节国产化现状 × 与国际龙头差距 × 预计关键突破时间点", sub:"“卡脖子”不是单一时间表，各环节技术性质不同，解绑速度天差地别",
@@ -3896,6 +3931,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       src:"来源：美国企业研究所（AEI）2026-04 报告 · 公开新闻报道，2026-09 整理" })
   ];
   document.getElementById("dz-open-chipblock").innerHTML = `<div class="dz-grid c3">${cardsChipblock.join("")}</div>`;
+  DZ.enableReorder("dz-open-chipblock");
 
   document.querySelectorAll("#view-open .dz-table").forEach(d => d.open = true);
 
