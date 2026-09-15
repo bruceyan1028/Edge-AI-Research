@@ -283,7 +283,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .ins li b { color: #ff6b5e; }
 .ins.wide { grid-column: 1 / -1; }
 
-/* ===================== 六个开放议题（自由排版，不复用 mp-hero） ===================== */
+/* ===================== 五个开放议题（自由排版，不复用 mp-hero） ===================== */
 .op-hero { background: linear-gradient(135deg,#17181a,#2a1518); color: #fff; border-radius: 14px; padding: 26px 32px; margin-bottom: 16px; display: flex; align-items: center; gap: 26px; }
 .op-hero .num { font-size: 48px; font-weight: 800; color: #ff6b5e; line-height: 1; flex-shrink: 0; font-family: Georgia, serif; }
 .op-hero .txt h1 { margin: 0 0 8px; font-size: 20px; color: #f4f4f2; white-space: nowrap; }
@@ -317,6 +317,18 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 #view-open .ins.wide:nth-child(8) { background: #fce4ec; }
 #view-open .ins.wide:nth-child(8) h3 { background: #ad1457; }
 #view-open .ins.wide:nth-child(8) li b { color: #ad1457; }
+#view-open #ins-goglobal-car { background: #fff6e0; }
+#view-open #ins-goglobal-car h3 { background: #b8860b; }
+#view-open #ins-goglobal-car li b { color: #8a6300; }
+#view-open #ins-goglobal-chip { background: #fdeae6; }
+#view-open #ins-goglobal-chip h3 { background: #c1440e; }
+#view-open #ins-goglobal-chip li b { color: #c1440e; }
+#view-open #ins-goglobal-concl { background: #f3e5f5; }
+#view-open #ins-goglobal-concl h3 { background: #6a1b9a; }
+#view-open #ins-goglobal-concl li b { color: #6a1b9a; }
+#view-open #ins-goglobal-why { background: #e0f7fa; }
+#view-open #ins-goglobal-why h3 { background: #00838f; }
+#view-open #ins-goglobal-why li b { color: #00838f; }
 #view-open .dz-movebar { display: flex; justify-content: flex-end; gap: 6px; margin-bottom: 8px; }
 #view-open .dz-move { font-size: 11px; padding: 4px 10px; border-radius: 6px; border: 1px solid #d1d5db; background: #fff; color: #374151; cursor: pointer; font-family: inherit; }
 #view-open .dz-move:hover { background: #f3f4f6; }
@@ -341,7 +353,10 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .dz-head .n { font-size: 11px; color: #6b7280; }
 .dz-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .dz-grid.c3 { grid-template-columns: repeat(3, 1fr); }
+.dz-grid.c1 { grid-template-columns: 1fr; }
+.dz-grid + .dz-grid { margin-top: 10px; }
 .dz-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 12px 8px; display: flex; flex-direction: column; min-width: 0; position: relative; }
+.dz-card.wide { grid-column: 1 / -1; }
 .dz-move { position: absolute; top: 6px; right: 6px; width: 18px; height: 18px; line-height: 16px; text-align: center; padding: 0; border: 1px solid #e5e7eb; border-radius: 4px; background: #f8fafc; color: #898781; font-size: 11px; cursor: pointer; }
 .dz-move:hover { background: #eef2f6; color: #111827; }
 .dz-t { font-size: 12.5px; font-weight: 700; color: #111827; padding-right: 20px; }
@@ -355,7 +370,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .dz-table { font-size: 10px; color: #52514e; margin: 2px 0 4px; }
 .dz-table summary { cursor: pointer; color: #6b7280; }
 .dz-table table { border-collapse: collapse; width: 100%; margin-top: 4px; font-variant-numeric: tabular-nums; }
-.dz-table th, .dz-table td { border-bottom: 1px solid #f3f4f6; padding: 2px 4px; text-align: left; vertical-align: top; }
+.dz-table th, .dz-table td { border-bottom: 1px solid #f3f4f6; padding: 3px 5px; text-align: left; vertical-align: top; }
+.dz-table thead th { background: #eef2f6; color: #374151; font-weight: 700; }
+.dz-table tbody tr:nth-child(even) { background: #f8fafc; }
+.dz-table tbody tr:hover { background: #eef2f6; }
+.dz-table tbody td:first-child { font-weight: 700; color: #111827; }
 .dz-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
 .dz-tile { background: #f8fafc; border-radius: 6px; padding: 6px 8px; }
 .dz-tile .v { font-size: 20px; font-weight: 700; color: #111827; line-height: 1.15; }
@@ -425,7 +444,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <button class="tab" data-view="wearable">L5 终端设备层：可穿戴 / XR</button>
     <button class="tab" data-view="nativehw">L5 终端设备层：AI原生新硬件</button>
     <button class="tab" data-view="edgeai">L5 端侧AI含量对比</button>
-    <button class="tab" data-view="open">六个开放议题</button>
+    <button class="tab" data-view="open">五个开放议题</button>
   </div>
 
   <!-- ====================== 视图一：产业链全景图（原页面，保留不动） ====================== -->
@@ -835,7 +854,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         </div>
         <span class="lb">终端</span>
         <div class="grp" data-dim="k">
-          <button class="chip on" data-v="phone">手机</button><button class="chip on" data-v="pc">PC</button><button class="chip on" data-v="board">单板 / MCU</button><button class="chip on" data-v="other">机器人 / IoT</button>
+          <button class="chip on" data-v="phone">手机</button><button class="chip on" data-v="pc">PC</button><button class="chip on" data-v="board" title="单板计算机（SBC）：树莓派、OrangePi AIpro、昇腾 Atlas 200I、Jetson 等把 CPU/GPU/NPU 与内存集成在一整块电路板上的小型边缘计算板，区别于手机/PC 整机，也区别于更底层的 MCU 微控制器">单板 / MCU</button><button class="chip on" data-v="other">机器人 / IoT</button>
         </div>
         <span class="lb">模态</span>
         <div class="grp" data-dim="mo">
@@ -1225,74 +1244,21 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
     <p class="spec-note" id="ea-foot"></p>
   </div>
 
-  <!-- ====================== 视图九：六个开放议题 ====================== -->
+  <!-- ====================== 视图九：五个开放议题 ====================== -->
   <div class="view" id="view-open">
     <div class="subtabs">
-      <button class="subtab active" data-sub="op-biz">① 商业模式可持续性</button>
-      <button class="subtab" data-sub="op-param">② 参数上限与性能天花板</button>
-      <button class="subtab" data-sub="op-vertical">③ 纵向一体化的降维打击</button>
-      <button class="subtab" data-sub="op-chipdown">④ 芯片厂向下整合</button>
-      <button class="subtab" data-sub="op-goglobal">⑤ 中国厂商出海</button>
-      <button class="subtab" data-sub="op-product">⑥ 商业化产品选择</button>
+      <button class="subtab active" data-sub="op-param">① 参数上限与性能天花板</button>
+      <button class="subtab" data-sub="op-vertical">② 纵向一体化的降维打击</button>
+      <button class="subtab" data-sub="op-chipdown">③ 芯片厂向下整合</button>
+      <button class="subtab" data-sub="op-goglobal">④ 中国厂商出海</button>
+      <button class="subtab" data-sub="op-chipblock">⑤ 中国芯片何时解决卡脖子</button>
     </div>
 
-    <!-- ① 商业模式可持续性 -->
-    <div class="subview active" id="sub-op-biz">
+
+    <!-- ① 参数上限与性能天花板 -->
+    <div class="subview active" id="sub-op-param">
       <div class="op-hero">
         <div class="num">01</div>
-        <div class="txt">
-          <h1>商业模式的可持续性</h1>
-          <div class="q">模型公司靠什么赚钱？授权费？API 调用？订阅？还是被收购？目前有纯端侧模型公司实现规模化盈利吗？如果没有，这个商业模式是否成立？</div>
-        </div>
-      </div>
-      <div class="op-verdict"><b>一句话判断：</b>目前没有一家"纯端侧模型公司"跑通独立规模化盈利。行业实际靠三条依附路径生存——被芯片厂收购 / acquihire、绑定长周期 B 端场景授权（收入不透明）、或转型做云端通用大模型公司再顺带覆盖端侧。</div>
-      <div class="insights">
-        <div class="ins">
-          <h3>数量级错位：融资远超可分配市场规模</h3>
-          <ul>
-            <li><b>18 家端侧模型创业公司</b>累计融资约 <b>$25.3B</b>、估值合计 <b>$172.5B</b>，而<b>中国纯端侧大模型（软件口径）2024 年市场规模仅 21 亿元人民币</b>（约 $3 亿）——相差近两个数量级，说明资本押注的不是授权费现金流，而是被收购 / 被整合的预期。</li>
-            <li><b>Mistral AI</b> ARR 从 2024 年末 $16M 涨到 2026-01 约 $400M，CEO 称全年有望破 $1B，但主力是云端 API + 企业订阅，端侧 Ministral 系列未单独拆分收入；2026-09 三星领投 D 轮后估值约 €210 亿，估值 / 营收 ≈ <b>60 倍</b>。</li>
-            <li><b>Liquid AI</b> ARR 约 $13.2M（getlatka 估算），对应估值 $2.4B，倍数 ≈ <b>180 倍</b>；其 LFM Open License 规定商用营收超 $10M 须付费授权，已吸引 Mercedes-Benz（车载）、MacPaw 等客户。</li>
-          </ul>
-        </div>
-        <div class="ins">
-          <h3>四条变现路径，没有一条独立跑通</h3>
-          <ul>
-            <li><b>被收购 / acquihire：</b>目前唯一有确定性现金流入的路径，但本质是"卖团队"。Qualcomm 收购 Nexa AI（仅 12 人团队，产品改名 GenieX 锁死高通芯片）、AMD 收购 Silo AI（$665M）、NXP 收购 Kinara（$307M）、Microsoft"收购"Inflection AI（$650M，含 $620M 模型非独家授权费 + 挖走大部分员工）。</li>
-            <li><b>B 端场景授权：</b>面壁智能在长安、上汽、吉利等车型量产落地，2026 年预计数十万辆汽车搭载，但具体营收至今未公开披露——车厂供应链收入确认周期长、透明度低。</li>
-            <li><b>纯亏损烧钱：</b>智谱 2022→2024 净亏损从 1.44 亿元扩大到 29.58 亿元；MiniMax 累计亏损约 36.1 亿元。两者都不是纯端侧公司，尚且深度亏损——纯端侧、体量更小的公司（面壁智能、Liquid AI）处境只会更艰难。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>结论与口径提醒</h3>
-          <ul>
-            <li>端侧模型创业公司事实上活在三种依附关系里——依附芯片厂（被收购 / 深度绑定 SDK）、依附垂直场景的长周期供应链合同（收入不透明）、或转型做云端通用大模型公司再顺带覆盖端侧。本轮调研没有找到一家"只靠端侧模型授权 / 订阅"独立经营并盈利的公司。</li>
-            <li><b>口径提醒：</b>Mistral / Liquid 的营收以云端 API + 企业订阅为主，端侧收入未单独拆分；面壁智能则相反，端侧场景落地明确但营收完全不透明——两类公司的数字不可直接对比，图表已分组标注。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>为什么会这样：端侧模型的价值结构决定了它很难独立收费</h3>
-          <ul>
-            <li><b>根本原因是"增量分发成本趋近于零"：</b>云端模型按 token 调用收费成立，是因为每次调用都消耗真实算力；端侧模型训练完成后被固化进芯片固件或 App 安装包，之后被调用一万次和一亿次的边际成本几乎为零。买家（芯片厂 / OEM / 车厂）因此天然倾向于一次性买断授权，而不是接受持续按量付费——这从根上锁死了"订阅制"这条最理想的商业模式。</li>
-            <li><b>用户感知不到"是哪家模型"：</b>端侧模型的价值体现为离线可用、低延迟、隐私合规这些工程属性，而不是像 ChatGPT 那样有可感知的品牌智能差异。终端厂商完全可以在不同代际产品中静默更换底层模型供应商，这决定了模型公司议价权本质上弱于"卖体验"的云端大模型公司。</li>
-            <li><b>中外对照——退出路径完全不同：</b>中国路径更依赖国家级基金 / 央企 / 车企产业资本托底（面壁智能资方结构），商业化压力被"战略产业"叙事部分对冲，代价是长期依赖政策性资金，一旦退坡将直接暴露盈利缺口；美欧路径更依赖被巨头并购退出（Qualcomm 收 Nexa、AMD 收 Silo AI、Microsoft"收购"Inflection），一级市场事实上是在为"被收购概率"定价——这正是 Liquid AI（180 倍）、Mistral（60 倍）营收倍数畸高的真实原因：投资人赌的不是订阅现金流，而是巨头愿意为团队 / 技术支付的溢价。</li>
-            <li><b>未来 3 年推演：</b>预计出现两条分化路径而非行业性洗牌——① 无芯片绑定、无独家场景数据的腰部公司将继续被并购或转型做云端通用模型（延续 2024-2026 已发生的模式）；② 真正留存独立地位的公司，是像面壁智能这样手握车载量产 know-how 等"不可迁移工程壁垒"的公司。由于境内一级市场美元基金退出通道受限，中国大概率会走出一条美欧少见的路径：不是被境外巨头收购，而是被 A 股 / 港股上市公司整体并入报表，或通过科创板 IPO 实现"类国家队资产证券化"退出，这与美国"卖给 Qualcomm / Microsoft"的退出逻辑将长期并行、互不趋同。</li>
-          </ul>
-        </div>
-      </div>
-      <div class="dz-block" id="dzblk-open-biz">
-        <div class="dz-movebar">
-          <button class="dz-move" data-pos="up" onclick="moveChart('open-biz','up')">▲ 上移至判断下方</button>
-          <button class="dz-move active" data-pos="down" onclick="moveChart('open-biz','down')">▼ 下移至默认位置</button>
-        </div>
-        <div class="dz" id="dz-open-biz"></div>
-      </div>
-    </div>
-
-    <!-- ② 参数上限与性能天花板 -->
-    <div class="subview" id="sub-op-param">
-      <div class="op-hero">
-        <div class="num">02</div>
         <div class="txt">
           <h1>端侧模型的参数上限和性能天花板</h1>
           <div class="q">图谱收录了 73 款型号，但没有总结端侧模型的参数上限在哪里。目前端侧能跑的最大模型是多少参数？在什么芯片上？随着芯片算力提升，3 年后端侧能跑多大模型？这会不会颠覆当前的"端云分工"逻辑？</div>
@@ -1342,10 +1308,10 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       </div>
     </div>
 
-    <!-- ③ 纵向一体化的降维打击 -->
+    <!-- ② 纵向一体化的降维打击 -->
     <div class="subview" id="sub-op-vertical">
       <div class="op-hero">
-        <div class="num">03</div>
+        <div class="num">02</div>
         <div class="txt">
           <h1>纵向一体化玩家的"降维打击"</h1>
           <div class="q">Apple Intelligence、华为盘古、Google Gemini Nano、三星 Gauss——这些 OS 级玩家都在自研端侧模型。第三方模型公司（面壁智能 / Mistral）的生存空间在哪里？会不会最终被 OS 级模型完全替代？</div>
@@ -1394,10 +1360,10 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       </div>
     </div>
 
-    <!-- ④ 芯片厂向下整合 -->
+    <!-- ③ 芯片厂向下整合 -->
     <div class="subview" id="sub-op-chipdown">
       <div class="op-hero">
-        <div class="num">04</div>
+        <div class="num">03</div>
         <div class="txt">
           <h1>芯片厂向下整合的威胁</h1>
           <div class="q">高通收购 Edge Impulse / Arduino / Modular，英飞凌收购 Imagimob，NVIDIA 收购 Hugging Face——芯片厂正在把模型 + 工具链 + 开发平台收归己有。独立的模型公司和工具链公司，会不会最终沦为芯片厂的"内置功能"，失去独立定价权？</div>
@@ -1445,16 +1411,16 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
       </div>
     </div>
 
-    <!-- ⑤ 中国厂商出海 -->
+    <!-- ④ 中国厂商出海 -->
     <div class="subview" id="sub-op-goglobal">
       <div class="op-hero">
-        <div class="num">05</div>
+        <div class="num">04</div>
         <div class="txt">
           <h1>中国厂商的"出海"可行性</h1>
           <div class="q">图谱中中国厂商在很多层（视觉 IoT SoC、ODM、IoT 模组）占全球主导，但在高附加值层（通用 SoC、OS、消费级终端品牌），中国厂商能出海吗？会不会遇到数据隐私、出口管制、品牌认知的障碍？</div>
         </div>
       </div>
-      <div class="op-verdict"><b>一句话判断：</b>出海能力随产业链层级两极分化——越靠近底层供应链出海越畅通，越靠近品牌 / OS / 通用平台层阻力越大，但 AI 眼镜（雷鸟 24-27% 全球份额）是 2025 年跑出的意外正面案例；出口管制与数据隐私审查是与产品力无关的结构性风险。</div>
+      <div class="op-verdict"><b>一句话判断：</b>出海能力随产业链层级两极分化——越靠近底层供应链出海越畅通，越靠近品牌 / OS / 通用平台层阻力越大，但 AI 眼镜（雷鸟 24-27% 全球份额）是 2025 年跑出的意外正面案例；出口管制与数据隐私审查是与产品力无关的结构性风险。而 <b>整车 / 新能源车出海</b>是规模最大的反例——2026 年出口有望破 1000 万辆，但要靠欧洲建厂避税、PHEV 品类切换才能绕开欧盟反补贴关税，其搭载的智能座舱域控芯片也仍由高通以超七成份额主导，国产芯片走的是"随整车出海"的曲线路径。</div>
       <div class="insights">
         <div class="ins">
           <h3>已经出海成功的层级</h3>
@@ -1472,22 +1438,6 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
             <li><b>数据隐私风险类比：</b>DeepSeek 2025 年 1-2 月被意大利下架、韩国应用商店下架，德国柏林 DPA 向苹果谷歌发出 DSA 第 16 条通知——这对涉及摄像头 / 语音 / 位置数据的 AI 眼镜类硬件是明确的风险信号。</li>
           </ul>
         </div>
-        <div class="ins wide">
-          <h3>结论：分层判断，别一概而论</h3>
-          <ul>
-            <li><b>隐形供应链层级</b>（SoC 代工 / 模组 / ODM）：中国厂商是事实上的全球主导者，出海畅通无阻。</li>
-            <li><b>品类下沉的智能硬件终端</b>（清洁机器人 / AI 眼镜）：靠产品力 + 渠道可以打开局面，雷鸟 24% 份额是目前最强反例。</li>
-            <li><b>通用计算平台</b>（手机 SoC / OS）或涉及<b>"数据 + 国家安全"叙事</b>（无人机 / 路由器 / AI 应用）：会遭遇实体清单、Covered List、GDPR 调查等制度性阻击——这类阻力与产品质量无关，是结构性、政治性的，短期内无法靠份额或用户口碑化解。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>为什么阻力精确集中在"品牌 + 数据"交叉层：一条可预测的规律</h3>
-          <ul>
-            <li><b>根本原因是审查成本与产品可见度成正比：</b>模组 / ODM / 芯片代工是 B2B 供应链上游环节，终端消费者和监管机构几乎看不到、也审查不到"谁造的"；而手机品牌、AI 眼镜、路由器是直接触达终端用户、采集摄像头 / 位置 / 语音数据的 C 端产品，天然处于国家安全审查和数据隐私监管的聚光灯下。这条规律可以预测下一个雷区：中国厂商在智能音箱、家庭安防摄像头等采集敏感数据的品类出海时，大概率会复制大疆 / TP-Link 式的审查路径，而不是复制模组代工的畅通路径。</li>
-            <li><b>中外对照——"降维"能力是中国独有的结构性优势：</b>美欧本土供应链早已把中低端制造环节转移出去，本土几乎没有能承接"低成本模组 / ODM"角色的替代供给，这是中国厂商在这一层"无阻力出海"的根本原因，短期内无法被制裁削弱（制裁模组会直接推高美欧自身终端厂商成本）。但在通用 SoC / OS 这类高附加值层，美国维持着技术代差和生态先发优势（安卓 / iOS 生态、ARM 指令集授权），中国厂商缺席不是因为不被允许进入，而是自身技术 / 生态积累尚未达到替代门槛——这是能力问题，不是准入问题，与模组层的"结构性无替代"性质完全不同，不能一概而论为"外部打压"。</li>
-            <li><b>未来 3 年推演：</b>供应链层级（模组 / ODM / 视觉 SoC）的主导地位会持续甚至扩大，因为替代成本太高；AI 眼镜 / 清洁机器人这类"新品类下沉"路径大概率复制出更多雷鸟式突破（品类新、监管框架滞后、用产品力换时间窗口），但一旦某个品类做到全球头部份额（如雷鸟继续扩大到 30%+），大概率会招致与大疆类似的审查升级——先用产品力打开市场，再遭遇结构性阻击，很可能是接下来几年反复上演的固定剧本。通用 SoC / OS 层在 3 年内难有实质性突破，这不取决于中国厂商的努力程度，而取决于全球生态迁移成本能否被打破，这是十年尺度的问题。</li>
-          </ul>
-        </div>
       </div>
       <div class="dz-block" id="dzblk-open-goglobal">
         <div class="dz-movebar">
@@ -1496,98 +1446,101 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         </div>
         <div class="dz" id="dz-open-goglobal"></div>
       </div>
+      <div class="insights">
+        <div class="ins wide" id="ins-goglobal-car">
+          <h3>车企出海：规模最大的产业出海案例，但靠本地化建厂绕开关税而非突破关税</h3>
+          <ul>
+            <li><b>出口规模：</b>2026 年上半年中国汽车出口金额 918 亿美元、出口量 509.6 万辆，同比分别 <b>+54%</b>、<b>+65.3%</b>；全年出口量有望突破 <b>1000 万辆</b>（乘联会更乐观预测冲击 1200 万辆），将成为全球首个汽车出口破千万辆的国家。新能源车是核心增量：前 5 个月出口 183.3 万辆，同比 <b>+1.1 倍</b>，占整体出口比重超 45%，5 月单月逼近 50%。吉利、比亚迪、奇瑞、上汽、长安为出口主力，出口目的地中巴西居首（28.96 万辆），欧洲占据前十中 5 个席位。</li>
+            <li><b>欧盟关税与绕开策略：</b>欧盟自 2024 年 10 月起对中国产纯电动车加征为期五年的反补贴税（在 10% 基础关税之上叠加），比亚迪、吉利、上汽分别适用不同税率，奇瑞 / 长安 / 长城等未被单独抽样的车企适用统一的"其他合作车企"群体税率；但插电混动（PHEV）不在加征范围内，车企随即加大 PHEV 出口占比来对冲纯电关税——这是"品类切换绕开壁垒"而非"关税被突破"。本地化建厂是另一条应对路径：比亚迪匈牙利工厂投资 40 亿欧元、规划年产能 30 万辆，预计 2026 年四季度投产；奇瑞西班牙合资工厂 M1 产线已投产，并与日产签署英国桑德兰工厂代工谅解备忘录；上汽西班牙加利西亚工厂也在规划落地；长城收购自戴姆勒的巴西工厂已于 2026 年 8 月 16 日竣工投产，规划产能 5 万辆；长安在海外已布局 9 个工厂，其中泰国罗勇工厂是其首个海外新能源基地，产品覆盖 103 个国家和地区。</li>
+            <li><b>结构性隐忧：</b>整车出口同比 +54% 的同时，零部件出口仅增长 7%，增速差距悬殊，行业担忧长期可能出现"整车出海、供应链空心化"的失衡；国内市场同期承压（2026 年前 5 个月产销同比分别 −4.6%、−4.2%），出口已成为拉动产业增长的主引擎，这也意味着车企对海外市场的依赖度和敏感度都在同步上升。</li>
+          </ul>
+        </div>
+        <div class="ins wide" id="ins-goglobal-chip">
+          <h3>车载智能座舱芯片：本土供应链已成熟，但核心域控芯片仍由高通主导七成以上份额</h3>
+          <ul>
+            <li><b>芯片格局：</b>2026 年 1-6 月座舱域控芯片出货中，高通以 340.13 万颗、<b>71.4%</b> 份额绝对主导（8155/8295 已是中高端车型标配），华为以 35.51 万颗、7.5% 排第二，芯擎科技、AMD、联发科分别占 5.2%/5.1%/4.8%。但中控屏、HUD、AR-HUD、液晶仪表、语音交互等外围环节的本土供应链已经成熟，多数细分赛道头名都是国内厂商（地平线、黑芝麻智能、芯驰科技、杰发科技、全志科技、瑞芯微等）；中国智能座舱 SoC 市场规模预计 2026 年达 278 亿元。</li>
+            <li><b>国产芯片"随整车出海"模式：</b>地平线明确"帮自主品牌出海 / 帮合资品牌留下来 / 帮海外品牌智能化"三条出海路径——自主品牌方向已拿下 11 家车企、40+ 出海车型定点，生命周期 200 万套；征程 6M 芯片搭载于博世方案，随极氪 7GT 海外车型进入欧洲 16 国市场；征程 6B 已获丰田、铃木两家日本车企定点，全生命周期预计交付 750 万辆；与大众合资的酷睿程（CARIZON）实现"芯片 + AI 基座大模型授权"模式升级。黑芝麻智能华山系列已与东风、吉利、红旗、江淮量产合作，A2000 芯片已通过美国相关审查进入全球市场，2026 年出货量预计超千万颗。<b>这条路径的共同特点是：中国芯片不是直接和高通竞争终端品牌份额，而是绑定中国车企 / 国际 Tier1（博世、大陆、电装）的出海节奏"借船出海"。</b></li>
+            <li><b>数据合规是叠加在关税之上的第二重摩擦：</b>工信部等八部门 2026 年 1 月印发《汽车数据出境安全指引（2026 版）》，网信办数据显示截至 2025 年 3 月已完成数据出境安全评估 298 项，其中涉重要数据的申报项目<b>不通过率达 15.9%</b>；出口目的地一侧，马来西亚、土耳其、越南等中国新能源车主要市场的隐私立法也在加速对标欧盟 GDPR，而欧盟至今未认定中国具备"充分性"，中国车企需额外走 SCC（标准合同条款）+ TIA（传输影响评估）路径。联网汽车持续采集摄像头 / 位置 / 座舱语音数据，使其在出海时天然叠加了整车关税与数据合规两重审查，比多数硬件品类的出海门槛更高。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="dz-block" id="dzblk-open-goglobal-car">
+        <div class="dz" id="dz-open-goglobal-car"></div>
+      </div>
+      <div class="insights">
+        <div class="ins wide" id="ins-goglobal-concl">
+          <h3>结论：分层判断，别一概而论</h3>
+          <ul>
+            <li><b>隐形供应链层级</b>（SoC 代工 / 模组 / ODM）：中国厂商是事实上的全球主导者，出海畅通无阻。</li>
+            <li><b>品类下沉的智能硬件终端</b>（清洁机器人 / AI 眼镜）：靠产品力 + 渠道可以打开局面，雷鸟 24% 份额是目前最强反例。</li>
+            <li><b>通用计算平台</b>（手机 SoC / OS）或涉及<b>"数据 + 国家安全"叙事</b>（无人机 / 路由器 / AI 应用）：会遭遇实体清单、Covered List、GDPR 调查等制度性阻击——这类阻力与产品质量无关，是结构性、政治性的，短期内无法靠份额或用户口碑化解。</li>
+            <li><b>整车 / 新能源车这类"第四种模式"：</b>不是靠产品力突破壁垒，也不是完全被制度性阻击挡住，而是<b>用本地化建厂 + 品类结构调整（PHEV 替代纯电）绕开关税</b>——出口量能持续冲高（2026 年有望破千万辆），代价是欧洲建厂的资本开支与关税成本内化；车载芯片则走"随整车出海"的路径，国产座舱芯片份额提升不靠正面抢下高通份额，而靠绑定中国车企和国际 Tier1 的出海节奏搭便车。</li>
+          </ul>
+        </div>
+        <div class="ins wide" id="ins-goglobal-why">
+          <h3>为什么阻力精确集中在"品牌 + 数据"交叉层：一条可预测的规律</h3>
+          <ul>
+            <li><b>根本原因是审查成本与产品可见度成正比：</b>模组 / ODM / 芯片代工是 B2B 供应链上游环节，终端消费者和监管机构几乎看不到、也审查不到"谁造的"；而手机品牌、AI 眼镜、路由器是直接触达终端用户、采集摄像头 / 位置 / 语音数据的 C 端产品，天然处于国家安全审查和数据隐私监管的聚光灯下。这条规律可以预测下一个雷区：中国厂商在智能音箱、家庭安防摄像头等采集敏感数据的品类出海时，大概率会复制大疆 / TP-Link 式的审查路径，而不是复制模组代工的畅通路径。</li>
+            <li><b>中外对照——"降维"能力是中国独有的结构性优势：</b>美欧本土供应链早已把中低端制造环节转移出去，本土几乎没有能承接"低成本模组 / ODM"角色的替代供给，这是中国厂商在这一层"无阻力出海"的根本原因，短期内无法被制裁削弱（制裁模组会直接推高美欧自身终端厂商成本）。但在通用 SoC / OS 这类高附加值层，美国维持着技术代差和生态先发优势（安卓 / iOS 生态、ARM 指令集授权），中国厂商缺席不是因为不被允许进入，而是自身技术 / 生态积累尚未达到替代门槛——这是能力问题，不是准入问题，与模组层的"结构性无替代"性质完全不同，不能一概而论为"外部打压"。</li>
+            <li><b>未来 3 年推演：</b>供应链层级（模组 / ODM / 视觉 SoC）的主导地位会持续甚至扩大，因为替代成本太高；AI 眼镜 / 清洁机器人这类"新品类下沉"路径大概率复制出更多雷鸟式突破（品类新、监管框架滞后、用产品力换时间窗口），但一旦某个品类做到全球头部份额（如雷鸟继续扩大到 30%+），大概率会招致与大疆类似的审查升级——先用产品力打开市场，再遭遇结构性阻击，很可能是接下来几年反复上演的固定剧本。通用 SoC / OS 层在 3 年内难有实质性突破，这不取决于中国厂商的努力程度，而取决于全球生态迁移成本能否被打破，这是十年尺度的问题。</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <!-- ⑥ 商业化产品选择 -->
-    <div class="subview" id="sub-op-product">
+    <!-- ⑤ 中国芯片何时解决卡脖子 -->
+    <div class="subview" id="sub-op-chipblock">
       <div class="op-hero">
-        <div class="num">06</div>
+        <div class="num">05</div>
         <div class="txt">
-          <h1>端侧模型公司的商业化产品选择</h1>
-          <div class="q">面壁智能这类端侧模型创业公司，如果想在现阶段活下来并跑通商业化，应该做什么产品？是继续卖模型授权，还是自己下场做软硬一体方案？该优先车载、机器人，还是保持泛化布局？</div>
+          <h1>中国芯片何时能解决"卡脖子"问题</h1>
+          <div class="q">端侧 AI 芯片依赖的核心环节——EUV / DUV 光刻设备、EDA 设计软件、HBM 先进存储——目前分别卡在哪一步？国产替代已经推进到什么程度？照现在的速度，"解决卡脖子"到底还要多久，还是说这个问题根本没有单一答案？</div>
         </div>
       </div>
-      <div class="op-verdict"><b>一句话判断：</b>现阶段不该卖"裸模型"，而应把模型能力封装成车载 / 机器人 / 工业质检场景的软硬一体化交付方案，或做成端云协同中间件 SDK 卖给已有分发渠道的游戏 / 教育 / 生产力软件厂商——这既避开与 OS 级玩家的正面竞争，也能换取客户愿意为"交钥匙工程"或"嵌入式能力"支付的更高预算；泛 C 端助手和纯模型授权是现阶段最不该优先投入的两个方向。</div>
+      <div class="op-verdict"><b>一句话判断：</b>"卡脖子"不是一个统一的时间表，而是多条独立赛道各自的进度条——成熟制程 DUV 设备已基本自主（28nm 国产化率超 95%），EDA 软件覆盖度达 80% 但仍集中中低端环节，HBM 存储 2026 年底小批量试产、2027 年量产但落后国际龙头约两代 / 3-4 年，而真正的核心瓶颈 EUV 光刻机，主流预测工程样机要到 2028-2032 年，规模化商用量产则要等到 2030-2035 年——"完全解决"和"不再构成决定性瓶颈"是两个不同的判断标准，后者会先到来。</div>
       <div class="insights">
         <div class="ins">
-          <h3>为什么必须放弃单纯卖模型授权</h3>
+          <h3>光刻设备：成熟制程已基本自主，EUV 仍是十年尺度的问题</h3>
           <ul>
-            <li><b>边际成本论：</b>①中已验证——端侧模型固化进设备后边际成本趋近于零，买家天然倾向一次性买断而非持续付费，没有一家公司靠"裸模型授权"独立跑通规模化盈利。</li>
-            <li><b>议价权论：</b>Liquid AI 的 LFM Open License 把付费门槛设在"商用营收超 $10M"，恰恰说明早期阶段单纯卖模型许可证换不来现金流，必须依赖后续服务 / 硬件绑定变现。</li>
-            <li><b>验收门槛论：</b>车企 / 机器人厂商采购看的是"能否量产落地"而非"跑分"——180ms 端到端时延、断网部署、产线集成度这些工程指标，天然要求"模型 + 推理引擎 + 芯片适配 + 运维"打包交付，单独给模型文件无法满足招标要求。</li>
+            <li><b>先进制程"曲线量产"：</b>中芯国际（SMIC）已用 DUV 多重曝光（自对准四重曝光 SAQP）实现 N+3 节点（5nm 级）量产，华为麒麟 9030 芯片经 TechInsights 拆解确认采用该工艺，但代价是良率仅约 <b>20%</b>、单片成本比台积电 N3 高 <b>2-3 倍</b>、每道layer 需要 4 次曝光而非 EUV 的 1 次，产能仅约 <b>1 万片 / 月</b>，是台积电先进制程产能的零头。</li>
+            <li><b>成熟制程已基本解绑：</b>上海微电子（SMEE）28nm 浸没式 DUV 光刻机预计 2026-2027 年产能达 100 台 / 年，国产化率提升至 95% 以上，覆盖国内约 70% 成熟制程需求——这部分"卡脖子"事实上已经解决。</li>
+            <li><b>EUV 仍在实验室阶段：</b>国产 EUV 光源、光学系统、工件台三项核心技术均与 ASML 存在代差，主流产业研究预测 2028 年前后完成工程样机、2030-2035 年才可能实现商业化量产；网络上"2026 年国产 EUV 量产"等说法多为对设备照片的误读（如被曲解为光刻机的实为物镜装配干涉仪），应审慎甄别。</li>
           </ul>
         </div>
         <div class="ins">
-          <h3>现阶段最该做的产品形态：聚焦 OS 级玩家覆盖不到的场景</h3>
+          <h3>EDA 软件：覆盖度 80%，但数字验证仍是国际巨头垄断最深的环节</h3>
           <ul>
-            <li><b>车载优先：</b>面壁智能 SuperMate 智能座舱矩阵已量产交付超 <b>30 万台</b>，覆盖长安马自达、吉利银河、上汽大众、广汽等 6 个品牌——是当下最成熟、最具现金流确定性的方向。</li>
-            <li><b>机器人次优先：</b>MiniCPM-RobotTrack 对接宇树 Unitree Go2、乐聚机器人，端到端 180ms 时延、断网部署，切入楼宇巡检安防——③中已验证 Apple / Google / 三星 / 华为对具身智能完全没有布局，竞争烈度最低。</li>
-            <li><b>应避免的方向：</b>面向手机的泛 C 端 AI 助手，直接与 OS 厂商免费自带的 Siri / 小艺 / Gemini Nano 竞争，创业公司在分发渠道和成本结构上都处于绝对劣势，是当前最不该进入的产品方向。</li>
+            <li><b>龙头进展：</b>华大九天 EDA 工具覆盖度已达 <b>80%</b>，计划 2027 年实现全流程补齐，2025 年 EDA 软件销售收入 10.75 亿元，是国内唯一实现全流程覆盖、被视为全球第四家平台型 EDA 企业的厂商；但研发费用率高达 64.8%、净利润同比骤降 84.52%——追赶阶段普遍在用利润换技术积累。</li>
+            <li><b>行业整体仍是"单点补课"：</b>国产 EDA 市占率预计 2026 年才突破 <b>17%</b>，Synopsys / Cadence / 西门子三巨头仍占据绝对主导；数字验证赛道占整体 EDA 市场约 25-30%，是国产化率最低、国际垄断最强的环节（三巨头占超 90% 份额），芯华章、合见工软等正试图在此单点突破以撬动全局替代。</li>
+            <li><b>地缘政治正在加速国产替代：</b>受美国对核心 EDA 软件出口限制收紧影响，下游半导体厂商普遍启动国产 EDA 工具试用，华大九天 2025 年新增订单同比增长超 80%，制造端与 AI 芯片设计公司订单贡献显著。</li>
           </ul>
         </div>
         <div class="ins wide">
-          <h3>商业化考量的三个维度</h3>
+          <h3>HBM 先进存储：落后国际龙头约两代、3-4 年，2026-2027 是关键验证期</h3>
           <ul>
-            <li><b>现金流周期：</b>B 端场景授权款项确认周期长达半年到一年，需要能容忍这种周期的资方——这正是面壁智能资方结构以国家级基金 / 央企 / 车企产业资本为主的原因，而不是纯市场化美元基金打法。</li>
-            <li><b>护城河来源：</b>模型本身的性能优势会被开源社区快速追平（Qwen / Llama 等持续开源施压），真正难以复制的是"能不能在客户产线上跑通"的工程交付能力——芯片适配、量产良率、现场运维，这是慢变量护城河。</li>
-            <li><b>退出路径适配：</b>中国一级市场 IPO / 并购退出通道有限，选择"车载供应商""机器人系统供应商"这类传统制造业能理解的身份，比强调"AI 模型公司"更容易被上市公司并购或独立走通科创板 IPO。</li>
+            <li><b>追赶进度：</b>长鑫存储 HBM3 样品已完成国内第一梯队云厂商首轮适配，良率表现据称已接近三星水平，计划 <b>2026 年底小规模试产、2027 年大规模量产</b>；长江存储与长鑫存储正合作攻关，前者的 Xtacing 晶栈架构技术在提升带宽 / 改善散热上具备潜力。</li>
+            <li><b>差距仍然显著：</b>代际上，长鑫 2026 年量产 HBM3 时，三星 / SK 海力士的主力已是 HBM3E 并在爬坡 HBM4，落后约两代、3-4 年；产能上长鑫规划到 2026 年底总月产能约 29-30 万片晶圆，但分给 HBM 的可能仅约 <b>3 万片 / 月</b>，与国际龙头动辄十几万片的 HBM 投片量相比仍是零头。</li>
+            <li><b>样板意义大于产能贡献：</b>长江存储三期项目（2025-09 落地，配套投资近 600 亿元）是中国大陆首条"全国产化"存储芯片产线——从前道光刻刻蚀到后道封测全部采用国产设备，但光刻机和离子注入设备仍是最大瓶颈，这条产线的意义在于验证"全链条自主可控"可行，而非直接贡献产能。</li>
           </ul>
         </div>
         <div class="ins wide">
-          <h3>为什么会这样、中外对照、未来 3 年推演</h3>
+          <h3>为什么"何时解决"没有单一答案：中外对照与未来推演</h3>
           <ul>
-            <li><b>为什么：</b>商业化的本质是"卖差异化工程交付能力"，而不是"卖智能"本身——这是①②③三个议题共同指向的结论，落到产品选择上的直接推论就是优先做交付壁垒高、可验收的场景方案，而非通用能力展示。</li>
-            <li><b>中外对照：</b>美国创业公司（Liquid AI 绑定 AMD Ventures、Cartesia 有 NVIDIA 参与投资）更倾向嵌入芯片厂 SDK 做隐藏组件供应商，借芯片厂的分发渠道走量；中国创业公司（面壁智能）更倾向直接对接主机厂 / 机器人厂商做方案集成商。这种差异源于产业生态结构：美国芯片生态高度集中（高通 / ARM / NVIDIA 垄断分发入口），绑定芯片厂杠杆更大；中国终端制造业本身议价力强、供应链决策更扁平，直接对接终端厂商反而效率更高。</li>
-            <li><b>未来 3 年推演：</b>继续押注"通用助手"或"裸模型 API"的公司大概率被并购或转型；能把车载 / 机器人的定制化交付能力，沉淀成可复制的标准化产品（而非每个客户重新开发一遍），从"项目制"过渡到"产品化规模化"，会是决定谁能真正盈利的关键分水岭——这与①中"结论与口径提醒"里的三种依附路径判断完全一致，本质是同一个结论的产品化落地版本。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>方向详解①：车载智能座舱——目标客户、竞争格局与技术路线</h3>
-          <ul>
-            <li><b>目标客户：</b>应优先"非华为阵营"的合资车企与非头部新势力——华为乾崑 / HarmonyOS 座舱与问界、智界等智选车型深度绑定，议价权几乎不可能来自第三方模型公司；面壁智能现有客户名单（长安马自达、吉利银河、上汽大众、广汽）恰恰都是既没有全栈自建 AI 能力、又不在华为智选车生态内的车企，说明这条客户筛选逻辑已经在被市场验证。</li>
-            <li><b>竞争格局：</b>华为并非直接竞争对手而是"市场分割者"——绑定的车企基本被锁死，第三方进不去；Momenta、地平线做的是智驾算法 + 芯片，属于感知 / 决策赛道而非语言 / 多模态座舱交互，赛道不重叠；阿里、腾讯、百度提供云端大模型座舱方案，但端侧化程度不足、且车企对 BAT 系的数据主权顾虑更高。面壁智能应卡位在"华为生态"与"BAT 云端方案"之间的空白地带：轻量端侧 + 多模态 + 不绑定单一芯片厂。</li>
-            <li><b>技术路线：</b>座舱场景本质是"语音 + 仪表视觉理解"，对多模态感知要求高、对复杂逻辑推理要求低，适合 4B 参数以下的小模型；产品化的关键不是把模型做得更大，而是把"车型定制微调"流程标准化——每换一个车型的 UI 交互 / 话术风格，都需要重新 SFT，谁能把这条流水线做成可复制的工具链，谁就能把边际交付成本压下来。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>方向详解②：机器人——核心问题是做模型、做"大脑"，还是做数据？</h3>
-          <ul>
-            <li><b>三层拆解：</b>具身智能大致可分三层——感知理解层（看懂环境 / 指令的多模态模型）、决策规划层即"大脑"（VLA 模型，直接把感知结果映射为动作指令，属于安全关键能力）、数据层（真实世界多模态操作数据的采集 / 标注 / 仿真）。三层对第三方模型公司的开放程度完全不同。</li>
-            <li><b>为什么不该做"大脑"：</b>运动决策必须与机身硬件深度耦合、且要自担安全责任，机器人整机厂大概率会复制车企逻辑（③已验证车企不愿把座舱核心能力外包给苹果）——宇树、智元、乐聚等大概率自研或深度定制 VLA。海外 Physical Intelligence（π0，融资超 $4 亿）、Google DeepMind（RT-2 / RT-X）这类专注"大脑"层的团队，融资体量与真机数据积累都远超端侧模型创业公司，正面竞争没有胜算。</li>
-            <li><b>该做感知理解层：</b>面壁智能 MiniCPM-RobotTrack 目前定位——提供视觉场景理解能力（对接宇树 Go2、乐聚机器人做巡检识别），而非做运动决策，这个定位是合理的：这一层不涉及安全关键决策，机器人厂商更愿意外部采购而非事事自研，类似座舱场景里"语音 / 视觉理解外包、驾驶决策自研"的分工逻辑。</li>
-            <li><b>数据层是被低估的机会：</b>具身智能训练最稀缺的资源是真实世界多模态操作数据，任何做"大脑"的团队（无论自研还是海外团队）都需要大量此类数据；第三方公司可以做数据采集 / 标注 / 仿真基础设施服务，与整机厂形成互补而非正面竞争关系——这条路线在中国目前参与者稀少，是三层里最值得被低估、值得提前布局的一层。</li>
-            <li><b>结论：</b>面壁智能等端侧模型公司应该在"感知理解模型 + 数据基础设施"两层发力，明确放弃与机器人整机厂正面争夺"大脑"层的决策权。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>方向详解③：工业质检 / 巡检——差异化空间在哪里</h3>
-          <ul>
-            <li><b>目标客户：</b>中小制造企业——富士康、比亚迪这类大型企业通常自建 AI 团队或直接采购海康威视、大华股份、商汤这类成熟机器视觉方案，第三方创业公司很难切入头部客户，真正的机会在无法承担头部方案预算的中小企业。</li>
-            <li><b>竞争格局：</b>海康威视、大华股份在传统机器视觉领域深耕多年，护城河是"行业 Know-how + 现场部署经验 + 存量客户关系"，模型能力本身并不稀缺；面壁智能作为后来者，差异化必须落在"轻量端侧部署成本更低"和"小样本泛化能力更强"，而不是在传统机器视觉的主场比拼检测精度。</li>
-            <li><b>技术路线：</b>传统机器视觉方案需要为每种缺陷类型采集大量标注数据训练专用分类器；而视觉语言模型（如 MiniCPM-V）可以"零样本 / 小样本描述 + 分类"新出现的缺陷类型，大幅降低客户的数据标注门槛——这是差异化的核心卖点，而非"精度更高"（精度上未必能超越深耕多年的专用视觉方案）。</li>
-            <li><b>产品建议：</b>工业质检场景的复杂度相对车载 / 机器人更可控，是本页 5 个方向里最有希望率先从"项目制"跃迁到"标准化 SaaS / 一体机产品"（按检测量或按产线订阅收费）的方向。</li>
-          </ul>
-        </div>
-        <div class="ins wide">
-          <h3>方向详解④：通用软件中间件——端云协同 SDK，卖给已有分发渠道的软件公司</h3>
-          <ul>
-            <li><b>核心逻辑：</b>不做自己的终端应用，而是把"本地小模型 + 云端大模型"的调度中间件做成 SDK，卖给已经有用户和分发渠道的软件公司——这和车载 / 机器人方向的逻辑一致，只是客户从硬件厂商换成了软件厂商，同样能避开与 OS 厂商正面竞争 C 端流量入口。</li>
-            <li><b>游戏：</b>NPC 实时对话 / 行为决策适合本地小模型处理低延迟交互、云端处理复杂剧情生成，但海外 NVIDIA ACE、Inworld AI 已在游戏引擎生态卡位较深；国内创业公司更现实的定位是给 Unity / Unreal / 国产游戏引擎做插件化 SDK，而非自建游戏内容或正面对标这两家。</li>
-            <li><b>教育：</b>离线场景（校园无网 / 弱网、未成年人数据不能出本地）是端侧模型的天然场景，做"作业批改 / 口语陪练"的本地推理引擎，嵌入已有用户基础的教育 App（如作业帮、猿辅导类厂商），比自建教育产品更容易变现，且避开了获客成本。</li>
-            <li><b>生产力：</b>办公文档 / 会议纪要类工具，敏感文档不能上云是刚需，本地摘要 + 云端深度分析的混合调度架构可以作为底层能力嵌入已有 To B SaaS 厂商（如企业微信、飞书类办公套件生态的第三方插件），而非独立做一套办公软件与巨头正面竞争。</li>
-            <li><b>消费 / 娱乐：</b>相册 / 短视频类 App 的本地图像理解、隐私相机功能同样是嵌入式能力，成熟 App 厂商为满足隐私合规要求（用户照片不出端）有采购动机，但需求强度弱于游戏 / 教育 / 生产力三个方向。</li>
-            <li><b>风险提示：</b>这条路线的护城河弱于车载 / 机器人——软件厂商本身议价力强、且不少头部厂商具备自建这类中间件的工程能力，创业公司的价值只在"更快集成、更低成本"，一旦客户规模做大，存在被反向替代的风险，因此建议优先绑定中长尾软件厂商而非头部平台。</li>
+            <li><b>为什么：</b>"卡脖子"本质是多个独立技术栈同时被卡，每个环节的追赶速度取决于其技术性质——成熟制程设备、EDA 工具链、HBM 量产爬坡这类"工程集成型"环节，可以靠举国体制的资源集中投入在 3-5 年内追平；但 EUV 光刻机这类涉及光源物理、精密光学制造的基础科学瓶颈，需要的是十年尺度的工程迭代，资金投入无法压缩物理规律决定的研发周期，这是"何时解决"不能用单一时间点回答的根本原因。</li>
+            <li><b>中外对照——中国追赶的不是静止目标：</b>美方管制也在同步收紧而非静止：2026 年 4 月美国国会推进法案，拟将管制范围从 7nm EUV 扩大到所有 DUV 浸没式光刻机，试图堵上"用 DUV 多重曝光绕过 EUV 限制"的技术漏洞；2026 年 5 月荷兰已在美方压力下要求 ASML 暂停对部分中国客户的维保服务——这意味着中国不是在追赶一个固定门槛，而是在与一个同步上移的移动门槛赛跑，已售设备的可持续使用能力同样受到威胁，不只是新设备采购受限。</li>
+            <li><b>未来 3 年推演：</b>分环节看，2026-2027 年会先看到成熟制程 DUV 设备、EDA 中低端工具链、HBM3 量产爬坡这些"工程追赶型"环节陆续解绑；2028-2030 年是 EUV 光刻机工程样机能否落地的关键窗口，决定中国先进制程能否摆脱良率 / 成本双重劣势；2030-2035 年才是能否实现 EUV 商业化量产、真正终结"先进制程卡脖子"叙事的分水岭——但即使到那时，ASML 基于持续研发投入大概率仍会保持技术代差，"完全解决"和"不再构成决定性瓶颈"是两个不同的判断标准，对端侧 AI 芯片产业而言，后者（不再是决定性瓶颈）更可能先实现，也更具实际意义。</li>
           </ul>
         </div>
       </div>
-      <div class="dz-block" id="dzblk-open-product">
+      <div class="dz-block" id="dzblk-open-chipblock">
         <div class="dz-movebar">
-          <button class="dz-move" data-pos="up" onclick="moveChart('open-product','up')">▲ 上移至判断下方</button>
-          <button class="dz-move active" data-pos="down" onclick="moveChart('open-product','down')">▼ 下移至默认位置</button>
+          <button class="dz-move" data-pos="up" onclick="moveChart('open-chipblock','up')">▲ 上移至判断下方</button>
+          <button class="dz-move active" data-pos="down" onclick="moveChart('open-chipblock','down')">▼ 下移至默认位置</button>
         </div>
-        <div class="dz" id="dz-open-product"></div>
+        <div class="dz" id="dz-open-chipblock"></div>
       </div>
     </div>
+
   </div>
 
 </div>
@@ -1877,7 +1830,7 @@ function moveChart(key, pos, silent){
   localStorage.setItem("dzpos_" + key, pos);
   if (!silent) { measure(); relayout(); }
 }
-["open-biz","open-param","open-vertical","open-chipdown","open-goglobal","open-product"].forEach(k => {
+["open-param","open-vertical","open-chipdown","open-goglobal","open-chipblock"].forEach(k => {
   const saved = localStorage.getItem("dzpos_" + k);
   if (saved) moveChart(k, saved, true);
 });
@@ -2072,6 +2025,7 @@ const ROBOT_PLAYERS = [
   {n:"众擎机器人", e:"EngineAI", r:"CN", c:"humanoid", o:2, m:"SE01 全尺寸人形 · PM01 小尺寸", d:"从纯电驱动的小型人形到全尺寸通用人形，主打运动控制与整机成本", f:"<span class='fv'>累计融资 >3 亿元</span><span class='fk'>· 2025-06 天使 / Pre-A 轮，北京国资 + 产业方</span>", t:["人形","工业"]},
   {n:"松延动力", e:"SongYan", r:"CN", c:"humanoid", o:2, m:"N2 双足 · 通用人形", d:"高校系创业，运动控制与四足 / 双足平台并行，面向科研与教育", f:"<span class='fv'>累计融资 ~2 亿元</span><span class='fk'>· 2025-05 天使轮</span>", t:["人形"]},
   {n:"灵初智能", e:"Lingchu AI", r:"CN", c:"embodied", o:2, m:"具身操作基础模型 · 灵巧手", d:"从灵巧手 + 操作模型切入的家务操作公司，强调“双灵巧手 + 模型”闭环", f:"<span class='fv'>累计融资 >3 亿元</span><span class='fk'>· 2025-07 天使轮，多家基金</span>", t:["具身模型"]},
+  {n:"斜跃智能", e:"", r:"CN", c:"embodied", o:2, m:"家庭具身基础模型 · Duplex Reasoning", d:"2026-02 成立，理想汽车前 AI 首席科学家陈伟、前产品线总裁张骁联合创办；以家庭为第一落地场景，VLA 主干打通世界模型协同，训练 / 数据双 Infra 驱动，自研 Ego 数据采集设备与数据平台，先在酒店 / 养老院等半结构化场景验证洗衣、收纳、清洁任务", f:"<span class='fv'>天使+轮 · 数亿元</span><span class='fk'>· 2026-09 线性资本、钧山资本、弘颐资本、隐山资本等</span>", t:["具身模型"]},
   {n:"星动纪元", e:"Robot Era", r:"CN", c:"humanoid", o:2, m:"星动 STAR1 全尺寸人形", d:"清华系创业，与智元、宇树、优必选同属中国人形第一梯队，运动控制与灵巧操作有技术特色", f:"<span class='fv'>2024-2025 累计融资超 20 亿元</span><span class='fk'>· 多轮融资，多家产业方与头部创投参与</span>", t:["人形","工业"]},
   {n:"乐聚机器人", e:"Leju Robotics", r:"CN", c:"humanoid", o:2, m:"KUAVO 人形机器人 + Aelos 教育人形", d:"国内较早布局人形机器人的公司之一，在教育与科研市场占有率高，2025 年推出通用人形新品，与松延动力、逐际动力同量级", f:"<span class='fv'>累计融资数亿元</span><span class='fk'>· 多轮融资，产业方与地方国资参与</span>", t:["人形"]},
 
@@ -2497,7 +2451,7 @@ const DZ = (() => {
     return _tip;
   }
   const tiles = items => `<div class="dz-tiles">`+items.map(t=>`<div class="dz-tile"><div class="v">${t.v}</div><div class="k">${t.k}</div>${t.d?`<div class="d">${t.d}</div>`:""}</div>`).join("")+`</div>`;
-  const card = o => `<div class="dz-card"><div class="dz-h"><div class="dz-t">${o.title}</div>${o.sub?`<div class="dz-s">${o.sub}</div>`:""}</div><div class="dz-body">${o.body}</div>${o.legend?`<div class="dz-legend">${o.legend}</div>`:""}${o.table?`<details class="dz-table"><summary>数据表</summary>${o.table}</details>`:""}<div class="dz-src">${o.src}</div></div>`;
+  const card = o => `<div class="dz-card${o.wide?" wide":""}"><div class="dz-h"><div class="dz-t">${o.title}</div>${o.sub?`<div class="dz-s">${o.sub}</div>`:""}</div><div class="dz-body">${o.body}</div>${o.legend?`<div class="dz-legend">${o.legend}</div>`:""}${o.table?`<details class="dz-table"><summary>数据表</summary>${o.table}</details>`:""}<div class="dz-src">${o.src}</div></div>`;
   const legend = items => items.map(i=>`<span><i style="background:${i.c}"></i>${i.l}</span>`).join("");
   const table = (head, rows) => `<table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
   const a = (t,u)=>`<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
@@ -2789,6 +2743,7 @@ function devk(d){ const s=[];
   if(/机器人|IoT|边缘盒|边缘 GPU|Jetson/.test(d)) s.push("other");
   return s.length ? s : ["other"]; }
 const KL={phone:"手机",pc:"PC",board:"单板",other:"IoT / 机器人"};
+const KDESC={board:"单板计算机（SBC）：树莓派、OrangePi AIpro、昇腾 Atlas 200I、Jetson 等把 CPU/GPU/NPU 与内存集成在一整块电路板上的小型边缘计算板，区别于手机/PC 整机，也区别于更底层的 MCU 微控制器"};
 function mok(s){
   if(!s || /^未披露/.test(s)) return [];
   if(/全模态|多模态/.test(s)) return ["t","i","a","v"];
@@ -2867,7 +2822,7 @@ function cell(m,c){
     case "n":   inner='<span class="mn">'+esc(m.n)+'</span>'+(m.nt?'<span class="caret">▸</span>':'')
                     + (m.v!==m._g ? '<div class="sml">'+esc(m.v)+'</div>' : '');
                 tip=m.n+(m.v!==m._g?" · "+m.v:""); break;
-    case "dev": inner=m._k.map(k=>'<span class="kc k-'+k+'">'+KL[k]+'</span>').join(""); tip=m.dev; break;
+    case "dev": inner=m._k.map(k=>'<span class="kc k-'+k+'"'+(KDESC[k]?' title="'+esc(KDESC[k])+'"':'')+'>'+KL[k]+'</span>').join(""); tip=m.dev; break;
     case "mo":  inner=m._m.length ? m._m.map(k=>'<span class="kc m-'+k+'">'+ML[k]+'</span>').join("") : '<span class="nd">—</span>';
                 tip=m.mo; break;
     case "p":   inner=esc(m.pd); tip=m.pd; break;
@@ -3135,18 +3090,18 @@ document.getElementById("spec-ins").innerHTML =
     groot:"https://forums.developer.nvidia.com/t/early-access-isaac-gr00t-n1-7-open-reasoning-vla-model-for-humanoid-robotics/366916"
   };
   const cardsTop = [
-    D.card({ title:"114 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+    D.card({ title:"115 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
       body:D.hbar({ unit:" 家", labelW:118, items:[
         {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3（新增星动纪元、乐聚机器人）"},
         {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4（新增非夕科技）"},
-        {l:"具身模型 / 部件", v:19, tip:"具身智能模型 / 核心部件：19 家，中国大陆 13 / 美国 6 / 欧洲 0 / 其他 0（新增梅卡曼德、思岚科技）"},
+        {l:"具身模型 / 部件", v:20, tip:"具身智能模型 / 核心部件：20 家，中国大陆 14 / 美国 6 / 欧洲 0 / 其他 0（新增斜跃智能，理想汽车前 AI 首席科学家陈伟联合创办）"},
         {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国大陆 7 / 美国 4 / 欧洲 0 / 其他 1"},
         {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2（新增极飞科技）"},
-        {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（新增品类，含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
+        {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
         + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费","数据"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[17,7,4,3],[13,4,5,4],[13,6,0,0],[7,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","13","6","0","0","19"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
-      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-09 核实" }),
+        vals:[[17,7,4,3],[13,4,5,4],[14,6,0,0],[7,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","14","6","0","0","20"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-14 核实" }),
     D.card({ title:"技术拐点：整机成本曲线与 VLA 模型迭代", sub:"人形机器人平均售价预计 6 年内降至三分之一；VLA 具身模型两年内四次迭代",
       body:D.tiles([
         {v:"$114,700 → $37,000", k:"人形机器人平均售价 2024→2030", d:"IDTechEx 预测，降幅约 68%"},
@@ -3176,7 +3131,7 @@ document.getElementById("spec-ins").innerHTML =
         {l:"2026 年内", v:18.8, vl:"$18.8B", color:C.light, tip:"2026 年至检索时点已达 $18.8B，已超 2025 全年（Crunchbase）"} ]}),
       table:D.table(["指标","数值","说明"],[["全球机器人融资 2025","$14B","+70%，超越 2021 年峰值"],["全球机器人融资 2026 年内","$18.8B","已超 2025 全年"],["中国具身智能融资 2025 年前 11 月","334.73 亿元","2024 同期 4 倍"],["全球机器人基础模型融资 2025","$2.2B","“机器人大脑”细分"]]),
       src:"来源："+a("Crunchbase News",U.cb)+" · "+a("36氪·具身万象 2025-12",U.itjz)+"。不同统计窗口（前8月/前11月/滚动12月）不可简单相加" }),
-    D.card({ title:"自有口径：59 家创业公司融资 Top6 与地区结构", sub:"114 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+    D.card({ title:"自有口径：59 家创业公司融资 Top6 与地区结构", sub:"115 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:140, items:[
         {l:"Figure AI", v:1900, vl:"$1.9B", tip:"Figure AI：累计融资 $1.9B，2025-09 Series C 估值 $39B"},
         {l:"智元机器人", v:845, tip:"智元机器人：累计融资约 $845M（≈60 亿元）"},
@@ -3200,7 +3155,7 @@ document.getElementById("spec-ins").innerHTML =
       src:"来源："+a("Figure AI",U.figure)+" · "+a("银河通用",U.yinhe)+" · "+a("SoftBank Group",U.softbank)+" · "+a("智元机器人",U.zhiyuan) })
   ];
   document.getElementById("dz-robot-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
-  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（114 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（115 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
   DZ.enableMove("dz-robot-top","dz-robot");
   DZ.tip();
 })();
@@ -3728,45 +3683,9 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
 </script>
 
 <script>
-/* ===================== 六个开放议题：图表 ===================== */
+/* ===================== 五个开放议题：图表 ===================== */
 (function(){
   const D=DZ, a=D.a;
-  const U = {
-    nexa:"https://github.com/qualcomm/GenieX/discussions/1058",
-    mistralSacra:"https://sacra.com/research/mistral-ai-revenue-growth/",
-    liquidLatka:"https://getlatka.com/companies/liquid-ai",
-    zhipu:"https://www.caixin.com/",
-    davos:"https://www.weforum.org/"
-  };
-  const cardsBiz = [
-    D.card({ title:"融资规模 vs 市场规模/营收：数量级错位", sub:"18 家端侧模型创业公司累计融资 $25.3B，对比可分配市场规模与已验证营收，差 1-2 个数量级",
-      body:D.tiles([
-        {v:"$25.3<small>B</small>", k:"18 家端侧模型创业公司累计融资", d:"本项目自有口径（模型层数据支撑清单 E2 节），估值合计 $172.5B"},
-        {v:"21<small>亿元</small>", k:"中国纯端侧大模型市场规模（软件口径）", d:"2024 年，约 $3 亿，不含硬件"},
-        {v:"$400<small>M</small>", k:"Mistral AI ARR", d:"2026-01，云 API + 企业订阅为主，非端侧专属收入"},
-        {v:"$13.2<small>M</small>", k:"Liquid AI ARR（估算）", d:"对比其 $2.4B 估值，倍数≈180x" } ]),
-      src:"来源：模型层数据支撑清单 E2 节 · 头豹研究院 · "+a("Sacra 估算",U.mistralSacra)+" · "+a("getlatka",U.liquidLatka) }),
-    D.card({ title:"四种变现路径 × 代表案例", sub:"被收购是唯一有确定性现金流入的路径，但本质是买团队而非验证商业模式",
-      table:D.table(["路径","代表案例","规模数字","备注"],[
-        ["被收购/acquihire","Qualcomm → Nexa AI","团队12人，融资约$8.75M","改名GenieX，锁定高通芯片"],
-        ["被收购/acquihire","AMD → Silo AI","$665M 现金","已完成，2024-08"],
-        ["被收购/acquihire","NXP → Kinara","$307M 现金","已完成，2025-10"],
-        ["授权+挖人","Microsoft → Inflection AI","$650M（含$620M模型授权费）","非独家授权+挖走大部分员工"],
-        ["B端场景授权","面壁智能","2026H1融资超50亿元，估值超200亿元","长安/上汽/吉利车规量产，营收未公开"],
-        ["API/订阅","Mistral AI","ARR $400M（2026-01）","云端为主，端侧未单独拆分"],
-        ["开源+商用授权费","Liquid AI","ARR约$13.2M","LFM Open License，营收超$10M须付费"]
-      ]),
-      src:"来源：GitHub qualcomm/GenieX #1058 · AMD/NXP/Microsoft 官方公告 · 36氪 · Sacra · getlatka（2024-2026）" }),
-    D.card({ title:"纯端侧模型公司：目前没有一家规模化盈利", sub:"同赛道融资规模最大、商业化最快的公司尚且深度亏损，纯端侧、体量更小的公司处境更艰难",
-      body:D.tiles([
-        {v:"29.58<small>亿元</small>", k:"智谱 2024 年度净亏损", d:"2022→2024 逐年扩大（1.44亿→29.58亿元），非纯端侧公司"},
-        {v:"36.1<small>亿元</small>", k:"MiniMax 累计亏损", d:"截至2026 Q3，非纯端侧公司"},
-        {v:"≈60<small>x</small>", k:"Mistral 估值/ARR 倍数", d:"€210亿估值 / $400M ARR（2026-09/2026-01）"},
-        {v:"≈180<small>x</small>", k:"Liquid AI 估值/ARR 倍数", d:"$2.4B 估值 / $13.2M ARR" } ]),
-      src:"来源：招股书/财新等公开报道 · 搜狐 2026 · Sacra · getlatka" })
-  ];
-  document.getElementById("dz-open-biz").innerHTML = `<div class="dz-grid c3">${cardsBiz.join("")}</div>`;
-
   const cardsParam = [
     D.card({ title:"当前端侧“真实披露”性能的最大模型排行榜", sub:"有绝对 tokens/s 数字支撑的型号，按硬件分组；20-30B 档已上市但均无绝对速度，故不入榜",
       body:D.hbar({ unit:" tok/s", labelW:190, items:[
@@ -3779,6 +3698,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       ]}),
       src:"来源：端侧模型技术路线与指标对比·数据支撑清单 · Google/阿里/ELYZA 官方 · arXiv 2024-06" }),
     D.card({ title:"芯片算力 vs 内存带宽演进", sub:"NPU TOPS 已到 100 级，但内存带宽仍是端侧 LLM 解码速度的真实上限",
+      body:"",
       table:D.table(["时间","芯片/标准","NPU算力","内存带宽"],[
         ["2025-09","骁龙8 Elite Gen5","100 TOPS","84.8 GB/s（LPDDR5X-5300）"],
         ["2025-09","天玑9500 (NPU990)","100 TOPS","LPDDR5X-10700"],
@@ -3789,6 +3709,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       ]),
       src:"来源：Qualcomm/MediaTek/Apple 规格书 · JEDEC JESD209-6 2025-07 · Hot Chips 2026" }),
     D.card({ title:"“已验证”与“厂商声称”的规模断层", sub:"四个档位的性能验证状态差异巨大，引用前务必区分",
+      body:"",
       table:D.table(["档位","参数规模","代表","验证状态"],[
         ["已验证（真机tokens/s）","8-9B","Gemma 4 E4B、Llama-3-ELYZA-JP-8B","有绝对tokens/s，厂商自报"],
         ["学术验证record","47B","PowerInfer-2 TurboSparse-Mixtral","有tokens/s，非厂商产品"],
@@ -3812,6 +3733,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       body:"<div style='font-size:11px;color:#6b7280;line-height:1.6;padding:6px 0'>四家 OS 级玩家在消费电子系统级功能上全部覆盖，但车载 / 机器人 / 工业三类场景无一覆盖——这正是第三方端侧模型公司的生存空间。展开下方「数据表」查看完整矩阵。</div>",
       src:"来源：Apple Newsroom 2026-06 · Google Blog 2026 · SamMobile · 什么值得买 2026" }),
     D.card({ title:"面壁智能在非 OS 场景的落地案例", sub:"车载/机器人/工业三线均已是规模化量产，而非概念验证",
+      body:"",
       table:D.table(["场景","合作方","规模/指标","时间"],[
         ["车载智能座舱(SuperMate)","长安马自达EZ-60/吉利银河M9/上汽大众/广汽等6品牌","超30万台量产交付","2026-07"],
         ["移动机器人巡检","宇树Unitree Go2、乐聚机器人","端到端180ms时延，断网部署","2026-07"],
@@ -3820,6 +3742,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       ]),
       src:"来源：WAIC 2026（腾讯新闻）· 中华网 2026-07 · 网易科技" }),
     D.card({ title:"应用层“被替代” vs 场景型“未被替代”", sub:"真正被淘汰的是同质化套壳公司，不是有场景纵深的端侧模型公司",
+      body:"",
       table:D.table(["类型","案例","结果"],[
         ["通用能力套壳(被替代)","Jasper AI","估值大幅重置、裁员"],
         ["通用能力套壳(被替代)","Chegg","2026Q1营收同比降48%"],
@@ -3832,6 +3755,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
 
   const cardsChipdown = [
     D.card({ title:"2023-2026 芯片厂收购模型/工具链/开发平台时间线", sub:"6 起案例经核实全部属实，含最容易被怀疑为传闻的两起",
+      body:"",
       table:D.table(["收购方","标的","领域","宣布时间","金额","状态"],[
         ["Infineon","Imagimob","TinyML边缘AI开发平台","2023-05-16","未披露","已完成"],
         ["AMD","Silo AI","企业AI模型/平台","2024-07-10","$665M","已完成"],
@@ -3849,6 +3773,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       ]}),
       src:"来源：同上表。单位：十亿美元（$B）。Edge Impulse/Arduino/Imagimob 三起未披露金额，不纳入此图" }),
     D.card({ title:"独立性策略结果对照", sub:"未找到工具链/模型公司公开拒绝芯片厂收购并保持独立规模化的正面案例",
+      body:"",
       table:D.table(["公司","定位","面对整合压力的选择","结果"],[
         ["Hugging Face","模型托管平台","2025年末拒绝英伟达$500M少数股权投资","2026-09接受英伟达$12.9B整体收购"],
         ["Edge Impulse","边缘AI开发平台","被高通收购后仍称维持“硬件无关”路线图","已并入高通，非独立公司"],
@@ -3867,6 +3792,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       ]}),
       src:"来源：Counterpoint Research 2025 · IDC/CINNO/洛图科技 2025H2" }),
     D.card({ title:"出海障碍类型 × 具体案例", sub:"结构性、政治性阻力，与产品质量无关",
+      body:"",
       table:D.table(["障碍类型","具体案例","影响","时间"],[
         ["出口管制/实体清单","大疆DJI被美国FCC列入受管制清单","阻断新设备在美认证","2025-12-22"],
         ["出口管制/供应链","Quectel移远被美国防部列入1260H清单","促使西方客户去中国化","2025-01-06"],
@@ -3875,6 +3801,7 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
       ]),
       src:"来源：FCC/DroneLife · Counterpoint/IoT Analytics · Washington Post · Euronews" }),
     D.card({ title:"成功出海反例对比", sub:"非敏感品类+产品力+渠道，中国硬件品牌可以打开局面",
+      body:"",
       table:D.table(["品牌","品类","全球化指标"],[
         ["Anker安克创新","充电/储能/智能家居","2025营收247亿元(+41%)，销往100+国家"],
         ["雷鸟创新RayNeo","AI眼镜","全球份额24-27%，北美销售同比+456.5%"],
@@ -3885,46 +3812,85 @@ document.getElementById("ea-ins").innerHTML = `<div class="ins wide"><h3>端侧 
   ];
   document.getElementById("dz-open-goglobal").innerHTML = `<div class="dz-grid c3">${cardsGoglobal.join("")}</div>`;
 
-  const cardsProduct = [
-    D.card({ title:"产品方向对比：现金流周期 × 护城河 × 建议优先级", sub:"基于①③议题已验证的结论综合排序，建议优先级为编者判断，非厂商官方表态",
-      table:D.table(["产品方向","目标客户","现金流确认周期","主要竞争对手","护城河强度","建议优先级"],[
-        ["车载智能座舱软硬一体方案","车企","中长（半年-1年，随车型量产周期）","OS级玩家（均未布局，见③）","高（芯片适配+量产良率）","★★★ 优先"],
-        ["机器人具身智能模型+方案","机器人厂商","中长（随产线部署周期）","OS级玩家（均未布局，见③）","高（实时性+断网部署）","★★★ 优先"],
-        ["工业质检/巡检方案","制造业客户","中（项目制，验收后付款）","传统机器视觉厂商","中高","★★ 可做"],
-        ["通用软件中间件（端云协同SDK）","游戏/教育/生产力/消费娱乐软件厂商","中（企业级采购，按License/调用量分成）","NVIDIA ACE、Inworld AI（游戏）；软件厂商自建方案","中（客户具备自建替代能力）","★★ 可做"],
-        ["泛C端AI助手/App插件","手机用户","短，但天花板低","Apple/Google/华为等OS巨头（免费自带）","低","× 不建议"],
-        ["纯模型授权/API分发","开发者/中小客户","不确定（边际成本趋零，买家倾向一次性买断）","开源社区（Qwen/Llama等持续免费追平）","低","× 不建议独立支撑"]
-      ]),
-      src:"来源：本页①③议题数据综合（面壁智能/Liquid AI/Apple/Google/NVIDIA/Inworld AI 等公开信息），2026-09 整理；建议优先级为编者判断" }),
-    D.card({ title:"面壁智能三条量产落地线：车载确定性最高", sub:"车载是唯一有公开量产台数的方向，机器人/工业以工程指标为主，三者不可直接量化对比",
+  const cardsGoglobalCar = [
+    D.card({ title:"中国汽车出口：规模最大的出海案例", sub:"2026年有望成为全球首个汽车出口破千万辆的国家，新能源车是核心增量",
       body:D.tiles([
-        {v:"30<small>万台+</small>", k:"SuperMate 车载智能座舱量产交付", d:"覆盖长安马自达/吉利/上汽大众/广汽等6品牌，2026-07"},
-        {v:"180<small>ms</small>", k:"MiniCPM-RobotTrack 端到端时延", d:"对接宇树Go2/乐聚机器人，断网部署，2026-07"},
-        {v:"+40<small>%</small>", k:"工业质检效率提升", d:"识别0.5mm瑕疵，较传统机器视觉方案，2026-07"} ]),
-      src:"来源：WAIC 2026（腾讯新闻）· 中华网 2026-07 · 网易科技，与③议题同源数据" }),
-    D.card({ title:"两个不该做的方向：竞争位置一目了然", sub:"泛C端助手直接对撞免费OS能力，纯模型授权直接对撞开源社区",
-      table:D.table(["方向","直接竞品","竞品定价","创业公司的处境"],[
-        ["泛C端AI助手/App插件","Apple Intelligence / Gemini Nano / 华为盘古·小艺","随系统免费预装","Jasper AI 估值重挫、Chegg 营收降 48%，同质化套壳无生存空间（见③）"],
-        ["纯模型授权/API分发","Qwen/Llama 等开源模型","免费开源","Liquid AI 需设 LFM Open License 营收超 $10M 门槛才收费，早期几乎无授权现金流（见①）"]
+        {v:"1000<small>万辆+</small>", k:"2026年出口量预测", d:"艾睿铂预测，乘联会更乐观预测冲击1200万辆；2025年为710万辆"},
+        {v:"918<small>亿美元</small>", k:"2026年H1出口金额", d:"同比+54%，出口量509.6万辆，同比+65.3%"},
+        {v:"45<small>%+</small>", k:"新能源车占出口比重", d:"前5个月同比+1.1倍，5月单月逼近50%"},
+        {v:"54<small>% vs 7%</small>", k:"整车 vs 零部件出口增速差", d:"行业担忧长期出现整车出海、供应链空心化的失衡" } ]),
+      src:"来源：中国海关总署 · 中汽协 · 艾睿铂(AlixPartners) · 乘联会崔东树，2026-07 整理" }),
+    D.card({ title:"欧盟反补贴关税 × 车企本地化建厂应对", sub:"绕开关税的两条路径：品类切换（PHEV）与欧洲建厂",
+      body:"",
+      table:D.table(["车企/项目","应对方式","规模/进度"],[
+        ["比亚迪","欧盟反补贴税+匈牙利建厂","匈牙利工厂投资40亿欧元，年产能30万辆，2026Q4投产"],
+        ["奇瑞","欧盟反补贴税+西班牙合资建厂+英国代工","西班牙M1产线已投产；与日产签署英国桑德兰工厂代工MOU"],
+        ["上汽","欧盟反补贴税+西班牙建厂规划","加利西亚工厂规划落地"],
+        ["全行业","纯电→插混(PHEV)品类切换","PHEV不属加征关税对象，车企相应增加此类别出口"]
       ]),
-      src:"来源：本页①③议题数据综合，2026-09 整理" }),
-    D.card({ title:"具身智能三层拆解：哪一层第三方模型公司能真正卡位", sub:"回答\"机器人是做模型、做大脑，还是做数据\"——三层对外部开放程度完全不同",
-      table:D.table(["层级","核心能力","代表玩家","第三方模型公司建议"],[
-        ["感知理解层","视觉/语音场景理解，不涉及运动决策","面壁智能 MiniCPM-RobotTrack","★★★ 建议深耕：机器人厂商愿意外部采购，非安全关键"],
-        ["决策规划层／\"大脑\"（VLA）","感知到动作的端到端决策，安全关键","Physical Intelligence π0（融资超$4亿）、Google DeepMind RT-2/RT-X、智元机器人/宇树自研","× 不建议正面竞争：机器人厂商倾向自研，头部玩家融资/数据规模远超创业公司"],
-        ["数据层","真机多模态操作数据采集/标注/仿真","目前参与者稀少，机会被低估","★★ 值得布局：任何做大脑的团队都稀缺此类数据，可与整机厂形成互补关系"]
+      src:"来源：欧盟委员会2024-10反补贴税裁定 · 公开新闻报道，2026 整理" }),
+    D.card({ title:"车载智能座舱域控芯片市场格局（2026年1-6月出货）", sub:"高通七成份额绝对主导，国产芯片走“随整车出海”路径而非正面抢份额",
+      body:D.hbar({ unit:"%", labelW:170, items:[
+        {l:"高通", v:71.4, tip:"340.13万颗，8155/8295已是中高端车型标配"},
+        {l:"华为", v:7.5, tip:"35.51万颗"},
+        {l:"芯擎科技", v:5.2, tip:""},
+        {l:"AMD", v:5.1, tip:""},
+        {l:"联发科", v:4.8, tip:""}
+      ]}),
+      src:"来源：盖世汽车研究院，2026-06 数据" }),
+    D.card({ title:"国产座舱芯片“借船出海”案例", sub:"绑定中国车企/国际Tier1的出海节奏，而非直接抢占高通的终端品牌份额",
+      body:"",
+      table:D.table(["厂商","出海模式","具体案例/规模"],[
+        ["地平线","帮自主品牌出海","11家车企、40+出海车型定点，生命周期200万套"],
+        ["地平线","随国际Tier1出海","征程6M随博世方案搭载极氪7GT，进入欧洲16国"],
+        ["地平线","获日系车企定点","征程6B获丰田、铃木定点，全生命周期预计750万辆"],
+        ["黑芝麻智能","量产+海外审查通过","华山系列与东风/吉利/红旗/江淮量产；A2000通过美国审查"]
       ]),
-      src:"来源：编者综合判断，参照 Physical Intelligence / Google DeepMind 公开信息与③议题面壁智能案例，2026-09 整理" }),
-    D.card({ title:"通用软件中间件：按行业垂类拆解需求强度与竞争烈度", sub:"不做终端应用，做端云协同SDK嵌入已有分发渠道的软件厂商",
-      table:D.table(["行业垂类","典型场景","需求强度","主要竞争者","创业公司角色"],[
-        ["游戏","NPC实时对话/行为决策","中","NVIDIA ACE、Inworld AI（卡位较深）","给Unity/Unreal/国产引擎做插件SDK"],
-        ["教育","离线作业批改/口语陪练","高（数据不出端刚需）","参与者较少","嵌入已有用户基础的教育App"],
-        ["生产力","敏感文档本地摘要+云端深度分析","高（数据合规刚需）","软件厂商自建方案","嵌入To B SaaS生态第三方插件"],
-        ["消费/娱乐","相册/短视频本地图像理解、隐私相机","中低","软件厂商自建方案","嵌入式能力，需求强度弱于前三者"]
+      src:"来源：地平线/黑芝麻智能公开披露 · 盖世汽车，2025-2026 整理" }),
+    D.card({ title:"六大车企出海多维度对比", sub:"出口规模、欧盟税率、建厂进度、座舱芯片路线、2026目标——未核实字段明确标注“数据缺口”而非编造",
+      wide:true,
+      body:"",
+      table:D.table(["车企","2025出口/海外销量","欧盟税率（10%基础+反补贴）","海外建厂/产能","座舱芯片路线","2026目标/动向"],[
+        ["比亚迪","105万辆（+145%）","17.0%+10%=27%","匈牙利：€40亿投资，年产能30万辆，2026Q4投产","数据缺口（具体供应商比例未充分核实）","数据缺口"],
+        ["吉利","42万辆","18.8%+10%=28.8%","数据缺口（未发现明确欧洲整车厂信息）","亿咖通Ecarx为主要座舱方案供应商，已服务大众等品牌出海","筹备100%国产芯片车型（全行业共同趋势）"],
+        ["奇瑞","134.4万辆（行业第一）","20.7%群体税率*+10%=30.7%","西班牙M1产线已投产；与日产签署英国桑德兰工厂代工MOU","2026-04与高通深化合作，引入骁龙座舱至尊版+Ride Flex平台","数据缺口"],
+        ["上汽","107.1万辆","35.3%+10%=45.3%","西班牙加利西亚工厂规划中","数据缺口","数据缺口"],
+        ["长安","63.7万辆（+18.9%）","20.7%群体税率*+10%=30.7%","海外9个工厂，含泰国罗勇首个海外新能源基地，覆盖103国","“两条腿走路”：高端车型用华为/地平线，自主品牌自研","2026年目标75万辆（+17.7%）"],
+        ["长城","50.6万辆","20.7%群体税率*+10%=30.7%","巴西工厂（收购自戴姆勒）2026-08-16竣工投产，产能5万辆","数据缺口","2026目标上调至60万辆+，拉美占比20%/右舵市场25%/中东10%+"]
       ]),
-      src:"来源：编者综合判断，参照 NVIDIA ACE / Inworld AI 公开信息，2026-09 整理；需求强度为编者主观评估" })
+      src:"*奇瑞/长安/长城适用欧盟对“其他合作车企”的群体税率，因未被单独抽样调查，非公司专属核实数字；比亚迪/吉利/上汽为欧盟单独抽样后核定的公司税率。来源：欧盟委员会2024-10反补贴税终裁 · 中汽协/中国海关总署 · 各公司公开披露 · 盖世汽车，2025-2026 整理" })
   ];
-  document.getElementById("dz-open-product").innerHTML = `<div class="dz-grid c3">${cardsProduct.join("")}</div>`;
+  document.getElementById("dz-open-goglobal-car").innerHTML = `<div class="dz-grid c3">${cardsGoglobalCar.slice(0,4).join("")}</div><div class="dz-grid c1">${cardsGoglobalCar.slice(4).join("")}</div>`;
+
+  const cardsChipblock = [
+    D.card({ title:"三大环节国产化现状 × 与国际龙头差距 × 预计关键突破时间点", sub:"“卡脖子”不是单一时间表，各环节技术性质不同，解绑速度天差地别",
+      body:"",
+      table:D.table(["环节","当前国产化水平","与国际龙头差距","预计关键突破时间点","代表厂商"],[
+        ["成熟制程DUV光刻机(28nm+)","国产化率超95%（2026-2027预计）","已基本追平ASML/尼康2010年代中期水平","已基本解决","上海微电子SMEE"],
+        ["先进制程DUV多重曝光(5nm级)","已量产但低良率（SMIC N+3约20%）","良率/成本比台积电N3差2-3倍","短期难解（受制于设备而非工艺）","中芯国际SMIC"],
+        ["EUV光刻机","实验室样机阶段","光源/光学/工件台三项核心技术均落后","2028-2032年工程样机，2030-2035年规模化量产","华为/中微半导体等联合攻关"],
+        ["EDA设计软件","龙头覆盖度约80%，行业市占率预计2026年破17%","数字验证等环节国际三巨头占超90%份额","2027年目标全流程补齐（仅限龙头企业）","华大九天/芯华章/概伦电子"],
+        ["HBM先进存储","样品完成客户适配，2026年底小批量试产","落后三星/SK海力士约两代、3-4年","2027年大规模量产（产能仍是国际龙头零头）","长鑫存储/长江存储"]
+      ]),
+      src:"来源：TechInsights · 21世纪经济报道 · 软小二 · 观察者网 · 头豹研究院公开报道，2026-09 整理" }),
+    D.card({ title:"关键数字速览", sub:"分环节的量化现状，不可跨环节直接比较",
+      body:D.tiles([
+        {v:"20<small>%</small>", k:"SMIC N+3（5nm级）良率", d:"相比台积电N3良率显著更低，2026"},
+        {v:"80<small>%</small>", k:"华大九天EDA工具覆盖度", d:"计划2027年实现全流程补齐，2025"},
+        {v:"3<small>万片/月</small>", k:"长鑫存储规划2026年底HBM月产能", d:"对比国际龙头动辄十几万片/月的HBM投片量"},
+        {v:"2028-2032", k:"国产EUV光刻机工程样机主流预测区间", d:"规模化商用量产预计要到2030-2035年" } ]),
+      src:"来源：TechInsights · 软小二 · 观察者网 / 日经亚洲报道，2026-09 整理" }),
+    D.card({ title:"移动的门槛：出口管制同步收紧时间线", sub:"中国追赶的不是静止目标——已售设备的可持续使用能力也在被削弱",
+      body:"",
+      table:D.table(["时间","事件","影响"],[
+        ["2019","荷兰在美方压力下禁止对华出口EUV光刻机","开启中国先进制程“卡脖子”的起点"],
+        ["2024","中国抢在管制落地前采购约90台ASML NXT:1980Fi系列DUV机型（价值50-70亿美元）","为后续多重曝光工艺积累设备基础"],
+        ["2026-04","美国国会推进法案，拟将管制范围从7nm EUV扩大到所有DUV浸没式光刻机","试图堵上“用DUV多重曝光绕过EUV限制”的技术漏洞"],
+        ["2026-05","荷兰在美方压力下要求ASML暂停对部分中国客户的维保服务","已售设备的可持续使用能力受威胁，不只是新设备采购受限"]
+      ]),
+      src:"来源：美国企业研究所（AEI）2026-04 报告 · 公开新闻报道，2026-09 整理" })
+  ];
+  document.getElementById("dz-open-chipblock").innerHTML = `<div class="dz-grid c3">${cardsChipblock.join("")}</div>`;
 
   document.querySelectorAll("#view-open .dz-table").forEach(d => d.open = true);
 
