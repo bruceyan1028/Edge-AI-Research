@@ -2048,7 +2048,6 @@ const ROBOT_PLAYERS = [
   {n:"普渡机器人", e:"Pudu", r:"CN", c:"service", o:2, m:"配送 / 清洁机器人（葫芦 / 贝拉 / 泽塔等）", d:"全球商用配送机器人市占领先，覆盖餐饮、酒店、商超，海外出海占比高", f:"<span class='fv'>累计融资 >15 亿元</span><span class='fk'>· 2025-09 战略轮，多家国资与海外产业方</span><span class='fk'>· 全球商用配送市占领先，出海占比高</span>", t:["服务","清洁"]},
   {n:"擎朗智能", e:"Keenon", r:"CN", c:"service", o:2, m:"配送机器人（Peanut / T 系列）", d:"餐饮配送机器人头部，规模化部署餐饮与酒店场景并出海", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 2024-06 D 轮，软银愿景 + 产业方</span><span class='fx'>拟 2026 年港股 IPO</span>", t:["服务"]},
   {n:"云迹科技", e:"YunJi", r:"CN", c:"service", o:2, m:"酒店配送机器人 · 酒店 AI 平台", d:"以酒店送物 + 客房服务机器人为主，向酒店数智化平台延展", f:"<span class='fv'>累计融资 ~8 亿元</span><span class='fk'>· 2023-03 战略轮，多家酒店集团产业方</span><span class='fx'>2025 年递表港股</span>", t:["服务"]},
-  {n:"达闼科技", e:"CloudMinds", r:"CN", c:"service", o:2, m:"云机器人（S / RG 系列）· 云端智能架构", d:"“云端机器人”概念提出者，以云大脑 + 终端架构主打商用服务与护理场景", f:"<span class='fv'>累计融资 ~20 亿元</span><span class='fk'>· 2021 年曾递表科创板，后撤回</span><span class='fk'>· 股东含中移动、富士康等产业方</span>", t:["服务","医疗"]},
   {n:"高仙机器人", e:"Gaussian Robotics", r:"CN", c:"service", o:2, m:"商用清洁机器人（清扫 / 洗地）", d:"全球商用清洁机器人市占领先，覆盖商场、机场、市政，出海度高", f:"<span class='fv'>累计融资 >15 亿元</span><span class='fk'>· 2024-06 战略轮，多家国资 / 产业方</span><span class='fk'>· 全球商用清洁市占领先</span>", t:["清洁","服务"]},
   {n:"猎户星空", e:"OrionStar", r:"CN", c:"service", o:2, m:"服务机器人（豹小秘 / 送餐）", d:"以语音交互驱动的商用服务机器人，主打银行 / 展厅 / 酒店导览服务", f:"<span class='fv'>累计融资 >10 亿元</span><span class='fk'>· 小米系投资，猎豹移动旗下</span>", t:["服务"]},
   {n:"小马智行", e:"Pony.ai", r:"CN", c:"service", o:2, m:"自动驾驶 + 无人配送（城市物流）", d:"以 Robotaxi 为主，延伸无人配送与城市物流机器人场景", f:"<span class='fx'>已上市 · NASDAQ PONY</span><span class='fv'>市值 ≈80 亿美元（2026-09）</span><span class='fk'>· 2025 营收 6.5 亿美元（+150%）</span>", t:["物流"]},
@@ -2076,6 +2075,12 @@ const ROBOT_PLAYERS = [
   {n:"因时机器人", e:"Inspire Robots", r:"CN", c:"embodied", o:2, m:"灵巧手 · 微型伺服 / 连杆", d:"以灵巧手与微型直线伺服见长，服务人形与精密装配", f:"<span class='fv'>累计融资 ~3 亿元</span><span class='fk'>· 2025 年战投轮，多家产业方</span>", t:["核心部件"]},
   {n:"梅卡曼德", e:"Mech-Mind", r:"CN", c:"embodied", o:2, m:"Mech-Eye 3D 相机 + Mech-Vision 视觉系统", d:"国内 3D 视觉 + AI 机器人方案龙头，产品覆盖工业分拣、上下料、拆码垛等场景，是“AI + 工业机器人”落地的代表", f:"<span class='fv'>累计融资超 10 亿元</span><span class='fk'>· 多轮融资，深创投、软银愿景等参与</span>", t:["核心部件"]},
   {n:"思岚科技", e:"SLAMTEC", r:"CN", c:"embodied", o:2, m:"RPLIDAR 系列激光雷达 + SLAMWARE 定位系统", d:"国内服务机器人激光雷达与 SLAM 定位方案的事实标准供应商，RPLIDAR 系列被普渡、擎朗、云迹等多数服务机器人厂商采用", f:"<span class='fv'>累计融资数亿元</span><span class='fk'>· 多轮融资，产业方与创投参与</span>", t:["核心部件"]},
+
+  /* ---------- 中国 · 互联网大厂具身智能布局 ---------- */
+  {n:"阿里巴巴", e:"Alibaba", r:"CN", c:"embodied", o:2, m:"通义 Qwen-Robot 具身大模型系列 · 战略投资全产业链", d:"自研 + 投资双线布局：2026-06 发布 Qwen-Robot 系列，含操作模型 Qwen-RobotManip、导航模型 Qwen-RobotNav、世界模型 Qwen-RobotWorld；投资覆盖具身大脑（原力灵机、穹彻智能）、人形本体（自变量机器人）、灵巧手（Sharpa）等环节", f:"<span class='fx'>已上市 · 港交所 09988</span><span class='fk'>· 具身智能业务未单列财务披露</span><span class='fk'>· 2026-06 发布 Qwen-Robot 具身大模型系列；2024-2026 多轮战略投资具身智能产业链</span>", t:["具身模型"]},
+  {n:"腾讯", e:"Tencent", r:"CN", c:"embodied", o:2, m:"Tairos 具身智能开放平台 · 混元具身基座模型", d:"2025 年发布模块化具身智能平台 Tairos，2026-07 WAIC 升级并发布三大混元具身基座模型 Hy-Embodied-VLM / RxBrain / VLA，以及智能体 Apexio、TairosAgent 框架；Robotics X 实验室与宇树、智元、松延动力等机器人企业及博世等场景方合作探索落地", f:"<span class='fx'>已上市 · 港交所 00700</span><span class='fk'>· 具身智能业务未单列财务披露</span><span class='fk'>· 2026-07 WAIC 发布 Tairos 升级版及三大具身基座模型</span>", t:["具身模型"]},
+  {n:"字节跳动", e:"ByteDance", r:"CN", c:"embodied", o:2, m:"Seed GR-3 通用机器人模型 · ByteMini 双臂机器人平台", d:"Seed 实验室 2025-07 发布第三代通用机器人 VLA 模型 GR-3，配套自研 22 自由度双臂移动机器人 ByteMini；主打长程任务、柔性物体操作与双臂协同，训练结合遥操作真机数据、VR 人类轨迹数据与视觉语言数据", f:"<span class='fv'>字节跳动（未上市）</span><span class='fk'>· 具身智能为 Seed 团队内部项目，未单独披露投入金额</span><span class='fk'>· 2025-07 发布 GR-3 模型 + ByteMini 机器人本体</span>", t:["具身模型"]},
+  {n:"京东", e:"JD.com", r:"CN", c:"embodied", o:2, m:"JoyInside 附身智能品牌 · JoyAI-RA 具身大模型 · JoyEgoCam 数据采集", d:"提出“数字智能→附身智能→物理智能”三段路线，不自研整机、以软件赋能第三方硬件；2025 年 WAIC 发布 JoyInside 品牌，2026-04 发布覆盖采/存/标/训/评/仿/测全链路的具身数据基础设施；另投资智元机器人、千寻智能、逐际动力等机器人公司，并通过零售/物流/工业渠道提供机器人销售与售后服务", f:"<span class='fx'>已上市 · 纳斯达克 JD / 港交所 09618</span><span class='fk'>· 具身智能业务未单列财务披露</span><span class='fk'>· 2026 年内目标 JoyInside 接入终端超千万台；2028 年计划投入百亿级资源</span>", t:["具身模型"]},
 
   /* ---------- 美国 · 人形机器人 ---------- */
   {n:"Figure AI", e:"", r:"US", c:"humanoid", o:2, m:"Figure 02 / Helix 模型组合", d:"估值最高的人形机器人公司之一，获 OpenAI / 微软 / 英伟达等投资，已与宝马等汽车厂做装配 POC", f:"<span class='fv'>累计融资 >$1.9B</span><span class='fk'>· 2025-09 C 轮 $1B @ $39B（英伟达、OpenAI、微软、Jeff Bezos 参与）</span><span class='fk'>· 2026-06 传 Pre-IPO 洽谈 @ 更高估值</span>", t:["人形","工业"]},
@@ -3090,18 +3095,18 @@ document.getElementById("spec-ins").innerHTML =
     groot:"https://forums.developer.nvidia.com/t/early-access-isaac-gr00t-n1-7-open-reasoning-vla-model-for-humanoid-robotics/366916"
   };
   const cardsTop = [
-    D.card({ title:"115 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
+    D.card({ title:"118 家玩家：品类与地区结构（自有口径）", sub:"本页 ROBOT_PLAYERS 数据集，按品类、地区交叉统计公司数",
       body:D.hbar({ unit:" 家", labelW:118, items:[
-        {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3（新增星动纪元、乐聚机器人）"},
-        {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4（新增非夕科技）"},
-        {l:"具身模型 / 部件", v:20, tip:"具身智能模型 / 核心部件：20 家，中国大陆 14 / 美国 6 / 欧洲 0 / 其他 0（新增斜跃智能，理想汽车前 AI 首席科学家陈伟联合创办）"},
-        {l:"服务 / 商用", v:12, tip:"服务 / 商用机器人：12 家，中国大陆 7 / 美国 4 / 欧洲 0 / 其他 1"},
-        {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2（新增极飞科技）"},
+        {l:"人形机器人", v:31, tip:"人形机器人：31 家，中国大陆 17 / 美国 7 / 欧洲 4 / 其他 3"},
+        {l:"工业 / AGV·AMR", v:26, tip:"工业机器人 / AGV·AMR：26 家，中国大陆 13 / 美国 4 / 欧洲 5 / 其他 4"},
+        {l:"具身模型 / 部件", v:24, tip:"具身智能模型 / 核心部件：24 家，中国大陆 18 / 美国 6 / 欧洲 0 / 其他 0（新增阿里巴巴、腾讯、字节跳动、京东四家互联网大厂具身智能布局）"},
+        {l:"服务 / 商用", v:11, tip:"服务 / 商用机器人：11 家，中国大陆 6 / 美国 4 / 欧洲 0 / 其他 1（移除达闼科技）"},
+        {l:"消费 / 无人机", v:13, tip:"消费机器人 / 无人机：13 家，中国大陆 8 / 美国 2 / 欧洲 1 / 其他 2"},
         {l:"数据层 / 数据服务", v:13, tip:"数据层 / 数据服务：13 家，中国大陆 5 / 美国 6 / 欧洲 1 / 其他 1（含光轮智能、戴盟机器人、Scale AI、XDOF 等）"} ]})
         + '<div style="margin-top:10px">' + D.heat({ rows:["人形","工业","具身模型","服务","消费","数据"], cols:["中国大陆","美国","欧洲","其他"],
-        vals:[[17,7,4,3],[13,4,5,4],[14,6,0,0],[7,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
-      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","14","6","0","0","20"],["服务/商用","7","4","0","1","12"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
-      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-14 核实" }),
+        vals:[[17,7,4,3],[13,4,5,4],[18,6,0,0],[6,4,0,1],[8,2,1,2],[5,6,1,1]] }) + '</div>',
+      table:D.table(["品类","中国大陆","美国","欧洲","其他","合计"],[["人形机器人","17","7","4","3","31"],["工业/AGV·AMR","13","4","5","4","26"],["具身模型/部件","18","6","0","0","24"],["服务/商用","6","4","0","1","11"],["消费/无人机","8","2","1","2","13"],["数据层/数据服务","5","6","1","1","13"]]),
+      src:"来源：自有口径（机器人层数据支撑清单 E1 节），数据来自本页 ROBOT_PLAYERS 数组，2026-09-15 核实" }),
     D.card({ title:"技术拐点：整机成本曲线与 VLA 模型迭代", sub:"人形机器人平均售价预计 6 年内降至三分之一；VLA 具身模型两年内四次迭代",
       body:D.tiles([
         {v:"$114,700 → $37,000", k:"人形机器人平均售价 2024→2030", d:"IDTechEx 预测，降幅约 68%"},
@@ -3131,7 +3136,7 @@ document.getElementById("spec-ins").innerHTML =
         {l:"2026 年内", v:18.8, vl:"$18.8B", color:C.light, tip:"2026 年至检索时点已达 $18.8B，已超 2025 全年（Crunchbase）"} ]}),
       table:D.table(["指标","数值","说明"],[["全球机器人融资 2025","$14B","+70%，超越 2021 年峰值"],["全球机器人融资 2026 年内","$18.8B","已超 2025 全年"],["中国具身智能融资 2025 年前 11 月","334.73 亿元","2024 同期 4 倍"],["全球机器人基础模型融资 2025","$2.2B","“机器人大脑”细分"]]),
       src:"来源："+a("Crunchbase News",U.cb)+" · "+a("36氪·具身万象 2025-12",U.itjz)+"。不同统计窗口（前8月/前11月/滚动12月）不可简单相加" }),
-    D.card({ title:"自有口径：59 家创业公司融资 Top6 与地区结构", sub:"115 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
+    D.card({ title:"自有口径：59 家创业公司融资 Top6 与地区结构", sub:"118 家玩家中已披露具体融资金额的独立创业公司（o=2），人民币按 7.1 折算美元",
       body:D.hbar({ unit:" 百万美元", labelW:140, items:[
         {l:"Figure AI", v:1900, vl:"$1.9B", tip:"Figure AI：累计融资 $1.9B，2025-09 Series C 估值 $39B"},
         {l:"智元机器人", v:845, tip:"智元机器人：累计融资约 $845M（≈60 亿元）"},
@@ -3155,7 +3160,7 @@ document.getElementById("spec-ins").innerHTML =
       src:"来源："+a("Figure AI",U.figure)+" · "+a("银河通用",U.yinhe)+" · "+a("SoftBank Group",U.softbank)+" · "+a("智元机器人",U.zhiyuan) })
   ];
   document.getElementById("dz-robot-top").innerHTML = `<div class="dz-grid">${cardsTop.join("")}</div>`;
-  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（115 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
+  document.getElementById("dz-robot").innerHTML = `<div class="dz-head"><h2>L5 机器人 / 具身智能数据</h2><span class="n">市场规模、资本与技术拐点三类口径，含自有口径统计（118 家玩家）。悬停查看口径，展开"数据表"查看数值</span></div><div class="dz-grid">${cardsBottom.join("")}</div>`;
   DZ.enableMove("dz-robot-top","dz-robot");
   DZ.tip();
 })();
