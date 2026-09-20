@@ -332,31 +332,12 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
 .mb-table td:first-child { color: #111827; font-weight: 800; border-left: 4px solid var(--vc); white-space: nowrap; }
 .mb-table tr.mb-band td { padding: 7px 10px; background: #e9edf5; color: #26324a; font-weight: 800; border-left: 0; }
 .mb-table .strong { color: #17845c; font-weight: 800; } .mb-table .mid { color: #b77905; font-weight: 800; } .mb-table .weak { color: #b64034; font-weight: 800; }
-.mb-biz-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 12px; }
-.mb-lanes { display: grid; grid-template-columns: 82px 1fr; gap: 7px 10px; }
-.mb-lanes .ln { color: #374151; font-size: 10.5px; font-weight: 800; padding-top: 5px; }
-.mb-lane { min-height: 34px; display: flex; gap: 5px; align-items: center; background: #f5f7fa; padding: 5px; }
-.mb-stage { padding: 5px 8px; color: #fff; background: var(--c); border-radius: 3px; font-size: 10px; line-height: 1.35; }
-.mb-stage.grow { flex: 1; }
 .mb-proof { display: grid; grid-template-columns: 110px 1fr 1fr 1fr; border: 1px solid #e1e5ea; border-radius: 8px; overflow: hidden; background: #fff; }
 .mb-proof > div { padding: 9px 10px; border-right: 1px solid #e7e9ed; border-bottom: 1px solid #e7e9ed; font-size: 10.5px; line-height: 1.5; color: #4b5563; }
 .mb-proof > div:nth-child(4n) { border-right: 0; }
 .mb-proof .ph { background: #111827; color: #fff; font-weight: 800; white-space: nowrap; }
 .mb-proof .brand { color: #111827; font-weight: 800; border-left: 4px solid var(--vc); }
 .mb-proof .stage { font-weight: 800; color: var(--sc); }
-.mb-case-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-top: 10px; }
-.mb-case { padding: 10px 11px; border-top: 4px solid var(--c); background: var(--bg); min-height: 118px; }
-.mb-case h4 { margin: 0 0 5px; color: var(--c); font-size: 11.5px; }
-.mb-case p { margin: 0; color: #4b5563; font-size: 10.5px; line-height: 1.55; }
-.mb-new-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
-.mb-new { padding: 10px 11px; background: #fff; border: 1px solid #e3e6eb; border-left: 4px solid var(--c); min-height: 116px; }
-.mb-new .date { color: var(--c); font-weight: 800; font-size: 10px; }
-.mb-new h4 { margin: 3px 0 5px; color: #111827; font-size: 11.5px; }
-.mb-new p { margin: 0; color: #4b5563; font-size: 10.5px; line-height: 1.55; }
-.mb-feedback { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.mb-feedback article { padding: 9px 10px; border-left: 4px solid var(--c); background: var(--bg); }
-.mb-feedback h4 { margin: 0 0 4px; font-size: 11.5px; color: var(--c); }
-.mb-feedback p { margin: 0; font-size: 10.5px; line-height: 1.55; color: #4b5563; }
 .mb-source { margin-top: 14px; padding-top: 10px; border-top: 1px solid #dfe3e8; color: #6b7280; font-size: 10px; line-height: 1.6; }
 .mb-source a { color: #2854d8; }
 
@@ -1033,18 +1014,11 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
         <div class="mb-section-head"><h2>商业化成熟度：用案例而不是打分说明</h2><span>阶段只反映公开证据强弱，不代表收入规模或盈利能力</span></div>
         <div class="mb-proof">
           <div class="ph">主体</div><div class="ph">可核验案例 / 分发入口</div><div class="ph">成熟度判断</div><div class="ph">仍缺少的商业证据</div>
-          <div class="brand" style="--vc:#2854d8">面壁智能</div><div><b>车载：</b>SuperMate 已披露 30 万台级量产，覆盖长安马自达 EZ-60、吉利银河 M9、上汽大众、广汽等 6 个品牌。<br><b>机器人：</b>MiniCPM-RobotTrack 对接宇树 Go2、乐聚，披露端到端 180ms 与断网部署。<br><b>工业：</b>公开 0.5mm 瑕疵检测、效率提升 40% 案例。</div><div><span class="stage" style="--sc:#16836a">规模量产验证</span><br>同时具备开源获客、芯片适配、行业方案和具名量产四层证据，是独立端侧模型公司中商业案例最完整的一组。</div><div>未披露端侧业务收入、单机授权价格、续费率、客户集中度与毛利；“装机量”不能直接等同于高质量经常性收入。</div>
           <div class="brand" style="--vc:#6b5ce7">Qwen</div><div>依托阿里云百炼、MNN、魔搭与大量 OEM / 开发者集成；本报告统计 Hugging Face 衍生模型 15 万+、2026 年内下载 20 亿+。</div><div><span class="stage" style="--sc:#16836a">平台生态规模化</span><br>分发和开发者覆盖最强，但端侧小模型并非独立商业单元。</div><div>缺少端侧授权收入、具体预装量与单模型利润口径；云端调用量不能替代设备端量产证据。</div>
           <div class="brand" style="--vc:#2e8bda">GLM-Edge</div><div>已给出骁龙 8 Elite、Intel Lunar Lake 的完整性能数据，覆盖手机 / PC / 车机场景，并有多后端量化方案。</div><div><span class="stage" style="--sc:#b77905">工程产品化</span><br>技术交付准备度高，但公开量产客户和装机规模弱于面壁。</div><div>缺具名车型 / 终端数量、端侧收入拆分；高通推理实现未完整开源，外部复现链路不完整。</div>
           <div class="brand" style="--vc:#d17a22">Google Gemma</div><div>通过 Google AI Edge、MediaPipe、LiteRT 覆盖 Android、iOS 与 Web；QAT 和端侧样例完整。</div><div><span class="stage" style="--sc:#16836a">平台级分发</span><br>商业价值主要体现为 Android / 云生态拉动，而非直接售卖模型。</div><div>无法拆出 Gemma 带来的独立收入或行业项目金额；生态采用量与付费商业化不是同一指标。</div>
           <div class="brand" style="--vc:#1877d2">Meta Llama</div><div>ExecuTorch、Qualcomm / MediaTek 等软硬件适配广，第三方应用和量化版本丰富。</div><div><span class="stage" style="--sc:#16836a">生态规模化</span><br>底座影响力强，商业模式以生态和平台收益为主。</div><div>缺端侧模型直接收入、具名 OEM 装机规模；社区量化版与官方版口径经常混用。</div>
           <div class="brand" style="--vc:#252525">Liquid AI</div><div>LFM2.5 已披露 S25 Ultra、ROG Phone、Ryzen AI、Snapdragon X Elite 的 CPU / NPU 数据，并与运行时伙伴联合优化。</div><div><span class="stage" style="--sc:#b77905">芯片合作 / 导入期</span><br>工程透明度高，但公开大规模终端出货仍有限。</div><div>缺具名量产客户、装机规模和持续收入；自有许可相对 Apache 增加企业法务评估成本。</div>
-        </div>
-        <div class="mb-case-grid">
-          <article class="mb-case" style="--c:#2854d8;--bg:#edf2ff"><h4>车载是最硬的商业证据</h4><p>30 万台级交付说明已跨过样机、定点和 SOP 门槛。真正需要继续追踪的是单车价值、后续车型复用率和售后迭代收入。</p></article>
-          <article class="mb-case" style="--c:#16836a;--bg:#e8f7f1"><h4>机器人体现方案纵深</h4><p>与宇树、乐聚的对接证明模型能进入实时任务链；180ms 与断网运行比单纯 benchmark 更接近采购决策。</p></article>
-          <article class="mb-case" style="--c:#b45f06;--bg:#fff4df"><h4>工业案例价值高但可复制性待证</h4><p>0.5mm 缺陷检测和效率提升 40% 是强场景信号，但仍需更多行业、产线数量和长期运行数据。</p></article>
-          <article class="mb-case" style="--c:#a83d36;--bg:#fdebea"><h4>资本与社区不能替代收入</h4><p>估值、融资和 3800 万+下载有助于获客与品牌，但不能证明端侧模型授权已经形成稳定、高毛利业务。</p></article>
         </div>
       </section>
 
@@ -1055,7 +1029,7 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
             <thead><tr><th>玩家 / 代表型号</th><th>参数与上下文</th><th>量化 / 运行体积</th><th>端侧性能披露</th><th>能力与定位</th><th>许可</th><th>横向判断</th></tr></thead>
             <tbody>
               <tr class="mb-band"><td colspan="7">A 档 · 0.6–1.5B：MiniCPM5-1B 的直接竞争组</td></tr>
-              <tr class="mb-focus" style="--vc:#2854d8"><td>面壁智能<br>MiniCPM5-1B</td><td>1.08B / 131K</td><td>官方 INT4 约 0.5GB</td><td><span class="weak">无 tokens/s / TTFT / 峰值内存</span><br>仅定性称手机、浏览器可运行</td><td>纯文本；强调知识密度与轻量部署，模型族可延伸到 V / o 多模态</td><td><span class="strong">Apache-2.0</span></td><td>体积与长上下文有竞争力；性能透明度是核心短板</td></tr>
+              <tr class="mb-focus" style="--vc:#2854d8"><td>面壁智能<br>MiniCPM5-1B</td><td>1.08B / 131K</td><td>官方 INT4 约 0.5GB</td><td><span class="weak">无 tokens/s / TTFT / 峰值内存</span><br>仅定性称手机、浏览器可运行</td><td>纯文本；强调知识密度与轻量部署，模型族可延伸到 V / o 多模态</td><td><span class="strong">Apache-2.0</span></td><td></td></tr>
               <tr style="--vc:#6b5ce7"><td>阿里巴巴<br>Qwen3.5-0.8B</td><td>0.8B；含视觉塔 0.9B / 262K</td><td>Q4_K_M 533MB，不含视觉塔</td><td><span class="strong">29.3–75 tok/s</span><br>骁龙 8 Elite Gen5，CPU/GPU q4_0</td><td>文、图、视频与 Agent；线性注意力，公共底座属性强</td><td><span class="strong">Apache-2.0</span></td><td>最直接的国产多模态对手；需注意完整多模态体积高于 533MB</td></tr>
               <tr style="--vc:#d17a22"><td>Google<br>Gemma 3 1B</td><td>约 1B / 32K</td><td>QAT INT4 0.5GB；含 32K KV 约 1.4GB</td><td><span class="strong">85 tok/s · 626MB</span><br>S25 Ultra NPU；CPU 47 tok/s</td><td>纯文本；Google AI Edge / MediaPipe / LiteRT 工具链完整</td><td><span class="mid">Gemma ToU</span></td><td>工程指标最完整之一；长上下文与多模态弱于 MiniCPM 家族</td></tr>
               <tr style="--vc:#1877d2"><td>Meta<br>Llama 3.2 1B SpinQuant</td><td>1.23B / 8K</td><td>INT4_EO8，.pte 1083MB；RSS 1921MB</td><td><span class="strong">50.2 tok/s · 0.3s TTFT</span><br>OnePlus 12，ARM CPU</td><td>纯文本、工具调用；ExecuTorch 与第三方生态广</td><td><span class="mid">Llama 社区许可</span></td><td>部署成熟，但端侧量化牺牲上下文和工具调用能力</td></tr>
@@ -1075,44 +1049,6 @@ h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: 1px; background: #111214;
               <tr style="--vc:#d72638"><td>KT<br>Midm 2.0 Mini</td><td>2.3B / 32K</td><td>无官方量化</td><td><span class="weak">未披露</span></td><td>韩语主权模型；11.5B 经两阶段剪枝与双教师蒸馏</td><td><span class="strong">MIT</span></td><td>压缩路线清晰，但端侧交付证据不足，主要价值在区域语言市场</td></tr>
             </tbody>
           </table>
-        </div>
-      </section>
-
-      <section class="mb-section">
-        <div class="mb-section-head"><h2>近期新增与观察池</h2><span>2026 年新发布或新进入端侧视野；并非全部适合与 MiniCPM5-1B 直接比较</span></div>
-        <div class="mb-new-grid">
-          <article class="mb-new" style="--c:#8a42b8"><div class="date">2026-09 · 直接对手</div><h4>XHToken · Spark-X2.5-1.7B</h4><p>1M 原生上下文、200+ 语言、Agent 后训练与 Apache-2.0。新增进入 2B 档，但端侧硬件、位宽和绝对吞吐仍未完整披露。</p></article>
-          <article class="mb-new" style="--c:#252525"><div class="date">2026-08 · 直接对手</div><h4>Liquid AI · LFM2.5-2.6B</h4><p>手机约 30 tok/s，PC CPU 最高 220 tok/s，并配套投机解码草稿模型；在工程效率上对 MiniCPM5-2B 构成直接压力。</p></article>
-          <article class="mb-new" style="--c:#3b4b9e"><div class="date">2026-01 · 直接对手</div><h4>TII · Falcon-H1-Tiny-R-0.6B</h4><p>混合 Mamba-2 / Attention 的超小推理模型，面向浏览器和微型设备；参数极小，但端侧绝对速度尚未公开。</p></article>
-          <article class="mb-new" style="--c:#a50034"><div class="date">2025-07 · 直接对手</div><h4>LG · EXAONE 4.0 1.2B</h4><p>65K 上下文、官方完整 GGUF 档位，补充了韩语市场代表；非商用许可使其更像技术参照而非企业采购替代。</p></article>
-          <article class="mb-new" style="--c:#d17a22"><div class="date">2026-03 · 邻近观察</div><h4>Google · Gemma 4 E2B</h4><p>有效参数 2.3B、总参数 5.1B，支持文图音频输入，移动端 QAT 约 1.1GB；因 PLE 参数口径特殊，不纳入普通 2B 排名。</p></article>
-          <article class="mb-new" style="--c:#374151"><div class="date">2026-09 · 排除直接比较</div><h4>元空智能 · Boxer 35B</h4><p>强调“模型 × Agent × 设备”并与惠普合作，但 35B 级产品面向高内存 AI PC，和 MiniCPM5-1B / 2B 不属于同一硬件包络。</p></article>
-        </div>
-      </section>
-
-      <section class="mb-section">
-        <div class="mb-section-head"><h2>社区反馈与选型结论</h2><span>归纳公开模型卡、代码仓、部署讨论与行业报道中的重复信号</span></div>
-        <div class="mb-biz-grid">
-          <div class="mb-panel">
-            <h3>面壁从模型到收入的路径</h3>
-            <div class="desc">颜色越深表示越接近持续付费和规模交付；公开信息不足的环节不做收入推算。</div>
-            <div class="mb-lanes">
-              <div class="ln">开源获客</div><div class="mb-lane"><span class="mb-stage grow" style="--c:#9bb2ee">MiniCPM / V / o 权重与 Demo</span><span class="mb-stage" style="--c:#6687df">开发者试用</span></div>
-              <div class="ln">芯片适配</div><div class="mb-lane"><span class="mb-stage grow" style="--c:#7394e7">手机 / PC / Jetson / 国产芯片</span><span class="mb-stage" style="--c:#3f67cf">联合优化</span></div>
-              <div class="ln">行业方案</div><div class="mb-lane"><span class="mb-stage" style="--c:#41a68c">车载座舱</span><span class="mb-stage" style="--c:#27856d">机器人</span><span class="mb-stage" style="--c:#176650">工业视觉</span></div>
-              <div class="ln">规模交付</div><div class="mb-lane"><span class="mb-stage grow" style="--c:#2854d8">SuperMate 30 万台级量产</span><span class="mb-stage" style="--c:#1d3c9e">私有化 / 授权</span></div>
-            </div>
-          </div>
-          <div class="mb-panel">
-            <h3>社区信号：认可与争议并存</h3>
-            <div class="desc">下载量采用公司披露的累计口径，不将其直接换算为活跃开发者、部署量或收入。</div>
-            <div class="mb-feedback">
-              <article style="--c:#16836a;--bg:#e8f7f1"><h4>认可：能力密度</h4><p>小参数下覆盖 OCR、多图、视频与语音，适合内存受限设备快速验证。</p></article>
-              <article style="--c:#16836a;--bg:#e8f7f1"><h4>认可：开放与传播</h4><p>Apache-2.0、多种本地运行路径和 3800 万+累计下载，为行业合作提供较低试用门槛。</p></article>
-              <article style="--c:#b45f06;--bg:#fff4df"><h4>争议：指标难复核</h4><p>新一代语言模型缺少统一硬件上的速度、内存、功耗组合数据。</p></article>
-              <article style="--c:#b45f06;--bg:#fff4df"><h4>争议：完整体积</h4><p>多模态模型只看 LLM 权重会低估占用，视觉塔、KV cache 与运行时必须一并核算。</p></article>
-            </div>
-          </div>
         </div>
       </section>
 
