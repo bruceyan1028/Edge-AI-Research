@@ -13,7 +13,7 @@
   h1{margin:10px 0 8px;font-size:34px;letter-spacing:-.5px}
   h1 span{color:var(--or);font-weight:400}
   .lead{color:#5f564b;max-width:640px;margin:0 0 36px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:20px}
   a.card{display:block;text-decoration:none;color:inherit;background:#fbf8f3;border:1px solid var(--line);border-radius:10px;padding:22px 22px 20px;transition:transform .15s,box-shadow .15s}
   a.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(90,60,30,.1)}
   .yr{font:700 12px ui-monospace,Menlo,monospace;color:var(--or);letter-spacing:1.6px}
@@ -30,13 +30,27 @@
 <main>
   <div class="eyebrow">Edge-AI Research · Machines You Can Take Apart</div>
   <h1>可拆解 3D 机械模拟器 <span>/</span></h1>
-  <p class="lead">两台“会计算的机器”的交互式拆解：机器在中间运转，四周面板读的是驱动它的同一套真实参数。点按钮切换视角、打开标签、透视、剖切；放着不动会自动导览，任意操作即可接管。单文件、零依赖、可离线打开。</p>
+  <p class="lead">四台“会计算的机器”的交互式拆解，按年代排列：机器在中间运转，四周面板读的是驱动它的同一套真实参数。点按钮切换视角、打开标签、透视、剖切；放着不动会自动导览，任意操作即可接管。单文件、零依赖、可离线打开。</p>
   <div class="grid">
+    <a class="card" href="su-song-clock-tower.html">
+      <div class="yr">1088 · KAIFENG</div>
+      <h2>水运仪象台</h2>
+      <p>苏颂的水力天文钟塔。水注满一斗，格叉下沉、天衡提起天关，枢轮步进一斗：这是擒纵机构。天柱一日一转，带动报时木人、浑象与浑仪。</p>
+      <div class="facts"><div><b>36</b>SCOOPS</div><div><b>24 s</b>PER STEP</div><div><b>12 m</b>TALL</div></div>
+      <div class="go">打开模拟器 →</div>
+    </a>
     <a class="card" href="jacquard-loom.html">
       <div class="yr">1804 · LYON</div>
       <h2>雅卡尔提花机</h2>
       <p>打孔卡编程的织机。一张卡 = 一纬：有孔则钩子被提刀带起、经线抬升；布面上的菱形花纹由 24 张卡逐纬织出。</p>
       <div class="facts"><div><b>96</b>HOOKS</div><div><b>24</b>CARDS</div><div><b>90 mm</b>LIFT</div></div>
+      <div class="go">打开模拟器 →</div>
+    </a>
+    <a class="card" href="apollo-guidance-computer.html">
+      <div class="yr">1969 · MIT / RAYTHEON</div>
+      <h2>阿波罗制导计算机</h2>
+      <p>DSKY 回放阿波罗 11 号动力下降：P63 制动、两次 1202 报警（执行器过载、重启后继续）、P66 人工着陆到触地。期间打开机壳：逻辑模块、磁芯绳存储、可擦写磁芯。</p>
+      <div class="facts"><div><b>36,864</b>ROPE WORDS</div><div><b>15-bit</b>WORD</div><div><b>32 kg</b>MASS</div></div>
       <div class="go">打开模拟器 →</div>
     </a>
     <a class="card" href="newton-messagepad.html">
@@ -48,7 +62,7 @@
     </a>
   </div>
   <footer>
-    参考图：Deutsches Museum（提花机整机）、Smithsonian NMAH 1999.0290.01（Newton H1000），均来自 Wikimedia Commons。<br>
+    参考：苏颂《新仪象法要》（1092，守山閣叢書本）插图与开封、台中、新加坡复原模型；Deutsches Museum（提花机）；NASA、NASM、Computer History Museum（AGC）；Smithsonian NMAH 1999.0290.01（Newton H1000）。图片均来自 Wikimedia Commons。<br>
     基于 <a href="https://github.com/elvarofficial/teardown">elvarofficial/teardown</a>（MIT）构建，运行时来自 <a href="https://github.com/whaleyxbt/claude-motion">whaleyxbt/claude-motion</a>（MIT），渲染使用 three.js（MIT）。<br>
     几何为程序化重建，尺寸取自公开资料，仅作原理演示。
   </footer>
