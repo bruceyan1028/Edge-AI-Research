@@ -13,6 +13,16 @@
 
 用浏览器直接打开 `edge-ai-industry-map.html`，点击顶部页签切换视图。全景图中的 L3 / L4 / 机器人卡片可直接跳转到对应详解页。
 
+## 可拆解 3D 机械模拟器（`teardown/`）
+
+两台“会计算的机器”的交互式 3D 拆解页，单文件、零外部依赖、可离线打开：
+
+- `teardown/jacquard-loom.html` — 雅卡尔提花机（1804）：96 钩机头、24 张打孔卡、卡筒每纬转 90°，布面花纹由卡片逐纬织出。
+- `teardown/newton-messagepad.html` — Apple Newton MessagePad H1000（1993）：手写演示后按维修顺序拆成 8 步，参数取自官方规格。
+- `teardown/index.html` — 两者的入口页。
+
+拖动旋转、滚轮缩放，右侧按钮切换视角与标签 / 透视 / 剖切；闲置时自动导览。基于 [elvarofficial/teardown](https://github.com/elvarofficial/teardown)（MIT）构建。
+
 ## GitHub Pages 部署
 
 仓库根目录的 `index.html` 与 `edge-ai-industry-map.html` 内容完全一致（单文件、零外部依赖，可独立发布）。在仓库 Settings → Pages 中把分支（如 `main`）发布为 Pages 源，即可通过 `https://<owner>.github.io/<repo>/` 访问该单页应用。

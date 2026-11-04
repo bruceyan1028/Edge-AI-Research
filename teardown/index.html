@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>可拆解 3D 机械模拟器 · Teardown</title>
+<style>
+  :root{--ink:#2a2521;--mute:#8d8274;--line:#e5dccd;--bg:#f2ece2;--or:#c65a2e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,system-ui,-apple-system,"PingFang SC",sans-serif}
+  main{max-width:960px;margin:0 auto;padding:56px 24px 72px}
+  .eyebrow{font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:2.4px;color:var(--mute);text-transform:uppercase}
+  h1{margin:10px 0 8px;font-size:34px;letter-spacing:-.5px}
+  h1 span{color:var(--or);font-weight:400}
+  .lead{color:#5f564b;max-width:640px;margin:0 0 36px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  a.card{display:block;text-decoration:none;color:inherit;background:#fbf8f3;border:1px solid var(--line);border-radius:10px;padding:22px 22px 20px;transition:transform .15s,box-shadow .15s}
+  a.card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(90,60,30,.1)}
+  .yr{font:700 12px ui-monospace,Menlo,monospace;color:var(--or);letter-spacing:1.6px}
+  .card h2{margin:6px 0 6px;font-size:21px}
+  .card p{margin:0 0 14px;color:#5f564b;font-size:14px}
+  .facts{display:flex;gap:18px;border-top:1px solid var(--line);padding-top:12px;font:600 11px ui-monospace,Menlo,monospace;color:var(--mute);letter-spacing:1px}
+  .facts b{display:block;color:var(--ink);font-size:16px;letter-spacing:0}
+  .go{margin-top:14px;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:1.6px;color:var(--or)}
+  footer{margin-top:44px;font-size:12.5px;color:var(--mute);line-height:1.8}
+  footer a{color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Edge-AI Research · Machines You Can Take Apart</div>
+  <h1>可拆解 3D 机械模拟器 <span>/</span></h1>
+  <p class="lead">两台“会计算的机器”的交互式拆解：机器在中间运转，四周面板读的是驱动它的同一套真实参数。点按钮切换视角、打开标签、透视、剖切；放着不动会自动导览，任意操作即可接管。单文件、零依赖、可离线打开。</p>
+  <div class="grid">
+    <a class="card" href="jacquard-loom.html">
+      <div class="yr">1804 · LYON</div>
+      <h2>雅卡尔提花机</h2>
+      <p>打孔卡编程的织机。一张卡 = 一纬：有孔则钩子被提刀带起、经线抬升；布面上的菱形花纹由 24 张卡逐纬织出。</p>
+      <div class="facts"><div><b>96</b>HOOKS</div><div><b>24</b>CARDS</div><div><b>90 mm</b>LIFT</div></div>
+      <div class="go">打开模拟器 →</div>
+    </a>
+    <a class="card" href="newton-messagepad.html">
+      <div class="yr">1993 · CUPERTINO</div>
+      <h2>Apple Newton MessagePad</h2>
+      <p>第一台 PDA。笔先在屏上写下 “Newton”，再按维修手册顺序拆成 8 步：盖、笔、电池、PCMCIA 卡、后壳、主板、屏幕。</p>
+      <div class="facts"><div><b>ARM610</b>20 MHZ</div><div><b>336×240</b>LCD</div><div><b>410 g</b>MASS</div></div>
+      <div class="go">打开模拟器 →</div>
+    </a>
+  </div>
+  <footer>
+    参考图：Deutsches Museum（提花机整机）、Smithsonian NMAH 1999.0290.01（Newton H1000），均来自 Wikimedia Commons。<br>
+    基于 <a href="https://github.com/elvarofficial/teardown">elvarofficial/teardown</a>（MIT）构建，运行时来自 <a href="https://github.com/whaleyxbt/claude-motion">whaleyxbt/claude-motion</a>（MIT），渲染使用 three.js（MIT）。<br>
+    几何为程序化重建，尺寸取自公开资料，仅作原理演示。
+  </footer>
+</main>
+</body>
+</html>
