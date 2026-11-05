@@ -15,7 +15,7 @@
 
 ## 可拆解 3D 机械模拟器（`teardown/`）
 
-十三台“会计算的机器”的交互式 3D 拆解页，单文件、零外部依赖、可离线打开：
+十四台“会计算的机器”的交互式 3D 拆解页，单文件、零外部依赖、可离线打开：
 
 - `teardown/su-song-clock-tower.html` — 水运仪象台（1088）：按《新仪象法要》插图重建，36 斗枢轮每 24 秒步进一次，天衡擒纵、天柱一日一转，带动报时木人、浑象与浑仪；可实时观察擒纵或延时看完一天。
 - `teardown/apollo-guidance-computer.html` — 阿波罗制导计算机 Block II（1969）：DSKY 回放阿波罗 11 号动力下降（含两次 1202 报警），同时拆开机壳看逻辑模块、磁芯绳与可擦写磁芯。
@@ -30,7 +30,8 @@
 - `teardown/kinect-v1.html` — Kinect v1（2010）：830 nm 结构光深度、640×480 @ 30 fps、四个麦克风与 ±27° 俯仰电机；行走的人驱动电机角度、深度图与散斑位移的实时读数。
 - `teardown/siri-iphone-4s.html` — Siri / iPhone 4S（2011）：一次语音回合的拆解，录音/上行/云端/回复四段共用一条时钟，1.7 s 往返；拆后盖看 1432 mAh 电池、A5 与摄像头。
 - `teardown/iphone-1st-gen.html` — 初代 iPhone（2007）：多点触控与加速度计的实时读数，机身随重力倾斜；拆后壳看 1400 mAh 电池、S5L8900 主板与 2 MP 摄像头（无 GPS）。
-- `teardown/index.html` — 十三者的入口页。
+- `teardown/palm-pilot.html` — PalmPilot（1996）：Graffiti 限定的 26 个笔画逐个落到屏幕底部的输入条并被即时识别，拆背壳看两节 5 号电池、DragonBall 主板与 LCD。
+- `teardown/index.html` — 十四者的入口页。
 
 拖动旋转、滚轮缩放，右侧按钮切换视角与标签 / 透视 / 剖切；闲置时自动导览。基于 [elvarofficial/teardown](https://github.com/elvarofficial/teardown)（MIT）构建。
 
