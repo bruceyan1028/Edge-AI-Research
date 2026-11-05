@@ -15,7 +15,7 @@
 
 ## 可拆解 3D 机械模拟器（`teardown/`）
 
-十七台“会计算的机器”的交互式 3D 拆解页，单文件、零外部依赖、可离线打开：
+十八台“会计算的机器”的交互式 3D 拆解页，单文件、零外部依赖、可离线打开：
 
 - `teardown/su-song-clock-tower.html` — 水运仪象台（1088）：按《新仪象法要》插图重建，36 斗枢轮每 24 秒步进一次，天衡擒纵、天柱一日一转，带动报时木人、浑象与浑仪；可实时观察擒纵或延时看完一天。
 - `teardown/apollo-guidance-computer.html` — 阿波罗制导计算机 Block II（1969）：DSKY 回放阿波罗 11 号动力下降（含两次 1202 报警），同时拆开机壳看逻辑模块、磁芯绳与可擦写磁芯。
@@ -34,7 +34,8 @@
 - `teardown/pulsar-p1.html` — Pulsar P1（1972）：第一块 LED 电子表；按钮点亮 1.25 秒的红色数码管，模块 6 µA 待机与 LED 12 mA 的功耗账单，拆后盖看石英模块与两节电池。
 - `teardown/hp-35.html` — HP-35（1972）：4 5 ENTER 4 5 + SIN 的逆波兰按键序列，X/Y/Z/T 堆栈与红色 15 位 LED 同步读数；拆后盖看三颗 MOS-LSI 芯片与镍镉电池组。
 - `teardown/dumb-terminal-2260.html` — 哑终端（1965，IBM 2260 + 2848）：按键沿线路发出、字符由控制器生成再送回显像管，主机回复带时间戳；反面参照——端上零计算。
-- `teardown/index.html` — 十七者的入口页。
+- `teardown/writer-automaton.html` — 雅克德罗「写字人」（1774）：凸轮编码笔画、连杆驱动鹅毛笔逐字写下 “Je vous salue”，头部与目光随笔尖移动；打开后背看 40 片可重排凸轮。
+- `teardown/index.html` — 十八者的入口页。
 
 拖动旋转、滚轮缩放，右侧按钮切换视角与标签 / 透视 / 剖切；闲置时自动导览。基于 [elvarofficial/teardown](https://github.com/elvarofficial/teardown)（MIT）构建。
 
