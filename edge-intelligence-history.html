@@ -161,6 +161,14 @@ h2{font-family:"Noto Serif SC","Songti SC",serif;font-weight:900;font-size:30px;
 .meter-row .mval{flex:none;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
 .card-desc{margin:0;font-size:13.5px;color:var(--ink2);line-height:1.8}
 .carrier{margin-top:auto;padding-top:10px;border-top:1px dashed var(--grid);font-size:12.5px;color:var(--muted)}
+.tdlink{display:block;margin-top:10px;padding:7px 10px;border-radius:6px;border:1px solid var(--grid);color:var(--ink);font-size:12.5px;font-weight:600;letter-spacing:.5px;text-decoration:none;transition:border-color .15s,color .15s,transform .15s}
+.tdlink span{float:right;transition:transform .15s}
+.tdlink:hover{border-color:var(--era-c,var(--ink));color:var(--era-c,var(--ink));transform:translateY(-1px)}
+.tdlink:hover span{transform:translateX(3px)}
+.tip .thint{margin-top:7px;font-size:11px;color:var(--ink2);font-weight:600;letter-spacing:.5px}
+a.tname{color:inherit;text-decoration:none}
+a.tname:hover{color:var(--era-c,inherit)}
+a.tname .go3d{font-size:10px;color:var(--muted);letter-spacing:0}
 .carrier b{color:var(--ink2);font-weight:500}
 .card--ref{border-style:dashed;border-top-width:1px;background:color-mix(in srgb,var(--surface) 60%,var(--page))}
 .reftag{align-self:flex-start;font-size:11px;letter-spacing:.18em;color:var(--muted);border:1px solid var(--border);
@@ -320,7 +328,7 @@ footer p{margin:0 0 8px;max-width:88ch;line-height:1.8}
           <span class="mkey"><i style="background:var(--era5)"></i>Ⅴ 端侧AI</span>
         </span>
       </div>
-      <p class="chart-note">纵轴为编者示意评级(0至100),非实测值。点击任意设备点可跳转至图谱中的卡片;键盘可聚焦后回车跳转。</p>
+      <p class="chart-note">纵轴为编者示意评级(0至100),非实测值。点击任意设备点即可打开它的 3D 可拆解模拟器;键盘可聚焦后回车打开。</p>
     </div>
   </div>
 </section>
@@ -889,6 +897,36 @@ const DEVICES=[
   desc:'端的终极形态:感知、决策、执行全栈必须在端——摔倒之前,没有时间等云端返回平衡指令。当VLA模型住进躯干,智能回到了它作用的物理世界:这也是两千年故事起点的逻辑。'}
 ];
 
+/* ================= 3D 拆解模拟器 ================= */
+/* 每台设备的可拆解交互模拟器（teardown/ 目录，GitHub Pages） */
+const TEARDOWN={
+ clocktower:'su-song-clock-tower.html',
+ jacquard:'jacquard-loom.html',
+ agc:'apollo-guidance-computer.html',
+ plc:'modicon-084-plc.html',
+ kirin970:'kirin-970.html',
+ tinyml:'tinyml-esp32.html',
+ glasses:'ai-glasses.html',
+ llm:'on-device-llm.html',
+ robot:'humanoid-robot.html',
+ newton:'newton-messagepad.html',
+ kinect:'kinect-v1.html',
+ siri:'siri-iphone-4s.html',
+ iphone:'iphone-1st-gen.html',
+ palm:'palm-pilot.html',
+ pulsar:'pulsar-p1.html',
+ hp35:'hp-35.html',
+ terminal:'dumb-terminal-2260.html',
+ writer:'writer-automaton.html',
+ elephant:'elephant-clock.html',
+ southpointer:'south-pointing-chariot.html',
+ odometer:'odometer-cart.html',
+ seismo:'seismoscope.html',
+ antikythera:'antikythera.html',
+ abacus:'suanpan-abacus.html'
+};
+const TDURL=id=>TEARDOWN[id]?'teardown/'+TEARDOWN[id]:null;
+
 /* ================= CHART ================= */
 const SEG=[[-250,0,.06],[0,.06,.10],[1000,.16,.14],[1500,.30,.12],[1900,.42,.16],[1970,.58,.16],[2000,.74,.14],[2015,.88,.12],[2030,1,0]];
 function frac(y){
@@ -966,7 +1004,7 @@ function renderChart(){
     hit.addEventListener('pointerleave',hideTip);
     hit.addEventListener('focus',()=>showTip(d,hit));
     hit.addEventListener('blur',hideTip);
-    hit.addEventListener('click',()=>jumpToCard(d.id));
+    hit.addEventListener('click',()=>{const u=TDURL(d.id);if(u)location.href=u;else jumpToCard(d.id);});
     hit.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();jumpToCard(d.id);}});
   });
 }
@@ -980,7 +1018,8 @@ function showTip(d,node){
   const n3=document.createElement('div');n3.className='tmeta';n3.textContent='时代  '+'ⅠⅡⅢⅣⅤ'[d.era-1]+' '+ERAS[d.era-1].name;
   const n4=document.createElement('div');n4.className='tint';n4.textContent=d.internal;n4.insertAdjacentHTML('beforeend','<small>内化度 / 100</small>');
   const n5=document.createElement('div');n5.className='tcar';n5.textContent='载体 '+d.carrier;
-  tip.append(n1,n2,n3,n4,n5);
+  const n6=document.createElement('div');n6.className='thint';n6.textContent=TDURL(d.id)?'点击打开 3D 拆解模拟器 ↗':'';
+  tip.append(n1,n2,n3,n4,n5,n6);
   const r=node.getBoundingClientRect();
   tip.classList.add('show');
   const tw=tip.offsetWidth,th=tip.offsetHeight;
@@ -1038,6 +1077,7 @@ function renderCards(){
           <div class="meter-row"><span class="mlabel">内化度</span><span class="meter"><i style="width:${d.internal}%"></i></span><span class="mval">${d.internal}</span></div>
           <p class="card-desc">${d.desc}</p>
           <div class="carrier"><b>智能载体</b> · ${d.carrier}</div>
+          ${TDURL(d.id)?`<a class="tdlink" href="${TDURL(d.id)}">打开 3D 拆解模拟器 <span>→</span></a>`:''}
         </div>`;
       grid.appendChild(c);
     });
@@ -1049,7 +1089,7 @@ function renderTable(){
   DEVICES.forEach(d=>{
     const tr=document.createElement('tr');tr.id='row-'+d.id;
     tr.innerHTML=`
-      <td>${d.name}</td><td class="num">${d.ylabel}</td><td>${REGMARK[d.reg]}${d.rlabel}</td>
+      <td>${TDURL(d.id)?`<a class="tname" href="${TDURL(d.id)}" title="打开 3D 拆解模拟器">${d.name}<span class="go3d"> 3D↗</span></a>`:d.name}</td><td class="num">${d.ylabel}</td><td>${REGMARK[d.reg]}${d.rlabel}</td>
       <td><span class="sw" style="background:var(--era${d.era})"></span>${'ⅠⅡⅢⅣⅤ'[d.era-1]} ${ERAS[d.era-1].name}</td>
       <td>${d.carrier}</td>
       <td class="num">${d.s}</td><td class="num">${d.m}</td><td class="num">${d.r}</td><td class="num">${d.a}</td>
